@@ -483,6 +483,12 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(SPI1_NSS_GPIO_Port, &GPIO_InitStruct);
 
+  /*Configure GPIO pin : SDMMC1_CD_Pin */
+  GPIO_InitStruct.Pin = SDMMC1_CD_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(SDMMC1_CD_GPIO_Port, &GPIO_InitStruct);
+
   /*Configure GPIO pin : LED6_TX_Pin */
   GPIO_InitStruct.Pin = LED6_TX_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;

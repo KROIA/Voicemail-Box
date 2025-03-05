@@ -75,6 +75,8 @@ void Error_Handler(void);
 #define LED5_AP2P_GPIO_Port GPIOF
 #define SPI1_NSS_Pin GPIO_PIN_14
 #define SPI1_NSS_GPIO_Port GPIOD
+#define SDMMC1_CD_Pin GPIO_PIN_10
+#define SDMMC1_CD_GPIO_Port GPIOG
 #define LED6_TX_Pin GPIO_PIN_12
 #define LED6_TX_GPIO_Port GPIOG
 
