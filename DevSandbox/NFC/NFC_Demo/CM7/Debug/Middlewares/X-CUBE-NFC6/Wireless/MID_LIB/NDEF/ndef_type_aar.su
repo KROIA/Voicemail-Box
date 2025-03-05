@@ -1,4 +1,4 @@
-/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_type_aar.c:74:12:ndefRtdAarInit	24	static
-/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_type_aar.c:99:12:ndefGetRtdAar	24	static
-/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_type_aar.c:119:12:ndefRecordToRtdAar	16	static
-/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_type_aar.c:138:12:ndefRtdAarToRecord	24	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/DevSandbox/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_type_aar.c:74:12:ndefRtdAarInit	24	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/DevSandbox/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_type_aar.c:99:12:ndefGetRtdAar	24	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/DevSandbox/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_type_aar.c:119:12:ndefRecordToRtdAar	16	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/DevSandbox/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_type_aar.c:138:12:ndefRtdAarToRecord	24	static

@@ -1,4 +1,4 @@
-/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/rfal/Src/rfal_t1t.c:108:12:rfalT1TPollerInitialize	16	static
-/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/rfal/Src/rfal_t1t.c:124:12:rfalT1TPollerRid	48	static
-/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/rfal/Src/rfal_t1t.c:152:12:rfalT1TPollerRall	48	static
-/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/rfal/Src/rfal_t1t.c:171:12:rfalT1TPollerWrite	56	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/DevSandbox/NFC/NFC_Demo/Middlewares/ST/rfal/Src/rfal_t1t.c:108:12:rfalT1TPollerInitialize	16	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/DevSandbox/NFC/NFC_Demo/Middlewares/ST/rfal/Src/rfal_t1t.c:124:12:rfalT1TPollerRid	48	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/DevSandbox/NFC/NFC_Demo/Middlewares/ST/rfal/Src/rfal_t1t.c:152:12:rfalT1TPollerRall	48	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/DevSandbox/NFC/NFC_Demo/Middlewares/ST/rfal/Src/rfal_t1t.c:171:12:rfalT1TPollerWrite	56	static

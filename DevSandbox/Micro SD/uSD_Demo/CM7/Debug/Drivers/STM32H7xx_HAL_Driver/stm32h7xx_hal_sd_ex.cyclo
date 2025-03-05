@@ -1,4 +1,4 @@
-/home/dominik/Documents/studium/sem08/SA/uSD_Demo/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_sd_ex.c:84:19:HAL_SDEx_ConfigDMAMultiBuffer	2
-/home/dominik/Documents/studium/sem08/SA/uSD_Demo/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_sd_ex.c:110:19:HAL_SDEx_ReadBlocksDMAMultiBuffer	8
-/home/dominik/Documents/studium/sem08/SA/uSD_Demo/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_sd_ex.c:196:19:HAL_SDEx_WriteBlocksDMAMultiBuffer	8
-/home/dominik/Documents/studium/sem08/SA/uSD_Demo/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_sd_ex.c:280:19:HAL_SDEx_ChangeDMABuffer	2
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/DevSandbox/Micro SD/uSD_Demo/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_sd_ex.c:84:19:HAL_SDEx_ConfigDMAMultiBuffer	2
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/DevSandbox/Micro SD/uSD_Demo/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_sd_ex.c:110:19:HAL_SDEx_ReadBlocksDMAMultiBuffer	8
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/DevSandbox/Micro SD/uSD_Demo/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_sd_ex.c:196:19:HAL_SDEx_WriteBlocksDMAMultiBuffer	8
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/DevSandbox/Micro SD/uSD_Demo/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_sd_ex.c:280:19:HAL_SDEx_ChangeDMABuffer	2

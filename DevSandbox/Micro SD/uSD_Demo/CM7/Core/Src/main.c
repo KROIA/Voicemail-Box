@@ -22,7 +22,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "stdio.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -55,6 +55,14 @@ SPI_HandleTypeDef hspi1;
 UART_HandleTypeDef huart3;
 
 /* USER CODE BEGIN PV */
+FATFS fatfs;
+FIL fil;
+FRESULT fres;
+
+char demoText[] = "Test\nTest2";
+UINT bytesToWrite = 0;
+UINT bytesWritten = 0;
+
 
 /* USER CODE END PV */
 
@@ -146,6 +154,15 @@ Error_Handler();
   MX_USART3_UART_Init();
   MX_FATFS_Init();
   /* USER CODE BEGIN 2 */
+
+  fres = f_mount(&fatfs, "", 1);
+  if (fres != FR_OK) printf("f_mount error (%i)\r\n", fres);
+
+  fres = f_open(&fil, "test.txt", FA_OPEN_ALWAYS | FA_WRITE); //open and read/write access, if does not exist create new
+  if (fres != FR_OK) printf("f_open error (%i)\r\n", fres);
+
+  fres = f_write(&fil, &demoText, sizeof(demoText), &bytesWritten);
+  if (fres != FR_OK) printf("f_open error (%i)\r\n", fres);
 
   /* USER CODE END 2 */
 

@@ -1,7 +1,7 @@
-/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_type_wifi.c:170:17:ndefWifiPayloadGetLength	24	static
-/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_type_wifi.c:193:23:ndefWifiToPayloadItem	48	static
-/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_type_wifi.c:323:12:ndefWifiInit	24	static
-/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_type_wifi.c:348:12:ndefGetWifi	24	static
-/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_type_wifi.c:372:19:ndefPayloadToWifi	48	static
-/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_type_wifi.c:456:12:ndefRecordToWifi	24	static
-/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_type_wifi.c:482:12:ndefWifiToRecord	16	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/DevSandbox/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_type_wifi.c:170:17:ndefWifiPayloadGetLength	24	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/DevSandbox/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_type_wifi.c:193:23:ndefWifiToPayloadItem	48	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/DevSandbox/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_type_wifi.c:323:12:ndefWifiInit	24	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/DevSandbox/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_type_wifi.c:348:12:ndefGetWifi	24	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/DevSandbox/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_type_wifi.c:372:19:ndefPayloadToWifi	48	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/DevSandbox/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_type_wifi.c:456:12:ndefRecordToWifi	24	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/DevSandbox/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_type_wifi.c:482:12:ndefWifiToRecord	16	static

@@ -1,7 +1,7 @@
-/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_type_text.c:83:17:ndefRtdTextPayloadGetLength	24	static
-/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_type_text.c:99:23:ndefRtdTextToPayloadItem	32	static
-/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_type_text.c:151:12:ndefRtdTextInit	32	static
-/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_type_text.c:191:12:ndefGetRtdText	32	static
-/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_type_text.c:216:19:ndefPayloadToRtdText	24	static
-/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_type_text.c:259:12:ndefRecordToRtdText	24	static
-/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_type_text.c:285:12:ndefRtdTextToRecord	16	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/DevSandbox/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_type_text.c:83:17:ndefRtdTextPayloadGetLength	24	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/DevSandbox/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_type_text.c:99:23:ndefRtdTextToPayloadItem	32	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/DevSandbox/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_type_text.c:151:12:ndefRtdTextInit	32	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/DevSandbox/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_type_text.c:191:12:ndefGetRtdText	32	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/DevSandbox/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_type_text.c:216:19:ndefPayloadToRtdText	24	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/DevSandbox/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_type_text.c:259:12:ndefRecordToRtdText	24	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/DevSandbox/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_type_text.c:285:12:ndefRtdTextToRecord	16	static

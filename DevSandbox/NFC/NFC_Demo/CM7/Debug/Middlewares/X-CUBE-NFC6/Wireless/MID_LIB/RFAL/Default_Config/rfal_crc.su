@@ -1,2 +1,2 @@
-/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/rfal/Src/rfal_crc.c:39:10:rfalCrcCalculateCcitt	24	static
-/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/rfal/Src/rfal_crc.c:57:17:rfalCrcUpdateCcitt	24	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/DevSandbox/NFC/NFC_Demo/Middlewares/ST/rfal/Src/rfal_crc.c:39:10:rfalCrcCalculateCcitt	24	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/DevSandbox/NFC/NFC_Demo/Middlewares/ST/rfal/Src/rfal_crc.c:57:17:rfalCrcUpdateCcitt	24	static

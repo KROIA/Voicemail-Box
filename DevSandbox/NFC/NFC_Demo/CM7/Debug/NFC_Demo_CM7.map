@@ -898,7 +898,7 @@ Discarded input sections
  .debug_macro   0x00000000       0x16 ./Core/Src/syscalls.o
  .debug_macro   0x00000000       0xce ./Core/Src/syscalls.o
  .debug_line    0x00000000      0x80a ./Core/Src/syscalls.o
- .debug_str     0x00000000     0x9960 ./Core/Src/syscalls.o
+ .debug_str     0x00000000     0x9965 ./Core/Src/syscalls.o
  .comment       0x00000000       0x44 ./Core/Src/syscalls.o
  .debug_frame   0x00000000      0x2ac ./Core/Src/syscalls.o
  .ARM.attributes
@@ -1593,8 +1593,8 @@ Discarded input sections
  .debug_macro   0x00000000      0x143 ./Drivers/BSP/Components/st25r3916_aat.o
  .debug_macro   0x00000000       0xd6 ./Drivers/BSP/Components/st25r3916_aat.o
  .debug_macro   0x00000000      0x246 ./Drivers/BSP/Components/st25r3916_aat.o
- .debug_line    0x00000000      0xf6f ./Drivers/BSP/Components/st25r3916_aat.o
- .debug_str     0x00000000   0x189c95 ./Drivers/BSP/Components/st25r3916_aat.o
+ .debug_line    0x00000000      0xf74 ./Drivers/BSP/Components/st25r3916_aat.o
+ .debug_str     0x00000000   0x189c9f ./Drivers/BSP/Components/st25r3916_aat.o
  .comment       0x00000000       0x44 ./Drivers/BSP/Components/st25r3916_aat.o
  .debug_frame   0x00000000      0x124 ./Drivers/BSP/Components/st25r3916_aat.o
  .ARM.attributes
@@ -2492,8 +2492,8 @@ Discarded input sections
  .debug_macro   0x00000000       0xd0 ./Drivers/BSP/NFC/nfc08a1.o
  .debug_macro   0x00000000       0x9a ./Drivers/BSP/NFC/nfc08a1.o
  .debug_macro   0x00000000      0x17f ./Drivers/BSP/NFC/nfc08a1.o
- .debug_line    0x00000000      0xb97 ./Drivers/BSP/NFC/nfc08a1.o
- .debug_str     0x00000000   0x17ce94 ./Drivers/BSP/NFC/nfc08a1.o
+ .debug_line    0x00000000      0xb9c ./Drivers/BSP/NFC/nfc08a1.o
+ .debug_str     0x00000000   0x17ce9e ./Drivers/BSP/NFC/nfc08a1.o
  .comment       0x00000000       0x44 ./Drivers/BSP/NFC/nfc08a1.o
  .debug_frame   0x00000000       0xc4 ./Drivers/BSP/NFC/nfc08a1.o
  .ARM.attributes
@@ -3404,8 +3404,8 @@ Discarded input sections
  .debug_macro   0x00000000      0x693 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_dma_ex.o
  .debug_macro   0x00000000       0xa6 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_dma_ex.o
  .debug_macro   0x00000000      0x7a4 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_dma_ex.o
- .debug_line    0x00000000     0x11da ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_dma_ex.o
- .debug_str     0x00000000   0x17a5c4 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_dma_ex.o
+ .debug_line    0x00000000     0x11df ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_dma_ex.o
+ .debug_str     0x00000000   0x17a5ce ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_dma_ex.o
  .comment       0x00000000       0x44 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_dma_ex.o
  .debug_frame   0x00000000      0x174 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_dma_ex.o
  .ARM.attributes
@@ -3712,8 +3712,8 @@ Discarded input sections
  .debug_macro   0x00000000      0x693 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_flash.o
  .debug_macro   0x00000000       0xa6 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_flash.o
  .debug_macro   0x00000000      0x7a4 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_flash.o
- .debug_line    0x00000000      0xe07 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_flash.o
- .debug_str     0x00000000   0x17a4ed ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_flash.o
+ .debug_line    0x00000000      0xe0c ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_flash.o
+ .debug_str     0x00000000   0x17a4f7 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_flash.o
  .comment       0x00000000       0x44 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_flash.o
  .debug_frame   0x00000000      0x200 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_flash.o
  .ARM.attributes
@@ -3912,8 +3912,8 @@ Discarded input sections
  .debug_macro   0x00000000      0x693 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_flash_ex.o
  .debug_macro   0x00000000       0xa6 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_flash_ex.o
  .debug_macro   0x00000000      0x7a4 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_flash_ex.o
- .debug_line    0x00000000     0x1255 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_flash_ex.o
- .debug_str     0x00000000   0x17a7f6 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_flash_ex.o
+ .debug_line    0x00000000     0x125a ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_flash_ex.o
+ .debug_str     0x00000000   0x17a800 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_flash_ex.o
  .comment       0x00000000       0x44 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_flash_ex.o
  .debug_frame   0x00000000      0x484 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_flash_ex.o
  .ARM.attributes
@@ -4794,8 +4794,8 @@ Discarded input sections
  .debug_macro   0x00000000      0x693 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_mdma.o
  .debug_macro   0x00000000       0xa6 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_mdma.o
  .debug_macro   0x00000000      0x7a4 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_mdma.o
- .debug_line    0x00000000     0x14f6 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_mdma.o
- .debug_str     0x00000000   0x17a831 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_mdma.o
+ .debug_line    0x00000000     0x14fb ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_mdma.o
+ .debug_str     0x00000000   0x17a83b ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_mdma.o
  .comment       0x00000000       0x44 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_mdma.o
  .debug_frame   0x00000000      0x34c ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_mdma.o
  .ARM.attributes
@@ -4968,8 +4968,8 @@ Discarded input sections
  .debug_macro   0x00000000      0x693 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_pwr.o
  .debug_macro   0x00000000       0xa6 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_pwr.o
  .debug_macro   0x00000000      0x7a4 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_pwr.o
- .debug_line    0x00000000      0xabb ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_pwr.o
- .debug_str     0x00000000   0x17a4af ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_pwr.o
+ .debug_line    0x00000000      0xac0 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_pwr.o
+ .debug_str     0x00000000   0x17a4b9 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_pwr.o
  .comment       0x00000000       0x44 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_pwr.o
  .debug_frame   0x00000000      0x24c ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_pwr.o
  .ARM.attributes
@@ -5836,8 +5836,8 @@ Discarded input sections
  .debug_macro   0x00000000      0x693 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_spi_ex.o
  .debug_macro   0x00000000       0xa6 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_spi_ex.o
  .debug_macro   0x00000000      0x7a4 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_spi_ex.o
- .debug_line    0x00000000      0x9bb ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_spi_ex.o
- .debug_str     0x00000000   0x17a684 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_spi_ex.o
+ .debug_line    0x00000000      0x9c0 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_spi_ex.o
+ .debug_str     0x00000000   0x17a68e ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_spi_ex.o
  .comment       0x00000000       0x44 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_spi_ex.o
  .debug_frame   0x00000000       0x88 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_spi_ex.o
  .ARM.attributes
@@ -9706,8 +9706,8 @@ Discarded input sections
  .debug_macro   0x00000000       0x10 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_media.o
  .debug_macro   0x00000000       0x46 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_media.o
  .debug_macro   0x00000000       0x76 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_media.o
- .debug_line    0x00000000      0xece ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_media.o
- .debug_str     0x00000000   0x1850ab ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_media.o
+ .debug_line    0x00000000      0xed3 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_media.o
+ .debug_str     0x00000000   0x1850b5 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_media.o
  .comment       0x00000000       0x44 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_media.o
  .debug_frame   0x00000000       0xa8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_media.o
  .ARM.attributes
@@ -11899,8 +11899,8 @@ Discarded input sections
  .debug_macro   0x00000000       0xf4 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_cd.o
  .debug_macro   0x00000000       0x3a ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_cd.o
  .debug_macro   0x00000000       0x1c ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_cd.o
- .debug_line    0x00000000      0xff2 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_cd.o
- .debug_str     0x00000000   0x180b9e ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_cd.o
+ .debug_line    0x00000000      0xff7 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_cd.o
+ .debug_str     0x00000000   0x180ba8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_cd.o
  .comment       0x00000000       0x44 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_cd.o
  .debug_frame   0x00000000       0x84 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_cd.o
  .ARM.attributes
@@ -12258,8 +12258,8 @@ Discarded input sections
  .debug_macro   0x00000000       0xd6 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_dpo.o
  .debug_macro   0x00000000      0x246 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_dpo.o
  .debug_macro   0x00000000      0x240 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_dpo.o
- .debug_line    0x00000000      0xb8b ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_dpo.o
- .debug_str     0x00000000   0x1802ba ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_dpo.o
+ .debug_line    0x00000000      0xb90 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_dpo.o
+ .debug_str     0x00000000   0x1802c4 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_dpo.o
  .comment       0x00000000       0x44 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_dpo.o
  .ARM.attributes
                 0x00000000       0x32 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_dpo.o
@@ -15340,7 +15340,7 @@ Discarded input sections
  .debug_macro   0x00000000       0x6a ./X-CUBE-NFC6/Target/demo_ce.o
  .debug_macro   0x00000000       0xf4 ./X-CUBE-NFC6/Target/demo_ce.o
  .debug_line    0x00000000     0x1121 ./X-CUBE-NFC6/Target/demo_ce.o
- .debug_str     0x00000000   0x18040e ./X-CUBE-NFC6/Target/demo_ce.o
+ .debug_str     0x00000000   0x180413 ./X-CUBE-NFC6/Target/demo_ce.o
  .comment       0x00000000       0x44 ./X-CUBE-NFC6/Target/demo_ce.o
  .debug_frame   0x00000000      0x160 ./X-CUBE-NFC6/Target/demo_ce.o
  .ARM.attributes
@@ -18743,376 +18743,375 @@ LOAD /home/dominik/st/stm32cubeide_1.15.1/plugins/com.st.stm32cube.ide.mcu.exter
 .iplt           0x08027d74        0x0
  .iplt          0x08027d74        0x0 /home/dominik/st/stm32cubeide_1.15.1/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.linux64_1.1.0.202410170702/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+dp/hard/crtbegin.o
 
-.rodata         0x08027d74     0x2ab4
+.rodata         0x08027d74     0x2ab8
                 0x08027d74                        . = ALIGN (0x4)
  *(.rodata)
- .rodata        0x08027d74       0x77 ./Drivers/BSP/Components/st25r3916.o
- *fill*         0x08027deb        0x1 
- .rodata        0x08027dec        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_nfcb.o
- .rodata        0x08027df4       0x59 ./X-CUBE-NFC6/App/app_x-cube-nfcx.o
- *fill*         0x08027e4d        0x3 
- .rodata        0x08027e50       0x11 ./X-CUBE-NFC6/Target/logger.o
- *fill*         0x08027e61        0x3 
- .rodata        0x08027e64      0xe92 ./X-CUBE-NFC6/Target/ndef_demo.o
- *fill*         0x08028cf6        0x2 
- .rodata        0x08028cf8     0x104e ./X-CUBE-NFC6/Target/ndef_dump.o
+ .rodata        0x08027d74       0x7c ./Drivers/BSP/Components/st25r3916.o
+ .rodata        0x08027df0        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_nfcb.o
+ .rodata        0x08027df8       0x59 ./X-CUBE-NFC6/App/app_x-cube-nfcx.o
+ *fill*         0x08027e51        0x3 
+ .rodata        0x08027e54       0x11 ./X-CUBE-NFC6/Target/logger.o
+ *fill*         0x08027e65        0x3 
+ .rodata        0x08027e68      0xe92 ./X-CUBE-NFC6/Target/ndef_demo.o
+ *fill*         0x08028cfa        0x2 
+ .rodata        0x08028cfc     0x104e ./X-CUBE-NFC6/Target/ndef_dump.o
  *(.rodata*)
- *fill*         0x08029d46        0x2 
+ *fill*         0x08029d4a        0x2 
  .rodata.D1CorePrescTable
-                0x08029d48       0x10 ./Common/Src/system_stm32h7xx_dualcore_boot_cm4_cm7.o
-                0x08029d48                D1CorePrescTable
+                0x08029d4c       0x10 ./Common/Src/system_stm32h7xx_dualcore_boot_cm4_cm7.o
+                0x08029d4c                D1CorePrescTable
  .rodata.ButtonGpioInit.3
-                0x08029d58        0x4 ./Drivers/BSP/custom/custom.o
- .rodata.BUTTON_EXTI_LINE.2
                 0x08029d5c        0x4 ./Drivers/BSP/custom/custom.o
- .rodata.ButtonCallback.1
+ .rodata.BUTTON_EXTI_LINE.2
                 0x08029d60        0x4 ./Drivers/BSP/custom/custom.o
- .rodata.BSP_BUTTON_PRIO.0
+ .rodata.ButtonCallback.1
                 0x08029d64        0x4 ./Drivers/BSP/custom/custom.o
+ .rodata.BSP_BUTTON_PRIO.0
+                0x08029d68        0x4 ./Drivers/BSP/custom/custom.o
  .rodata.UARTPrescTable
-                0x08029d68       0x18 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_uart.o
-                0x08029d68                UARTPrescTable
+                0x08029d6c       0x18 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_uart.o
+                0x08029d6c                UARTPrescTable
  .rodata.numerator.1
-                0x08029d80        0x8 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_uart_ex.o
+                0x08029d84        0x8 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_uart_ex.o
  .rodata.denominator.0
-                0x08029d88        0x8 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_uart_ex.o
+                0x08029d8c        0x8 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_uart_ex.o
  .rodata.ndefT5TWrapper.4
-                0x08029d90       0x34 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_poller.o
+                0x08029d94       0x34 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_poller.o
  .rodata.ndefT4TWrapper.3
-                0x08029dc4       0x34 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_poller.o
+                0x08029dc8       0x34 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_poller.o
  .rodata.ndefT3TWrapper.2
-                0x08029df8       0x34 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_poller.o
+                0x08029dfc       0x34 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_poller.o
  .rodata.ndefT2TWrapper.1
-                0x08029e2c       0x34 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_poller.o
+                0x08029e30       0x34 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_poller.o
  .rodata.ndefT1TWrapper.0
-                0x08029e60       0x34 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_poller.o
+                0x08029e64       0x34 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_poller.o
  .rodata.emptyNdef.1
-                0x08029e94        0x4 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_t2t.o
+                0x08029e98        0x4 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_t2t.o
  .rodata.staticBits.0
-                0x08029e98        0x2 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_t2t.o
- *fill*         0x08029e9a        0x2 
- .rodata.RFAL_T4T_FID_CC.2
-                0x08029e9c        0x2 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_t4t.o
+                0x08029e9c        0x2 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_t2t.o
  *fill*         0x08029e9e        0x2 
+ .rodata.RFAL_T4T_FID_CC.2
+                0x08029ea0        0x2 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_t4t.o
+ *fill*         0x08029ea2        0x2 
  .rodata.NDEF_T4T_AID_NDEF.1
-                0x08029ea0        0x7 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_t4t.o
- *fill*         0x08029ea7        0x1 
+                0x08029ea4        0x7 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_t4t.o
+ *fill*         0x08029eab        0x1 
  .rodata.NDEF_T4T_AID_NDEF_V1.0
-                0x08029ea8        0x7 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_t4t.o
- *fill*         0x08029eaf        0x1 
+                0x08029eac        0x7 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_t4t.o
+ *fill*         0x08029eb3        0x1 
  .rodata.emptyNDEF.0
-                0x08029eb0        0x2 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_t5t.o
- *fill*         0x08029eb2        0x2 
+                0x08029eb4        0x2 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_t5t.o
+ *fill*         0x08029eb6        0x2 
  .rodata.ndefRtdTypeAar
-                0x08029eb4       0x10 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_aar.o
+                0x08029eb8       0x10 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_aar.o
  .rodata.bufRtdTypeAar
-                0x08029ec4        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_aar.o
-                0x08029ec4                bufRtdTypeAar
+                0x08029ec8        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_aar.o
+                0x08029ec8                bufRtdTypeAar
  .rodata.ndefTypeBluetoothBrEdr
-                0x08029ecc       0x21 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_bluetooth.o
- *fill*         0x08029eed        0x3 
+                0x08029ed0       0x21 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_bluetooth.o
+ *fill*         0x08029ef1        0x3 
  .rodata.ndefTypeBluetoothLe
-                0x08029ef0       0x21 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_bluetooth.o
- *fill*         0x08029f11        0x3 
+                0x08029ef4       0x21 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_bluetooth.o
+ *fill*         0x08029f15        0x3 
  .rodata.ndefTypeBluetoothSecureBrEdr
-                0x08029f14       0x28 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_bluetooth.o
+                0x08029f18       0x28 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_bluetooth.o
  .rodata.ndefTypeBluetoothSecureLe
-                0x08029f3c       0x28 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_bluetooth.o
+                0x08029f40       0x28 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_bluetooth.o
  .rodata.bufMediaTypeBluetoothBrEdr
-                0x08029f64        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_bluetooth.o
-                0x08029f64                bufMediaTypeBluetoothBrEdr
+                0x08029f68        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_bluetooth.o
+                0x08029f68                bufMediaTypeBluetoothBrEdr
  .rodata.bufMediaTypeBluetoothLe
-                0x08029f6c        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_bluetooth.o
-                0x08029f6c                bufMediaTypeBluetoothLe
+                0x08029f70        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_bluetooth.o
+                0x08029f70                bufMediaTypeBluetoothLe
  .rodata.bufMediaTypeBluetoothSecureBrEdr
-                0x08029f74        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_bluetooth.o
-                0x08029f74                bufMediaTypeBluetoothSecureBrEdr
+                0x08029f78        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_bluetooth.o
+                0x08029f78                bufMediaTypeBluetoothSecureBrEdr
  .rodata.bufMediaTypeBluetoothSecureLe
-                0x08029f7c        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_bluetooth.o
-                0x08029f7c                bufMediaTypeBluetoothSecureLe
+                0x08029f80        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_bluetooth.o
+                0x08029f80                bufMediaTypeBluetoothSecureLe
  .rodata.ndefRtdTypeDeviceInfo
-                0x08029f84        0x3 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_deviceinfo.o
- *fill*         0x08029f87        0x1 
+                0x08029f88        0x3 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_deviceinfo.o
+ *fill*         0x08029f8b        0x1 
  .rodata.bufRtdTypeDeviceInfo
-                0x08029f88        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_deviceinfo.o
-                0x08029f88                bufRtdTypeDeviceInfo
+                0x08029f8c        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_deviceinfo.o
+                0x08029f8c                bufRtdTypeDeviceInfo
  .rodata.ndefRtdTypeText
-                0x08029f90        0x2 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_text.o
- *fill*         0x08029f92        0x2 
+                0x08029f94        0x2 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_text.o
+ *fill*         0x08029f96        0x2 
  .rodata.bufRtdTypeText
-                0x08029f94        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_text.o
-                0x08029f94                bufRtdTypeText
+                0x08029f98        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_text.o
+                0x08029f98                bufRtdTypeText
  .rodata.ndefRtdTypeTnepServiceParameter
-                0x08029f9c        0x3 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_tnep.o
- *fill*         0x08029f9f        0x1 
- .rodata.ndefRtdTypeTnepServiceSelect
                 0x08029fa0        0x3 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_tnep.o
  *fill*         0x08029fa3        0x1 
- .rodata.ndefRtdTypeTnepStatus
+ .rodata.ndefRtdTypeTnepServiceSelect
                 0x08029fa4        0x3 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_tnep.o
  *fill*         0x08029fa7        0x1 
+ .rodata.ndefRtdTypeTnepStatus
+                0x08029fa8        0x3 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_tnep.o
+ *fill*         0x08029fab        0x1 
  .rodata.bufRtdTypeTnepServiceParameter
-                0x08029fa8        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_tnep.o
-                0x08029fa8                bufRtdTypeTnepServiceParameter
+                0x08029fac        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_tnep.o
+                0x08029fac                bufRtdTypeTnepServiceParameter
  .rodata.bufRtdTypeTnepServiceSelect
-                0x08029fb0        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_tnep.o
-                0x08029fb0                bufRtdTypeTnepServiceSelect
+                0x08029fb4        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_tnep.o
+                0x08029fb4                bufRtdTypeTnepServiceSelect
  .rodata.bufRtdTypeTnepStatus
-                0x08029fb8        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_tnep.o
-                0x08029fb8                bufRtdTypeTnepStatus
+                0x08029fbc        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_tnep.o
+                0x08029fbc                bufRtdTypeTnepStatus
  .rodata.ndefRtdTypeUri
-                0x08029fc0        0x2 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
- *fill*         0x08029fc2        0x2 
+                0x08029fc4        0x2 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
+ *fill*         0x08029fc6        0x2 
  .rodata.bufRtdTypeUri
-                0x08029fc4        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
-                0x08029fc4                bufRtdTypeUri
+                0x08029fc8        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
+                0x08029fc8                bufRtdTypeUri
  .rodata.ndefUriPrefixNone
-                0x08029fcc        0x1 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
- *fill*         0x08029fcd        0x3 
+                0x08029fd0        0x1 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
+ *fill*         0x08029fd1        0x3 
  .rodata.ndefUriPrefixHttpWww
-                0x08029fd0        0xc ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
+                0x08029fd4        0xc ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
  .rodata.ndefUriPrefixHttpsWww
-                0x08029fdc        0xd ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
- *fill*         0x08029fe9        0x3 
+                0x08029fe0        0xd ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
+ *fill*         0x08029fed        0x3 
  .rodata.ndefUriPrefixHttp
-                0x08029fec        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
+                0x08029ff0        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
  .rodata.ndefUriPrefixHttps
-                0x08029ff4        0x9 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
- *fill*         0x08029ffd        0x3 
+                0x08029ff8        0x9 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
+ *fill*         0x0802a001        0x3 
  .rodata.ndefUriPrefixTel
-                0x0802a000        0x5 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
- *fill*         0x0802a005        0x3 
+                0x0802a004        0x5 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
+ *fill*         0x0802a009        0x3 
  .rodata.ndefUriPrefixMailto
-                0x0802a008        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
+                0x0802a00c        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
  .rodata.ndefUriPrefixFtpAnonymous
-                0x0802a010       0x1b ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
- *fill*         0x0802a02b        0x1 
+                0x0802a014       0x1b ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
+ *fill*         0x0802a02f        0x1 
  .rodata.ndefUriPrefixFtpFtp
-                0x0802a02c        0xb ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
- *fill*         0x0802a037        0x1 
+                0x0802a030        0xb ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
+ *fill*         0x0802a03b        0x1 
  .rodata.ndefUriPrefixFtps
-                0x0802a038        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
+                0x0802a03c        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
  .rodata.ndefUriPrefixSftp
-                0x0802a040        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
+                0x0802a044        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
  .rodata.ndefUriPrefixSmb
-                0x0802a048        0x7 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
- *fill*         0x0802a04f        0x1 
+                0x0802a04c        0x7 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
+ *fill*         0x0802a053        0x1 
  .rodata.ndefUriPrefixNfs
-                0x0802a050        0x7 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
- *fill*         0x0802a057        0x1 
+                0x0802a054        0x7 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
+ *fill*         0x0802a05b        0x1 
  .rodata.ndefUriPrefixFtp
-                0x0802a058        0x7 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
- *fill*         0x0802a05f        0x1 
+                0x0802a05c        0x7 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
+ *fill*         0x0802a063        0x1 
  .rodata.ndefUriPrefixDav
-                0x0802a060        0x7 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
- *fill*         0x0802a067        0x1 
+                0x0802a064        0x7 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
+ *fill*         0x0802a06b        0x1 
  .rodata.ndefUriPrefixNews
-                0x0802a068        0x6 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
- *fill*         0x0802a06e        0x2 
+                0x0802a06c        0x6 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
+ *fill*         0x0802a072        0x2 
  .rodata.ndefUriPrefixTelnet
-                0x0802a070        0xa ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
- *fill*         0x0802a07a        0x2 
+                0x0802a074        0xa ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
+ *fill*         0x0802a07e        0x2 
  .rodata.ndefUriPrefixImap
-                0x0802a07c        0x6 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
- *fill*         0x0802a082        0x2 
+                0x0802a080        0x6 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
+ *fill*         0x0802a086        0x2 
  .rodata.ndefUriPrefixRtsp
-                0x0802a084        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
+                0x0802a088        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
  .rodata.ndefUriPrefixUrn
-                0x0802a08c        0x5 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
- *fill*         0x0802a091        0x3 
+                0x0802a090        0x5 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
+ *fill*         0x0802a095        0x3 
  .rodata.ndefUriPrefixPop
-                0x0802a094        0x5 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
- *fill*         0x0802a099        0x3 
+                0x0802a098        0x5 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
+ *fill*         0x0802a09d        0x3 
  .rodata.ndefUriPrefixSip
-                0x0802a09c        0x5 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
- *fill*         0x0802a0a1        0x3 
+                0x0802a0a0        0x5 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
+ *fill*         0x0802a0a5        0x3 
  .rodata.ndefUriPrefixSips
-                0x0802a0a4        0x6 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
- *fill*         0x0802a0aa        0x2 
+                0x0802a0a8        0x6 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
+ *fill*         0x0802a0ae        0x2 
  .rodata.ndefUriPrefixTftp
-                0x0802a0ac        0x6 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
- *fill*         0x0802a0b2        0x2 
+                0x0802a0b0        0x6 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
+ *fill*         0x0802a0b6        0x2 
  .rodata.ndefUriPrefixBtspp
-                0x0802a0b4        0x9 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
- *fill*         0x0802a0bd        0x3 
+                0x0802a0b8        0x9 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
+ *fill*         0x0802a0c1        0x3 
  .rodata.ndefUriPrefixBtl2cap
-                0x0802a0c0        0xb ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
- *fill*         0x0802a0cb        0x1 
+                0x0802a0c4        0xb ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
+ *fill*         0x0802a0cf        0x1 
  .rodata.ndefUriPrefixBtgoep
-                0x0802a0cc        0xa ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
- *fill*         0x0802a0d6        0x2 
+                0x0802a0d0        0xa ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
+ *fill*         0x0802a0da        0x2 
  .rodata.ndefUriPrefixTcpobex
-                0x0802a0d8        0xb ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
- *fill*         0x0802a0e3        0x1 
+                0x0802a0dc        0xb ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
+ *fill*         0x0802a0e7        0x1 
  .rodata.ndefUriPrefixIrdaobex
-                0x0802a0e4        0xc ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
+                0x0802a0e8        0xc ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
  .rodata.ndefUriPrefixFile
-                0x0802a0f0        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
+                0x0802a0f4        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
  .rodata.ndefUriPrefixUrnEpcId
-                0x0802a0f8        0xc ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
+                0x0802a0fc        0xc ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
  .rodata.ndefUriPrefixUrnEpcTag
-                0x0802a104        0xc ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
+                0x0802a108        0xc ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
  .rodata.ndefUriPrefixUrnEpcPat
-                0x0802a110        0xd ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
- *fill*         0x0802a11d        0x3 
+                0x0802a114        0xd ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
+ *fill*         0x0802a121        0x3 
  .rodata.ndefUriPrefixUrnEpcRaw
-                0x0802a120        0xd ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
- *fill*         0x0802a12d        0x3 
+                0x0802a124        0xd ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
+ *fill*         0x0802a131        0x3 
  .rodata.ndefUriPrefixUrnEpe
-                0x0802a130        0x9 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
- *fill*         0x0802a139        0x3 
+                0x0802a134        0x9 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
+ *fill*         0x0802a13d        0x3 
  .rodata.ndefUriPrefixUrnNfc
-                0x0802a13c        0x9 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
- *fill*         0x0802a145        0x3 
- .rodata.ndefUriPrefixEmpty
-                0x0802a148        0x1 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
+                0x0802a140        0x9 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
  *fill*         0x0802a149        0x3 
+ .rodata.ndefUriPrefixEmpty
+                0x0802a14c        0x1 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
+ *fill*         0x0802a14d        0x3 
  .rodata.ndefUriPrefix
-                0x0802a14c      0x128 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
+                0x0802a150      0x128 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
  .rodata.ndefMediaTypeVCard
-                0x0802a274        0xd ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_vcard.o
- *fill*         0x0802a281        0x3 
+                0x0802a278        0xd ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_vcard.o
+ *fill*         0x0802a285        0x3 
  .rodata.bufMediaTypeVCard
-                0x0802a284        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_vcard.o
-                0x0802a284                bufMediaTypeVCard
- .rodata.COLON  0x0802a28c        0x2 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_vcard.o
- *fill*         0x0802a28e        0x2 
- .rodata.SEMICOLON
-                0x0802a290        0x2 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_vcard.o
+                0x0802a288        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_vcard.o
+                0x0802a288                bufMediaTypeVCard
+ .rodata.COLON  0x0802a290        0x2 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_vcard.o
  *fill*         0x0802a292        0x2 
+ .rodata.SEMICOLON
+                0x0802a294        0x2 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_vcard.o
+ *fill*         0x0802a296        0x2 
  .rodata.NEWLINE
-                0x0802a294        0x3 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_vcard.o
- *fill*         0x0802a297        0x1 
+                0x0802a298        0x3 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_vcard.o
+ *fill*         0x0802a29b        0x1 
  .rodata.LINEFEED
-                0x0802a298        0x2 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_vcard.o
- *fill*         0x0802a29a        0x2 
+                0x0802a29c        0x2 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_vcard.o
+ *fill*         0x0802a29e        0x2 
  .rodata.bufColon
-                0x0802a29c        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_vcard.o
+                0x0802a2a0        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_vcard.o
  .rodata.bufSemicolon
-                0x0802a2a4        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_vcard.o
+                0x0802a2a8        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_vcard.o
  .rodata.bufNewLine
-                0x0802a2ac        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_vcard.o
+                0x0802a2b0        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_vcard.o
  .rodata.bufLineFeed
-                0x0802a2b4        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_vcard.o
+                0x0802a2b8        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_vcard.o
  .rodata.bufTypeBegin.5
-                0x0802a2bc        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_vcard.o
+                0x0802a2c0        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_vcard.o
  .rodata.bufTypeVersion.4
-                0x0802a2c4        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_vcard.o
+                0x0802a2c8        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_vcard.o
  .rodata.bufTypeEnd.3
-                0x0802a2cc        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_vcard.o
+                0x0802a2d0        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_vcard.o
  .rodata.TYPE_VERSION.2
-                0x0802a2d4        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_vcard.o
+                0x0802a2d8        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_vcard.o
  .rodata.TYPE_END.1
-                0x0802a2dc        0x4 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_vcard.o
+                0x0802a2e0        0x4 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_vcard.o
  .rodata.TYPE_BEGIN.0
-                0x0802a2e0        0x6 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_vcard.o
- *fill*         0x0802a2e6        0x2 
+                0x0802a2e4        0x6 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_vcard.o
+ *fill*         0x0802a2ea        0x2 
  .rodata.ndefMediaTypeWifi
-                0x0802a2e8       0x18 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_wifi.o
+                0x0802a2ec       0x18 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_wifi.o
  .rodata.bufMediaTypeWifi
-                0x0802a300        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_wifi.o
-                0x0802a300                bufMediaTypeWifi
+                0x0802a304        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_wifi.o
+                0x0802a304                bufMediaTypeWifi
  .rodata.ndefRtdTypeWlcCapability
-                0x0802a308        0x7 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_wlc.o
- *fill*         0x0802a30f        0x1 
+                0x0802a30c        0x7 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_wlc.o
+ *fill*         0x0802a313        0x1 
  .rodata.ndefRtdTypeWlcStatusInfo
-                0x0802a310        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_wlc.o
+                0x0802a314        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_wlc.o
  .rodata.ndefRtdTypeWlcPollInfo
-                0x0802a318        0x7 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_wlc.o
- *fill*         0x0802a31f        0x1 
+                0x0802a31c        0x7 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_wlc.o
+ *fill*         0x0802a323        0x1 
  .rodata.ndefRtdTypeWlcListenCtl
-                0x0802a320        0x7 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_wlc.o
- *fill*         0x0802a327        0x1 
+                0x0802a324        0x7 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_wlc.o
+ *fill*         0x0802a32b        0x1 
  .rodata.bufTypeRtdWlcCapability
-                0x0802a328        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_wlc.o
-                0x0802a328                bufTypeRtdWlcCapability
+                0x0802a32c        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_wlc.o
+                0x0802a32c                bufTypeRtdWlcCapability
  .rodata.bufTypeRtdWlcStatusInfo
-                0x0802a330        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_wlc.o
-                0x0802a330                bufTypeRtdWlcStatusInfo
+                0x0802a334        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_wlc.o
+                0x0802a334                bufTypeRtdWlcStatusInfo
  .rodata.bufTypeRtdWlcPollInfo
-                0x0802a338        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_wlc.o
-                0x0802a338                bufTypeRtdWlcPollInfo
+                0x0802a33c        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_wlc.o
+                0x0802a33c                bufTypeRtdWlcPollInfo
  .rodata.bufTypeRtdWlcListenCtl
-                0x0802a340        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_wlc.o
-                0x0802a340                bufTypeRtdWlcListenCtl
+                0x0802a344        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_wlc.o
+                0x0802a344                bufTypeRtdWlcListenCtl
  .rodata.ndefRtdTypeWptWlc
-                0x0802a348       0x24 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_wpcwlc.o
+                0x0802a34c       0x24 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_wpcwlc.o
  .rodata.bufRtdTypeWpcWlc
-                0x0802a36c        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_wpcwlc.o
-                0x0802a36c                bufRtdTypeWpcWlc
+                0x0802a370        0x8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_wpcwlc.o
+                0x0802a370                bufRtdTypeWpcWlc
  .rodata.typeConverterTable.2
-                0x0802a374       0xf0 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_types.o
+                0x0802a378       0xf0 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_types.o
  .rodata.ndefTypeEmpty.0
-                0x0802a464        0x1 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_types.o
- *fill*         0x0802a465        0x3 
+                0x0802a468        0x1 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_types.o
+ *fill*         0x0802a469        0x3 
  .rodata.rfalAnalogConfigCustomSettings
-                0x0802a468      0x2c3 ./X-CUBE-NFC6/Target/analogConfigTbl_NFC08A1.o
-                0x0802a468                rfalAnalogConfigCustomSettings
- *fill*         0x0802a72b        0x1 
+                0x0802a46c      0x2c3 ./X-CUBE-NFC6/Target/analogConfigTbl_NFC08A1.o
+                0x0802a46c                rfalAnalogConfigCustomSettings
+ *fill*         0x0802a72f        0x1 
  .rodata.rfalAnalogConfigCustomSettingsLength
-                0x0802a72c        0x2 ./X-CUBE-NFC6/Target/analogConfigTbl_NFC08A1.o
-                0x0802a72c                rfalAnalogConfigCustomSettingsLength
- *fill*         0x0802a72e        0x2 
+                0x0802a730        0x2 ./X-CUBE-NFC6/Target/analogConfigTbl_NFC08A1.o
+                0x0802a730                rfalAnalogConfigCustomSettingsLength
+ *fill*         0x0802a732        0x2 
  .rodata.ndefSnepPrefix
-                0x0802a730        0x8 ./X-CUBE-NFC6/Target/ndef_demo.o
- .rodata.URL    0x0802a738       0x11 ./X-CUBE-NFC6/Target/ndef_demo.o
- *fill*         0x0802a749        0x3 
+                0x0802a734        0x8 ./X-CUBE-NFC6/Target/ndef_demo.o
+ .rodata.URL    0x0802a73c       0x11 ./X-CUBE-NFC6/Target/ndef_demo.o
+ *fill*         0x0802a74d        0x3 
  .rodata.typeDumpTable.0
-                0x0802a74c       0xa8 ./X-CUBE-NFC6/Target/ndef_dump.o
+                0x0802a750       0xa8 ./X-CUBE-NFC6/Target/ndef_dump.o
  .rodata._svfprintf_r.str1.1
-                0x0802a7f4       0x11 /home/dominik/st/stm32cubeide_1.15.1/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.linux64_1.1.0.202410170702/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc_nano.a(libc_a-nano-svfprintf.o)
+                0x0802a7f8       0x11 /home/dominik/st/stm32cubeide_1.15.1/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.linux64_1.1.0.202410170702/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc_nano.a(libc_a-nano-svfprintf.o)
  .rodata._printf_i.str1.1
-                0x0802a805       0x22 /home/dominik/st/stm32cubeide_1.15.1/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.linux64_1.1.0.202410170702/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc_nano.a(libc_a-nano-vfprintf_i.o)
-                0x0802a828                        . = ALIGN (0x4)
- *fill*         0x0802a827        0x1 
+                0x0802a809       0x22 /home/dominik/st/stm32cubeide_1.15.1/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.linux64_1.1.0.202410170702/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc_nano.a(libc_a-nano-vfprintf_i.o)
+                0x0802a82c                        . = ALIGN (0x4)
+ *fill*         0x0802a82b        0x1 
 
-.ARM.extab      0x0802a828        0x0
-                0x0802a828                        . = ALIGN (0x4)
+.ARM.extab      0x0802a82c        0x0
+                0x0802a82c                        . = ALIGN (0x4)
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x0802a828                        . = ALIGN (0x4)
+                0x0802a82c                        . = ALIGN (0x4)
 
-.ARM            0x0802a828        0x8
-                0x0802a828                        . = ALIGN (0x4)
-                0x0802a828                        __exidx_start = .
+.ARM            0x0802a82c        0x8
+                0x0802a82c                        . = ALIGN (0x4)
+                0x0802a82c                        __exidx_start = .
  *(.ARM.exidx*)
- .ARM.exidx     0x0802a828        0x8 /home/dominik/st/stm32cubeide_1.15.1/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.linux64_1.1.0.202410170702/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc_nano.a(libc_a-strlen.o)
- .ARM.exidx     0x0802a830        0x0 /home/dominik/st/stm32cubeide_1.15.1/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.linux64_1.1.0.202410170702/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc_nano.a(libc_a-memchr.o)
+ .ARM.exidx     0x0802a82c        0x8 /home/dominik/st/stm32cubeide_1.15.1/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.linux64_1.1.0.202410170702/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc_nano.a(libc_a-strlen.o)
+ .ARM.exidx     0x0802a834        0x0 /home/dominik/st/stm32cubeide_1.15.1/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.linux64_1.1.0.202410170702/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc_nano.a(libc_a-memchr.o)
                                   0x8 (size before relaxing)
- .ARM.exidx     0x0802a830        0x0 /home/dominik/st/stm32cubeide_1.15.1/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.linux64_1.1.0.202410170702/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+dp/hard/libgcc.a(_udivmoddi4.o)
+ .ARM.exidx     0x0802a834        0x0 /home/dominik/st/stm32cubeide_1.15.1/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.linux64_1.1.0.202410170702/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+dp/hard/libgcc.a(_udivmoddi4.o)
                                   0x8 (size before relaxing)
-                0x0802a830                        __exidx_end = .
-                0x0802a830                        . = ALIGN (0x4)
+                0x0802a834                        __exidx_end = .
+                0x0802a834                        . = ALIGN (0x4)
 
-.preinit_array  0x0802a830        0x0
-                0x0802a830                        . = ALIGN (0x4)
-                0x0802a830                        PROVIDE (__preinit_array_start = .)
+.preinit_array  0x0802a834        0x0
+                0x0802a834                        . = ALIGN (0x4)
+                0x0802a834                        PROVIDE (__preinit_array_start = .)
  *(.preinit_array*)
-                0x0802a830                        PROVIDE (__preinit_array_end = .)
-                0x0802a830                        . = ALIGN (0x4)
+                0x0802a834                        PROVIDE (__preinit_array_end = .)
+                0x0802a834                        . = ALIGN (0x4)
 
-.init_array     0x0802a830        0x4
-                0x0802a830                        . = ALIGN (0x4)
-                0x0802a830                        PROVIDE (__init_array_start = .)
+.init_array     0x0802a834        0x4
+                0x0802a834                        . = ALIGN (0x4)
+                0x0802a834                        PROVIDE (__init_array_start = .)
  *(SORT_BY_NAME(.init_array.*))
  *(.init_array*)
- .init_array    0x0802a830        0x4 /home/dominik/st/stm32cubeide_1.15.1/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.linux64_1.1.0.202410170702/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+dp/hard/crtbegin.o
-                0x0802a834                        PROVIDE (__init_array_end = .)
-                0x0802a834                        . = ALIGN (0x4)
+ .init_array    0x0802a834        0x4 /home/dominik/st/stm32cubeide_1.15.1/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.linux64_1.1.0.202410170702/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+dp/hard/crtbegin.o
+                0x0802a838                        PROVIDE (__init_array_end = .)
+                0x0802a838                        . = ALIGN (0x4)
 
-.fini_array     0x0802a834        0x4
-                0x0802a834                        . = ALIGN (0x4)
+.fini_array     0x0802a838        0x4
+                0x0802a838                        . = ALIGN (0x4)
                 [!provide]                        PROVIDE (__fini_array_start = .)
  *(SORT_BY_NAME(.fini_array.*))
  *(.fini_array*)
- .fini_array    0x0802a834        0x4 /home/dominik/st/stm32cubeide_1.15.1/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.linux64_1.1.0.202410170702/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+dp/hard/crtbegin.o
+ .fini_array    0x0802a838        0x4 /home/dominik/st/stm32cubeide_1.15.1/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.linux64_1.1.0.202410170702/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+dp/hard/crtbegin.o
                 [!provide]                        PROVIDE (__fini_array_end = .)
-                0x0802a838                        . = ALIGN (0x4)
-                0x0802a838                        _sidata = LOADADDR (.data)
+                0x0802a83c                        . = ALIGN (0x4)
+                0x0802a83c                        _sidata = LOADADDR (.data)
 
-.rel.dyn        0x0802a838        0x0
- .rel.iplt      0x0802a838        0x0 /home/dominik/st/stm32cubeide_1.15.1/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.linux64_1.1.0.202410170702/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+dp/hard/crtbegin.o
+.rel.dyn        0x0802a83c        0x0
+ .rel.iplt      0x0802a83c        0x0 /home/dominik/st/stm32cubeide_1.15.1/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.linux64_1.1.0.202410170702/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+dp/hard/crtbegin.o
 
-.data           0x24000000      0x21c load address 0x0802a838
+.data           0x24000000      0x21c load address 0x0802a83c
                 0x24000000                        . = ALIGN (0x4)
                 0x24000000                        _sdata = .
  *(.data)
@@ -19209,11 +19208,11 @@ LOAD /home/dominik/st/stm32cubeide_1.15.1/plugins/com.st.stm32cube.ide.mcu.exter
                 0x2400021c                        . = ALIGN (0x4)
                 0x2400021c                        _edata = .
 
-.igot.plt       0x2400021c        0x0 load address 0x0802aa54
+.igot.plt       0x2400021c        0x0 load address 0x0802aa58
  .igot.plt      0x2400021c        0x0 /home/dominik/st/stm32cubeide_1.15.1/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.linux64_1.1.0.202410170702/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+dp/hard/crtbegin.o
                 0x2400021c                        . = ALIGN (0x4)
 
-.bss            0x2400021c     0x3f28 load address 0x0802aa54
+.bss            0x2400021c     0x3f28 load address 0x0802aa58
                 0x2400021c                        _sbss = .
                 0x2400021c                        __bss_start__ = _sbss
  *(.bss)
@@ -19346,7 +19345,7 @@ LOAD /home/dominik/st/stm32cubeide_1.15.1/plugins/com.st.stm32cube.ide.mcu.exter
                 0x24004144                        __bss_end__ = _ebss
 
 ._user_heap_stack
-                0x24004144      0x604 load address 0x0802aa54
+                0x24004144      0x604 load address 0x0802aa58
                 0x24004148                        . = ALIGN (0x8)
  *fill*         0x24004144        0x4 
                 [!provide]                        PROVIDE (end = .)
@@ -20228,225 +20227,225 @@ LOAD /home/dominik/st/stm32cubeide_1.15.1/plugins/com.st.stm32cube.ide.mcu.exter
  .debug_macro   0x00051420       0x16 ./X-CUBE-NFC6/Target/ndef_dump.o
  .debug_macro   0x00051436      0x3ee ./X-CUBE-NFC6/Target/nfc_conf.o
 
-.debug_line     0x00000000    0x55ebd
- .debug_line    0x00000000      0xab7 ./Common/Src/system_stm32h7xx_dualcore_boot_cm4_cm7.o
- .debug_line    0x00000ab7      0xa0d ./Core/Src/custom_bus.o
- .debug_line    0x000014c4      0xcbd ./Core/Src/main.o
- .debug_line    0x00002181      0xaf3 ./Core/Src/stm32h7xx_hal_msp.o
- .debug_line    0x00002c74      0xbcc ./Core/Src/stm32h7xx_it.o
- .debug_line    0x00003840      0x4db ./Core/Src/sysmem.o
- .debug_line    0x00003d1b       0x7b ./Core/Startup/startup_stm32h755zitx.o
- .debug_line    0x00003d96     0x382c ./Drivers/BSP/Components/rfal_rfst25r3916.o
- .debug_line    0x000075c2     0x1200 ./Drivers/BSP/Components/st25r3916.o
- .debug_line    0x000087c2      0xfae ./Drivers/BSP/Components/st25r3916_com.o
- .debug_line    0x00009770      0xef8 ./Drivers/BSP/Components/st25r3916_irq.o
- .debug_line    0x0000a668      0xc40 ./Drivers/BSP/Components/st25r3916_led.o
- .debug_line    0x0000b2a8      0xb6d ./Drivers/BSP/Components/timer.o
- .debug_line    0x0000be15      0xd61 ./Drivers/BSP/custom/custom.o
- .debug_line    0x0000cb76      0xf9f ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal.o
- .debug_line    0x0000db15      0xe7b ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_cortex.o
- .debug_line    0x0000e990     0x27a3 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_dma.o
- .debug_line    0x00011133      0xdb4 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_exti.o
- .debug_line    0x00011ee7      0xd18 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_gpio.o
- .debug_line    0x00012bff      0xa08 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_hsem.o
- .debug_line    0x00013607     0x3ee7 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_i2c.o
- .debug_line    0x000174ee      0xaad ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_i2c_ex.o
- .debug_line    0x00017f9b     0x1080 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_pwr_ex.o
- .debug_line    0x0001901b     0x1410 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_rcc.o
- .debug_line    0x0001a42b     0x1dc4 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_rcc_ex.o
- .debug_line    0x0001c1ef     0x2373 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_spi.o
- .debug_line    0x0001e562     0x3f0d ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_uart.o
- .debug_line    0x0002246f      0xede ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_uart_ex.o
- .debug_line    0x0002334d      0xf2c ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_message.o
- .debug_line    0x00024279      0xfd8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_poller.o
- .debug_line    0x00025251      0xe27 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_poller_message.o
- .debug_line    0x00026078      0xd09 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_poller_rf.o
- .debug_line    0x00026d81     0x1403 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_record.o
- .debug_line    0x00028184     0x1c4c ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_t2t.o
- .debug_line    0x00029dd0     0x165e ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_t3t.o
- .debug_line    0x0002b42e     0x178f ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_t4t.o
- .debug_line    0x0002cbbd     0x16d9 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_t5t.o
- .debug_line    0x0002e296     0x1526 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_t5t_rf.o
- .debug_line    0x0002f7bc      0xe8f ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_aar.o
- .debug_line    0x0003064b     0x1461 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_bluetooth.o
- .debug_line    0x00031aac     0x115e ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_deviceinfo.o
- .debug_line    0x00032c0a      0xeb0 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_empty.o
- .debug_line    0x00033aba      0xf0e ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_flat.o
- .debug_line    0x000349c8     0x1040 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_text.o
- .debug_line    0x00035a08     0x1414 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_tnep.o
- .debug_line    0x00036e1c     0x1056 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
- .debug_line    0x00037e72     0x13fb ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_vcard.o
- .debug_line    0x0003926d     0x10ed ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_wifi.o
- .debug_line    0x0003a35a     0x1854 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_wlc.o
- .debug_line    0x0003bbae      0xf10 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_wpcwlc.o
- .debug_line    0x0003cabe      0xedf ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_types.o
- .debug_line    0x0003d99d      0xe26 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_analogConfig.o
- .debug_line    0x0003e7c3      0xb52 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_crc.o
- .debug_line    0x0003f315     0x105b ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_iso15693_2.o
- .debug_line    0x00040370     0x26aa ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_isoDep.o
- .debug_line    0x00042a1a     0x21e3 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_nfc.o
- .debug_line    0x00044bfd     0x217e ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_nfcDep.o
- .debug_line    0x00046d7b     0x14da ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_nfca.o
- .debug_line    0x00048255     0x120a ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_nfcb.o
- .debug_line    0x0004945f     0x1271 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_nfcf.o
- .debug_line    0x0004a6d0     0x13a9 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_nfcv.o
- .debug_line    0x0004ba79      0xed6 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_st25tb.o
- .debug_line    0x0004c94f     0x114a ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_st25xv.o
- .debug_line    0x0004da99      0xc64 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_t1t.o
- .debug_line    0x0004e6fd      0xc66 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_t2t.o
- .debug_line    0x0004f363      0xf00 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_t4t.o
- .debug_line    0x00050263      0xc76 ./X-CUBE-NFC6/App/app_x-cube-nfcx.o
- .debug_line    0x00050ed9      0xb0a ./X-CUBE-NFC6/Target/analogConfigTbl_NFC08A1.o
- .debug_line    0x000519e3      0xc05 ./X-CUBE-NFC6/Target/logger.o
- .debug_line    0x000525e8     0x17fb ./X-CUBE-NFC6/Target/ndef_demo.o
- .debug_line    0x00053de3     0x165e ./X-CUBE-NFC6/Target/ndef_dump.o
- .debug_line    0x00055441      0xa7c ./X-CUBE-NFC6/Target/nfc_conf.o
+.debug_line     0x00000000    0x55feb
+ .debug_line    0x00000000      0xabc ./Common/Src/system_stm32h7xx_dualcore_boot_cm4_cm7.o
+ .debug_line    0x00000abc      0xa0d ./Core/Src/custom_bus.o
+ .debug_line    0x000014c9      0xcbf ./Core/Src/main.o
+ .debug_line    0x00002188      0xaf3 ./Core/Src/stm32h7xx_hal_msp.o
+ .debug_line    0x00002c7b      0xbcc ./Core/Src/stm32h7xx_it.o
+ .debug_line    0x00003847      0x4db ./Core/Src/sysmem.o
+ .debug_line    0x00003d22       0x7b ./Core/Startup/startup_stm32h755zitx.o
+ .debug_line    0x00003d9d     0x3831 ./Drivers/BSP/Components/rfal_rfst25r3916.o
+ .debug_line    0x000075ce     0x1205 ./Drivers/BSP/Components/st25r3916.o
+ .debug_line    0x000087d3      0xfb3 ./Drivers/BSP/Components/st25r3916_com.o
+ .debug_line    0x00009786      0xefd ./Drivers/BSP/Components/st25r3916_irq.o
+ .debug_line    0x0000a683      0xc45 ./Drivers/BSP/Components/st25r3916_led.o
+ .debug_line    0x0000b2c8      0xb72 ./Drivers/BSP/Components/timer.o
+ .debug_line    0x0000be3a      0xd66 ./Drivers/BSP/custom/custom.o
+ .debug_line    0x0000cba0      0xfa4 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal.o
+ .debug_line    0x0000db44      0xe80 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_cortex.o
+ .debug_line    0x0000e9c4     0x27a8 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_dma.o
+ .debug_line    0x0001116c      0xdb9 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_exti.o
+ .debug_line    0x00011f25      0xd1d ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_gpio.o
+ .debug_line    0x00012c42      0xa0d ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_hsem.o
+ .debug_line    0x0001364f     0x3eec ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_i2c.o
+ .debug_line    0x0001753b      0xab2 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_i2c_ex.o
+ .debug_line    0x00017fed     0x1085 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_pwr_ex.o
+ .debug_line    0x00019072     0x1415 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_rcc.o
+ .debug_line    0x0001a487     0x1dc9 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_rcc_ex.o
+ .debug_line    0x0001c250     0x2378 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_spi.o
+ .debug_line    0x0001e5c8     0x3f12 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_uart.o
+ .debug_line    0x000224da      0xee3 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_uart_ex.o
+ .debug_line    0x000233bd      0xf31 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_message.o
+ .debug_line    0x000242ee      0xfdd ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_poller.o
+ .debug_line    0x000252cb      0xe2c ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_poller_message.o
+ .debug_line    0x000260f7      0xd0e ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_poller_rf.o
+ .debug_line    0x00026e05     0x1408 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_record.o
+ .debug_line    0x0002820d     0x1c51 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_t2t.o
+ .debug_line    0x00029e5e     0x1663 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_t3t.o
+ .debug_line    0x0002b4c1     0x1794 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_t4t.o
+ .debug_line    0x0002cc55     0x16de ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_t5t.o
+ .debug_line    0x0002e333     0x152b ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_t5t_rf.o
+ .debug_line    0x0002f85e      0xe94 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_aar.o
+ .debug_line    0x000306f2     0x1466 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_bluetooth.o
+ .debug_line    0x00031b58     0x1163 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_deviceinfo.o
+ .debug_line    0x00032cbb      0xeb5 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_empty.o
+ .debug_line    0x00033b70      0xf13 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_flat.o
+ .debug_line    0x00034a83     0x1045 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_text.o
+ .debug_line    0x00035ac8     0x1419 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_tnep.o
+ .debug_line    0x00036ee1     0x105b ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
+ .debug_line    0x00037f3c     0x1400 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_vcard.o
+ .debug_line    0x0003933c     0x10f2 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_wifi.o
+ .debug_line    0x0003a42e     0x1859 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_wlc.o
+ .debug_line    0x0003bc87      0xf15 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_wpcwlc.o
+ .debug_line    0x0003cb9c      0xee4 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_types.o
+ .debug_line    0x0003da80      0xe2b ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_analogConfig.o
+ .debug_line    0x0003e8ab      0xb57 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_crc.o
+ .debug_line    0x0003f402     0x1060 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_iso15693_2.o
+ .debug_line    0x00040462     0x26af ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_isoDep.o
+ .debug_line    0x00042b11     0x21e8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_nfc.o
+ .debug_line    0x00044cf9     0x2183 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_nfcDep.o
+ .debug_line    0x00046e7c     0x14df ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_nfca.o
+ .debug_line    0x0004835b     0x120f ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_nfcb.o
+ .debug_line    0x0004956a     0x1276 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_nfcf.o
+ .debug_line    0x0004a7e0     0x13ae ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_nfcv.o
+ .debug_line    0x0004bb8e      0xedb ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_st25tb.o
+ .debug_line    0x0004ca69     0x114f ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_st25xv.o
+ .debug_line    0x0004dbb8      0xc69 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_t1t.o
+ .debug_line    0x0004e821      0xc6b ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_t2t.o
+ .debug_line    0x0004f48c      0xf05 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_t4t.o
+ .debug_line    0x00050391      0xc76 ./X-CUBE-NFC6/App/app_x-cube-nfcx.o
+ .debug_line    0x00051007      0xb0a ./X-CUBE-NFC6/Target/analogConfigTbl_NFC08A1.o
+ .debug_line    0x00051b11      0xc05 ./X-CUBE-NFC6/Target/logger.o
+ .debug_line    0x00052716     0x17fb ./X-CUBE-NFC6/Target/ndef_demo.o
+ .debug_line    0x00053f11     0x165e ./X-CUBE-NFC6/Target/ndef_dump.o
+ .debug_line    0x0005556f      0xa7c ./X-CUBE-NFC6/Target/nfc_conf.o
 
-.debug_str      0x00000000   0x1b0862
- .debug_str     0x00000000   0x17a150 ./Common/Src/system_stm32h7xx_dualcore_boot_cm4_cm7.o
-                             0x17a5cb (size before relaxing)
- .debug_str     0x0017a150     0x1868 ./Core/Src/custom_bus.o
-                             0x17bb66 (size before relaxing)
- .debug_str     0x0017b9b8     0x2afa ./Core/Src/main.o
-                             0x17e38b (size before relaxing)
- .debug_str     0x0017e4b2       0x53 ./Core/Src/stm32h7xx_hal_msp.o
-                             0x17df3a (size before relaxing)
- .debug_str     0x0017e505      0x390 ./Core/Src/stm32h7xx_it.o
-                             0x17d6a9 (size before relaxing)
- .debug_str     0x0017e895      0x4dc ./Core/Src/sysmem.o
-                               0x6178 (size before relaxing)
- .debug_str     0x0017ed71       0x44 ./Core/Startup/startup_stm32h755zitx.o
-                                 0x98 (size before relaxing)
- .debug_str     0x0017edb5    0x10e59 ./Drivers/BSP/Components/rfal_rfst25r3916.o
-                             0x18d932 (size before relaxing)
- .debug_str     0x0018fc0e      0x4ba ./Drivers/BSP/Components/st25r3916.o
-                             0x188625 (size before relaxing)
- .debug_str     0x001900c8      0xd2a ./Drivers/BSP/Components/st25r3916_com.o
-                             0x189657 (size before relaxing)
- .debug_str     0x00190df2      0x1c1 ./Drivers/BSP/Components/st25r3916_irq.o
-                             0x188a64 (size before relaxing)
- .debug_str     0x00190fb3      0x170 ./Drivers/BSP/Components/st25r3916_led.o
-                             0x187fd3 (size before relaxing)
- .debug_str     0x00191123       0xd2 ./Drivers/BSP/Components/timer.o
-                             0x17cb40 (size before relaxing)
- .debug_str     0x001911f5      0x363 ./Drivers/BSP/custom/custom.o
-                             0x17e2e4 (size before relaxing)
- .debug_str     0x00191558      0x9a4 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal.o
-                             0x17b638 (size before relaxing)
- .debug_str     0x00191efc      0x2c7 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_cortex.o
-                             0x17ae9f (size before relaxing)
- .debug_str     0x001921c3      0x8c2 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_dma.o
-                             0x17ac39 (size before relaxing)
- .debug_str     0x00192a85      0x1b4 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_exti.o
-                             0x17a37c (size before relaxing)
- .debug_str     0x00192c39      0x152 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_gpio.o
-                             0x17a52a (size before relaxing)
- .debug_str     0x00192d8b      0x22d ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_hsem.o
-                             0x17a1b5 (size before relaxing)
- .debug_str     0x00192fb8      0xe01 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_i2c.o
-                             0x17b555 (size before relaxing)
- .debug_str     0x00193db9       0xff ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_i2c_ex.o
-                             0x17a8f9 (size before relaxing)
- .debug_str     0x00193eb8      0x6c6 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_pwr_ex.o
-                             0x17aa35 (size before relaxing)
- .debug_str     0x0019457e      0x275 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_rcc.o
-                             0x17a8ab (size before relaxing)
- .debug_str     0x001947f3      0x6a4 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_rcc_ex.o
-                             0x17ade0 (size before relaxing)
- .debug_str     0x00194e97      0x514 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_spi.o
-                             0x17abbc (size before relaxing)
- .debug_str     0x001953ab      0xa0b ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_uart.o
-                             0x17b3d9 (size before relaxing)
- .debug_str     0x00195db6      0x2ae ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_uart_ex.o
-                             0x17a999 (size before relaxing)
- .debug_str     0x00196064     0x3f14 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_message.o
-                             0x183a25 (size before relaxing)
- .debug_str     0x00199f78     0x2bb5 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_poller.o
-                             0x1863be (size before relaxing)
- .debug_str     0x0019cb2d      0x166 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_poller_message.o
-                             0x18470f (size before relaxing)
- .debug_str     0x0019cc93       0x7a ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_poller_rf.o
-                             0x183eb1 (size before relaxing)
- .debug_str     0x0019cd0d     0x1a36 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_record.o
-                             0x1852cc (size before relaxing)
- .debug_str     0x0019e743      0x9a3 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_t2t.o
-                             0x1852d0 (size before relaxing)
- .debug_str     0x0019f0e6      0x608 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_t3t.o
-                             0x184fd4 (size before relaxing)
- .debug_str     0x0019f6ee      0x5e5 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_t4t.o
-                             0x1850a0 (size before relaxing)
- .debug_str     0x0019fcd3      0x42a ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_t5t.o
-                             0x18604f (size before relaxing)
- .debug_str     0x001a00fd      0x692 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_t5t_rf.o
-                             0x1862e3 (size before relaxing)
- .debug_str     0x001a078f       0xee ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_aar.o
-                             0x18515f (size before relaxing)
- .debug_str     0x001a087d      0x734 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_bluetooth.o
-                             0x1857cb (size before relaxing)
- .debug_str     0x001a0fb1      0x2e6 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_deviceinfo.o
-                             0x1853b0 (size before relaxing)
- .debug_str     0x001a1297       0xf7 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_empty.o
-                             0x1850d3 (size before relaxing)
- .debug_str     0x001a138e      0x125 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_flat.o
-                             0x185126 (size before relaxing)
- .debug_str     0x001a14b3      0x20a ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_text.o
-                             0x1852b3 (size before relaxing)
- .debug_str     0x001a16bd      0x737 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_tnep.o
-                             0x1857e9 (size before relaxing)
- .debug_str     0x001a1df4      0x4f6 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
-                             0x1855a6 (size before relaxing)
- .debug_str     0x001a22ea      0x3d4 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_vcard.o
-                             0x1854b4 (size before relaxing)
- .debug_str     0x001a26be      0x50a ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_wifi.o
-                             0x1855c8 (size before relaxing)
- .debug_str     0x001a2bc8      0xec2 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_wlc.o
-                             0x185fa1 (size before relaxing)
- .debug_str     0x001a3a8a      0x13c ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_wpcwlc.o
-                             0x1851c1 (size before relaxing)
- .debug_str     0x001a3bc6       0xf4 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_types.o
-                             0x185449 (size before relaxing)
- .debug_str     0x001a3cba      0x33a ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_analogConfig.o
-                             0x1807b8 (size before relaxing)
- .debug_str     0x001a3ff4       0xb4 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_crc.o
-                             0x17caee (size before relaxing)
- .debug_str     0x001a40a8      0x387 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_iso15693_2.o
-                             0x17d938 (size before relaxing)
- .debug_str     0x001a442f     0x2920 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_isoDep.o
-                             0x182e20 (size before relaxing)
- .debug_str     0x001a6d4f     0x13cf ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_nfc.o
-                             0x1858a1 (size before relaxing)
- .debug_str     0x001a811e     0x1b75 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_nfcDep.o
-                             0x182897 (size before relaxing)
- .debug_str     0x001a9c93      0x771 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_nfca.o
-                             0x18048a (size before relaxing)
- .debug_str     0x001aa404      0x554 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_nfcb.o
-                             0x18017c (size before relaxing)
- .debug_str     0x001aa958      0x577 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_nfcf.o
-                             0x180345 (size before relaxing)
- .debug_str     0x001aaecf      0xcc9 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_nfcv.o
-                             0x1806b3 (size before relaxing)
- .debug_str     0x001abb98      0x4b8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_st25tb.o
-                             0x17fc8c (size before relaxing)
- .debug_str     0x001ac050      0x5c4 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_st25xv.o
-                             0x182ee1 (size before relaxing)
- .debug_str     0x001ac614      0x1ec ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_t1t.o
-                             0x17f688 (size before relaxing)
- .debug_str     0x001ac800      0x22a ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_t2t.o
-                             0x17f47e (size before relaxing)
- .debug_str     0x001aca2a      0x1a9 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_t4t.o
-                             0x1802c5 (size before relaxing)
- .debug_str     0x001acbd3      0x6bb ./X-CUBE-NFC6/App/app_x-cube-nfcx.o
-                             0x17dc6c (size before relaxing)
- .debug_str     0x001ad28e     0x2b93 ./X-CUBE-NFC6/Target/analogConfigTbl_NFC08A1.o
-                             0x182dbf (size before relaxing)
- .debug_str     0x001afe21      0x1a7 ./X-CUBE-NFC6/Target/logger.o
-                             0x17e26f (size before relaxing)
- .debug_str     0x001affc8      0x42c ./X-CUBE-NFC6/Target/ndef_demo.o
-                             0x188899 (size before relaxing)
- .debug_str     0x001b03f4      0x44d ./X-CUBE-NFC6/Target/ndef_dump.o
-                             0x185e4c (size before relaxing)
- .debug_str     0x001b0841       0x21 ./X-CUBE-NFC6/Target/nfc_conf.o
-                             0x17ca79 (size before relaxing)
+.debug_str      0x00000000   0x1b0993
+ .debug_str     0x00000000   0x17a15a ./Common/Src/system_stm32h7xx_dualcore_boot_cm4_cm7.o
+                             0x17a5d5 (size before relaxing)
+ .debug_str     0x0017a15a     0x1868 ./Core/Src/custom_bus.o
+                             0x17bb6b (size before relaxing)
+ .debug_str     0x0017b9c2     0x2afa ./Core/Src/main.o
+                             0x17e390 (size before relaxing)
+ .debug_str     0x0017e4bc       0x53 ./Core/Src/stm32h7xx_hal_msp.o
+                             0x17df3f (size before relaxing)
+ .debug_str     0x0017e50f      0x390 ./Core/Src/stm32h7xx_it.o
+                             0x17d6ae (size before relaxing)
+ .debug_str     0x0017e89f      0x4dc ./Core/Src/sysmem.o
+                               0x617d (size before relaxing)
+ .debug_str     0x0017ed7b       0x44 ./Core/Startup/startup_stm32h755zitx.o
+                                 0x9d (size before relaxing)
+ .debug_str     0x0017edbf    0x10e5e ./Drivers/BSP/Components/rfal_rfst25r3916.o
+                             0x18d93c (size before relaxing)
+ .debug_str     0x0018fc1d      0x4bf ./Drivers/BSP/Components/st25r3916.o
+                             0x18862f (size before relaxing)
+ .debug_str     0x001900dc      0xd2f ./Drivers/BSP/Components/st25r3916_com.o
+                             0x189661 (size before relaxing)
+ .debug_str     0x00190e0b      0x1c6 ./Drivers/BSP/Components/st25r3916_irq.o
+                             0x188a6e (size before relaxing)
+ .debug_str     0x00190fd1      0x175 ./Drivers/BSP/Components/st25r3916_led.o
+                             0x187fdd (size before relaxing)
+ .debug_str     0x00191146       0xd7 ./Drivers/BSP/Components/timer.o
+                             0x17cb4a (size before relaxing)
+ .debug_str     0x0019121d      0x368 ./Drivers/BSP/custom/custom.o
+                             0x17e2ee (size before relaxing)
+ .debug_str     0x00191585      0x9a9 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal.o
+                             0x17b642 (size before relaxing)
+ .debug_str     0x00191f2e      0x2cc ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_cortex.o
+                             0x17aea9 (size before relaxing)
+ .debug_str     0x001921fa      0x8c7 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_dma.o
+                             0x17ac43 (size before relaxing)
+ .debug_str     0x00192ac1      0x1b9 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_exti.o
+                             0x17a386 (size before relaxing)
+ .debug_str     0x00192c7a      0x157 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_gpio.o
+                             0x17a534 (size before relaxing)
+ .debug_str     0x00192dd1      0x232 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_hsem.o
+                             0x17a1bf (size before relaxing)
+ .debug_str     0x00193003      0xe06 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_i2c.o
+                             0x17b55f (size before relaxing)
+ .debug_str     0x00193e09      0x104 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_i2c_ex.o
+                             0x17a903 (size before relaxing)
+ .debug_str     0x00193f0d      0x6cb ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_pwr_ex.o
+                             0x17aa3f (size before relaxing)
+ .debug_str     0x001945d8      0x27a ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_rcc.o
+                             0x17a8b5 (size before relaxing)
+ .debug_str     0x00194852      0x6a9 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_rcc_ex.o
+                             0x17adea (size before relaxing)
+ .debug_str     0x00194efb      0x519 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_spi.o
+                             0x17abc6 (size before relaxing)
+ .debug_str     0x00195414      0xa10 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_uart.o
+                             0x17b3e3 (size before relaxing)
+ .debug_str     0x00195e24      0x2b3 ./Drivers/STM32H7xx_HAL_Driver/stm32h7xx_hal_uart_ex.o
+                             0x17a9a3 (size before relaxing)
+ .debug_str     0x001960d7     0x3f19 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_message.o
+                             0x183a2f (size before relaxing)
+ .debug_str     0x00199ff0     0x2bba ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_poller.o
+                             0x1863c8 (size before relaxing)
+ .debug_str     0x0019cbaa      0x16b ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_poller_message.o
+                             0x184719 (size before relaxing)
+ .debug_str     0x0019cd15       0x7f ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_poller_rf.o
+                             0x183ebb (size before relaxing)
+ .debug_str     0x0019cd94     0x1a3b ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_record.o
+                             0x1852d6 (size before relaxing)
+ .debug_str     0x0019e7cf      0x9a8 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_t2t.o
+                             0x1852da (size before relaxing)
+ .debug_str     0x0019f177      0x60d ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_t3t.o
+                             0x184fde (size before relaxing)
+ .debug_str     0x0019f784      0x5ea ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_t4t.o
+                             0x1850aa (size before relaxing)
+ .debug_str     0x0019fd6e      0x42f ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_t5t.o
+                             0x186059 (size before relaxing)
+ .debug_str     0x001a019d      0x697 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_t5t_rf.o
+                             0x1862ed (size before relaxing)
+ .debug_str     0x001a0834       0xf3 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_aar.o
+                             0x185169 (size before relaxing)
+ .debug_str     0x001a0927      0x739 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_bluetooth.o
+                             0x1857d5 (size before relaxing)
+ .debug_str     0x001a1060      0x2eb ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_deviceinfo.o
+                             0x1853ba (size before relaxing)
+ .debug_str     0x001a134b       0xfc ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_empty.o
+                             0x1850dd (size before relaxing)
+ .debug_str     0x001a1447      0x12a ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_flat.o
+                             0x185130 (size before relaxing)
+ .debug_str     0x001a1571      0x20f ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_text.o
+                             0x1852bd (size before relaxing)
+ .debug_str     0x001a1780      0x73c ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_tnep.o
+                             0x1857f3 (size before relaxing)
+ .debug_str     0x001a1ebc      0x4fb ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_uri.o
+                             0x1855b0 (size before relaxing)
+ .debug_str     0x001a23b7      0x3d9 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_vcard.o
+                             0x1854be (size before relaxing)
+ .debug_str     0x001a2790      0x50f ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_wifi.o
+                             0x1855d2 (size before relaxing)
+ .debug_str     0x001a2c9f      0xec7 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_wlc.o
+                             0x185fab (size before relaxing)
+ .debug_str     0x001a3b66      0x141 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_type_wpcwlc.o
+                             0x1851cb (size before relaxing)
+ .debug_str     0x001a3ca7       0xf9 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/NDEF/ndef_types.o
+                             0x185453 (size before relaxing)
+ .debug_str     0x001a3da0      0x33f ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_analogConfig.o
+                             0x1807c2 (size before relaxing)
+ .debug_str     0x001a40df       0xb9 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_crc.o
+                             0x17caf8 (size before relaxing)
+ .debug_str     0x001a4198      0x38c ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_iso15693_2.o
+                             0x17d942 (size before relaxing)
+ .debug_str     0x001a4524     0x2925 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_isoDep.o
+                             0x182e2a (size before relaxing)
+ .debug_str     0x001a6e49     0x13d4 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_nfc.o
+                             0x1858ab (size before relaxing)
+ .debug_str     0x001a821d     0x1b7a ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_nfcDep.o
+                             0x1828a1 (size before relaxing)
+ .debug_str     0x001a9d97      0x776 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_nfca.o
+                             0x180494 (size before relaxing)
+ .debug_str     0x001aa50d      0x559 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_nfcb.o
+                             0x180186 (size before relaxing)
+ .debug_str     0x001aaa66      0x57c ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_nfcf.o
+                             0x18034f (size before relaxing)
+ .debug_str     0x001aafe2      0xcce ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_nfcv.o
+                             0x1806bd (size before relaxing)
+ .debug_str     0x001abcb0      0x4bd ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_st25tb.o
+                             0x17fc96 (size before relaxing)
+ .debug_str     0x001ac16d      0x5c9 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_st25xv.o
+                             0x182eeb (size before relaxing)
+ .debug_str     0x001ac736      0x1f1 ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_t1t.o
+                             0x17f692 (size before relaxing)
+ .debug_str     0x001ac927      0x22f ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_t2t.o
+                             0x17f488 (size before relaxing)
+ .debug_str     0x001acb56      0x1ae ./Middlewares/X-CUBE-NFC6/Wireless/MID_LIB/RFAL/Default_Config/rfal_t4t.o
+                             0x1802cf (size before relaxing)
+ .debug_str     0x001acd04      0x6bb ./X-CUBE-NFC6/App/app_x-cube-nfcx.o
+                             0x17dc71 (size before relaxing)
+ .debug_str     0x001ad3bf     0x2b93 ./X-CUBE-NFC6/Target/analogConfigTbl_NFC08A1.o
+                             0x182dc4 (size before relaxing)
+ .debug_str     0x001aff52      0x1a7 ./X-CUBE-NFC6/Target/logger.o
+                             0x17e274 (size before relaxing)
+ .debug_str     0x001b00f9      0x42c ./X-CUBE-NFC6/Target/ndef_demo.o
+                             0x18889e (size before relaxing)
+ .debug_str     0x001b0525      0x44d ./X-CUBE-NFC6/Target/ndef_dump.o
+                             0x185e51 (size before relaxing)
+ .debug_str     0x001b0972       0x21 ./X-CUBE-NFC6/Target/nfc_conf.o
+                             0x17ca7e (size before relaxing)
 
 .comment        0x00000000       0x43
  .comment       0x00000000       0x43 ./Common/Src/system_stm32h7xx_dualcore_boot_cm4_cm7.o
@@ -20616,6 +20615,6 @@ LOAD /home/dominik/st/stm32cubeide_1.15.1/plugins/com.st.stm32cube.ide.mcu.exter
  .debug_frame   0x0000bdbc       0x34 /home/dominik/st/stm32cubeide_1.15.1/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.linux64_1.1.0.202410170702/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m+dp/hard/libgcc.a(_udivmoddi4.o)
 
 .debug_line_str
-                0x00000000       0x7c
+                0x00000000       0x81
  .debug_line_str
-                0x00000000       0x7c ./Core/Startup/startup_stm32h755zitx.o
+                0x00000000       0x81 ./Core/Startup/startup_stm32h755zitx.o
