@@ -1,0 +1,6 @@
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_type_wpcwlc.c:74:17:ndefRtdWpcWlcPayloadGetLength	3
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_type_wpcwlc.c:90:23:ndefRtdWpcWlcToPayloadItem	6
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_type_wpcwlc.c:130:12:ndefRtdWpcWlcInit	3
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_type_wpcwlc.c:153:12:ndefGetRtdWpcWlc	4
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_type_wpcwlc.c:173:12:ndefRecordToRtdWpcWlc	4
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_type_wpcwlc.c:192:12:ndefRtdWpcWlcToRecord	5

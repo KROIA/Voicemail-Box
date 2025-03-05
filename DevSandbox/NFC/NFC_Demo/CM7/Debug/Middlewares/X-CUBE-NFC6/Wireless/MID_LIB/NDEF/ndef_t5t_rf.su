@@ -1,0 +1,15 @@
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/poller/ndef_t5t_rf.c:117:6:ndefT5TisSTDevice	16	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/poller/ndef_t5t_rf.c:129:6:ndefT5TisT5TDevice	16	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/poller/ndef_t5t_rf.c:141:12:ndefT5TPollerAccessMode	32	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/poller/ndef_t5t_rf.c:188:9:ndefT5TGetBlockLength	32	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/poller/ndef_t5t_rf.c:230:12:ndefT5TGetMemoryConfig	16	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/poller/ndef_t5t_rf.c:259:19:ndefT5TGetSystemInformation	72	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/poller/ndef_t5t_rf.c:360:6:ndefT5TIsMultipleBlockReadSupported	32	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/poller/ndef_t5t_rf.c:377:12:ndefT5TPollerReadBytes	56	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/poller/ndef_t5t_rf.c:485:19:ndefT5TPollerReadSingleBlock	48	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/poller/ndef_t5t_rf.c:549:19:ndefT5TPollerReadMultipleBlocks	56	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/poller/ndef_t5t_rf.c:600:12:ndefT5TPollerWriteBytes	56	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/poller/ndef_t5t_rf.c:722:12:ndefT5TIsDevicePresent	32	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/poller/ndef_t5t_rf.c:744:19:ndefT5TPollerWriteSingleBlock	48	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/poller/ndef_t5t_rf.c:795:19:ndefT5TPollerLockSingleBlock	32	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/poller/ndef_t5t_rf.c:833:12:ndefT5TLockDevice	32	static

@@ -1,0 +1,9 @@
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/rfal/Src/rfal_t4t.c:78:12:rfalT4TPollerComposeCAPDU	24	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/rfal/Src/rfal_t4t.c:147:12:rfalT4TPollerParseRAPDU	16	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/rfal/Src/rfal_t4t.c:173:12:rfalT4TPollerComposeSelectAppl	40	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/rfal/Src/rfal_t4t.c:205:12:rfalT4TPollerComposeSelectFile	40	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/rfal/Src/rfal_t4t.c:237:12:rfalT4TPollerComposeSelectFileV1Mapping	40	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/rfal/Src/rfal_t4t.c:269:12:rfalT4TPollerComposeReadData	40	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/rfal/Src/rfal_t4t.c:292:12:rfalT4TPollerComposeReadDataODO	48	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/rfal/Src/rfal_t4t.c:323:12:rfalT4TPollerComposeWriteData	40	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/rfal/Src/rfal_t4t.c:356:12:rfalT4TPollerComposeWriteDataODO	48	static

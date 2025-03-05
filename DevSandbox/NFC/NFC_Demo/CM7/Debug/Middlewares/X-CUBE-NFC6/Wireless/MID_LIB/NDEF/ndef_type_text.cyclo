@@ -1,0 +1,7 @@
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_type_text.c:83:17:ndefRtdTextPayloadGetLength	3
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_type_text.c:99:23:ndefRtdTextToPayloadItem	9
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_type_text.c:151:12:ndefRtdTextInit	11
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_type_text.c:191:12:ndefGetRtdText	6
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_type_text.c:216:19:ndefPayloadToRtdText	6
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_type_text.c:259:12:ndefRecordToRtdText	6
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_type_text.c:285:12:ndefRtdTextToRecord	5

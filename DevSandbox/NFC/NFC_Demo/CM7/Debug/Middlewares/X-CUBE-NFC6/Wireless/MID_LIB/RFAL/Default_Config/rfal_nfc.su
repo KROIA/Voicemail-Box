@@ -1,0 +1,16 @@
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/rfal/Src/rfal_nfc.c:138:12:rfalNfcInitialize	16	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/rfal/Src/rfal_nfc.c:154:12:rfalNfcDiscover	16	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/rfal/Src/rfal_nfc.c:232:12:rfalNfcDeactivate	24	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/rfal/Src/rfal_nfc.c:268:12:rfalNfcSelect	16	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/rfal/Src/rfal_nfc.c:284:14:rfalNfcGetState	4	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/rfal/Src/rfal_nfc.c:290:12:rfalNfcGetDevicesFound	16	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/rfal/Src/rfal_nfc.c:311:12:rfalNfcGetActiveDevice	16	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/rfal/Src/rfal_nfc.c:337:6:rfalNfcWorker	32	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/rfal/Src/rfal_nfc.c:609:12:rfalNfcDataExchangeStart	128	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/rfal/Src/rfal_nfc.c:746:12:rfalNfcDataExchangeGetStatus	8	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/rfal/Src/rfal_nfc.c:841:19:rfalNfcPollTechDetetection	24	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/rfal/Src/rfal_nfc.c:1167:19:rfalNfcPollCollResolution	88	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/rfal/Src/rfal_nfc.c:1483:19:rfalNfcPollActivation	48	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/rfal/Src/rfal_nfc.c:1851:19:rfalNfcListenActivation	80	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/rfal/Src/rfal_nfc.c:2060:19:rfalNfcNfcDepActivate	168	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/rfal/Src/rfal_nfc.c:2158:19:rfalNfcDeactivation	16	static

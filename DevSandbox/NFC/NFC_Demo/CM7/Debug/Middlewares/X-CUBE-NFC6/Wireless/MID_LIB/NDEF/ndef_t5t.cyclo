@@ -1,0 +1,14 @@
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/poller/ndef_t5t.c:121:12:ndefT5TPollerSetAccessMode	1
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/poller/ndef_t5t.c:144:19:ndefT5TReadLField	9
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/poller/ndef_t5t.c:199:12:ndefT5TPollerContextInitialization	6
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/poller/ndef_t5t.c:263:12:ndefT5TPollerNdefDetect	39
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/poller/ndef_t5t.c:465:12:ndefT5TPollerReadRawMessage	9
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/poller/ndef_t5t.c:508:12:ndefT5TPollerWriteRawMessageLen	14
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/poller/ndef_t5t.c:566:12:ndefT5TPollerWriteRawMessage	11
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/poller/ndef_t5t.c:625:19:ndefT5TWriteCC	9
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/poller/ndef_t5t.c:671:12:ndefT5TPollerTagFormat	18
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/poller/ndef_t5t.c:780:12:ndefT5TPollerCheckPresence	3
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/poller/ndef_t5t.c:796:12:ndefT5TPollerCheckAvailableSpace	6
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/poller/ndef_t5t.c:820:12:ndefT5TPollerBeginWriteMessage	7
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/poller/ndef_t5t.c:854:12:ndefT5TPollerEndWriteMessage	6
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/poller/ndef_t5t.c:883:12:ndefT5TPollerSetReadOnly	6

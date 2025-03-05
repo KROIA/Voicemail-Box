@@ -1,0 +1,7 @@
+../X-CUBE-NFC6/App/app_x-cube-nfcx.c:57:6:MX_X_CUBE_NFC6_Init	1
+../X-CUBE-NFC6/App/app_x-cube-nfcx.c:81:6:MX_X_CUBE_NFC6_Process	1
+../X-CUBE-NFC6/App/app_x-cube-nfcx.c:96:6:MX_NFC8_PollingTagDetectNDEF_Init	3
+../X-CUBE-NFC6/App/app_x-cube-nfcx.c:164:19:UARTConsolePrint	1
+../X-CUBE-NFC6/App/app_x-cube-nfcx.c:174:19:UARTConsoleScan	2
+../X-CUBE-NFC6/App/app_x-cube-nfcx.c:188:9:BSP_NFC0XCOMM_SendRecv	8
+../X-CUBE-NFC6/App/app_x-cube-nfcx.c:225:13:BSP_SPI1_IRQ_Callback	1

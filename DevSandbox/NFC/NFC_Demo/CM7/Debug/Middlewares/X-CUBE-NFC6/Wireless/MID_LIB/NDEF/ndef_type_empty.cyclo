@@ -1,0 +1,5 @@
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_type_empty.c:68:17:ndefEmptyTypePayloadGetLength	1
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_type_empty.c:77:23:ndefEmptyTypePayloadItem	4
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_type_empty.c:97:12:ndefEmptyTypeInit	2
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_type_empty.c:114:12:ndefRecordToEmptyType	8
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_type_empty.c:139:12:ndefEmptyTypeToRecord	5

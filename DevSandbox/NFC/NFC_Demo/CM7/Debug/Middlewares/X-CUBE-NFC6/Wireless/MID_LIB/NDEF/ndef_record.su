@@ -1,0 +1,17 @@
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_record.c:63:12:ndefRecordReset	32	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_record.c:92:12:ndefRecordInit	24	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_record.c:112:10:ndefRecordGetHeaderLength	24	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_record.c:143:10:ndefRecordGetLength	24	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_record.c:155:12:ndefRecordSetType	24	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_record.c:173:12:ndefRecordGetType	24	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_record.c:197:6:ndefRecordTypeMatch	24	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_record.c:216:12:ndefRecordSetId	16	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_record.c:241:12:ndefRecordGetId	16	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_record.c:256:12:ndefRecordSetPayload	16	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_record.c:274:12:ndefRecordGetPayload	16	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_record.c:289:12:ndefRecordDecode	24	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_record.c:409:12:ndefRecordEncodeHeader	24	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_record.c:470:19:ndefRecordEncodePayload	40	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_record.c:507:12:ndefRecordEncode	48	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_record.c:566:10:ndefRecordGetPayloadLength	24	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_record.c:589:16:ndefRecordGetPayloadItem	24	static

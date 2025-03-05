@@ -1,0 +1,7 @@
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Drivers/BSP/Components/ST25R3916/st25r3916_aat.c:66:12:st25r3916AatTune	56	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Drivers/BSP/Components/ST25R3916/st25r3916_aat.c:121:19:aatHillClimb	64	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Drivers/BSP/Components/ST25R3916/st25r3916_aat.c:166:16:aatSteepestDescent	56	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Drivers/BSP/Components/ST25R3916/st25r3916_aat.c:205:16:aatGreedyDescent	48	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Drivers/BSP/Components/ST25R3916/st25r3916_aat.c:233:17:aatCalcF	40	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Drivers/BSP/Components/ST25R3916/st25r3916_aat.c:253:19:aatStepDacVals	32	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Demos/NFC/NFC_Demo/Drivers/BSP/Components/ST25R3916/st25r3916_aat.c:283:19:aatMeasure	32	static

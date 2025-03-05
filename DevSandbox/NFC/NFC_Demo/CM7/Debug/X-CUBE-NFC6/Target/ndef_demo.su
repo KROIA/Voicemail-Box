@@ -1,0 +1,17 @@
+../X-CUBE-NFC6/Target/ndef_demo.c:194:13:checkUserButton	8	static
+../X-CUBE-NFC6/Target/ndef_demo.c:222:13:ndefShowDemoUsage	16	static
+../X-CUBE-NFC6/Target/ndef_demo.c:246:6:demoIni	24	static
+../X-CUBE-NFC6/Target/ndef_demo.c:349:6:demoCycle	112	static
+../X-CUBE-NFC6/Target/ndef_demo.c:624:6:demoP2P	184	static
+../X-CUBE-NFC6/Target/ndef_demo.c:721:12:demoTransceiveBlocking	40	static
+../X-CUBE-NFC6/Target/ndef_demo.c:737:13:demoNdef	456	static
+../X-CUBE-NFC6/Target/ndef_demo.c:954:13:ndefT2TCCDump	56	static
+../X-CUBE-NFC6/Target/ndef_demo.c:967:13:ndefT3TAIBDump	64	static
+../X-CUBE-NFC6/Target/ndef_demo.c:979:13:ndefT4TCCDump	64	static
+../X-CUBE-NFC6/Target/ndef_demo.c:991:13:ndefT5TCCDump	64	static
+../X-CUBE-NFC6/Target/ndef_demo.c:1006:13:ndefCCDump	16	static
+../X-CUBE-NFC6/Target/ndef_demo.c:1041:13:ndefDumpSysInfo	24	static
+../X-CUBE-NFC6/Target/ndef_demo.c:1104:13:ndefIsSTTag	24	static
+../X-CUBE-NFC6/Target/ndef_demo.c:1144:13:LedNotificationWriteDone	16	static
+../X-CUBE-NFC6/Target/ndef_demo.c:1159:13:ledsOn	8	static
+../X-CUBE-NFC6/Target/ndef_demo.c:1169:13:ledsOff	8	static
