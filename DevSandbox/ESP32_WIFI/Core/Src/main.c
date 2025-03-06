@@ -102,7 +102,8 @@ void MX_USB_HOST_Process(void);
 void print(const char *text)
 {
 	//printf(text);
-	HAL_UART_Transmit(&huart3, text, strlen(text), 100);
+	uint16_t len = strlen(text);
+	HAL_UART_Transmit(&huart3, text, len, 100);
 }
 void println(const char* text)
 {
@@ -139,16 +140,18 @@ int sendToESP(const char *cmd)
     //HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET); // Adjust GPIO pin based on your setup
 
     // Send the AT command via SPI
-    HAL_SPI_Transmit(&hspi1, txBuffer, strlen((char *)txBuffer), HAL_MAX_DELAY);
+    //HAL_SPI_Transmit(&hspi1, txBuffer, strlen((char *)txBuffer), HAL_MAX_DELAY);
+    HAL_UART_Transmit(&huart6, txBuffer, strlen((char *)txBuffer), HAL_MAX_DELAY);
 
     // Small delay to allow ESP32 to process
-    HAL_Delay(50);
+    HAL_Delay(10);
 
     // Receive response from ESP32
     while ((HAL_GetTick() - startTime) < ESP_TIMEOUT)
     {
         uint8_t rxByte;
-        HAL_SPI_Receive(&hspi1, &rxByte, 1, 10); // Read one byte at a time
+        //HAL_SPI_Receive(&hspi1, &rxByte, 1, 10); // Read one byte at a time
+        HAL_UART_Receive(&huart6, &rxByte, 1, HAL_MAX_DELAY);
 
         if (rxByte != 0xFF) // Ignore empty responses
         {
@@ -160,50 +163,50 @@ int sendToESP(const char *cmd)
         if (strstr(response, "OK"))
         {
             // Pull CS high to end SPI transaction
-            HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET);
+            //HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET);
             return 1; // Success
         }
         else if (strstr(response, "ERROR"))
         {
             // Pull CS high to end SPI transaction
-            HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET);
+           // HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET);
             return 0; // Failure
         }
     }
 
     // Pull CS high to end SPI transaction
-    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET);
-    return -1; // Timeout or no response
+    //HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET);
+    return 0; // Timeout or no response
 }
 void setupESP32Hotspot(void)
 {
     if (sendToESP("AT")) {
-        printf("ESP32 is responsive.\n");
+        println("ESP32 is responsive.");
     } else {
-        printf("ESP32 is not responding!\n");
+    	println("ESP32 is not responding!");
         return;
     }
 
     if (sendToESP("AT+CWMODE=2")) {
-        printf("WiFi mode set to AP.\n");
+    	println("WiFi mode set to AP.");
     } else {
-        printf("Failed to set WiFi mode.\n");
+    	println("Failed to set WiFi mode.");
     }
 
     if (sendToESP("AT+CWSAP=\"MyHotspot\",\"MyPassword\",5,3")) {
-        printf("Hotspot created successfully.\n");
+    	println("Hotspot created successfully.");
     } else {
-        printf("Failed to create hotspot.\n");
+    	println("Failed to create hotspot.");
     }
 
     if (sendToESP("AT+CWDHCP=2,1")) {
-        printf("DHCP server enabled.\n");
+    	println("DHCP server enabled.");
     } else {
-        printf("Failed to enable DHCP.\n");
+        printf("Failed to enable DHCP.");
     }
 
     if (sendToESP("AT+CWLIF")) {
-        printf("Checking connected clients...\n");
+    	println("Checking connected clients...");
     }
 }
 /* USER CODE END 0 */
@@ -271,7 +274,7 @@ int main(void)
       {
 
       }*/
-
+	  //sendTextSPI("HALLO");
       HAL_Delay(1000);
     /* USER CODE END WHILE */
     MX_USB_HOST_Process();
@@ -798,7 +801,7 @@ static void MX_SPI1_Init(void)
   hspi1.Init.CLKPolarity = SPI_POLARITY_LOW;
   hspi1.Init.CLKPhase = SPI_PHASE_1EDGE;
   hspi1.Init.NSS = SPI_NSS_SOFT;
-  hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_2;
+  hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_256;
   hspi1.Init.FirstBit = SPI_FIRSTBIT_MSB;
   hspi1.Init.TIMode = SPI_TIMODE_DISABLE;
   hspi1.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
@@ -908,7 +911,7 @@ static void MX_USART6_UART_Init(void)
 
   /* USER CODE END USART6_Init 1 */
   huart6.Instance = USART6;
-  huart6.Init.BaudRate = 115200;
+  huart6.Init.BaudRate = 9600;
   huart6.Init.WordLength = UART_WORDLENGTH_8B;
   huart6.Init.StopBits = UART_STOPBITS_1;
   huart6.Init.Parity = UART_PARITY_NONE;
