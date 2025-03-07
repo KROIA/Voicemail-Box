@@ -1,0 +1,10 @@
+D:/Users/Alex/Dokumente/Schule/EmbSys2/Audio_playback_and_record/Src/waveplayer.c:82:20:AUDIO_PLAYER_Init	8	static
+D:/Users/Alex/Dokumente/Schule/EmbSys2/Audio_playback_and_record/Src/waveplayer.c:99:20:AUDIO_PLAYER_Start	24	static
+D:/Users/Alex/Dokumente/Schule/EmbSys2/Audio_playback_and_record/Src/waveplayer.c:143:20:AUDIO_PLAYER_Process	48	static
+D:/Users/Alex/Dokumente/Schule/EmbSys2/Audio_playback_and_record/Src/waveplayer.c:291:20:AUDIO_PLAYER_Stop	8	static
+D:/Users/Alex/Dokumente/Schule/EmbSys2/Audio_playback_and_record/Src/waveplayer.c:306:6:BSP_AUDIO_OUT_TransferComplete_CallBack	4	static
+D:/Users/Alex/Dokumente/Schule/EmbSys2/Audio_playback_and_record/Src/waveplayer.c:319:6:BSP_AUDIO_OUT_HalfTransfer_CallBack	4	static
+D:/Users/Alex/Dokumente/Schule/EmbSys2/Audio_playback_and_record/Src/waveplayer.c:336:27:GetFileInfo	112	static
+D:/Users/Alex/Dokumente/Schule/EmbSys2/Audio_playback_and_record/Src/waveplayer.c:385:16:PlayerInit	16	static
+D:/Users/Alex/Dokumente/Schule/EmbSys2/Audio_playback_and_record/Src/waveplayer.c:404:13:AUDIO_PlaybackDisplayButtons	8	static
+D:/Users/Alex/Dokumente/Schule/EmbSys2/Audio_playback_and_record/Src/waveplayer.c:445:13:AUDIO_AcquireTouchButtons	8	static

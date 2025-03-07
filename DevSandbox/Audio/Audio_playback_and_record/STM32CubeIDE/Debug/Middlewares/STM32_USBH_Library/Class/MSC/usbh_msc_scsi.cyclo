@@ -1,0 +1,6 @@
+D:/Users/Alex/Dokumente/Schule/EmbSys2/Audio_playback_and_record/Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Src/usbh_msc_scsi.c:102:20:USBH_MSC_SCSI_TestUnitReady	3
+D:/Users/Alex/Dokumente/Schule/EmbSys2/Audio_playback_and_record/Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Src/usbh_msc_scsi.c:144:20:USBH_MSC_SCSI_ReadCapacity	4
+D:/Users/Alex/Dokumente/Schule/EmbSys2/Audio_playback_and_record/Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Src/usbh_msc_scsi.c:200:20:USBH_MSC_SCSI_Inquiry	5
+D:/Users/Alex/Dokumente/Schule/EmbSys2/Audio_playback_and_record/Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Src/usbh_msc_scsi.c:271:20:USBH_MSC_SCSI_RequestSense	5
+D:/Users/Alex/Dokumente/Schule/EmbSys2/Audio_playback_and_record/Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Src/usbh_msc_scsi.c:337:20:USBH_MSC_SCSI_Write	3
+D:/Users/Alex/Dokumente/Schule/EmbSys2/Audio_playback_and_record/Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Src/usbh_msc_scsi.c:398:20:USBH_MSC_SCSI_Read	3

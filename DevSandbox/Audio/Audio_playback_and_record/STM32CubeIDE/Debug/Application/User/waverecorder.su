@@ -1,0 +1,8 @@
+D:/Users/Alex/Dokumente/Schule/EmbSys2/Audio_playback_and_record/Src/waverecorder.c:104:20:AUDIO_REC_Start	72	static
+D:/Users/Alex/Dokumente/Schule/EmbSys2/Audio_playback_and_record/Src/waverecorder.c:170:20:AUDIO_REC_Process	48	static
+D:/Users/Alex/Dokumente/Schule/EmbSys2/Audio_playback_and_record/Src/waverecorder.c:457:6:BSP_AUDIO_IN_TransferComplete_CallBack	8	static
+D:/Users/Alex/Dokumente/Schule/EmbSys2/Audio_playback_and_record/Src/waverecorder.c:487:6:BSP_AUDIO_IN_HalfTransfer_CallBack	8	static
+D:/Users/Alex/Dokumente/Schule/EmbSys2/Audio_playback_and_record/Src/waverecorder.c:519:17:WavProcess_EncInit	16	static
+D:/Users/Alex/Dokumente/Schule/EmbSys2/Audio_playback_and_record/Src/waverecorder.c:547:17:WavProcess_HeaderInit	16	static
+D:/Users/Alex/Dokumente/Schule/EmbSys2/Audio_playback_and_record/Src/waverecorder.c:632:17:WavProcess_HeaderUpdate	16	static
+D:/Users/Alex/Dokumente/Schule/EmbSys2/Audio_playback_and_record/Src/waverecorder.c:659:13:AUDIO_REC_DisplayButtons	8	static
