@@ -24,6 +24,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "stdio.h"
+#include <stdbool.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -65,6 +66,8 @@ TIM_HandleTypeDef htim1;
 
 UART_HandleTypeDef huart3;
 UART_HandleTypeDef huart6;
+DMA_HandleTypeDef hdma_usart6_rx;
+DMA_HandleTypeDef hdma_usart6_tx;
 
 SDRAM_HandleTypeDef hsdram1;
 
@@ -76,6 +79,7 @@ SDRAM_HandleTypeDef hsdram1;
 void SystemClock_Config(void);
 void PeriphCommonClock_Config(void);
 static void MX_GPIO_Init(void);
+static void MX_DMA_Init(void);
 static void MX_CRC_Init(void);
 static void MX_DMA2D_Init(void);
 static void MX_DSIHOST_DSI_Init(void);
@@ -98,6 +102,14 @@ void MX_USB_HOST_Process(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+uint8_t RX_BUFF[2][1024];
+typedef struct{
+	uint8_t *buff;
+	bool dataReceived;
+	uint16_t size;
+} RX_Data;
+volatile RX_Data rx_data;
+
 
 void print(const char *text)
 {
@@ -128,7 +140,7 @@ void sendTextSPI(const char *text) {
 /* Function to send AT command over SPI and receive response */
 int sendToESP(const char *cmd)
 {
-    char response[ESP_RESPONSE_SIZE] = {0}; // Buffer for ESP32 response
+    //char response[ESP_RESPONSE_SIZE] = {0}; // Buffer for ESP32 response
     uint8_t txBuffer[ESP_RESPONSE_SIZE] = {0};
     int index = 0;
     uint32_t startTime = HAL_GetTick(); // Start timer
@@ -141,37 +153,44 @@ int sendToESP(const char *cmd)
 
     // Send the AT command via SPI
     //HAL_SPI_Transmit(&hspi1, txBuffer, strlen((char *)txBuffer), HAL_MAX_DELAY);
-    HAL_UART_Transmit(&huart6, txBuffer, strlen((char *)txBuffer), HAL_MAX_DELAY);
+    //HAL_UART_Transmit(&huart6, txBuffer, strlen((char *)txBuffer), HAL_MAX_DELAY);
+    HAL_StatusTypeDef result = HAL_UART_Transmit_DMA(&huart6, txBuffer, strlen((char *)txBuffer));
+    //HAL_UART_GetState(&huart6);
 
     // Small delay to allow ESP32 to process
-    HAL_Delay(10);
+    //HAL_Delay(10);
 
     // Receive response from ESP32
-    while ((HAL_GetTick() - startTime) < ESP_TIMEOUT)
+    while ((HAL_GetTick() - startTime) < 1000*60*5)
     {
-        uint8_t rxByte;
-        //HAL_SPI_Receive(&hspi1, &rxByte, 1, 10); // Read one byte at a time
-        HAL_UART_Receive(&huart6, &rxByte, 1, HAL_MAX_DELAY);
 
-        if (rxByte != 0xFF) // Ignore empty responses
-        {
-            response[index++] = rxByte;
-            if (index >= ESP_RESPONSE_SIZE - 1) break; // Prevent buffer overflow
-        }
+			/*
+			uint8_t rxByte;
+			//HAL_SPI_Receive(&hspi1, &rxByte, 1, 10); // Read one byte at a time
+			//HAL_UART_Receive(&huart6, &rxByte, 1, HAL_MAX_DELAY);
 
-        // Check if response contains "OK" or "ERROR"
-        if (strstr(response, "OK"))
-        {
-            // Pull CS high to end SPI transaction
-            //HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET);
-            return 1; // Success
-        }
-        else if (strstr(response, "ERROR"))
-        {
-            // Pull CS high to end SPI transaction
-           // HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET);
-            return 0; // Failure
-        }
+			if (rxByte != 0xFF) // Ignore empty responses
+			{
+				response[index++] = rxByte;
+				if (index >= ESP_RESPONSE_SIZE - 1) break; // Prevent buffer overflow
+			}*/
+    	if(rx_data.dataReceived)
+    	{
+    		rx_data.dataReceived = false;
+			// Check if response contains "OK" or "ERROR"
+			if (strstr(rx_data.buff, "OK"))
+			{
+				// Pull CS high to end SPI transaction
+				//HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET);
+				return 1; // Success
+			}
+			else if (strstr(rx_data.buff, "ERROR"))
+			{
+				// Pull CS high to end SPI transaction
+			   // HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET);
+				return 0; // Failure
+			}
+    	}
     }
 
     // Pull CS high to end SPI transaction
@@ -180,34 +199,47 @@ int sendToESP(const char *cmd)
 }
 void setupESP32Hotspot(void)
 {
-    if (sendToESP("AT")) {
+    if (sendToESP("ATE0")) {
         println("ESP32 is responsive.");
     } else {
     	println("ESP32 is not responding!");
         return;
     }
-
+    HAL_Delay(10);
     if (sendToESP("AT+CWMODE=2")) {
     	println("WiFi mode set to AP.");
     } else {
     	println("Failed to set WiFi mode.");
     }
-
+    HAL_Delay(10);
     if (sendToESP("AT+CWSAP=\"MyHotspot\",\"MyPassword\",5,3")) {
     	println("Hotspot created successfully.");
     } else {
     	println("Failed to create hotspot.");
     }
-
-    if (sendToESP("AT+CWDHCP=2,1")) {
+    HAL_Delay(10);
+    if (sendToESP("AT+CWDHCP=1,1")) {
     	println("DHCP server enabled.");
     } else {
-        printf("Failed to enable DHCP.");
+    	println("Failed to enable DHCP.");
     }
-
+    HAL_Delay(10);
     if (sendToESP("AT+CWLIF")) {
     	println("Checking connected clients...");
     }
+}
+void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
+{
+	static bool buffSwitcher = true;
+
+	uint8_t *nextBuff = RX_BUFF[buffSwitcher];
+	buffSwitcher = !buffSwitcher;
+
+	HAL_UARTEx_ReceiveToIdle_DMA(&huart6, nextBuff, sizeof(RX_BUFF[0]));
+	rx_data.buff = RX_BUFF[buffSwitcher];
+	rx_data.size = Size;
+	rx_data.dataReceived = true;
+
 }
 /* USER CODE END 0 */
 
@@ -243,6 +275,7 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_DMA_Init();
   MX_CRC_Init();
   MX_DMA2D_Init();
   MX_DSIHOST_DSI_Init();
@@ -260,11 +293,16 @@ int main(void)
   MX_USB_HOST_Init();
   MX_SPI1_Init();
   /* USER CODE BEGIN 2 */
-  setupESP32Hotspot();
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  HAL_UARTEx_ReceiveToIdle_DMA(&huart6, RX_BUFF[0], sizeof(RX_BUFF[0]));
+  rx_data.buff = NULL;
+  rx_data.dataReceived = false;
+  rx_data.size = 0;
+  setupESP32Hotspot();
   while (1)
   {
 
@@ -911,7 +949,7 @@ static void MX_USART6_UART_Init(void)
 
   /* USER CODE END USART6_Init 1 */
   huart6.Instance = USART6;
-  huart6.Init.BaudRate = 9600;
+  huart6.Init.BaudRate = 115200;
   huart6.Init.WordLength = UART_WORDLENGTH_8B;
   huart6.Init.StopBits = UART_STOPBITS_1;
   huart6.Init.Parity = UART_PARITY_NONE;
@@ -925,6 +963,25 @@ static void MX_USART6_UART_Init(void)
   /* USER CODE BEGIN USART6_Init 2 */
 
   /* USER CODE END USART6_Init 2 */
+
+}
+
+/**
+  * Enable DMA controller clock
+  */
+static void MX_DMA_Init(void)
+{
+
+  /* DMA controller clock enable */
+  __HAL_RCC_DMA2_CLK_ENABLE();
+
+  /* DMA interrupt init */
+  /* DMA2_Stream1_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA2_Stream1_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA2_Stream1_IRQn);
+  /* DMA2_Stream6_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA2_Stream6_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA2_Stream6_IRQn);
 
 }
 
