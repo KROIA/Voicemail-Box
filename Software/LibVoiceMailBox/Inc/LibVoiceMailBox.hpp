@@ -8,9 +8,6 @@
 #ifndef LIBVOICEMAILBOX_HPP_
 #define LIBVOICEMAILBOX_HPP_
 
-#ifdef __cplusplus
-extern "C" {
-#endif
 
 // Voice Mail Box
 namespace VMB
@@ -22,7 +19,4 @@ namespace VMB
 }
 
 
-#ifdef __cplusplus
-}
-#endif
 #endif /* LIBVOICEMAILBOX_HPP_ */
