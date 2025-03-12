@@ -461,8 +461,8 @@
       "no_connect_dangling": "warning",
       "pin_not_connected": "error",
       "pin_not_driven": "error",
-      "pin_to_pin": "warning",
-      "power_pin_not_driven": "error",
+      "pin_to_pin": "error",
+      "power_pin_not_driven": "ignore",
       "same_local_global_label": "warning",
       "similar_label_and_power": "warning",
       "similar_labels": "warning",
@@ -639,7 +639,7 @@
       "model_mode": 0,
       "workbook_filename": ""
     },
-    "page_layout_descr_file": "",
+    "page_layout_descr_file": "Voicemail-Box Shield",
     "plot_directory": "",
     "space_save_all_events": true,
     "spice_adjust_passive_values": false,
@@ -656,6 +656,22 @@
     [
       "e63e39d7-6ac0-4ffd-8aa3-1841a4541b55",
       "Root"
+    ],
+    [
+      "8a941d25-10cd-4745-a77d-5d96df86b042",
+      "Pinout CPU"
+    ],
+    [
+      "c4907074-0e50-41f9-8f09-d9d4d6cc7ba3",
+      "Wireless Connectivity"
+    ],
+    [
+      "7d1be1d6-550f-4338-bd10-7ce490ea6cc3",
+      "nucleo144 extensions"
+    ],
+    [
+      "ff4a15fb-6ea1-4287-a2d2-f56056291429",
+      "NFC Breakaway"
     ]
   ],
   "text_variables": {}
