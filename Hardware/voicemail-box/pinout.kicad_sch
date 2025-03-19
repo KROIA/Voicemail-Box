@@ -3419,7 +3419,7 @@
 		(uuid "05379d9f-397a-4c56-95f0-f9f783d10efa")
 	)
 	(no_connect
-		(at 134.62 99.06)
+		(at 119.38 119.38)
 		(uuid "056d8ca8-d707-4ef3-afe2-446fedc793ec")
 	)
 	(no_connect
@@ -3475,7 +3475,7 @@
 		(uuid "3e7ecbb4-c71c-4abf-9570-3fb221617363")
 	)
 	(no_connect
-		(at 134.62 116.84)
+		(at 119.38 137.16)
 		(uuid "4004b2a3-364e-4660-a763-671ce2b8628a")
 	)
 	(no_connect
@@ -3679,7 +3679,7 @@
 		(uuid "cdc01503-d965-424c-923d-a1442c528db7")
 	)
 	(no_connect
-		(at 134.62 96.52)
+		(at 119.38 116.84)
 		(uuid "ce7709a4-f787-4fbf-8465-9baee75a43b2")
 	)
 	(no_connect
@@ -3691,7 +3691,7 @@
 		(uuid "d4f041e0-7b04-4cab-831e-29fe6c16cb69")
 	)
 	(no_connect
-		(at 134.62 102.87)
+		(at 119.38 123.19)
 		(uuid "d734d045-747e-463b-a4a0-f5395631dfb1")
 	)
 	(no_connect
@@ -3707,7 +3707,7 @@
 		(uuid "d8c94ae3-bb93-4010-a525-0c758501a4d7")
 	)
 	(no_connect
-		(at 134.62 111.76)
+		(at 119.38 132.08)
 		(uuid "df327350-1b52-4818-a4ed-e3f34c942db8")
 	)
 	(no_connect
@@ -3731,11 +3731,11 @@
 		(uuid "e46c903f-401d-411e-8ed4-dd554f11af04")
 	)
 	(no_connect
-		(at 134.62 105.41)
+		(at 119.38 125.73)
 		(uuid "f06c7b46-a392-4eec-9825-d1750171a21d")
 	)
 	(no_connect
-		(at 134.62 109.22)
+		(at 119.38 129.54)
 		(uuid "f1663547-7b23-4405-aaba-8abe40660b51")
 	)
 	(no_connect
@@ -3743,7 +3743,7 @@
 		(uuid "f2ea4244-0b82-47e8-9091-0deecf865dbf")
 	)
 	(no_connect
-		(at 134.62 114.3)
+		(at 119.38 134.62)
 		(uuid "f801d40f-678a-496b-9174-9ded4cf73a62")
 	)
 	(bus_entry
@@ -3784,7 +3784,7 @@
 	)
 	(wire
 		(pts
-			(xy 140.97 96.52) (xy 134.62 96.52)
+			(xy 125.73 116.84) (xy 119.38 116.84)
 		)
 		(stroke
 			(width 0)
@@ -3844,7 +3844,7 @@
 	)
 	(wire
 		(pts
-			(xy 140.97 114.3) (xy 134.62 114.3)
+			(xy 125.73 134.62) (xy 119.38 134.62)
 		)
 		(stroke
 			(width 0)
@@ -3874,7 +3874,7 @@
 	)
 	(wire
 		(pts
-			(xy 140.97 111.76) (xy 134.62 111.76)
+			(xy 125.73 132.08) (xy 119.38 132.08)
 		)
 		(stroke
 			(width 0)
@@ -3954,6 +3954,16 @@
 	)
 	(wire
 		(pts
+			(xy 118.11 83.82) (xy 140.97 83.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2a9da765-b3b5-41e2-8f18-f566aacf013a")
+	)
+	(wire
+		(pts
 			(xy 55.88 55.88) (xy 55.88 63.5)
 		)
 		(stroke
@@ -3984,7 +3994,7 @@
 	)
 	(wire
 		(pts
-			(xy 140.97 116.84) (xy 134.62 116.84)
+			(xy 125.73 137.16) (xy 119.38 137.16)
 		)
 		(stroke
 			(width 0)
@@ -4024,7 +4034,7 @@
 	)
 	(wire
 		(pts
-			(xy 140.97 105.41) (xy 134.62 105.41)
+			(xy 125.73 125.73) (xy 119.38 125.73)
 		)
 		(stroke
 			(width 0)
@@ -4064,6 +4074,16 @@
 	)
 	(wire
 		(pts
+			(xy 118.11 86.36) (xy 140.97 86.36)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5357fc5b-08cb-4363-be9b-d543f87c51fe")
+	)
+	(wire
+		(pts
 			(xy 232.41 124.46) (xy 234.95 124.46)
 		)
 		(stroke
@@ -4074,7 +4094,7 @@
 	)
 	(wire
 		(pts
-			(xy 140.97 102.87) (xy 134.62 102.87)
+			(xy 125.73 123.19) (xy 119.38 123.19)
 		)
 		(stroke
 			(width 0)
@@ -4244,7 +4264,17 @@
 	)
 	(wire
 		(pts
-			(xy 140.97 109.22) (xy 134.62 109.22)
+			(xy 118.11 91.44) (xy 140.97 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8dcf33f6-d042-4b49-a7d1-88514536ee82")
+	)
+	(wire
+		(pts
+			(xy 125.73 129.54) (xy 119.38 129.54)
 		)
 		(stroke
 			(width 0)
@@ -4331,6 +4361,16 @@
 			(type solid)
 		)
 		(uuid "a36f16bc-1607-4a79-98ca-0194ca12d88c")
+	)
+	(wire
+		(pts
+			(xy 118.11 88.9) (xy 140.97 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a49c1016-d808-481f-8274-d8bc7f979d57")
 	)
 	(wire
 		(pts
@@ -4424,7 +4464,7 @@
 	)
 	(wire
 		(pts
-			(xy 140.97 99.06) (xy 134.62 99.06)
+			(xy 125.73 119.38) (xy 119.38 119.38)
 		)
 		(stroke
 			(width 0)
@@ -4511,6 +4551,16 @@
 			(type default)
 		)
 		(uuid "d8a5a936-4d7b-4413-b8b6-6c87d1a4cfb0")
+	)
+	(wire
+		(pts
+			(xy 118.11 81.28) (xy 140.97 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dbeb1b0d-f72d-4738-a7b2-1f278efe5a5c")
 	)
 	(wire
 		(pts
@@ -4762,6 +4812,16 @@
 		)
 		(uuid "6323617e-5acb-4bfd-a30d-b27c50d22c14")
 	)
+	(label "NFC_SCK"
+		(at 118.11 86.36 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "6600fada-9d37-4f2d-b34b-17169f4c2229")
+	)
 	(label "D6"
 		(at 273.05 99.06 180)
 		(effects
@@ -4771,6 +4831,16 @@
 			(justify right bottom)
 		)
 		(uuid "66889e30-9f42-47a1-a48b-fdb995643e2e")
+	)
+	(label "NFC_MOSI"
+		(at 118.11 81.28 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "6fe6b352-bd9f-4732-bf07-690c35c0ca63")
 	)
 	(label "NFC_LED6"
 		(at 273.05 96.52 180)
@@ -4782,6 +4852,16 @@
 		)
 		(uuid "85d84f6a-063b-4ab5-8d66-ebb039267d34")
 	)
+	(label "NFC_MISO"
+		(at 118.11 83.82 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "8b808133-59a0-4bcf-b5d8-1a7d8001563d")
+	)
 	(label "SD_DET"
 		(at 109.22 76.2 180)
 		(effects
@@ -4791,6 +4871,16 @@
 			(justify right bottom)
 		)
 		(uuid "8bde2b8d-7db0-4451-8e5f-08fb6bb81b0f")
+	)
+	(label "NFC_NSS"
+		(at 118.11 88.9 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "8deadb8a-1e60-4fcb-8465-d4c05696799b")
 	)
 	(label "NFC_NSS"
 		(at 273.05 78.74 180)
@@ -4892,6 +4982,16 @@
 		)
 		(uuid "e647cb84-619c-4e9c-9a5a-9062418fa72c")
 	)
+	(label "NFC_INT"
+		(at 118.11 91.44 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "ed534a40-e384-4b67-99d2-5386e7562a0a")
+	)
 	(label "SD_CLK"
 		(at 118.11 73.66 0)
 		(effects
@@ -4942,9 +5042,20 @@
 		)
 		(uuid "f8e79c17-11b7-4f83-9c55-25753bdb51c3")
 	)
+	(hierarchical_label "NFC_MOSI"
+		(shape bidirectional)
+		(at 140.97 81.28 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "01f4828c-00ce-4a78-9333-4a554c5e7d82")
+	)
 	(hierarchical_label "NSS"
 		(shape bidirectional)
-		(at 140.97 109.22 0)
+		(at 125.73 129.54 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4952,6 +5063,17 @@
 			(justify left)
 		)
 		(uuid "1033d568-5228-4bfe-8f83-2d340e8443e9")
+	)
+	(hierarchical_label "NFC_NSS"
+		(shape bidirectional)
+		(at 140.97 88.9 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "10967b2a-550f-41f8-88bc-9723f15abba4")
 	)
 	(hierarchical_label "SD_CLK"
 		(shape bidirectional)
@@ -4963,6 +5085,17 @@
 			(justify left)
 		)
 		(uuid "1e98ddba-8438-46e9-a72c-e9156c51a98a")
+	)
+	(hierarchical_label "NFC_MISO"
+		(shape bidirectional)
+		(at 140.97 83.82 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "3140a742-8ddc-46a0-ba3e-1e84d668e358")
 	)
 	(hierarchical_label "SD_DET"
 		(shape bidirectional)
@@ -4977,7 +5110,7 @@
 	)
 	(hierarchical_label "RX"
 		(shape bidirectional)
-		(at 140.97 96.52 0)
+		(at 125.73 116.84 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4988,7 +5121,7 @@
 	)
 	(hierarchical_label "TX"
 		(shape bidirectional)
-		(at 140.97 99.06 0)
+		(at 125.73 119.38 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4999,7 +5132,7 @@
 	)
 	(hierarchical_label "INT"
 		(shape bidirectional)
-		(at 140.97 102.87 0)
+		(at 125.73 123.19 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5010,7 +5143,7 @@
 	)
 	(hierarchical_label "SCK"
 		(shape bidirectional)
-		(at 140.97 116.84 0)
+		(at 125.73 137.16 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5021,7 +5154,7 @@
 	)
 	(hierarchical_label "MISO"
 		(shape bidirectional)
-		(at 140.97 114.3 0)
+		(at 125.73 134.62 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5032,7 +5165,7 @@
 	)
 	(hierarchical_label "MOSI"
 		(shape bidirectional)
-		(at 140.97 111.76 0)
+		(at 125.73 132.08 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5052,9 +5185,31 @@
 		)
 		(uuid "d82c7465-1340-4637-bfdf-4291b38d9054")
 	)
+	(hierarchical_label "NFC_INT"
+		(shape bidirectional)
+		(at 140.97 91.44 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "e88b03c1-c19e-4101-8c2c-96cceaa476ab")
+	)
+	(hierarchical_label "NFC_SCK"
+		(shape bidirectional)
+		(at 140.97 86.36 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "e94a9d0b-0da1-4bfc-a04a-1621d79d327e")
+	)
 	(hierarchical_label "SELECT"
 		(shape bidirectional)
-		(at 140.97 105.41 0)
+		(at 125.73 125.73 0)
 		(effects
 			(font
 				(size 1.27 1.27)

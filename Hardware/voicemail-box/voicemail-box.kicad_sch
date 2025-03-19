@@ -21,6 +21,26 @@
 	)
 	(wire
 		(pts
+			(xy 95.25 85.09) (xy 109.22 85.09)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0f593842-204e-4b2d-bde0-e438ecec028e")
+	)
+	(wire
+		(pts
+			(xy 95.25 90.17) (xy 109.22 90.17)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "13265d1f-4ff6-4d0f-ae88-34303ca3a11d")
+	)
+	(wire
+		(pts
 			(xy 93.98 59.69) (xy 109.22 59.69)
 		)
 		(stroke
@@ -38,6 +58,16 @@
 			(type default)
 		)
 		(uuid "2c331988-89a6-4a88-be82-6a88e46dccd6")
+	)
+	(wire
+		(pts
+			(xy 95.25 95.25) (xy 109.22 95.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4eb9e283-63a4-4c75-be82-481414697e75")
 	)
 	(wire
 		(pts
@@ -101,6 +131,16 @@
 	)
 	(wire
 		(pts
+			(xy 95.25 87.63) (xy 109.22 87.63)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bc0a3987-a897-4544-8280-6e5c0ac6d191")
+	)
+	(wire
+		(pts
 			(xy 163.83 46.99) (xy 179.07 46.99)
 		)
 		(stroke
@@ -108,6 +148,16 @@
 			(type default)
 		)
 		(uuid "c7a33be1-ffc2-4609-8ce4-178627aa03ef")
+	)
+	(wire
+		(pts
+			(xy 95.25 92.71) (xy 109.22 92.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "da399554-b0d2-4975-897f-8f3836472a9a")
 	)
 	(wire
 		(pts
@@ -128,6 +178,48 @@
 			(type default)
 		)
 		(uuid "f85fa7db-755d-41eb-b620-0c8ea293d0f8")
+	)
+	(sheet
+		(at 179.07 74.93)
+		(size 57.15 21.59)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "5ef8c830-26cd-4ad8-92fa-e8802dfbcbc3")
+		(property "Sheetname" "Analog"
+			(at 179.07 74.2184 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "analog.kicad_sch"
+			(at 179.07 97.1046 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "voicemail-box"
+				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
+					(page "6")
+				)
+			)
+		)
 	)
 	(sheet
 		(at 179.07 39.37)
@@ -365,6 +457,56 @@
 				(justify left)
 			)
 		)
+		(pin "NFC_MISO" bidirectional
+			(at 109.22 95.25 180)
+			(uuid "abfbbc4b-0a12-4e6b-a4da-50d7c9b897c5")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "NFC_MOSI" bidirectional
+			(at 109.22 85.09 180)
+			(uuid "c026472a-7aa0-4a47-9c04-67dc3479a97b")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "NFC_SCK" bidirectional
+			(at 109.22 87.63 180)
+			(uuid "7c11857b-a7c9-4601-9ae7-b8e31e8d1b1a")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "NFC_INT" bidirectional
+			(at 109.22 92.71 180)
+			(uuid "5fabd478-a254-47eb-8bbf-7369674a2d20")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "NFC_NSS" bidirectional
+			(at 109.22 90.17 180)
+			(uuid "533ad304-3a2f-4630-9158-2429129de289")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
 		(instances
 			(project "voicemail-box"
 				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55"
@@ -527,6 +669,56 @@
 					(size 1.27 1.27)
 				)
 				(justify left top)
+			)
+		)
+		(pin "NFC_MOSI" bidirectional
+			(at 95.25 85.09 0)
+			(uuid "893e06d6-01cd-48a7-9b61-1a0a70c3b053")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "NFC_SCK" bidirectional
+			(at 95.25 87.63 0)
+			(uuid "361319f5-5219-46fb-ba5a-32196879ff9b")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "NFC_NSS" bidirectional
+			(at 95.25 90.17 0)
+			(uuid "87fad68e-e949-492e-91bc-4ea2a8fa35b3")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "NFC_INT" bidirectional
+			(at 95.25 92.71 0)
+			(uuid "616b47ca-81bf-438a-8d84-fc53ac40db9e")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "NFC_MISO" bidirectional
+			(at 95.25 95.25 0)
+			(uuid "15ea30ac-ffd8-4352-a43c-af41b0836732")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
 			)
 		)
 		(instances
