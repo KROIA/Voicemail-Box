@@ -8,6 +8,9 @@
 #ifndef LIBVOICEMAILBOX_HPP_
 #define LIBVOICEMAILBOX_HPP_
 
+#include "VoiceMailBox.hpp"
+#include "IFile.hpp"
+
 
 // Voice Mail Box
 namespace VMB

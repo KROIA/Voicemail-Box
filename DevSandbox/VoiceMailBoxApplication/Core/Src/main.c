@@ -20,9 +20,12 @@
 #include "main.h"
 #include "fatfs.h"
 #include "usb_host.h"
+
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "application.h"
+#include "fatfs.h"
+#include "string.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -57,6 +60,8 @@ QSPI_HandleTypeDef hqspi;
 SAI_HandleTypeDef hsai_BlockA1;
 
 SD_HandleTypeDef hsd;
+DMA_HandleTypeDef hdma_sdio_rx;
+DMA_HandleTypeDef hdma_sdio_tx;
 
 TIM_HandleTypeDef htim1;
 
@@ -73,6 +78,7 @@ SDRAM_HandleTypeDef hsdram1;
 void SystemClock_Config(void);
 void PeriphCommonClock_Config(void);
 static void MX_GPIO_Init(void);
+static void MX_DMA_Init(void);
 static void MX_CRC_Init(void);
 static void MX_DMA2D_Init(void);
 static void MX_DSIHOST_DSI_Init(void);
@@ -129,6 +135,7 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_DMA_Init();
   MX_CRC_Init();
   MX_DMA2D_Init();
   MX_DSIHOST_DSI_Init();
@@ -145,7 +152,47 @@ int main(void)
   MX_FATFS_Init();
   MX_USB_HOST_Init();
   /* USER CODE BEGIN 2 */
-  setup();
+  FRESULT res;
+  uint32_t byteswritten, bytesread; /* File write/read counts */
+  uint8_t wtext[] = "STM32 FATFS works great!"; /* File write buffer */
+  uint8_t rtext[_MAX_SS];/* File read buffer */
+
+  // Das funktioniert na
+  if(res = f_mount(&SDFatFS, (TCHAR const*)SDPath, 0) != FR_OK)
+  	{
+  		//Error_Handler();
+  	}
+  	else
+  	{
+  		// Das funktioniert denn nüm: res == FR_DISK_ERR!
+  		if(res = f_mkfs((TCHAR const*)SDPath, FM_ANY, 0, rtext, sizeof(rtext)) != FR_OK)
+  		{
+  			//Error_Handler();
+  		}
+  		else
+  		{
+  			//Open file for writing (Create)
+              		if(res = f_open(&SDFile, "STM32.TXT", FA_CREATE_ALWAYS | FA_WRITE) != FR_OK)
+              		{
+              			//Error_Handler();
+              		}
+              		else
+              		{
+              			//Write to the text file
+              			res = f_write(&SDFile, wtext, strlen((char *)wtext), (void *)&byteswritten);
+              			if((byteswritten == 0) || (res != FR_OK))
+              			{
+              				//Error_Handler();
+              			}
+              			else
+              			{
+              				res = f_close(&SDFile);
+              			}
+              		}
+  		}
+  	}
+  	res = f_mount(&SDFatFS, (TCHAR const*)NULL, 0);
+  //setup();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -154,7 +201,7 @@ int main(void)
   {
     /* USER CODE END WHILE */
     MX_USB_HOST_Process();
-    loop();
+
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
@@ -645,7 +692,7 @@ static void MX_SDIO_SD_Init(void)
   hsd.Init.ClockEdge = SDIO_CLOCK_EDGE_RISING;
   hsd.Init.ClockBypass = SDIO_CLOCK_BYPASS_DISABLE;
   hsd.Init.ClockPowerSave = SDIO_CLOCK_POWER_SAVE_DISABLE;
-  hsd.Init.BusWide = SDIO_BUS_WIDE_4B;
+  hsd.Init.BusWide = SDIO_BUS_WIDE_1B;
   hsd.Init.HardwareFlowControl = SDIO_HARDWARE_FLOW_CONTROL_DISABLE;
   hsd.Init.ClockDiv = 0;
   /* USER CODE BEGIN SDIO_Init 2 */
@@ -763,6 +810,25 @@ static void MX_USART6_UART_Init(void)
   /* USER CODE BEGIN USART6_Init 2 */
 
   /* USER CODE END USART6_Init 2 */
+
+}
+
+/**
+  * Enable DMA controller clock
+  */
+static void MX_DMA_Init(void)
+{
+
+  /* DMA controller clock enable */
+  __HAL_RCC_DMA2_CLK_ENABLE();
+
+  /* DMA interrupt init */
+  /* DMA2_Stream3_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA2_Stream3_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA2_Stream3_IRQn);
+  /* DMA2_Stream6_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA2_Stream6_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA2_Stream6_IRQn);
 
 }
 

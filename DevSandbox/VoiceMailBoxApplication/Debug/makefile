@@ -19,6 +19,7 @@ RM := rm -rf
 -include FATFS/App/subdir.mk
 -include Drivers/STM32F4xx_HAL_Driver/Src/subdir.mk
 -include Core/Startup/subdir.mk
+-include Core/Src/VMB/subdir.mk
 -include Core/Src/subdir.mk
 -include objects.mk
 
@@ -92,8 +93,8 @@ all: main-build
 main-build: VoiceMailBoxApplication.elf secondary-outputs
 
 # Tool invocations
-VoiceMailBoxApplication.elf VoiceMailBoxApplication.map: $(OBJS) $(USER_OBJS) D:\Users\Alex\Dokumente\Schule\SA\Voicemail-Box\DevSandbox\VoiceMailBoxApplication\STM32F469NIHX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-g++ -o "VoiceMailBoxApplication.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\Users\Alex\Dokumente\Schule\SA\Voicemail-Box\DevSandbox\VoiceMailBoxApplication\STM32F469NIHX_FLASH.ld" --specs=nosys.specs -Wl,-Map="VoiceMailBoxApplication.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+VoiceMailBoxApplication.elf VoiceMailBoxApplication.map: $(OBJS) $(USER_OBJS) E:\Dokumente\Weiterbildung\Studium\ Elektrotechnik\SA\Voicemail-Box\DevSandbox\VoiceMailBoxApplication\STM32F469NIHX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-g++ -o "VoiceMailBoxApplication.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"E:\Dokumente\Weiterbildung\Studium Elektrotechnik\SA\Voicemail-Box\DevSandbox\VoiceMailBoxApplication\STM32F469NIHX_FLASH.ld" --specs=nosys.specs -Wl,-Map="VoiceMailBoxApplication.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

@@ -1,0 +1,9 @@
+E:/Dokumente/Weiterbildung/Studium Elektrotechnik/SA/Voicemail-Box/DevSandbox/VoiceMailBoxApplication/../../Software/LibVoiceMailBox/Inc/IFile.hpp:14:8:constexpr VMB::IFile::IFile()	16	static
+E:/Dokumente/Weiterbildung/Studium Elektrotechnik/SA/Voicemail-Box/DevSandbox/VoiceMailBoxApplication/../../Software/LibVoiceMailBox/Inc/IFile.hpp:24:11:VMB::IFile::~IFile()	16	static
+E:/Dokumente/Weiterbildung/Studium Elektrotechnik/SA/Voicemail-Box/DevSandbox/VoiceMailBoxApplication/../../Software/LibVoiceMailBox/Inc/IFile.hpp:24:11:virtual VMB::IFile::~IFile()	16	static
+../Core/Src/VMB/FAT32File.cpp:19:2:VMB::FAT32File::FAT32File()	24	static
+../Core/Src/VMB/FAT32File.cpp:38:2:VMB::FAT32File::~FAT32File()	16	static
+../Core/Src/VMB/FAT32File.cpp:38:2:virtual VMB::FAT32File::~FAT32File()	16	static
+../Core/Src/VMB/FAT32File.cpp:43:7:bool VMB::FAT32File::open(const char*, VMB::IFile::AccessMode)	24	static
+../Core/Src/VMB/FAT32File.cpp:63:7:bool VMB::FAT32File::close()	16	static
+../Core/Src/VMB/FAT32File.cpp:68:15:unsigned int VMB::FAT32File::write(const char*)	32	static

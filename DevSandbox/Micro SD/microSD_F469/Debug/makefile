@@ -9,12 +9,8 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
--include USB_HOST/Target/subdir.mk
--include USB_HOST/App/subdir.mk
 -include Middlewares/Third_Party/FatFs/src/option/subdir.mk
 -include Middlewares/Third_Party/FatFs/src/subdir.mk
--include Middlewares/ST/STM32_USB_Host_Library/Core/Src/subdir.mk
--include Middlewares/ST/STM32_USB_Host_Library/Class/CDC/Src/subdir.mk
 -include FATFS/Target/subdir.mk
 -include FATFS/App/subdir.mk
 -include Drivers/STM32F4xx_HAL_Driver/Src/subdir.mk
@@ -92,8 +88,8 @@ all: main-build
 main-build: microSD_F469.elf secondary-outputs
 
 # Tool invocations
-microSD_F469.elf microSD_F469.map: $(OBJS) $(USER_OBJS) /home/dominik/Documents/studium/sem08/SA/Voicemail-Box/DevSandbox/Micro\ SD/microSD_F469/STM32F469NIHX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-g++ -o "microSD_F469.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/DevSandbox/Micro SD/microSD_F469/STM32F469NIHX_FLASH.ld" --specs=nosys.specs -Wl,-Map="microSD_F469.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+microSD_F469.elf microSD_F469.map: $(OBJS) $(USER_OBJS) E:\Dokumente\Weiterbildung\Studium\ Elektrotechnik\SA\Voicemail-Box\DevSandbox\Micro\ SD\microSD_F469\STM32F469NIHX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-g++ -o "microSD_F469.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"E:\Dokumente\Weiterbildung\Studium Elektrotechnik\SA\Voicemail-Box\DevSandbox\Micro SD\microSD_F469\STM32F469NIHX_FLASH.ld" --specs=nosys.specs -Wl,-Map="microSD_F469.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
