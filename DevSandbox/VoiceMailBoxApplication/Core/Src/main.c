@@ -152,47 +152,7 @@ int main(void)
   MX_FATFS_Init();
   MX_USB_HOST_Init();
   /* USER CODE BEGIN 2 */
-  FRESULT res;
-  uint32_t byteswritten, bytesread; /* File write/read counts */
-  uint8_t wtext[] = "STM32 FATFS works great!"; /* File write buffer */
-  uint8_t rtext[_MAX_SS];/* File read buffer */
-
-  // Das funktioniert na
-  if(res = f_mount(&SDFatFS, (TCHAR const*)SDPath, 0) != FR_OK)
-  	{
-  		//Error_Handler();
-  	}
-  	else
-  	{
-  		// Das funktioniert denn nüm: res == FR_DISK_ERR!
-  		if(res = f_mkfs((TCHAR const*)SDPath, FM_ANY, 0, rtext, sizeof(rtext)) != FR_OK)
-  		{
-  			//Error_Handler();
-  		}
-  		else
-  		{
-  			//Open file for writing (Create)
-              		if(res = f_open(&SDFile, "STM32.TXT", FA_CREATE_ALWAYS | FA_WRITE) != FR_OK)
-              		{
-              			//Error_Handler();
-              		}
-              		else
-              		{
-              			//Write to the text file
-              			res = f_write(&SDFile, wtext, strlen((char *)wtext), (void *)&byteswritten);
-              			if((byteswritten == 0) || (res != FR_OK))
-              			{
-              				//Error_Handler();
-              			}
-              			else
-              			{
-              				res = f_close(&SDFile);
-              			}
-              		}
-  		}
-  	}
-  	res = f_mount(&SDFatFS, (TCHAR const*)NULL, 0);
-  //setup();
+  setup();
   /* USER CODE END 2 */
 
   /* Infinite loop */

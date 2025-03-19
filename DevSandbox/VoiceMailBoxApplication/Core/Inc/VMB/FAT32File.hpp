@@ -11,6 +11,7 @@
 #include "IFile.hpp"
 #include "stdint.h"
 #include "fatfs.h"
+#include <string>
 
 namespace VMB
 {
@@ -28,9 +29,12 @@ namespace VMB
 		unsigned int write(const char* text);
 	private:
 		FIL m_fileHandle;
+		bool m_isOpen;
+		AccessMode m_currentMode;
+		std::string m_path;
 
 		static bool s_isMounted;
-		//static FATFS s_SDFatFS;
+		static FATFS s_SDFatFS;
 		//static char s_SDPath[4];
 		static uint8_t s_rtext[_MAX_SS];
 	};
