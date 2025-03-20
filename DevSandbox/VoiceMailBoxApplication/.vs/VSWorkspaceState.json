@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Core",
+    "\\Core\\Inc",
+    "\\Core\\Inc\\VMB",
+    "\\Core\\Src",
+    "\\Core\\Src\\VMB"
+  ],
+  "SelectedNode": "\\Core\\Src\\application.cpp",
+  "PreviewInSolutionExplorer": false
+}
