@@ -24,18 +24,16 @@ namespace VMB
 		FAT32File();
 		~FAT32File();
 
-		bool open(const char* path, AccessMode mode);
-		bool open(const char* path, int fa_mode);
+		bool open(const char* path, AccessMode mode) override;
+		bool open(const char* path, int fa_mode) override;
 		bool close();
 
-		unsigned int write(const char* text);
-		unsigned int write(const std::string& text) { return write(text.c_str()); }
-		unsigned int read(char* buffer, unsigned int length);
-		unsigned int read(std::string& output, unsigned int length);
-		bool seek(unsigned int position);
-		unsigned int getSize() const;
-		bool isOpen() const { return m_isOpen; }
-		bool flush();
+		unsigned int write(const char* text) override;
+		unsigned int read(char* buffer, unsigned int length) override;
+		bool seek(unsigned int position) override;
+		unsigned int getSize() const override;
+		bool isOpen() const override { return m_isOpen; }
+		bool flush() override;
 		FRESULT getLastError() const { return m_lastError; }
 
 		static bool remove(const char* path);

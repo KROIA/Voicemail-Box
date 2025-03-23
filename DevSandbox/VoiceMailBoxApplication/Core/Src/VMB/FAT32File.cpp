@@ -18,7 +18,7 @@ namespace VMB
 	FAT32File::FAT32File()
     	: m_fileHandle{ 0 }
 		, m_isOpen(false)
-		, m_currentMode(AccessMode::read)
+		, m_currentMode(FA_READ)
 		, m_path("")
 		, m_lastError(FRESULT::FR_OK)
 	{
@@ -111,11 +111,6 @@ namespace VMB
 		m_lastError = f_read(&m_fileHandle, buffer, length, &bytesRead);
 		return bytesRead;
 	}
-	unsigned int FAT32File::read(std::string& output, unsigned int length) {
-		output.resize(length);
-		return read(&output[0], length);
-	}
-
 	bool FAT32File::seek(unsigned int position) {
 		if (!m_isOpen) return false;
 		m_lastError = f_lseek(&m_fileHandle, position);
