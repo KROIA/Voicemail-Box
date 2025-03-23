@@ -17,7 +17,7 @@ namespace VMB
 	public:
 		virtual ~IServerClient() = default;
 
-		virtual bool connect(const char* ip, unsigned short port) = 0;
+		virtual bool connect() = 0;
 		virtual bool disconnect() = 0;
 
 		virtual bool send(const char* data, unsigned int length) = 0;

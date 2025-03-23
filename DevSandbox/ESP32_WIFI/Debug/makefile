@@ -92,8 +92,8 @@ all: main-build
 main-build: wifi.elf secondary-outputs
 
 # Tool invocations
-wifi.elf wifi.map: $(OBJS) $(USER_OBJS) D:\Users\Alex\Dokumente\Schule\SA\Voicemail-Box\DevSandbox\ESP32_WIFI\STM32F469NIHX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-g++ -o "wifi.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\Users\Alex\Dokumente\Schule\SA\Voicemail-Box\DevSandbox\ESP32_WIFI\STM32F469NIHX_FLASH.ld" --specs=nosys.specs -Wl,-Map="wifi.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+wifi.elf wifi.map: $(OBJS) $(USER_OBJS) E:\Dokumente\Weiterbildung\Studium\ Elektrotechnik\SA\Voicemail-Box\DevSandbox\ESP32_WIFI\STM32F469NIHX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-g++ -o "wifi.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"E:\Dokumente\Weiterbildung\Studium Elektrotechnik\SA\Voicemail-Box\DevSandbox\ESP32_WIFI\STM32F469NIHX_FLASH.ld" --specs=nosys.specs -Wl,-Map="wifi.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
