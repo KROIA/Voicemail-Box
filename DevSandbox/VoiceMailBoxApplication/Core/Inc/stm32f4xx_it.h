@@ -61,6 +61,7 @@ void TIM6_DAC_IRQHandler(void);
 void DMA2_Stream3_IRQHandler(void);
 void OTG_FS_IRQHandler(void);
 void DMA2_Stream6_IRQHandler(void);
+void USART6_IRQHandler(void);
 void LTDC_IRQHandler(void);
 void DMA2D_IRQHandler(void);
 void DSI_IRQHandler(void);

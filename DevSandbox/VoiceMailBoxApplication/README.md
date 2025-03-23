@@ -18,3 +18,7 @@
   SD Card: ON
   Advanced Settings->SDIO:
   Use dma template: Enabled
+  
+  
+## ESP32 Setup
+### IOC SEttigns

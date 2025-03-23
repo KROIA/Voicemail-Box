@@ -1,4 +1,5 @@
 "./Core/Src/VMB/FAT32File.o"
+"./Core/Src/VMB/tests.o"
 "./Core/Src/application.o"
 "./Core/Src/main.o"
 "./Core/Src/stm32f4xx_hal_msp.o"
