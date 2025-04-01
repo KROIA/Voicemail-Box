@@ -4019,7 +4019,7 @@
 	)
 	(wire
 		(pts
-			(xy 60.96 66.04) (xy 38.1 66.04)
+			(xy 72.39 52.07) (xy 95.25 52.07)
 		)
 		(stroke
 			(width 0)
@@ -4039,7 +4039,7 @@
 	)
 	(wire
 		(pts
-			(xy 60.96 60.96) (xy 38.1 60.96)
+			(xy 72.39 62.23) (xy 95.25 62.23)
 		)
 		(stroke
 			(width 0)
@@ -4309,7 +4309,7 @@
 	)
 	(wire
 		(pts
-			(xy 60.96 58.42) (xy 38.1 58.42)
+			(xy 72.39 67.31) (xy 95.25 67.31)
 		)
 		(stroke
 			(width 0)
@@ -4619,7 +4619,7 @@
 	)
 	(wire
 		(pts
-			(xy 60.96 55.88) (xy 38.1 55.88)
+			(xy 72.39 64.77) (xy 95.25 64.77)
 		)
 		(stroke
 			(width 0)
@@ -4719,7 +4719,7 @@
 	)
 	(wire
 		(pts
-			(xy 60.96 63.5) (xy 38.1 63.5)
+			(xy 72.39 59.69) (xy 95.25 59.69)
 		)
 		(stroke
 			(width 0)
@@ -5028,7 +5028,7 @@
 		(uuid "26a5fe10-cd5a-4ea6-8d1e-67b47ab75154")
 	)
 	(label "NFC_INT"
-		(at 60.96 66.04 180)
+		(at 86.36 52.07 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5038,7 +5038,7 @@
 		(uuid "415e7f16-0d83-4722-b2c7-f710c2fdcd33")
 	)
 	(label "NFC_MOSI"
-		(at 60.96 55.88 180)
+		(at 86.36 64.77 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5048,7 +5048,7 @@
 		(uuid "b4053016-d447-4c6b-be96-5478ef1c806e")
 	)
 	(label "NFC_SCK"
-		(at 60.96 60.96 180)
+		(at 86.36 62.23 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5058,7 +5058,7 @@
 		(uuid "bfcb0ba0-5b23-49e2-a583-fea0aa8dc8c3")
 	)
 	(label "NFC_MISO"
-		(at 60.96 58.42 180)
+		(at 86.36 67.31 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5068,7 +5068,7 @@
 		(uuid "ecbde01c-74d1-4d54-8cfb-2b7d12a75cb0")
 	)
 	(label "NFC_NSS"
-		(at 60.96 63.5 180)
+		(at 86.36 59.69 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5089,7 +5089,7 @@
 	)
 	(hierarchical_label "NFC_MISO"
 		(shape bidirectional)
-		(at 38.1 58.42 180)
+		(at 72.39 67.31 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5100,7 +5100,7 @@
 	)
 	(hierarchical_label "NFC_SCK"
 		(shape bidirectional)
-		(at 38.1 60.96 180)
+		(at 72.39 62.23 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5111,7 +5111,7 @@
 	)
 	(hierarchical_label "NFC_INT"
 		(shape bidirectional)
-		(at 38.1 66.04 180)
+		(at 72.39 52.07 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5122,7 +5122,7 @@
 	)
 	(hierarchical_label "NFC_MOSI"
 		(shape bidirectional)
-		(at 38.1 55.88 180)
+		(at 72.39 64.77 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5133,7 +5133,7 @@
 	)
 	(hierarchical_label "NFC_NSS"
 		(shape bidirectional)
-		(at 38.1 63.5 180)
+		(at 72.39 59.69 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5237,7 +5237,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_DFN_QFN:UFQFPN-32-1EP_5x5mm_P0.5mm_EP3.5x3.5mm"
 			(at 97.79 43.18 0)
 			(effects
 				(font
@@ -5539,7 +5539,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_DFN_QFN:UFQFPN-32-1EP_5x5mm_P0.5mm_EP3.5x3.5mm"
 			(at 33.02 119.38 0)
 			(effects
 				(font
@@ -5910,7 +5910,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Crystal:Crystal_SMD_SeikoEpson_FA128-4Pin_2.0x1.6mm"
 			(at 38.1 139.7 0)
 			(effects
 				(font
@@ -6193,7 +6193,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_DFN_QFN:UFQFPN-32-1EP_5x5mm_P0.5mm_EP3.5x3.5mm"
 			(at 153.67 43.18 0)
 			(effects
 				(font
@@ -6913,7 +6913,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_DFN_QFN:UFQFPN-32-1EP_5x5mm_P0.5mm_EP3.5x3.5mm"
 			(at 168.91 120.65 0)
 			(effects
 				(font
