@@ -6,6 +6,7 @@ bool execTests()
 {
 	bool success = true;
 	success &= VMB::testFat32File();
+	success &= VMB::testWIFI();
 	return success;
 }
 
@@ -27,4 +28,12 @@ void setup()
 void loop()
 {
 
+}
+
+
+
+
+void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
+{
+	VMB::WiFiServerClient::on_HAL_UARTEx_RxEventCallback(huart, Size);
 }

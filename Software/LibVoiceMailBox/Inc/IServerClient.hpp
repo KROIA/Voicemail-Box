@@ -33,7 +33,7 @@ namespace VMB
 		}
 
 		virtual bool isConnected() const = 0;
-		virtual bool flush() = 0;
+		//virtual bool flush() = 0;
 	};
 }
 #endif /* ISERVERCLIENT_HPP_ */

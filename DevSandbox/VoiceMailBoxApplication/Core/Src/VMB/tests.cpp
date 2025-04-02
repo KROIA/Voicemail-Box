@@ -1,4 +1,6 @@
 #include "tests.hpp"
+#include "main.h"
+
 
 namespace VMB
 {
@@ -63,5 +65,12 @@ namespace VMB
             printf(" - %s\n\r", name.c_str());
         }
         return true;
+    }
+
+    bool testWIFI()
+    {
+    	VMB::WiFiServerClient client(*getHuart6());
+
+    	return true;
     }
 }

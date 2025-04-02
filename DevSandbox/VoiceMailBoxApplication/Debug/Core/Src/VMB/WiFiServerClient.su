@@ -1,0 +1,16 @@
+../Core/Inc/VMB/WiFiServerClient.hpp:28:8:virtual bool VMB::WiFiServerClient::isConnected() const	16	static
+E:/Dokumente/Weiterbildung/Studium Elektrotechnik/SA/Voicemail-Box/DevSandbox/VoiceMailBoxApplication/../../Software/LibVoiceMailBox/Inc/IServerClient.hpp:15:8:constexpr VMB::IServerClient::IServerClient()	16	static
+E:/Dokumente/Weiterbildung/Studium Elektrotechnik/SA/Voicemail-Box/DevSandbox/VoiceMailBoxApplication/../../Software/LibVoiceMailBox/Inc/IServerClient.hpp:18:11:VMB::IServerClient::~IServerClient()	16	static
+E:/Dokumente/Weiterbildung/Studium Elektrotechnik/SA/Voicemail-Box/DevSandbox/VoiceMailBoxApplication/../../Software/LibVoiceMailBox/Inc/IServerClient.hpp:18:11:virtual VMB::IServerClient::~IServerClient()	16	static
+C:\ST\STM32CubeIDE_1.17.0\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/c++/12.3.1/array:193:7:constexpr std::array<_Tp, _Nm>::size_type std::array<_Tp, _Nm>::size() const [with _Tp = VMB::WiFiServerClient*; unsigned int _Nm = 10]	16	static
+../Core/Src/VMB/WiFiServerClient.cpp:13:2:VMB::WiFiServerClient::WiFiServerClient(UART_HandleTypeDef&)	24	static
+../Core/Src/VMB/WiFiServerClient.cpp:69:2:VMB::WiFiServerClient::~WiFiServerClient()	24	static
+../Core/Src/VMB/WiFiServerClient.cpp:69:2:virtual VMB::WiFiServerClient::~WiFiServerClient()	16	static
+../Core/Src/VMB/WiFiServerClient.cpp:81:7:virtual bool VMB::WiFiServerClient::connect()	16	static
+../Core/Src/VMB/WiFiServerClient.cpp:85:7:virtual bool VMB::WiFiServerClient::disconnect()	16	static
+../Core/Src/VMB/WiFiServerClient.cpp:89:7:virtual bool VMB::WiFiServerClient::send(const char*, unsigned int)	24	static
+../Core/Src/VMB/WiFiServerClient.cpp:93:15:virtual unsigned int VMB::WiFiServerClient::receive(char*, unsigned int)	24	static
+../Core/Src/VMB/WiFiServerClient.cpp:98:7:static void VMB::WiFiServerClient::on_HAL_UARTEx_RxEventCallback(UART_HandleTypeDef*, uint16_t)	32	static
+../Core/Src/VMB/WiFiServerClient.cpp:120:6:int VMB::WiFiServerClient::sendATCommand(const char*)	168	static
+C:\ST\STM32CubeIDE_1.17.0\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/c++/12.3.1/array:206:7:std::array<_Tp, _Nm>::value_type& std::array<_Tp, _Nm>::operator[](size_type) [with _Tp = VMB::WiFiServerClient*; unsigned int _Nm = 10]	16	static
+C:\ST\STM32CubeIDE_1.17.0\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.1.0.202410251130\tools\bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/include/c++/12.3.1/array:60:7:static constexpr _Tp& std::__array_traits<_Tp, _Nm>::_S_ref(const _Tp (&)[_Nm], std::size_t) [with _Tp = VMB::WiFiServerClient*; unsigned int _Nm = 10]	16	static
