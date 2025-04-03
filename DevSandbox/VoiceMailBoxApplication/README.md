@@ -31,3 +31,23 @@ UART6
 Baud: 115200
 DMA für UART6_RX & UART6_TX
 NVIC->UART6 global interrupt ENABLED
+
+
+## I2S Souces
+[STM32 I2S ADC DMA & Double Buffering - Digital Audio Processing with STM32 #4 - Phil's Lab #55](https://www.youtube.com/watch?v=zlGSxZGwj-E&t=635s&ab_channel=Phil%E2%80%99sLab)
+
+### I2S IOC Settings (Temporary, not tested)
+- **Multimedia->I2S2:**
+  NVIC Settings: SPI2 global interrupt: Enabled
+  Parameter Settings: 
+	Transmission Mode: Mode Master Receive
+	Data and Frame Format: 16Bits
+	Selected Audio Frequency: 48KHz
+  DMA Settings:
+    SPI2_RX  "DMA1 Stream 3" "Peripheral To Memory"
+  GPIO Settings:
+    Unknown, default
+  
+
+
+
