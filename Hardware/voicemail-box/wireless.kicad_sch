@@ -4847,7 +4847,7 @@
 				)
 			)
 		)
-		(property "Value" "np_0R"
+		(property "Value" "0R"
 			(at 86.36 60.96 90)
 			(effects
 				(font
