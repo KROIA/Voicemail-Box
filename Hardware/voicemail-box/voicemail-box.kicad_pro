@@ -737,12 +737,12 @@
       "nucleo144 extensions"
     ],
     [
-      "ff4a15fb-6ea1-4287-a2d2-f56056291429",
-      "NFC Breakaway"
-    ],
-    [
       "5ef8c830-26cd-4ad8-92fa-e8802dfbcbc3",
       "Audio"
+    ],
+    [
+      "ff4a15fb-6ea1-4287-a2d2-f56056291429",
+      "NFC Breakaway"
     ],
     [
       "f6dd423f-bceb-4b7e-85cb-bb54e6f6d80b",

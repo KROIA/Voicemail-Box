@@ -3640,7 +3640,7 @@
 			(embedded_fonts no)
 		)
 	)
-	(text "F469  | H755"
+	(text "H755  | F469"
 		(exclude_from_sim no)
 		(at 43.942 63.5 0)
 		(effects
@@ -3923,7 +3923,7 @@
 		)
 		(uuid "e3d8d277-3b9f-4730-9c79-899765575284")
 	)
-	(text "F469  | H755"
+	(text "H755  | F469"
 		(exclude_from_sim no)
 		(at 232.918 26.67 0)
 		(effects

@@ -2534,7 +2534,7 @@
 			)
 		)
 		(property "Value" "Conn_02x08_Odd_Even"
-			(at 175.768 137.414 0)
+			(at 167.386 137.922 0)
 			(effects
 				(font
 					(size 1.27 1.27)
