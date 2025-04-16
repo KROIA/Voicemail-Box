@@ -24,6 +24,12 @@ Set Speed (less than 10MHz)and configure Clock Mode for rising and falling ("DDR
 ### Configure and connect Middleware
 enable X-CUBE-NFC6 in Cube (found under Middleware)  
 (will require install the first time used)  
-![Pasted image (2)](https://github.com/user-attachments/assets/be88ad70-8a59-470d-8a49-159d236f064b)
+![Pasted image (2)](https://github.com/user-attachments/assets/be88ad70-8a59-470d-8a49-159d236f064b)  
+
+Cube throws error if no leds selected... to be tested
+![image](https://github.com/user-attachments/assets/897531ae-f18b-4cae-8397-8062443a9687)
+
+
+
 
 
