@@ -18,6 +18,6 @@ set Pins as following:
 - SCK  = PD3
 - NSS  = PH6 -> set as GPIO Output
 
-Set Speed and configure Clock Mode for rising and falling ("DDR"-like)
+Set Speed and configure Clock Mode for rising and falling ("DDR"-like)  
 ![image](https://github.com/user-attachments/assets/9843e274-53f9-44db-8681-40db2297641c)
 
