@@ -29,7 +29,7 @@ enable X-CUBE-NFC6 in Cube (found under Middleware)
 Cube throws error if no leds selected... to be tested
 ![image](https://github.com/user-attachments/assets/897531ae-f18b-4cae-8397-8062443a9687)
 
-Pinout of GPIO can be seen here:
+Pinout of GPIO can be seen here:  
 ![image](https://github.com/KROIA/Voicemail-Box/blob/f469_NFC/Documentation/Pinout%20Demos/pinout.png?raw=true)
 
 
