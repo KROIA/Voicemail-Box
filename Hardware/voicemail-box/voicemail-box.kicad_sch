@@ -5175,7 +5175,7 @@
 	)
 	(sheet
 		(at 20.32 119.38)
-		(size 30.48 25.4)
+		(size 30.48 41.91)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
@@ -5199,7 +5199,7 @@
 			)
 		)
 		(property "Sheetfile" "userinterface.kicad_sch"
-			(at 20.32 145.3646 0)
+			(at 20.32 161.8746 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5501,7 +5501,7 @@
 	)
 	(sheet
 		(at 109.22 39.37)
-		(size 40.64 113.03)
+		(size 40.64 121.92)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
@@ -5525,7 +5525,7 @@
 			)
 		)
 		(property "Sheetfile" "pinout.kicad_sch"
-			(at 109.22 152.9846 0)
+			(at 109.22 161.8746 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6074,7 +6074,7 @@
 		)
 	)
 	(sheet
-		(at 109.22 162.56)
+		(at 20.32 167.64)
 		(size 30.48 25.4)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -6090,7 +6090,7 @@
 		)
 		(uuid "f6dd423f-bceb-4b7e-85cb-bb54e6f6d80b")
 		(property "Sheetname" "Powersupply"
-			(at 109.22 161.8484 0)
+			(at 20.32 166.9284 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6099,7 +6099,7 @@
 			)
 		)
 		(property "Sheetfile" "powersupply.kicad_sch"
-			(at 109.22 188.5446 0)
+			(at 20.32 193.6246 0)
 			(effects
 				(font
 					(size 1.27 1.27)
