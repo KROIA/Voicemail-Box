@@ -15,3 +15,5 @@ Multimedia->
 		DMA Settings->
 			SAI1_A, DMA2 Stream1, Peripheral to Memory
 			Mode: Circular
+			Data Width: Half Word
+			
