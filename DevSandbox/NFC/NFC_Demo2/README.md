@@ -21,5 +21,9 @@ set Pins as following:
 Set Speed (less than 10MHz)and configure Clock Mode for rising and falling ("DDR"-like)  
 ![image](https://github.com/user-attachments/assets/d3cd274b-aa2c-4bb1-880d-82783c48b83e)
 
+### Configure and connect Middleware
+enable X-CUBE-NFC6 in Cube (found under Middleware)  
+(will require install the first time used)  
+![Pasted image (2)](https://github.com/user-attachments/assets/be88ad70-8a59-470d-8a49-159d236f064b)
 
 
