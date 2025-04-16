@@ -6,16 +6,19 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
 ../Core/Src/VMB/FAT32File.cpp \
+../Core/Src/VMB/PCM1809_AudioInputDevice.cpp \
 ../Core/Src/VMB/WiFiServerClient.cpp \
 ../Core/Src/VMB/tests.cpp 
 
 OBJS += \
 ./Core/Src/VMB/FAT32File.o \
+./Core/Src/VMB/PCM1809_AudioInputDevice.o \
 ./Core/Src/VMB/WiFiServerClient.o \
 ./Core/Src/VMB/tests.o 
 
 CPP_DEPS += \
 ./Core/Src/VMB/FAT32File.d \
+./Core/Src/VMB/PCM1809_AudioInputDevice.d \
 ./Core/Src/VMB/WiFiServerClient.d \
 ./Core/Src/VMB/tests.d 
 
@@ -27,7 +30,7 @@ Core/Src/VMB/%.o Core/Src/VMB/%.su Core/Src/VMB/%.cyclo: ../Core/Src/VMB/%.cpp C
 clean: clean-Core-2f-Src-2f-VMB
 
 clean-Core-2f-Src-2f-VMB:
-	-$(RM) ./Core/Src/VMB/FAT32File.cyclo ./Core/Src/VMB/FAT32File.d ./Core/Src/VMB/FAT32File.o ./Core/Src/VMB/FAT32File.su ./Core/Src/VMB/WiFiServerClient.cyclo ./Core/Src/VMB/WiFiServerClient.d ./Core/Src/VMB/WiFiServerClient.o ./Core/Src/VMB/WiFiServerClient.su ./Core/Src/VMB/tests.cyclo ./Core/Src/VMB/tests.d ./Core/Src/VMB/tests.o ./Core/Src/VMB/tests.su
+	-$(RM) ./Core/Src/VMB/FAT32File.cyclo ./Core/Src/VMB/FAT32File.d ./Core/Src/VMB/FAT32File.o ./Core/Src/VMB/FAT32File.su ./Core/Src/VMB/PCM1809_AudioInputDevice.cyclo ./Core/Src/VMB/PCM1809_AudioInputDevice.d ./Core/Src/VMB/PCM1809_AudioInputDevice.o ./Core/Src/VMB/PCM1809_AudioInputDevice.su ./Core/Src/VMB/WiFiServerClient.cyclo ./Core/Src/VMB/WiFiServerClient.d ./Core/Src/VMB/WiFiServerClient.o ./Core/Src/VMB/WiFiServerClient.su ./Core/Src/VMB/tests.cyclo ./Core/Src/VMB/tests.d ./Core/Src/VMB/tests.o ./Core/Src/VMB/tests.su
 
 .PHONY: clean-Core-2f-Src-2f-VMB
 

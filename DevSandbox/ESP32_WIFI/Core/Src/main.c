@@ -110,6 +110,11 @@ typedef struct{
 } RX_Data;
 volatile RX_Data rx_data;
 
+#define UART_BUFFER_SIZE 100
+#ifndef MIN
+#define MIN(a, b)  (((a) < (b)) ? (a) : (b))
+#endif
+
 
 void print(const char *text)
 {
@@ -122,6 +127,57 @@ void println(const char* text)
 	print(text);
 	print("\n\r");
 }
+
+typedef struct
+{
+	char data[UART_BUFFER_SIZE];
+	uint16_t nextInsertPos;
+} UARTData;
+UARTData uart3Data;
+
+bool UART3_ReadLine(char *destBuffer, uint16_t maxLen) {
+    static char rxBuffer[UART_BUFFER_SIZE];
+    static uint16_t index = 0;
+    uint8_t ch;
+    HAL_Delay(100);
+    uint16_t len = MIN(maxLen, UART_BUFFER_SIZE);
+
+
+    if(HAL_UART_Receive(&huart3, &rxBuffer, len, 10) == HAL_OK)
+    {
+    	uint16_t msgLen = strlen(rxBuffer);
+    	len = MIN(len, msgLen);
+    	strncpy(destBuffer, rxBuffer, len);
+    	return true;
+    }
+
+    /*
+    // Try to receive one byte with a short timeout (e.g. 10ms)
+    while (HAL_UART_Receive(&huart3, &rxBuffer, UART_BUFFER_SIZE, 10) == HAL_OK) {
+        // Add character if not carriage return
+        if (ch != '\r') {
+            rxBuffer[index++] = ch;
+        }
+
+        // Check for newline or buffer overflow
+        if (ch == '\n' || index >= UART_BUFFER_SIZE - 1) {
+            rxBuffer[index] = '\0'; // Null-terminate string
+            strncpy(destBuffer, rxBuffer, maxLen);
+            index = 0; // Reset index for next message
+            return true;
+        }
+    }*/
+
+    return false;
+}
+/*
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+{
+	if(huart != &huart3)
+		return;
+
+
+}*/
 
 #define BUFFER_SIZE 10
 uint8_t spi_rx_buffer[BUFFER_SIZE];
@@ -138,7 +194,7 @@ void sendTextSPI(const char *text) {
 #define ESP_RESPONSE_SIZE 128    // Buffer size for response
 
 /* Function to send AT command over SPI and receive response */
-int sendToESP(const char *cmd)
+bool sendToESP(const char *cmd)
 {
     //char response[ESP_RESPONSE_SIZE] = {0}; // Buffer for ESP32 response
     uint8_t txBuffer[ESP_RESPONSE_SIZE] = {0};
@@ -154,79 +210,165 @@ int sendToESP(const char *cmd)
     // Send the AT command via SPI
     //HAL_SPI_Transmit(&hspi1, txBuffer, strlen((char *)txBuffer), HAL_MAX_DELAY);
     //HAL_UART_Transmit(&huart6, txBuffer, strlen((char *)txBuffer), HAL_MAX_DELAY);
+    print("ESP_TRANSMIT: ");
+    println(cmd);
     HAL_StatusTypeDef result = HAL_UART_Transmit_DMA(&huart6, txBuffer, strlen((char *)txBuffer));
     //HAL_UART_GetState(&huart6);
-
-    // Small delay to allow ESP32 to process
-    //HAL_Delay(10);
-
-    // Receive response from ESP32
-    while ((HAL_GetTick() - startTime) < 1000*60*5)
-    {
-
-			/*
-			uint8_t rxByte;
-			//HAL_SPI_Receive(&hspi1, &rxByte, 1, 10); // Read one byte at a time
-			//HAL_UART_Receive(&huart6, &rxByte, 1, HAL_MAX_DELAY);
-
-			if (rxByte != 0xFF) // Ignore empty responses
-			{
-				response[index++] = rxByte;
-				if (index >= ESP_RESPONSE_SIZE - 1) break; // Prevent buffer overflow
-			}*/
-    	if(rx_data.dataReceived)
-    	{
-    		rx_data.dataReceived = false;
+    return result == HAL_OK; // Timeout or no response
+}
+bool waitForESP(const char *waiting)
+{
+	uint32_t timeout = 5000;
+	uint32_t startTime = HAL_GetTick(); // Start timer
+	// Receive response from ESP32
+	while ((HAL_GetTick() - startTime) < timeout)
+	{
+	 	if(rx_data.dataReceived)
+	   	{
+	   		rx_data.dataReceived = false;
+	   		print("ESP_RESPONSE: ");
+	   		println(rx_data.buff);
 			// Check if response contains "OK" or "ERROR"
-			if (strstr(rx_data.buff, "OK"))
+			if (strstr(rx_data.buff, waiting))
 			{
 				// Pull CS high to end SPI transaction
 				//HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET);
-				return 1; // Success
+				return true; // Success
 			}
 			else if (strstr(rx_data.buff, "ERROR"))
 			{
 				// Pull CS high to end SPI transaction
 			   // HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET);
-				return 0; // Failure
+				return false; // Failure
 			}
-    	}
-    }
-
-    // Pull CS high to end SPI transaction
-    //HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET);
-    return 0; // Timeout or no response
+	   	}
+	}
+	return false;
+}
+bool waitForContainsESP(const char *contains)
+{
+	uint32_t timeout = 1000*60*5;
+	uint32_t startTime = HAL_GetTick(); // Start timer
+	// Receive response from ESP32
+	while ((HAL_GetTick() - startTime) < timeout)
+	{
+		if(rx_data.dataReceived)
+		{
+			rx_data.dataReceived = false;
+			print("ESP_RESPONSE: ");
+			println(rx_data.buff);
+			// Check if response contains "OK" or "ERROR"
+			if (strstr(rx_data.buff, contains))
+			{
+				// Pull CS high to end SPI transaction
+				//HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET);
+				return true; // Success
+			}
+			else if (strstr(rx_data.buff, "ERROR"))
+			{
+				// Pull CS high to end SPI transaction
+			   // HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET);
+				return false; // Failure
+			}
+		}
+	}
+	return false;
 }
 void setupESP32Hotspot(void)
 {
-    if (sendToESP("ATE0")) {
+    if (sendToESP("ATE0") && waitForESP("OK")) {
         println("ESP32 is responsive.");
     } else {
     	println("ESP32 is not responding!");
         return;
     }
     HAL_Delay(10);
-    if (sendToESP("AT+CWMODE=2")) {
+    if (sendToESP("AT+CWMODE=2") && waitForESP("OK")) {
     	println("WiFi mode set to AP.");
     } else {
     	println("Failed to set WiFi mode.");
     }
     HAL_Delay(10);
-    if (sendToESP("AT+CWSAP=\"MyHotspot\",\"MyPassword\",5,3")) {
+    if (sendToESP("AT+CWSAP=\"MyHotspot\",\"MyPassword\",5,3") && waitForESP("OK")) {
     	println("Hotspot created successfully.");
     } else {
     	println("Failed to create hotspot.");
     }
     HAL_Delay(10);
-    if (sendToESP("AT+CWDHCP=1,1")) {
+    if (sendToESP("AT+CWDHCP=1,1") && waitForESP("OK")) {
     	println("DHCP server enabled.");
     } else {
     	println("Failed to enable DHCP.");
     }
     HAL_Delay(10);
-    if (sendToESP("AT+CWLIF")) {
+    if (sendToESP("AT+CWLIF") && waitForESP("OK")) {
     	println("Checking connected clients...");
     }
+}
+void setupESP32ConnectToWifi()
+{
+	//sendToESP("AT+RESTORE");
+	//HAL_Delay(10);
+
+
+	//sendToESP("AT+RST");
+	//waitForESP("ready");
+	if (sendToESP("ATE0") && waitForESP("OK")) {
+	    println("ESP32 is responsive.");
+	} else {
+	  	println("ESP32 is not responding!");
+	    return;
+	}
+
+	HAL_Delay(100);
+	if(sendToESP("AT+CWJAP?") && waitForESP("Alex-PC"))
+	{
+		println("ESP is already connected to the WIFI");
+		return;
+	}
+	HAL_Delay(100);
+	if(sendToESP("AT+CWMODE=1") && waitForESP("OK"))
+	{
+		println("ESP set as client");
+	}
+	else
+	{
+		println("Failed to set ESP as client");
+		return;
+	}
+	//waitForESP("WIFI GOT IP");
+	HAL_Delay(1000);
+	if(sendToESP("AT+CWJAP=\"Alex-PC\",\"87924ikR\"") && waitForESP("OK"))
+	{
+		println("ESP connected to the WIFI");
+	}
+	else
+	{
+		HAL_Delay(1000);
+		if(sendToESP("AT+CWJAP?") && waitForESP("Alex-PC"))
+		{
+			println("ESP is already connected to the WIFI");
+		}
+		else
+		{
+			println("Failed to connect to the WIFI");
+			return;
+		}
+	}
+
+
+	HAL_Delay(100);
+	if(sendToESP("AT+CIFSR") && waitForESP("OK"))
+	{
+
+	}
+	else
+	{
+		println("Failed get IP address");
+		return;
+	}
+
+	println("setupESP32ConnectToWifi finished");
 }
 void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
 {
@@ -302,7 +444,26 @@ int main(void)
   rx_data.buff = NULL;
   rx_data.dataReceived = false;
   rx_data.size = 0;
-  setupESP32Hotspot();
+  //setupESP32Hotspot();
+  setupESP32ConnectToWifi();
+
+  sendToESP("AT+CIPSTART=\"TCP\",\"www.github.com\",80,,,5000");
+ //sendToESP("AT+CIPSTART=\"TCP\",\"192.168.137.1\",12345,,,5000\r\n");  // Connect to server
+  waitForESP("OK");  // Implement this to wait for ESP response
+
+  const char* payload = "Hello World!";
+  char sendCmd[32];
+  sprintf(sendCmd, "AT+CIPSEND=%d", strlen(payload));
+  sendToESP(sendCmd);
+  waitForESP(">");  // Wait for ESP to prompt for data
+
+  sendToESP(payload);  // Send the actual data
+  waitForESP("SEND OK");
+
+  sendToESP("AT+CIPCLOSE");
+  waitForESP("OK");
+
+  char receivedLine[100];
   while (1)
   {
 
@@ -313,7 +474,13 @@ int main(void)
 
       }*/
 	  //sendTextSPI("HALLO");
-      HAL_Delay(1000);
+      HAL_Delay(100);
+      if (UART3_ReadLine(receivedLine, sizeof(receivedLine))) {
+          // Do something with receivedLine
+    	  sendToESP(receivedLine);
+      }
+
+
     /* USER CODE END WHILE */
     MX_USB_HOST_Process();
 

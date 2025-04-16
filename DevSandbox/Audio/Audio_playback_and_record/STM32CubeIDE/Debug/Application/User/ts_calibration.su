@@ -1,7 +1,7 @@
-D:/Users/Alex/Dokumente/Schule/EmbSys2/Audio_playback_and_record/Src/ts_calibration.c:50:9:Touchscreen_Calibration	24	static
-D:/Users/Alex/Dokumente/Schule/EmbSys2/Audio_playback_and_record/Src/ts_calibration.c:118:13:TouchscreenCalibration_SetHint	8	static
-D:/Users/Alex/Dokumente/Schule/EmbSys2/Audio_playback_and_record/Src/ts_calibration.c:146:13:TouchScreen_Calibration_GetPhysValues	24	static
-D:/Users/Alex/Dokumente/Schule/EmbSys2/Audio_playback_and_record/Src/ts_calibration.c:180:13:TouchScreen_Calibration_WaitForPressedState	32	static
-D:/Users/Alex/Dokumente/Schule/EmbSys2/Audio_playback_and_record/Src/ts_calibration.c:256:10:TouchScreen_Get_Calibrated_X	16	static
-D:/Users/Alex/Dokumente/Schule/EmbSys2/Audio_playback_and_record/Src/ts_calibration.c:266:10:TouchScreen_Get_Calibrated_Y	16	static
-D:/Users/Alex/Dokumente/Schule/EmbSys2/Audio_playback_and_record/Src/ts_calibration.c:275:9:TouchScreen_IsCalibrationDone	4	static
+E:/Dokumente/Weiterbildung/Studium Elektrotechnik/SA/Voicemail-Box/DevSandbox/Audio/Audio_playback_and_record/Src/ts_calibration.c:50:9:Touchscreen_Calibration	24	static
+E:/Dokumente/Weiterbildung/Studium Elektrotechnik/SA/Voicemail-Box/DevSandbox/Audio/Audio_playback_and_record/Src/ts_calibration.c:118:13:TouchscreenCalibration_SetHint	8	static
+E:/Dokumente/Weiterbildung/Studium Elektrotechnik/SA/Voicemail-Box/DevSandbox/Audio/Audio_playback_and_record/Src/ts_calibration.c:146:13:TouchScreen_Calibration_GetPhysValues	24	static
+E:/Dokumente/Weiterbildung/Studium Elektrotechnik/SA/Voicemail-Box/DevSandbox/Audio/Audio_playback_and_record/Src/ts_calibration.c:180:13:TouchScreen_Calibration_WaitForPressedState	32	static
+E:/Dokumente/Weiterbildung/Studium Elektrotechnik/SA/Voicemail-Box/DevSandbox/Audio/Audio_playback_and_record/Src/ts_calibration.c:256:10:TouchScreen_Get_Calibrated_X	16	static
+E:/Dokumente/Weiterbildung/Studium Elektrotechnik/SA/Voicemail-Box/DevSandbox/Audio/Audio_playback_and_record/Src/ts_calibration.c:266:10:TouchScreen_Get_Calibrated_Y	16	static
+E:/Dokumente/Weiterbildung/Studium Elektrotechnik/SA/Voicemail-Box/DevSandbox/Audio/Audio_playback_and_record/Src/ts_calibration.c:275:9:TouchScreen_IsCalibrationDone	4	static

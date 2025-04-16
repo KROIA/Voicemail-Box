@@ -1,5 +1,5 @@
-D:/Users/Alex/Dokumente/Schule/EmbSys2/Audio_playback_and_record/Src/main.c:46:5:main	8	static
-D:/Users/Alex/Dokumente/Schule/EmbSys2/Audio_playback_and_record/Src/main.c:89:6:Toggle_Leds	8	static
-D:/Users/Alex/Dokumente/Schule/EmbSys2/Audio_playback_and_record/Src/main.c:109:13:AUDIO_InitApplication	16	static
-D:/Users/Alex/Dokumente/Schule/EmbSys2/Audio_playback_and_record/Src/main.c:188:13:USBH_UserProcess	16	static
-D:/Users/Alex/Dokumente/Schule/EmbSys2/Audio_playback_and_record/Src/main.c:244:13:SystemClock_Config	152	static
+E:/Dokumente/Weiterbildung/Studium Elektrotechnik/SA/Voicemail-Box/DevSandbox/Audio/Audio_playback_and_record/Src/main.c:46:5:main	8	static
+E:/Dokumente/Weiterbildung/Studium Elektrotechnik/SA/Voicemail-Box/DevSandbox/Audio/Audio_playback_and_record/Src/main.c:89:6:Toggle_Leds	8	static
+E:/Dokumente/Weiterbildung/Studium Elektrotechnik/SA/Voicemail-Box/DevSandbox/Audio/Audio_playback_and_record/Src/main.c:109:13:AUDIO_InitApplication	16	static
+E:/Dokumente/Weiterbildung/Studium Elektrotechnik/SA/Voicemail-Box/DevSandbox/Audio/Audio_playback_and_record/Src/main.c:188:13:USBH_UserProcess	16	static
+E:/Dokumente/Weiterbildung/Studium Elektrotechnik/SA/Voicemail-Box/DevSandbox/Audio/Audio_playback_and_record/Src/main.c:244:13:SystemClock_Config	152	static

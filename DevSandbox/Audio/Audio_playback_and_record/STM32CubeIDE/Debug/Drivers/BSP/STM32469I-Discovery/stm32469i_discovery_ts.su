@@ -1,6 +1,6 @@
-D:/Users/Alex/Dokumente/Schule/EmbSys2/Audio_playback_and_record/Drivers/BSP/STM32469I-Discovery/stm32469i_discovery_ts.c:145:9:BSP_TS_Init	24	static
-D:/Users/Alex/Dokumente/Schule/EmbSys2/Audio_playback_and_record/Drivers/BSP/STM32469I-Discovery/stm32469i_discovery_ts.c:207:9:BSP_TS_ITConfig	32	static
-D:/Users/Alex/Dokumente/Schule/EmbSys2/Audio_playback_and_record/Drivers/BSP/STM32469I-Discovery/stm32469i_discovery_ts.c:241:9:BSP_TS_GetState	72	static
-D:/Users/Alex/Dokumente/Schule/EmbSys2/Audio_playback_and_record/Drivers/BSP/STM32469I-Discovery/stm32469i_discovery_ts.c:346:9:BSP_TS_Get_GestureId	24	static
-D:/Users/Alex/Dokumente/Schule/EmbSys2/Audio_playback_and_record/Drivers/BSP/STM32469I-Discovery/stm32469i_discovery_ts.c:398:9:BSP_TS_ResetTouchData	24	static
-D:/Users/Alex/Dokumente/Schule/EmbSys2/Audio_playback_and_record/Drivers/BSP/STM32469I-Discovery/stm32469i_discovery_ts.c:427:13:BSP_TS_INT_MspInit	32	static
+E:/Dokumente/Weiterbildung/Studium Elektrotechnik/SA/Voicemail-Box/DevSandbox/Audio/Audio_playback_and_record/Drivers/BSP/STM32469I-Discovery/stm32469i_discovery_ts.c:145:9:BSP_TS_Init	24	static
+E:/Dokumente/Weiterbildung/Studium Elektrotechnik/SA/Voicemail-Box/DevSandbox/Audio/Audio_playback_and_record/Drivers/BSP/STM32469I-Discovery/stm32469i_discovery_ts.c:207:9:BSP_TS_ITConfig	32	static
+E:/Dokumente/Weiterbildung/Studium Elektrotechnik/SA/Voicemail-Box/DevSandbox/Audio/Audio_playback_and_record/Drivers/BSP/STM32469I-Discovery/stm32469i_discovery_ts.c:241:9:BSP_TS_GetState	72	static
+E:/Dokumente/Weiterbildung/Studium Elektrotechnik/SA/Voicemail-Box/DevSandbox/Audio/Audio_playback_and_record/Drivers/BSP/STM32469I-Discovery/stm32469i_discovery_ts.c:346:9:BSP_TS_Get_GestureId	24	static
+E:/Dokumente/Weiterbildung/Studium Elektrotechnik/SA/Voicemail-Box/DevSandbox/Audio/Audio_playback_and_record/Drivers/BSP/STM32469I-Discovery/stm32469i_discovery_ts.c:398:9:BSP_TS_ResetTouchData	24	static
+E:/Dokumente/Weiterbildung/Studium Elektrotechnik/SA/Voicemail-Box/DevSandbox/Audio/Audio_playback_and_record/Drivers/BSP/STM32469I-Discovery/stm32469i_discovery_ts.c:427:13:BSP_TS_INT_MspInit	32	static

@@ -1,0 +1,6 @@
+../Core/Src/VMB/PCM1809_AudioInputDevice.cpp:13:7:virtual void VMB::PCM1809_AudioInputDevice::startCaptureAudio()	1
+../Core/Src/VMB/PCM1809_AudioInputDevice.cpp:17:7:virtual void VMB::PCM1809_AudioInputDevice::stopCaptureAudio()	1
+E:/Dokumente/Weiterbildung/Studium Elektrotechnik/SA/Voicemail-Box/DevSandbox/VoiceMailBoxApplication/../../Software/LibVoiceMailBox/Inc/IAudioInputDevice.hpp:21:11:VMB::IAudioInputDevice::~IAudioInputDevice()	1
+E:/Dokumente/Weiterbildung/Studium Elektrotechnik/SA/Voicemail-Box/DevSandbox/VoiceMailBoxApplication/../../Software/LibVoiceMailBox/Inc/IAudioInputDevice.hpp:21:11:virtual VMB::IAudioInputDevice::~IAudioInputDevice()	1
+../Core/Inc/VMB/PCM1809_AudioInputDevice.hpp:15:8:VMB::PCM1809_AudioInputDevice::~PCM1809_AudioInputDevice()	1
+../Core/Inc/VMB/PCM1809_AudioInputDevice.hpp:15:8:virtual VMB::PCM1809_AudioInputDevice::~PCM1809_AudioInputDevice()	1

@@ -1,5 +1,5 @@
-D:/Users/Alex/Dokumente/Schule/EmbSys2/Audio_playback_and_record/Middlewares/ST/STM32_USB_Host_Library/Core/Src/usbh_pipes.c:84:20:USBH_OpenPipe	1
-D:/Users/Alex/Dokumente/Schule/EmbSys2/Audio_playback_and_record/Middlewares/ST/STM32_USB_Host_Library/Core/Src/usbh_pipes.c:101:20:USBH_ClosePipe	1
-D:/Users/Alex/Dokumente/Schule/EmbSys2/Audio_playback_and_record/Middlewares/ST/STM32_USB_Host_Library/Core/Src/usbh_pipes.c:116:9:USBH_AllocPipe	2
-D:/Users/Alex/Dokumente/Schule/EmbSys2/Audio_playback_and_record/Middlewares/ST/STM32_USB_Host_Library/Core/Src/usbh_pipes.c:138:20:USBH_FreePipe	2
-D:/Users/Alex/Dokumente/Schule/EmbSys2/Audio_playback_and_record/Middlewares/ST/STM32_USB_Host_Library/Core/Src/usbh_pipes.c:155:17:USBH_GetFreePipe	3
+E:/Dokumente/Weiterbildung/Studium Elektrotechnik/SA/Voicemail-Box/DevSandbox/Audio/Audio_playback_and_record/Middlewares/ST/STM32_USB_Host_Library/Core/Src/usbh_pipes.c:84:20:USBH_OpenPipe	1
+E:/Dokumente/Weiterbildung/Studium Elektrotechnik/SA/Voicemail-Box/DevSandbox/Audio/Audio_playback_and_record/Middlewares/ST/STM32_USB_Host_Library/Core/Src/usbh_pipes.c:101:20:USBH_ClosePipe	1
+E:/Dokumente/Weiterbildung/Studium Elektrotechnik/SA/Voicemail-Box/DevSandbox/Audio/Audio_playback_and_record/Middlewares/ST/STM32_USB_Host_Library/Core/Src/usbh_pipes.c:116:9:USBH_AllocPipe	2
+E:/Dokumente/Weiterbildung/Studium Elektrotechnik/SA/Voicemail-Box/DevSandbox/Audio/Audio_playback_and_record/Middlewares/ST/STM32_USB_Host_Library/Core/Src/usbh_pipes.c:138:20:USBH_FreePipe	2
+E:/Dokumente/Weiterbildung/Studium Elektrotechnik/SA/Voicemail-Box/DevSandbox/Audio/Audio_playback_and_record/Middlewares/ST/STM32_USB_Host_Library/Core/Src/usbh_pipes.c:155:17:USBH_GetFreePipe	3

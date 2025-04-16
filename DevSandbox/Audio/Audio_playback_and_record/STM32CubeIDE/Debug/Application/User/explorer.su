@@ -1,4 +1,4 @@
-D:/Users/Alex/Dokumente/Schule/EmbSys2/Audio_playback_and_record/Src/explorer.c:38:9:AUDIO_StorageInit	8	static
-D:/Users/Alex/Dokumente/Schule/EmbSys2/Audio_playback_and_record/Src/explorer.c:59:9:AUDIO_StorageParse	88	static
-D:/Users/Alex/Dokumente/Schule/EmbSys2/Audio_playback_and_record/Src/explorer.c:111:9:AUDIO_ShowWavFiles	16	static
-D:/Users/Alex/Dokumente/Schule/EmbSys2/Audio_playback_and_record/Src/explorer.c:161:10:AUDIO_GetWavObjectNumber	4	static
+E:/Dokumente/Weiterbildung/Studium Elektrotechnik/SA/Voicemail-Box/DevSandbox/Audio/Audio_playback_and_record/Src/explorer.c:38:9:AUDIO_StorageInit	8	static
+E:/Dokumente/Weiterbildung/Studium Elektrotechnik/SA/Voicemail-Box/DevSandbox/Audio/Audio_playback_and_record/Src/explorer.c:59:9:AUDIO_StorageParse	88	static
+E:/Dokumente/Weiterbildung/Studium Elektrotechnik/SA/Voicemail-Box/DevSandbox/Audio/Audio_playback_and_record/Src/explorer.c:111:9:AUDIO_ShowWavFiles	16	static
+E:/Dokumente/Weiterbildung/Studium Elektrotechnik/SA/Voicemail-Box/DevSandbox/Audio/Audio_playback_and_record/Src/explorer.c:161:10:AUDIO_GetWavObjectNumber	4	static

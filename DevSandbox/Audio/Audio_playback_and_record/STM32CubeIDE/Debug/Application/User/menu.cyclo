@@ -1,3 +1,3 @@
-D:/Users/Alex/Dokumente/Schule/EmbSys2/Audio_playback_and_record/Src/menu.c:54:6:AUDIO_MenuProcess	30
-D:/Users/Alex/Dokumente/Schule/EmbSys2/Audio_playback_and_record/Src/menu.c:243:13:AUDIO_ChangeSelectMode	3
-D:/Users/Alex/Dokumente/Schule/EmbSys2/Audio_playback_and_record/Src/menu.c:261:13:LCD_ClearTextZone	2
+E:/Dokumente/Weiterbildung/Studium Elektrotechnik/SA/Voicemail-Box/DevSandbox/Audio/Audio_playback_and_record/Src/menu.c:54:6:AUDIO_MenuProcess	30
+E:/Dokumente/Weiterbildung/Studium Elektrotechnik/SA/Voicemail-Box/DevSandbox/Audio/Audio_playback_and_record/Src/menu.c:243:13:AUDIO_ChangeSelectMode	3
+E:/Dokumente/Weiterbildung/Studium Elektrotechnik/SA/Voicemail-Box/DevSandbox/Audio/Audio_playback_and_record/Src/menu.c:261:13:LCD_ClearTextZone	2

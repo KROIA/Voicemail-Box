@@ -1,2 +1,2 @@
-D:/Users/Alex/Dokumente/Schule/EmbSys2/Audio_playback_and_record/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_ltdc_ex.c:70:19:HAL_LTDCEx_StructInitFromVideoConfig	16	static
-D:/Users/Alex/Dokumente/Schule/EmbSys2/Audio_playback_and_record/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_ltdc_ex.c:111:19:HAL_LTDCEx_StructInitFromAdaptedCommandConfig	16	static
+E:/Dokumente/Weiterbildung/Studium Elektrotechnik/SA/Voicemail-Box/DevSandbox/Audio/Audio_playback_and_record/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_ltdc_ex.c:70:19:HAL_LTDCEx_StructInitFromVideoConfig	16	static
+E:/Dokumente/Weiterbildung/Studium Elektrotechnik/SA/Voicemail-Box/DevSandbox/Audio/Audio_playback_and_record/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_ltdc_ex.c:111:19:HAL_LTDCEx_StructInitFromAdaptedCommandConfig	16	static

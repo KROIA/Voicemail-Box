@@ -67,8 +67,8 @@ all: main-build
 main-build: Audio_playback_and_record.elf secondary-outputs
 
 # Tool invocations
-Audio_playback_and_record.elf Audio_playback_and_record.map: $(OBJS) $(USER_OBJS) D:\Users\Alex\Dokumente\Schule\EmbSys2\Audio_playback_and_record\STM32CubeIDE\STM32F469NIHX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "Audio_playback_and_record.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\Users\Alex\Dokumente\Schule\EmbSys2\Audio_playback_and_record\STM32CubeIDE\STM32F469NIHX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Audio_playback_and_record.map" -Wl,--gc-sections -static -L../../Middlewares/ST/STM32_Audio/Addons/PDM/Lib --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Audio_playback_and_record.elf Audio_playback_and_record.map: $(OBJS) $(USER_OBJS) E:\Dokumente\Weiterbildung\Studium\ Elektrotechnik\SA\Voicemail-Box\DevSandbox\Audio\Audio_playback_and_record\STM32CubeIDE\STM32F469NIHX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "Audio_playback_and_record.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"E:\Dokumente\Weiterbildung\Studium Elektrotechnik\SA\Voicemail-Box\DevSandbox\Audio\Audio_playback_and_record\STM32CubeIDE\STM32F469NIHX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Audio_playback_and_record.map" -Wl,--gc-sections -static -L../../Middlewares/ST/STM32_Audio/Addons/PDM/Lib --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
