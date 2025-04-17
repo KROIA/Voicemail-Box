@@ -2642,7 +2642,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "PCM_4ms_Resistor:R_0603"
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
 			(at 87.122 100.33 90)
 			(effects
 				(font
@@ -3042,7 +3042,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "PCM_4ms_Resistor:R_0603"
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
 			(at 97.282 100.33 90)
 			(effects
 				(font
