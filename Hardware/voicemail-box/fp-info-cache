@@ -1,4 +1,4 @@
-714205420236549
+719440030071960
 Arduino_MountingHole
 MountingHole_1.2mm
 Mounting Hole 2.1mm, no annular
@@ -104152,6 +104152,27 @@ Varistor VF
 0
 2
 2
+additional parts
+LXRW0_MUR
+
+LXRW0YV600-054 
+0
+4
+4
+additional parts
+LXRW0_MUR-L
+
+LXRW0YV600-054 
+0
+4
+4
+additional parts
+LXRW0_MUR-M
+
+LXRW0YV600-054 
+0
+4
+4
 myParts
 Connector_Arduino_Double
 
