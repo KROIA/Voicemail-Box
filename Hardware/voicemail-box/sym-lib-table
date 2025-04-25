@@ -1,4 +1,5 @@
 (sym_lib_table
   (version 7)
   (lib (name "additial parts")(type "KiCad")(uri "${KIPRJMOD}/additional Parts/2025-04-17_08-05-42.kicad_sym")(options "")(descr ""))
+  (lib (name "usb")(type "KiCad")(uri "${KIPRJMOD}/additional Parts/2025-04-25_10-56-41.kicad_sym")(options "")(descr ""))
 )

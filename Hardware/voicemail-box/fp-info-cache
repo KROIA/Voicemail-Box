@@ -1,4 +1,4 @@
-719440030071960
+722930852144329
 Arduino_MountingHole
 MountingHole_1.2mm
 Mounting Hole 2.1mm, no annular
@@ -104152,6 +104152,20 @@ Varistor VF
 0
 2
 2
+additional parts
+Antenna_Reference
+
+
+0
+0
+0
+additional parts
+Arduino_UNO_R3_no_legend
+Arduino UNO R3, http://www.mouser.com/pdfdocs/Gravitech_Arduino_Nano3_0.pdf
+Arduino UNO R3
+0
+32
+32
 additional parts
 LXRW0_MUR
 

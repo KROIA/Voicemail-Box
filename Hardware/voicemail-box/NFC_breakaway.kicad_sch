@@ -1032,6 +1032,132 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Device:NetTie_2"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom no)
+			(on_board yes)
+			(property "Reference" "NT"
+				(at 0 1.27 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "NetTie_2"
+				(at 0 -1.27 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Net tie, 2 pins"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "net tie short"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "Net*Tie*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "NetTie_2_0_1"
+				(polyline
+					(pts
+						(xy -1.27 0) (xy 1.27 0)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "NetTie_2_1_1"
+				(pin passive line
+					(at -2.54 0 0)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 0 180)
+					(length 2.54)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Device:R"
 			(pin_numbers
 				(hide yes)
@@ -3118,7 +3244,7 @@
 	)
 	(text "Antenna"
 		(exclude_from_sim no)
-		(at 238.252 32.258 0)
+		(at 258.318 32.004 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3471,6 +3597,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "d625b2d2-a94f-4718-9f60-2d2ec7cad829")
+	)
+	(junction
+		(at 252.73 33.02)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "d6476585-c8e1-46a1-a396-86042ba1ee2f")
 	)
 	(junction
 		(at 43.18 87.63)
@@ -4548,7 +4680,7 @@
 	)
 	(wire
 		(pts
-			(xy 226.06 33.02) (xy 231.14 33.02)
+			(xy 226.06 33.02) (xy 242.57 33.02)
 		)
 		(stroke
 			(width 0)
@@ -4818,7 +4950,7 @@
 	)
 	(wire
 		(pts
-			(xy 223.52 30.48) (xy 231.14 30.48)
+			(xy 223.52 30.48) (xy 242.57 30.48)
 		)
 		(stroke
 			(width 0)
@@ -4865,6 +4997,16 @@
 			(type default)
 		)
 		(uuid "67967915-9dac-452a-ae13-4dede465d2ad")
+	)
+	(wire
+		(pts
+			(xy 252.73 30.48) (xy 252.73 33.02)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6999b16f-fe73-4712-8e34-269f5bd2c99c")
 	)
 	(wire
 		(pts
@@ -5618,6 +5760,16 @@
 	)
 	(wire
 		(pts
+			(xy 247.65 30.48) (xy 252.73 30.48)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b4b1869c-662e-44f7-a78d-7eb3931a182c")
+	)
+	(wire
+		(pts
 			(xy 76.2 77.47) (xy 78.74 77.47)
 		)
 		(stroke
@@ -6028,6 +6180,16 @@
 	)
 	(wire
 		(pts
+			(xy 247.65 33.02) (xy 252.73 33.02)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f211a520-d417-45e7-afcb-1cc2131e7db9")
+	)
+	(wire
+		(pts
 			(xy 124.46 55.88) (xy 127 55.88)
 		)
 		(stroke
@@ -6178,6 +6340,16 @@
 	)
 	(wire
 		(pts
+			(xy 252.73 33.02) (xy 252.73 38.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fe4f6fbd-3864-4619-bcfb-050d64197482")
+	)
+	(wire
+		(pts
 			(xy 238.76 154.94) (xy 228.6 154.94)
 		)
 		(stroke
@@ -6265,6 +6437,26 @@
 			(justify right bottom)
 		)
 		(uuid "485be945-5a4e-403f-8873-15138931186a")
+	)
+	(label "ANT1"
+		(at 233.68 30.48 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "776657d7-8d1d-4b64-8691-a68582415897")
+	)
+	(label "ANT2"
+		(at 233.68 33.02 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "7b1717ad-09e6-40d8-be2c-8a5f9653ab30")
 	)
 	(label "RFIO2"
 		(at 109.22 72.39 180)
@@ -9188,7 +9380,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Module:Arduino_UNO_R3"
+		(property "Footprint" "additional parts:Arduino_UNO_R3_no_legend"
 			(at 41.91 152.4 0)
 			(effects
 				(font
@@ -10249,6 +10441,73 @@
 		)
 	)
 	(symbol
+		(lib_name "GND_1")
+		(lib_id "power:GND")
+		(at 252.73 38.1 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "abd278a5-12ec-4300-a268-d17b7c27f40d")
+		(property "Reference" "#PWR0510"
+			(at 252.73 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 254.508 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 252.73 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 252.73 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 252.73 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "57b9027c-d97f-4952-9628-692a5dfa73a7")
+		)
+		(instances
+			(project "voicemail-box"
+				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/ff4a15fb-6ea1-4287-a2d2-f56056291429"
+					(reference "#PWR0510")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "additial parts:LXRW0YV600-054")
 		(at 162.56 55.88 0)
 		(mirror y)
@@ -11162,6 +11421,142 @@
 			(project "voicemail-box"
 				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/ff4a15fb-6ea1-4287-a2d2-f56056291429"
 					(reference "#PWR0501")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:NetTie_2")
+		(at 245.11 30.48 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "edc73c86-fc14-4e18-a8f7-737fe506fd72")
+		(property "Reference" "NT501"
+			(at 245.11 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "NetTie_2"
+			(at 245.11 27.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "NetTie:NetTie-2_SMD_Pad0.5mm"
+			(at 245.11 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 245.11 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Net tie, 2 pins"
+			(at 245.11 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "8fbe2468-5bb7-4924-8cf8-7ab920d2d387")
+		)
+		(pin "2"
+			(uuid "62d941b3-7a65-4552-92fb-684f124cd98d")
+		)
+		(instances
+			(project ""
+				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/ff4a15fb-6ea1-4287-a2d2-f56056291429"
+					(reference "NT501")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:NetTie_2")
+		(at 245.11 33.02 0)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(uuid "ee8c06f1-d24a-4183-90b0-2410bcfc83ef")
+		(property "Reference" "NT502"
+			(at 245.11 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "NetTie_2"
+			(at 245.11 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "NetTie:NetTie-2_SMD_Pad0.5mm"
+			(at 245.11 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 245.11 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Net tie, 2 pins"
+			(at 245.11 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "f6ebcb35-fdd5-4302-b8d3-da184e83cb7a")
+		)
+		(pin "2"
+			(uuid "db9ac841-2484-4eaa-a251-ea3f9721e7f4")
+		)
+		(instances
+			(project "voicemail-box"
+				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/ff4a15fb-6ea1-4287-a2d2-f56056291429"
+					(reference "NT502")
 					(unit 1)
 				)
 			)
