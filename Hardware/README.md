@@ -102,7 +102,7 @@ block-beta
         a9["open"]
     end
 
-classDef highlighter fill:#8bc8e8,stroke:#6c757d,text:#000000,stroke-width:1.5px;
+classDef highlighter fill:#8bc8e8,stroke:#6c757d,color:#000000,stroke-width:1.5px;
 class a0 highlighter
 class a1 highlighter
 class a2 highlighter
@@ -127,7 +127,7 @@ block-beta
         a9["Set"]
     end
 
-classDef highlighter fill:#8bc8e8,stroke:#6c757d,text:#000000,stroke-width:1.5px;
+classDef highlighter fill:#8bc8e8,stroke:#6c757d,color:#000000,stroke-width:1.5px;
 class a5 highlighter
 class a6 highlighter
 class a7 highlighter
@@ -172,7 +172,7 @@ block-beta
         a7["open"]
     end
 
-classDef highlighter fill:#8bc8e8,stroke:#6c757d,text:#000000,stroke-width:1.5px;
+classDef highlighter fill:#8bc8e8,stroke:#6c757d,color:#000000,stroke-width:1.5px;
 class a0 highlighter
 class a1 highlighter
 class a2 highlighter
@@ -195,7 +195,7 @@ block-beta
         a7["set"]
     end
 
-classDef highlighter fill:#8bc8e8,stroke:#6c757d,text:#000000,stroke-width:1.5px;
+classDef highlighter fill:#8bc8e8,stroke:#6c757d,color:#000000,stroke-width:1.5px;
 class a5 highlighter
 class a6 highlighter
 class a7 highlighter
