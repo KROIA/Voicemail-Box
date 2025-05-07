@@ -1,10 +1,6 @@
 # Hardware
 This folder contains all HW-Files and descriptions
 
-[Configure Board for H755](H755/H755.md)
-[Configure Board for F469](F469/F469.md)
-
----
 ## Info
 The name for the Microcontroller/Evaluation Boards will be abreviated in the instaructions as the following:
 - Voicemail-Box Board: 	VMBB
@@ -12,7 +8,12 @@ The name for the Microcontroller/Evaluation Boards will be abreviated in the ins
 - Nucleo-H755:			H755
 - X-Nucleo NFC8:		NFC8
 - P-Mod ESP32:			PMOD
-...
+- ...
+
+---
+
+Place descision tree here...??
+
 
 ---
 ## HW Setup
@@ -27,7 +28,7 @@ to use one or the other, select the correct BOM to solder and only solder the me
 - tbd: make the BOMs and a assembly plan 
 
 ---
-## PSU Setup
+### PSU Setup
 There is two ways to Supply the Eval Board:
 - Supply using the Connector for ST-Link on the Eval-Boards
 	- Set the Supply Jumper on H755 or F469 to STLINK
@@ -43,233 +44,26 @@ There is two ways to Supply the Eval Board:
 
 - tbd: add pictures
 
-# HW Parts
-This section describes all HW Parts and how to connect, in case you start from a completly new project
-or you have lost the configuration for no further specified reasons.
+### Soldering
+- [Go to paritial BOM](BOM_partial.csv)
+- [Go to full BOM](BOM_full.csv)
 
----
-## Audio Interface
+### Select Microcontroller Board in use
+- [Configure Board for H755](H755/H755.md)
+- [Configure Board for F469](F469/F469.md)
 
-### Jumpers and DIP Switches
+### Configure periperal Conections (for those which offer this feature)
+- SPI
+	- [Configure WLAN using SPI](Config/SPI_WLAN.md)
+	- [Configure WLAN using UART](Config/UART_WLAN.md)
+- NFC
+	- [Configure NFC using SPI](Config/SPI_NFC.md)
+	- [Configure NFC using I2C](Config/I2C_NFC.md)
 
-
-Jumper J601 (use to connect On Board Mic to Codec)
-```mermaid
-block-beta
-    block:group1:2
-        columns 1
-        b["Microphone On-Board as left Channel"]
-        d["Microphone On-Board as right Channel"]
-    end
-
-classDef highlighter fill:#8bc8e8,stroke:#6c757d,color:#000000,stroke-width:1.5px;
-class b highlighter
-class d highlighter
-```
-
----
-
-Jumper J604
-
-```mermaid
-block-beta
-        columns 3
-        a[" Jumper for dynamic feedback "]:2
-        b["-"]
-        space:3
-        c["-"]
-        d[" Jumper for static feedback "]:2    
-classDef highlighter fill:#8bc8e8,stroke:#6c757d,color:#000000,stroke-width:1.5px;
-class a highlighter
-class d highlighter
-```
-- Top Position = dynamic feedback
-- Bottom Position = static feedback
-- none = use no feedback
-
----
-
-Jumper J104 select H755
-```mermaid
-block-beta
-    block
-        columns 10
-        a0["Set"]
-        a1["Set"]
-        a2["Set"]
-        a3["Set"]
-        a4["Set"]
-        a5["open"]
-        a6["open"]
-        a7["open"]
-        a8["open"]
-        a9["open"]
-    end
-
-classDef highlighter fill:#8bc8e8,stroke:#6c757d,color:#000000,stroke-width:1.5px;
-class a0 highlighter
-class a1 highlighter
-class a2 highlighter
-class a3 highlighter
-class a4 highlighter
-```
-
-Jumper J104 select F469
-```mermaid
-block-beta
-    block
-        columns 10
-        a0["open"]
-        a1["open"]
-        a2["open"]
-        a3["open"]
-        a4["open"]
-        a5["Set"]
-        a6["Set"]
-        a7["Set"]
-        a8["Set"]
-        a9["Set"]
-    end
-
-classDef highlighter fill:#8bc8e8,stroke:#6c757d,color:#000000,stroke-width:1.5px;
-class a5 highlighter
-class a6 highlighter
-class a7 highlighter
-class a8 highlighter
-class a9 highlighter
-```
-
-
-### Pinout:
-- peripheries needed:
-	- 1x I2S full duplex
-	- 1x I2C
-
-- H755
-	- 
-	- 
-	- 
-
-- F469:
-	- 
-	- 
-	- 
-
----
-## WLAN / BLE
-
-### Jumpers
-
-Lef -> Right
-Jumper J103 set WLAN/BLE using SPI
-```mermaid
-block-beta
-    block
-        columns 8
-        a0["Set"]
-        a1["Set"]
-        a2["Set"]
-        a3["Set"]
-        a4["n.c."]
-        a5["open"]
-        a6["open"]
-        a7["open"]
-    end
-
-classDef highlighter fill:#8bc8e8,stroke:#6c757d,color:#000000,stroke-width:1.5px;
-class a0 highlighter
-class a1 highlighter
-class a2 highlighter
-class a3 highlighter
-```
-
-Jumper J103 set WLAN/BLE using UART
-
-```mermaid
-block-beta
-    block
-        columns 8
-        a0["open"]
-        a1["open"]
-        a2["open"]
-        a3["open"]
-        a4["n.c."]
-        a5["set"]
-        a6["set"]
-        a7["set"]
-    end
-
-classDef highlighter fill:#8bc8e8,stroke:#6c757d,color:#000000,stroke-width:1.5px;
-class a5 highlighter
-class a6 highlighter
-class a7 highlighter
-```
-
-### Pinout:
-- peripheries needed (1 or the other, but both can be configured):
-	- 1x UART
-	- 1x SPI
-
-- H755
-	- 
-	- 
-	- 
-
-- F469:
-	- 
-	- 
-	- 
-
----
-## NFC
-
----
-## Micro SD
-
-
----
-## Potentiometer
-
-### Jumpers and connections
-Header J802/J803
-```mermaid
-block-beta
-    block:group1
-        columns 3
-        a[" Jumper for On Board \n Potentiometer "]:2
-        c["Ext. Potentiometer"]
-        d["VCC 3.3V"]
-        e["Ext. Potentiometer"]
-        f["GND"]
-    end
-
-classDef highlighter fill:#8bc8e8,stroke:#6c757d,color:#000000,stroke-width:1.5px;
-class a highlighter
-```
-
-```mermaid
-block-beta
-    block:group1
-        columns 3
-        a[" On Board Potentiometer "]
-        c[" Jumper for Ext. \n Potentiometer "]:2
-        d["VCC 3.3V"]
-        e["Ext. Potentiometer"]
-        f["GND"]
-    end
-
-classDef highlighter fill:#8bc8e8,stroke:#6c757d,color:#000000,stroke-width:1.5px;
-class c highlighter
-```
-
-### Pinout:
-- peripheries needed:
-	- 2x Analog In
-
-- H755
-	- PB1 = Pot 0
-	- PC3 = Pot 1
-
-- F469:
-	- PC4 = Pot 0
-	- PC3 = Pot 1
+### Configure HW Features
+- [Configure PSU](Config/PSU.md)
+- [Configure Poti](Config/Poti.md)
+- [Configure Audio](Config/Audio.md)
+- [Configure LEDs](Config/Leds.md)
+- [Configure Buttons](Config/Buttons.md)
+- [Configure micro SD](Config/uSD.md)

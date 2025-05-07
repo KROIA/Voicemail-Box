@@ -1,20 +1,20 @@
-# H755 Jumper Positions
+# Configure WLAN/BLE to communicate by SPI
 
-Jumper J104 I2S
+### Jumpers
+
+Jumper J103 set WLAN/BLE using SPI
 ```mermaid
 block-beta
     block
-        columns 10
+        columns 8
         a0["Set"]
         a1["Set"]
         a2["Set"]
         a3["Set"]
-        a4["Set"]
+        a4["n.c."]
         a5["open"]
         a6["open"]
         a7["open"]
-        a8["open"]
-        a9["open"]
     end
 
 classDef highlighter fill:#8bc8e8,stroke:#6c757d,color:#000000,stroke-width:1.5px;
@@ -22,5 +22,18 @@ class a0 highlighter
 class a1 highlighter
 class a2 highlighter
 class a3 highlighter
-class a4 highlighter
 ```
+
+### Pinout:
+- peripheries needed:
+    - 1x SPI
+
+- H755
+    - 
+    - 
+    - 
+
+- F469:
+    - 
+    - 
+    - 

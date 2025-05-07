@@ -1,0 +1,1 @@
+# Configure NFC to communicate by I2C
