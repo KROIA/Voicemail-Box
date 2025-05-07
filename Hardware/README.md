@@ -47,10 +47,9 @@ or you have lost the configuration for no further specified reasons.
 
 ### Jumpers and DIP Switches
 
+Jumper J601 (use to connect On Board Mic to Codec)
 ```mermaid
 block-beta
-    columns 2
-    doc["Jumper J601 (use to connect On Board Mic to Codec)"]:2
     block:group1:2
         columns 2
         a["On Board Microphone"]
@@ -60,10 +59,10 @@ block-beta
     end
 ```
 
+
+Header J802/J803
 ```mermaid
 block-beta
-    columns 1
-    doc["Header J802/J803"]
     block:group1
         columns 3
         a[" Jumper for On Board \n Potentiometer "]:2
