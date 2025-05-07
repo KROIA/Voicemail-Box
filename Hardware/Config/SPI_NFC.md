@@ -6,7 +6,7 @@ Jumper J102 [I2C NFC]
 ```mermaid
 block-beta
     block
-        columns 3
+        columns 1
         a0["open"]
         a1["open"]
         a2["open"]
