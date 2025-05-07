@@ -62,9 +62,9 @@ block-beta
 
 ```mermaid
 block-beta
-    columns 2
-    doc["Header J802/J803"]:2
-    block:group1:2
+    columns 1
+    doc["Header J802/J803"]
+    block:group1
         columns 3
         a[" Jumper for On Board \n Potentiometer "]:2
         c["Ext. Potentiometer"]
