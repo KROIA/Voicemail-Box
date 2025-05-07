@@ -63,23 +63,19 @@ class d highlighter
 ```
 
 Jumper J604
-- Top Position
+- Top 		Position
+- Bottom 	Position
 ```mermaid
 block-beta
         columns 3
         a[" Jumper for dynamic feedback "]:2
-        c["-"]  
+        b["-"]
+        space:3
+        c["-"]
+        d[" Jumper for static feedback "]:2    
 classDef highlighter fill:#8bc8e8,stroke:#6c757d,color:#000000,stroke-width:1.5px;
 class a highlighter
-```
-- Bot Position
-```mermaid
-block-beta
-        columns 3
-        a["-"]
-        c[" Jumper for static feedback "]:2     
-classDef highlighter fill:#8bc8e8,stroke:#6c757d,color:#000000,stroke-width:1.5px;
-class c highlighter
+class d highlighter
 ```
 - none = use no feedback
 
