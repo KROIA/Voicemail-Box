@@ -11,6 +11,8 @@
 #include "main.h"
 #include <stdint.h>
 #include <string>
+#include <cstdarg>   // <-- required for va_list and related macros
+#include <cstdio>    // <-- required for vsnprintf
 #include <cstring>
 
 
@@ -20,26 +22,26 @@ namespace VoiceMailBox
 	/*
 		Fill in the GPIO_TypeDef* and pin values, generated from the CUBEMX for the LEDs
 	*/
-	GPIO Components::led[] = {
-				{ LED0_GPIO_Port, LED0_Pin },
-				{ LED1_GPIO_Port, LED1_Pin }
+	DIGITAL_PIN Platform::led[] = {
+		{ LED0_GPIO_Port, LED0_Pin },
+		{ LED1_GPIO_Port, LED1_Pin }
 	};
 
 	/*
 		Fill in the GPIO_TypeDef* and pin values, generated from the CUBEMX for the buttons
 	*/
-	GPIO Components::button[] = {
-				{ BTN0_GPIO_Port, BTN0_Pin },
-				{ BTN1_GPIO_Port, BTN1_Pin },
-				{ BTN2_GPIO_Port, BTN2_Pin },
-				{ BTN3_GPIO_Port, BTN3_Pin }
+	DIGITAL_PIN Platform::button[] = {
+		{ BTN0_GPIO_Port, BTN0_Pin },
+		{ BTN1_GPIO_Port, BTN1_Pin },
+		{ BTN2_GPIO_Port, BTN2_Pin },
+		{ BTN3_GPIO_Port, BTN3_Pin }
 	};
 
 
 	/*
 		Fill in the ADC_TypeDef* and channel values, generated from the CUBEMX for the ADC Potis
 	*/
-	ANALOG_PIN Components::adcPotis[] = {
+	ANALOG_PIN Platform::adcPotis[] = {
 		{ (void*)getADC_POT0() }, // maybe problematic because of static initialization order
 		{ (void*)getADC_POT1() }
 	};
@@ -47,19 +49,22 @@ namespace VoiceMailBox
 	/*
 		Fill in the UART_HandleTypeDef* value, generated from the CUBEMX for the UART
 	*/
-	UART Components::dbgUart = { getUART_DEBUG() }; // maybe problematic because of static initialisation order
+	UART Platform::dbgUart = { getUART_DEBUG() }; // maybe problematic because of static initialisation order
 
 
 
-	void GPIO::set(bool on)
+
+
+
+	void DIGITAL_PIN::set(bool on)
 	{
 		HAL_GPIO_WritePin(static_cast<GPIO_TypeDef*>(gpio), pin, (GPIO_PinState)on);
 	}
-	void GPIO::toggle()
+	void DIGITAL_PIN::toggle()
 	{
 		HAL_GPIO_TogglePin(static_cast<GPIO_TypeDef*>(gpio), pin);
 	}
-	bool GPIO::get()
+	bool DIGITAL_PIN::get()
 	{
 		return HAL_GPIO_ReadPin(static_cast<GPIO_TypeDef*>(gpio), pin) == GPIO_PIN_SET;
 	}
@@ -82,30 +87,28 @@ namespace VoiceMailBox
 
 	void UART::send(const char* str)
 	{
-		HAL_UART_Transmit(static_cast<UART_HandleTypeDef*>(uart), (uint8_t*)str, strlen(str), HAL_MAX_DELAY);
+		send((uint8_t*)str, strlen(str));
 	}
 	void UART::send(uint8_t* data, uint16_t size)
 	{
 		HAL_UART_Transmit(static_cast<UART_HandleTypeDef*>(uart), data, size, HAL_MAX_DELAY);
 	}
-	void UART::send(uint32_t value)
-	{
-		char buffer[32];
-		snprintf(buffer, sizeof(buffer), "%lu", value);
-		HAL_UART_Transmit(static_cast<UART_HandleTypeDef*>(uart), (uint8_t*)buffer, strlen(buffer), HAL_MAX_DELAY);
-	}
-	void UART::send(int32_t value)
-	{
-		char buffer[32];
-		snprintf(buffer, sizeof(buffer), "%d", value);
-		HAL_UART_Transmit(static_cast<UART_HandleTypeDef*>(uart), (uint8_t*)buffer, strlen(buffer), HAL_MAX_DELAY);
-	}
-	/*void UART::send(float value)
-	{
-		char buffer[32];
-		snprintf(buffer, sizeof(buffer), "%.2f", value);
-		HAL_UART_Transmit(static_cast<UART_HandleTypeDef*>(uart), (uint8_t*)buffer, strlen(buffer), HAL_MAX_DELAY);
-	}*/
 
+
+	namespace Utility
+	{
+		size_t print_buffer_size = 256;
+
+		void delay(uint32_t ms)
+		{
+			HAL_Delay(ms);
+		}
+		void print(const char* str, va_list args)
+		{
+			char buffer[print_buffer_size];
+			vsnprintf(buffer, sizeof(buffer), str, args);
+			Platform::dbgUart.send((uint8_t*)buffer, strlen(buffer));
+		}
+	}
 
 }

@@ -11,11 +11,11 @@
 #define INC_PLATFORM_HPP_
 
 #include <stdint.h>
-
+#include <cstdarg>
 
 namespace VoiceMailBox
 {
-	struct GPIO
+	struct DIGITAL_PIN
 	{
 		void* gpio;		// GPIO_TypeDef*
 		uint16_t pin;	// Pin number
@@ -38,9 +38,6 @@ namespace VoiceMailBox
 
 		void send(const char* str);
 		void send(uint8_t* data, uint16_t size);
-		void send(uint32_t value);
-		void send(int32_t value);
-		//void send(float value);
 	};
 
 /*
@@ -48,14 +45,14 @@ namespace VoiceMailBox
 	C O M P O N E N T S
 -------------------------------------------------------------------------
 */
-	struct Components
+	struct Platform
 	{
 
 		// LEDs
-		static GPIO led[];
+		static DIGITAL_PIN led[];
 
 		// Buttons
-		static GPIO button[];
+		static DIGITAL_PIN button[];
 
 		// ADC Potis
 		static ANALOG_PIN adcPotis[];
@@ -63,6 +60,22 @@ namespace VoiceMailBox
 		// UART
 		static UART dbgUart;
 	};
+
+
+/*
+-------------------------------------------------------------------------
+	U T I L I T Y
+-------------------------------------------------------------------------
+*/
+	namespace Utility
+	{
+		static constexpr size_t print_buffer_size;
+
+		void delay(uint32_t ms);
+		void print(const char* str, va_list args);
+
+	}
+
 }
 
 

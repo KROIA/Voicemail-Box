@@ -36,6 +36,7 @@ namespace VoiceMailBox
 
 
 	void print(const char* str, ...);
+	void delay(uint32_t ms);
 
 }
 

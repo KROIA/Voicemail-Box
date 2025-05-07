@@ -25,5 +25,5 @@ void loop()
 		  //HAL_GPIO_WritePin(LED0_GPIO_Port, LED0_Pin, state);
 
 
-	HAL_Delay(10);
+	delay(10);
 }
