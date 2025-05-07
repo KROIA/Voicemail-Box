@@ -47,20 +47,39 @@ or you have lost the configuration for no further specified reasons.
 
 ### Jumpers and DIP Switches
 
-<div align="left">
 ```mermaid
 block-beta
-    columns 1
-    doc["Jumper J601 (use to connect On Board Mic to Codec)"]
-    block
+    columns 2
+    doc["Jumper J601 (use to connect On Board Mic to Codec)"]:2
+    block:group1:2
         columns 2
         a["On Board Microphone"]
         b["Microphone left Channel"]
         c["On Board Microphone"]
         d["Microphone right Channel"]
     end
+```
 
-</div>```
+```mermaid
+block-beta
+    columns 2
+    doc["Header J802/J803"]:2
+    block:group1:2
+        columns 3
+        a[" Jumper for On Board \n Potentiometer "]:2
+        c["Ext. Potentiometer"]
+        d["VCC 3.3V"]
+        e["Ext. Potentiometer"]
+        f["GND"]
+    end
+```
+
+
+Jumper J604
+- Top Position = use dinamic feedback
+- Bot Position = use static feedback
+- none = use no feedback
+
 
 
 ### Pinout:
