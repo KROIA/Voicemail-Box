@@ -56,11 +56,31 @@ block-beta
         b["Microphone On-Board as left Channel"]
         d["Microphone On-Board as right Channel"]
     end
+
+classDef highlighter fill:#8bc8e8,stroke:#6c757d,stroke-width:1.5px;
+class b highlighter
+class d highlighter
 ```
 
 Jumper J604
-- Top Position = use dinamic feedback
-- Bot Position = use static feedback
+- Top Position
+```mermaid
+block-beta
+        columns 3
+        a[" Jumper for dynamic feedback "]:2
+        c["-"]  
+classDef highlighter fill:#8bc8e8,stroke:#6c757d,stroke-width:1.5px;
+class a highlighter
+```
+- Bot Position
+```mermaid
+block-beta
+        columns 3
+        a[" Jumper for static feedback "]:2
+        c["-"]  
+classDef highlighter fill:#8bc8e8,stroke:#6c757d,stroke-width:1.5px;
+class a highlighter
+```
 - none = use no feedback
 
 
@@ -105,6 +125,9 @@ block-beta
         e["Ext. Potentiometer"]
         f["GND"]
     end
+
+classDef highlighter fill:#8bc8e8,stroke:#6c757d,stroke-width:1.5px;
+class a highlighter
 ```
 
 ```mermaid
@@ -117,6 +140,9 @@ block-beta
         e["Ext. Potentiometer"]
         f["GND"]
     end
+
+classDef highlighter fill:#8bc8e8,stroke:#6c757d,stroke-width:1.5px;
+class b highlighter
 ```
 
 ### Pinout:
