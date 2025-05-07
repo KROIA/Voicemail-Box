@@ -1,6 +1,6 @@
 # Hardware
 This folder contains all HW-Files and descriptions
-
+---
 ## Info
 The name for the Microcontroller/Evaluation Boards will be abreviated in the instaructions as the following:
 - Voicemail-Box Board: 	VMBB
@@ -10,6 +10,7 @@ The name for the Microcontroller/Evaluation Boards will be abreviated in the ins
 - P-Mod ESP32:			PMOD
 ...
 
+---
 ## HW Setup
 The VMBB is made to be soldered in a full and a partial configuration as well as beeing compatible with
 multiple Microcontrollerboards (F469 and H755)
@@ -21,7 +22,7 @@ to use one or the other, select the correct BOM to solder and only solder the me
 
 - tbd: make the BOMs and a assembly plan 
 
-
+---
 ## PSU Setup
 There is two ways to Supply the Eval Board:
 - Supply using the Connector for ST-Link on the Eval-Boards
@@ -42,7 +43,8 @@ There is two ways to Supply the Eval Board:
 This section describes all HW Parts and how to connect, in case you start from a completly new project
 or you have lost the configuration for no further specified reasons.
 
-
+---
+---
 ## Audio Interface
 
 ### Jumpers and DIP Switches
@@ -51,34 +53,19 @@ Jumper J601 (use to connect On Board Mic to Codec)
 ```mermaid
 block-beta
     block:group1:2
-        columns 2
-        a["On Board Microphone"]
-        b["Microphone left Channel"]
-        c["On Board Microphone"]
-        d["Microphone right Channel"]
+        columns 1
+        b["Microphone On-Board as left Channel"]
+        d["Microphone On-Board as right Channel"]
     end
 ```
 
 
-Header J802/J803
-```mermaid
-block-beta
-    block:group1
-        columns 3
-        a[" Jumper for On Board \n Potentiometer "]:2
-        c["Ext. Potentiometer"]
-        d["VCC 3.3V"]
-        e["Ext. Potentiometer"]
-        f["GND"]
-    end
-```
 
 
 Jumper J604
 - Top Position = use dinamic feedback
 - Bot Position = use static feedback
 - none = use no feedback
-
 
 
 ### Pinout:
@@ -97,9 +84,29 @@ Jumper J604
 	- 
 	- 
 
-
+---
 ## WLAN / BLE
 
+---
 ## NFC
 
+---
 ## Micro SD
+
+
+---
+## Potentiometer
+
+### Jumpers and connections
+Header J802/J803
+```mermaid
+block-beta
+    block:group1
+        columns 3
+        a[" Jumper for On Board \n Potentiometer "]:2
+        c["Ext. Potentiometer"]
+        d["VCC 3.3V"]
+        e["Ext. Potentiometer"]
+        f["GND"]
+    end
+```
