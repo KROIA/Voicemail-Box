@@ -24,6 +24,12 @@
 	PIN(PG12): 	LED1
 		User Label: LED1
 		
+### Potis:
+	PIN(PC4):	ADC1_IN14
+		User Label:	POT0
+	PIN(PC3):	ADC2_IN13
+		User Label:	POT1
+		
 		
 ## Project Properties
 		C/C++ General->Paths and Symbols:
@@ -32,3 +38,15 @@
 					Directory: ${ProjDirPath}/../../Software/BSP_VoiceMailBox/inc
 					[x] Add to all configurations
 					[x] Add to all languages
+			Source Location:
+				Link Folder:
+					[x] Link to folder in file system
+					Variables...
+						New...
+							Name: BSP_VoiceMailBox
+							Location: ${PROJECT_LOC}/../../Software/BSP_VoiceMailBox/src
+							OK
+						Select the new created variable: BSP_VoiceMailBox
+						OK
+				OK
+				

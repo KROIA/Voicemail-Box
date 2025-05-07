@@ -30,4 +30,17 @@
 		<nature>org.eclipse.cdt.managedbuilder.core.managedBuildNature</nature>
 		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>BSP_VoiceMailBox</name>
+			<type>2</type>
+			<locationURI>BSP_VoiceMailBox</locationURI>
+		</link>
+	</linkedResources>
+	<variableList>
+		<variable>
+			<name>BSP_VoiceMailBox</name>
+			<value>$%7BPARENT-2-PROJECT_LOC%7D/Software/BSP_VoiceMailBox/src</value>
+		</variable>
+	</variableList>
 </projectDescription>

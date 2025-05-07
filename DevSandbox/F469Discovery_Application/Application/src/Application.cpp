@@ -18,6 +18,7 @@ void loop()
 	setLed(LED::LED0, getButtonState(Button::BTN0));
 	setLed(LED::LED1, getButtonState(Button::BTN1));
 
+	print("Poti %i\n\r",getPotiValue(Poti::POT1));
 
 	//GPIO_PinState state = HAL_GPIO_ReadPin(BTN0_GPIO_Port, BTN0_Pin);
 		  //BSP_VOICE_MAIL_BOX_setLed0((bool)state);
