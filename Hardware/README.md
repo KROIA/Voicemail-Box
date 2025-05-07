@@ -59,8 +59,8 @@ block-beta
         c["On Board Microphone"]
         d["Microphone right Channel"]
     end
-```
-</div>
+
+</div>```
 
 
 ### Pinout:
