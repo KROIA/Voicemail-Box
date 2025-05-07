@@ -47,7 +47,7 @@ or you have lost the configuration for no further specified reasons.
 
 ### Jumpers and DIP Switches
 
-
+<div align="left">
 ```mermaid
 block-beta
     columns 1
@@ -60,7 +60,7 @@ block-beta
         d["Microphone right Channel"]
     end
 ```
-
+</div>
 
 
 ### Pinout:
