@@ -48,6 +48,7 @@ or you have lost the configuration for no further specified reasons.
 
 ### Jumpers and DIP Switches
 
+
 Jumper J601 (use to connect On Board Mic to Codec)
 ```mermaid
 block-beta
@@ -62,9 +63,10 @@ class b highlighter
 class d highlighter
 ```
 
+---
+
 Jumper J604
-- Top 		Position
-- Bottom 	Position
+
 ```mermaid
 block-beta
         columns 3
@@ -77,14 +79,67 @@ classDef highlighter fill:#8bc8e8,stroke:#6c757d,color:#000000,stroke-width:1.5p
 class a highlighter
 class d highlighter
 ```
+- Top Position = dynamic feedback
+- Bottom Position = static feedback
 - none = use no feedback
+
+---
+
+Jumper J104 select H755
+```mermaid
+block-beta
+    block
+        columns 10
+        a0["Set"]
+        a1["Set"]
+        a2["Set"]
+        a3["Set"]
+        a4["Set"]
+        a5["open"]
+        a6["open"]
+        a7["open"]
+        a8["open"]
+        a9["open"]
+    end
+
+classDef highlighter fill:#8bc8e8,stroke:#6c757d,text:#000000,stroke-width:1.5px;
+class a0 highlighter
+class a1 highlighter
+class a2 highlighter
+class a3 highlighter
+class a4 highlighter
+```
+
+Jumper J104 select F469
+```mermaid
+block-beta
+    block
+        columns 10
+        a0["open"]
+        a1["open"]
+        a2["open"]
+        a3["open"]
+        a4["open"]
+        a5["Set"]
+        a6["Set"]
+        a7["Set"]
+        a8["Set"]
+        a9["Set"]
+    end
+
+classDef highlighter fill:#8bc8e8,stroke:#6c757d,text:#000000,stroke-width:1.5px;
+class a5 highlighter
+class a6 highlighter
+class a7 highlighter
+class a8 highlighter
+class a9 highlighter
+```
 
 
 ### Pinout:
 - peripheries needed:
 	- 1x I2S full duplex
 	- 1x I2C
-
 
 - H755
 	- 
@@ -98,6 +153,68 @@ class d highlighter
 
 ---
 ## WLAN / BLE
+
+### Jumpers
+
+Lef -> Right
+Jumper J103 set WLAN/BLE using SPI
+```mermaid
+block-beta
+    block
+        columns 8
+        a0["Set"]
+        a1["Set"]
+        a2["Set"]
+        a3["Set"]
+        a4["n.c."]
+        a5["open"]
+        a6["open"]
+        a7["open"]
+    end
+
+classDef highlighter fill:#8bc8e8,stroke:#6c757d,text:#000000,stroke-width:1.5px;
+class a0 highlighter
+class a1 highlighter
+class a2 highlighter
+class a3 highlighter
+```
+
+Jumper J103 set WLAN/BLE using UART
+
+```mermaid
+block-beta
+    block
+        columns 8
+        a0["open"]
+        a1["open"]
+        a2["open"]
+        a3["open"]
+        a4["n.c."]
+        a5["set"]
+        a6["set"]
+        a7["set"]
+    end
+
+classDef highlighter fill:#8bc8e8,stroke:#6c757d,text:#000000,stroke-width:1.5px;
+class a5 highlighter
+class a6 highlighter
+class a7 highlighter
+```
+
+### Pinout:
+- peripheries needed (1 or the other, but both can be configured):
+	- 1x UART
+	- 1x SPI
+
+- H755
+	- 
+	- 
+	- 
+
+- F469:
+	- 
+	- 
+	- 
 
 ---
 ## NFC
