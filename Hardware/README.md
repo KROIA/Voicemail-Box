@@ -44,7 +44,6 @@ This section describes all HW Parts and how to connect, in case you start from a
 or you have lost the configuration for no further specified reasons.
 
 ---
----
 ## Audio Interface
 
 ### Jumpers and DIP Switches
@@ -58,9 +57,6 @@ block-beta
         d["Microphone On-Board as right Channel"]
     end
 ```
-
-
-
 
 Jumper J604
 - Top Position = use dinamic feedback
@@ -110,3 +106,27 @@ block-beta
         f["GND"]
     end
 ```
+
+```mermaid
+block-beta
+    block:group1
+        columns 3
+        a[" On Board Potentiometer "]
+        c[" Jumper for Ext. \n Potentiometer "]:2
+        d["VCC 3.3V"]
+        e["Ext. Potentiometer"]
+        f["GND"]
+    end
+```
+
+### Pinout:
+- peripheries needed:
+	- 2x Analog In
+
+- H755
+	- PB1 = Pot 0
+	- PC3 = Pot 1
+
+- F469:
+	- PC4 = Pot 0
+	- PC3 = Pot 1
