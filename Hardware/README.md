@@ -1,8 +1,8 @@
 # Hardware
 This folder contains all HW-Files and descriptions
 
-[Configure Board for H755](H755/H755.md#H755 Jumper Positions)
-[Configure Board for F469](F469/F469.md#F469 Jumper Positions)
+[Configure Board for H755](H755/H755.md)
+[Configure Board for F469](F469/F469.md)
 
 ---
 ## Info
