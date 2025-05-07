@@ -66,15 +66,14 @@ TIM_HandleTypeDef htim1;
 
 UART_HandleTypeDef huart3;
 UART_HandleTypeDef huart6;
+DMA_HandleTypeDef hdma_usart3_rx;
+DMA_HandleTypeDef hdma_usart3_tx;
+DMA_HandleTypeDef hdma_usart6_rx;
+DMA_HandleTypeDef hdma_usart6_tx;
 
 SDRAM_HandleTypeDef hsdram1;
 
 /* USER CODE BEGIN PV */
-// Redirect stdout to UART
-int _write(int file, char *ptr, int len) {
-    HAL_UART_Transmit(&huart3, (uint8_t*)ptr, len, HAL_MAX_DELAY);
-    return len;
-}
 
 ADC_HandleTypeDef* getADC_POT0()
 {
@@ -88,12 +87,17 @@ UART_HandleTypeDef* getUART_DEBUG()
 {
 	return &huart3;
 }
+UART_HandleTypeDef* getUART_WIFI()
+{
+	return &huart6;
+}
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 void PeriphCommonClock_Config(void);
 static void MX_GPIO_Init(void);
+static void MX_DMA_Init(void);
 static void MX_CRC_Init(void);
 static void MX_DMA2D_Init(void);
 static void MX_DSIHOST_DSI_Init(void);
@@ -152,6 +156,7 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_DMA_Init();
   MX_CRC_Init();
   MX_DMA2D_Init();
   MX_DSIHOST_DSI_Init();
@@ -170,7 +175,6 @@ int main(void)
   MX_ADC1_Init();
   MX_ADC2_Init();
   /* USER CODE BEGIN 2 */
-
   setup();
   /* USER CODE END 2 */
 
@@ -178,14 +182,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-
 	  loop();
-	  //HAL_ADC_Start(&hadc2);                         // Start ADC
-	  //HAL_ADC_PollForConversion(&hadc2, HAL_MAX_DELAY); // Wait for conversion
-	  //uint32_t adc_value = HAL_ADC_GetValue(&hadc2);          // Get ADC value
-	  //printf("Poti %i\n\r",adc_value);
-
-	  //HAL_ADC_Stop(&hadc2);                          // Stop ADC (optional for single conversion)
     /* USER CODE END WHILE */
     MX_USB_HOST_Process();
 
@@ -901,6 +898,32 @@ static void MX_USART6_UART_Init(void)
   /* USER CODE BEGIN USART6_Init 2 */
 
   /* USER CODE END USART6_Init 2 */
+
+}
+
+/**
+  * Enable DMA controller clock
+  */
+static void MX_DMA_Init(void)
+{
+
+  /* DMA controller clock enable */
+  __HAL_RCC_DMA2_CLK_ENABLE();
+  __HAL_RCC_DMA1_CLK_ENABLE();
+
+  /* DMA interrupt init */
+  /* DMA1_Stream1_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA1_Stream1_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA1_Stream1_IRQn);
+  /* DMA1_Stream3_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA1_Stream3_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA1_Stream3_IRQn);
+  /* DMA2_Stream1_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA2_Stream1_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA2_Stream1_IRQn);
+  /* DMA2_Stream6_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA2_Stream6_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA2_Stream6_IRQn);
 
 }
 

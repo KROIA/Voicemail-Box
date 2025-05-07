@@ -50,9 +50,14 @@ namespace VoiceMailBox
 		Fill in the UART_HandleTypeDef* value, generated from the CUBEMX for the UART
 	*/
 	UART Platform::dbgUart = { getUART_DEBUG() }; // maybe problematic because of static initialisation order
+	UART Platform::wifiUart = { getUART_WIFI() }; // maybe problematic because of static initialisation order
 
 
-
+	void Platform::setup()
+	{
+		dbgUart.startRX_DMA();
+		wifiUart.startRX_DMA();
+	}
 
 
 
@@ -85,19 +90,89 @@ namespace VoiceMailBox
 	}
 
 
+	UART::UART(void* uartHandle)
+		: uart(uartHandle)
+	{
+		memset(rx_buffer, 0, sizeof(rx_buffer));
+		memset(tx_buffer, 0, sizeof(tx_buffer));
+		current_RX_Buffer = rx_buffer[0];
+		bufferSwitcher = 1;
+		//dataReceived = false;
+		dataSize = 0;
+		//HAL_UART_Receive_IT(static_cast<UART_HandleTypeDef*>(uart), current_RX_Buffer, buffer_size);
+		
+		//HAL_UART_Receive_DMA(static_cast<UART_HandleTypeDef*>(uart), current_RX_Buffer, buffer_size);
+	}
+	void UART::startRX_DMA()
+	{
+		HAL_UARTEx_ReceiveToIdle_DMA(static_cast<UART_HandleTypeDef*>(uart), current_RX_Buffer, buffer_size);
+	}
+
 	void UART::send(const char* str)
 	{
 		send((uint8_t*)str, strlen(str));
 	}
 	void UART::send(uint8_t* data, uint16_t size)
 	{
-		HAL_UART_Transmit(static_cast<UART_HandleTypeDef*>(uart), data, size, HAL_MAX_DELAY);
+		if (size > buffer_size)
+		{
+			size = buffer_size;
+		}
+		if (data == nullptr)
+		{
+			return;
+		}
+		memcpy(tx_buffer, data, size);
+		//HAL_UART_Transmit(static_cast<UART_HandleTypeDef*>(uart), tx_buffer, size, 0);
+		HAL_UART_Transmit_DMA(static_cast<UART_HandleTypeDef*>(uart), tx_buffer, size);		
+	}
+
+	uint16_t UART::hasBytesReceived()
+	{
+		return dataSize;
+	}
+	bool UART::receive(uint8_t* data, uint16_t size)
+	{
+		//receive(data, size, 0);
+		if (dataSize == 0)
+		{
+			return false;
+		}
+		if (size > dataSize)
+		{
+			size = dataSize;
+		}
+		if (data == nullptr)
+		{
+			return false;
+		}
+		memcpy(data, current_RX_Buffer, size);
+		dataSize = 0;
+		return true;
+	}
+	//void UART::receive(uint8_t* data, uint16_t size, uint32_t timeout)
+	//{
+	//	HAL_UART_Receive(static_cast<UART_HandleTypeDef*>(uart), data, size, timeout);
+	//}
+	void UART::onDMAReceivedData(uint16_t size)
+	{
+		uint8_t* nextBuffer = rx_buffer[bufferSwitcher];
+		bufferSwitcher = !bufferSwitcher;
+		
+		HAL_UARTEx_ReceiveToIdle_DMA(static_cast<UART_HandleTypeDef*>(uart), nextBuffer, buffer_size);
+		//HAL_UART_Receive_DMA(static_cast<UART_HandleTypeDef*>(uart), nextBuffer, buffer_size);
+		dataSize = size;
+		//dataReceived = true;
+		current_RX_Buffer = rx_buffer[bufferSwitcher];
 	}
 
 
 	namespace Utility
 	{
-		size_t print_buffer_size = 256;
+		constexpr std::size_t print_buffer_size = 256;
+
+
+		
 
 		void delay(uint32_t ms)
 		{
@@ -109,6 +184,36 @@ namespace VoiceMailBox
 			vsnprintf(buffer, sizeof(buffer), str, args);
 			Platform::dbgUart.send((uint8_t*)buffer, strlen(buffer));
 		}
+		void println(const char* str, va_list args)
+		{
+			char buffer[print_buffer_size];
+			uint16_t size = strlen(str);
+			if(size > sizeof(buffer) - 3) // Ensure there's space for newline characters
+			{
+				size = sizeof(buffer) - 3; // Leave space for newline characters
+			}
+			vsnprintf(buffer, sizeof(buffer), str, args);
+			
+			buffer[size] = '\r'; // Add newline character
+			buffer[size+1] = '\n'; // Add newline character
+			buffer[size+2] = 0; // Add newline character
+			Platform::dbgUart.send((uint8_t*)buffer, strlen(buffer));
+		}
 	}
 
+
+	
+}
+
+
+void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef* huart, uint16_t Size) {
+	if (huart == static_cast<UART_HandleTypeDef*>(VoiceMailBox::Platform::wifiUart.uart)) {
+		VoiceMailBox::Platform::wifiUart.onDMAReceivedData(Size);
+	}
+	else if (huart == static_cast<UART_HandleTypeDef*>(VoiceMailBox::Platform::dbgUart.uart)) {
+		VoiceMailBox::Platform::dbgUart.onDMAReceivedData(Size);
+	}
+	else {
+		// Handle other UARTs if necessary
+	}
 }

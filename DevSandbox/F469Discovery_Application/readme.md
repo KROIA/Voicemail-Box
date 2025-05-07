@@ -30,6 +30,34 @@
 	PIN(PC3):	ADC2_IN13
 		User Label:	POT1
 		
+### WiFi:
+	USART6:
+		Baud Rate: 115200
+		Word Length: 8 Bits (including parity)
+		Parity: None
+		Stop Bits: 1
+		PIN(PG14): 	TX 
+		PIN(PG9): 	RX
+		DMA Settings:
+			DMA für RX & TX
+			Mode: Normal
+		NVIC Settings:
+			[x] USART6 global interrupt
+	? PIN(PC5):			INT
+	
+### Debug Console:
+	USART3:
+		Baud Rate: 115200
+		Word Length: 8 Bits (including parity)
+		Parity: None
+		Stop Bits: 1
+		DMA Settings:
+			DMA für RX & TX
+			Mode: Normal
+		NVIC Settings:
+			[x] USART3 global interrupt
+	
+		
 		
 ## Project Properties
 		C/C++ General->Paths and Symbols:

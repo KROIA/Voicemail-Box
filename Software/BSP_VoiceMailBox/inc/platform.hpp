@@ -34,10 +34,32 @@ namespace VoiceMailBox
 
 	struct UART
 	{
+		static constexpr std::size_t buffer_size = 256;
+
 		void* uart;		// UART_HandleTypeDef*
+		
+		UART(void* uartHandle);
+		void startRX_DMA();
 
 		void send(const char* str);
 		void send(uint8_t* data, uint16_t size);
+
+		uint16_t hasBytesReceived();
+		bool receive(uint8_t* data, uint16_t size);
+		//void receive(uint8_t* data, uint16_t size, uint32_t timeout);
+
+
+
+		void onDMAReceivedData(uint16_t size);
+		private:
+
+		
+		uint8_t rx_buffer[2][buffer_size];
+		uint8_t tx_buffer[buffer_size];
+		//bool dataReceived = false;
+		uint16_t dataSize = 0;
+		uint8_t* current_RX_Buffer = nullptr;
+		bool bufferSwitcher;
 	};
 
 /*
@@ -59,6 +81,10 @@ namespace VoiceMailBox
 
 		// UART
 		static UART dbgUart;
+		static UART wifiUart;
+
+
+		static void setup();
 	};
 
 
@@ -69,10 +95,11 @@ namespace VoiceMailBox
 */
 	namespace Utility
 	{
-		static constexpr size_t print_buffer_size;
+		
 
 		void delay(uint32_t ms);
 		void print(const char* str, va_list args);
+		void println(const char* str, va_list args);
 
 	}
 

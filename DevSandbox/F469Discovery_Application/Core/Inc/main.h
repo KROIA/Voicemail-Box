@@ -61,6 +61,7 @@ ADC_HandleTypeDef* getADC_POT0();
 ADC_HandleTypeDef* getADC_POT1();
 
 UART_HandleTypeDef* getUART_DEBUG();
+UART_HandleTypeDef* getUART_WIFI();
 
 /* USER CODE END EFP */
 
