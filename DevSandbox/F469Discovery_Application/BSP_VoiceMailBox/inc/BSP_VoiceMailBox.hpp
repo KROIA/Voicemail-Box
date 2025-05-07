@@ -1,7 +1,7 @@
 #ifndef BSP_VOICE_MAIL_BOX
 #define BSP_VOICE_MAIL_BOX
 
-#include <platform.hpp>
+
 #include "stdbool.h"
 
 namespace VoiceMailBox

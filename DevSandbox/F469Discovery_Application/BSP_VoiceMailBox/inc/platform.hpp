@@ -3,6 +3,8 @@
  *
  *  Created on: May 7, 2025
  *      Author: Alex
+ * 
+ * This file contains the declaration of all low level components from the ViceMailBox research Platform.
  */
 
 #ifndef INC_PLATFORM_HPP_

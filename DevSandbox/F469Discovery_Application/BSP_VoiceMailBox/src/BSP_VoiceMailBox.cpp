@@ -1,7 +1,6 @@
 #include <BSP_VoiceMailBox.hpp>
 #include <platform.hpp>
 
-
 namespace VoiceMailBox
 {
 	void setLed(LED led, bool on)
