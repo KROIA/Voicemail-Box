@@ -1,7 +1,0 @@
-E:/Dokumente/Weiterbildung/Studium Elektrotechnik/SA/Voicemail-Box/DevSandbox/Audio/Audio_playback_and_record/Src/ts_calibration.c:50:9:Touchscreen_Calibration	5
-E:/Dokumente/Weiterbildung/Studium Elektrotechnik/SA/Voicemail-Box/DevSandbox/Audio/Audio_playback_and_record/Src/ts_calibration.c:118:13:TouchscreenCalibration_SetHint	1
-E:/Dokumente/Weiterbildung/Studium Elektrotechnik/SA/Voicemail-Box/DevSandbox/Audio/Audio_playback_and_record/Src/ts_calibration.c:146:13:TouchScreen_Calibration_GetPhysValues	1
-E:/Dokumente/Weiterbildung/Studium Elektrotechnik/SA/Voicemail-Box/DevSandbox/Audio/Audio_playback_and_record/Src/ts_calibration.c:180:13:TouchScreen_Calibration_WaitForPressedState	17
-E:/Dokumente/Weiterbildung/Studium Elektrotechnik/SA/Voicemail-Box/DevSandbox/Audio/Audio_playback_and_record/Src/ts_calibration.c:256:10:TouchScreen_Get_Calibrated_X	1
-E:/Dokumente/Weiterbildung/Studium Elektrotechnik/SA/Voicemail-Box/DevSandbox/Audio/Audio_playback_and_record/Src/ts_calibration.c:266:10:TouchScreen_Get_Calibrated_Y	1
-E:/Dokumente/Weiterbildung/Studium Elektrotechnik/SA/Voicemail-Box/DevSandbox/Audio/Audio_playback_and_record/Src/ts_calibration.c:275:9:TouchScreen_IsCalibrationDone	1

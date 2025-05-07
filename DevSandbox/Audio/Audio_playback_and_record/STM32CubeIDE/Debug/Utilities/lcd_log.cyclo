@@ -1,9 +1,0 @@
-E:/Dokumente/Weiterbildung/Studium Elektrotechnik/SA/Voicemail-Box/DevSandbox/Audio/Audio_playback_and_record/Utilities/Log/lcd_log.c:122:6:LCD_LOG_Init	1
-E:/Dokumente/Weiterbildung/Studium Elektrotechnik/SA/Voicemail-Box/DevSandbox/Audio/Audio_playback_and_record/Utilities/Log/lcd_log.c:136:6:LCD_LOG_DeInit	1
-E:/Dokumente/Weiterbildung/Studium Elektrotechnik/SA/Voicemail-Box/DevSandbox/Audio/Audio_playback_and_record/Utilities/Log/lcd_log.c:158:6:LCD_LOG_SetHeader	1
-E:/Dokumente/Weiterbildung/Studium Elektrotechnik/SA/Voicemail-Box/DevSandbox/Audio/Audio_playback_and_record/Utilities/Log/lcd_log.c:182:6:LCD_LOG_SetFooter	1
-E:/Dokumente/Weiterbildung/Studium Elektrotechnik/SA/Voicemail-Box/DevSandbox/Audio/Audio_playback_and_record/Utilities/Log/lcd_log.c:206:6:LCD_LOG_ClearTextZone	2
-E:/Dokumente/Weiterbildung/Studium Elektrotechnik/SA/Voicemail-Box/DevSandbox/Audio/Audio_playback_and_record/Utilities/Log/lcd_log.c:224:1:__io_putchar	11
-E:/Dokumente/Weiterbildung/Studium Elektrotechnik/SA/Voicemail-Box/DevSandbox/Audio/Audio_playback_and_record/Utilities/Log/lcd_log.c:300:6:LCD_LOG_UpdateDisplay	5
-E:/Dokumente/Weiterbildung/Studium Elektrotechnik/SA/Voicemail-Box/DevSandbox/Audio/Audio_playback_and_record/Utilities/Log/lcd_log.c:348:13:LCD_LOG_ScrollBack	12
-E:/Dokumente/Weiterbildung/Studium Elektrotechnik/SA/Voicemail-Box/DevSandbox/Audio/Audio_playback_and_record/Utilities/Log/lcd_log.c:420:13:LCD_LOG_ScrollForward	9
