@@ -46,10 +46,12 @@ or you have lost the configuration for no further specified reasons.
 ## Audio Interface
 
 ### Jumpers and DIP Switches
+
+
 ```mermaid
 block-beta
     columns 1
-    doc["Jumper J601"]
+    doc["Jumper J601 (use to connect On Board Mic to Codec)"]
     block
         columns 2
         a["On Board Microphone"]
