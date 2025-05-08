@@ -95,7 +95,7 @@ main-build: F469Discovery_Application.elf secondary-outputs
 
 # Tool invocations
 F469Discovery_Application.elf F469Discovery_Application.map: $(OBJS) $(USER_OBJS) E:\Dokumente\Weiterbildung\Studium\ Elektrotechnik\SA\Voicemail-Box\DevSandbox\F469Discovery_Application\STM32F469NIHX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-g++ -o "F469Discovery_Application.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"E:\Dokumente\Weiterbildung\Studium Elektrotechnik\SA\Voicemail-Box\DevSandbox\F469Discovery_Application\STM32F469NIHX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F469Discovery_Application.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+	arm-none-eabi-g++ -o "F469Discovery_Application.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"E:\Dokumente\Weiterbildung\Studium Elektrotechnik\SA\Voicemail-Box\DevSandbox\F469Discovery_Application\STM32F469NIHX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F469Discovery_Application.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

@@ -10,6 +10,7 @@
 
 void setup()
 {
+	/*
 	using namespace VoiceMailBox;
 	VoiceMailBox::setup();
 	sendToWifi("AT\r\n");
@@ -27,7 +28,7 @@ void setup()
 		print("Response: ");
 		delay(10);
 		println(response);
-	}
+	}*/
 
 }
 
@@ -44,5 +45,5 @@ void loop()
 		  //HAL_GPIO_WritePin(LED0_GPIO_Port, LED0_Pin, state);
 
 
-	delay(10);
+	//delay(10);
 }

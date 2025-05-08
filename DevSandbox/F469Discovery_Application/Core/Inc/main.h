@@ -90,6 +90,8 @@ UART_HandleTypeDef* getUART_WIFI();
 #define SWDIO_GPIO_Port GPIOA
 #define SAI1_SCKA_Pin GPIO_PIN_5
 #define SAI1_SCKA_GPIO_Port GPIOE
+#define CODEC_NRESET_Pin GPIO_PIN_13
+#define CODEC_NRESET_GPIO_Port GPIOG
 #define I2C1_SDA_Pin GPIO_PIN_9
 #define I2C1_SDA_GPIO_Port GPIOB
 #define OTG_FS1_OverCurrent_Pin GPIO_PIN_7

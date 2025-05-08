@@ -78,7 +78,8 @@
 			SPI2_TX:
 				Mode: Circular
 				Data Width: Half Word
-			
+	GPIO:
+		PIN(PG13): CODEC_NRESET Digital Output
 	
 		
 		
