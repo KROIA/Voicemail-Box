@@ -38,9 +38,9 @@
 		Stop Bits: 1
 		PIN(PG14): 	TX 
 		PIN(PG9): 	RX
-		DMA Settings:
-			DMA für RX & TX
-			Mode: Normal
+		// DMA Settings:
+		// 	DMA für RX & TX
+		// 	Mode: Normal
 		NVIC Settings:
 			[x] USART6 global interrupt
 	? PIN(PC5):			INT
@@ -51,11 +51,34 @@
 		Word Length: 8 Bits (including parity)
 		Parity: None
 		Stop Bits: 1
-		DMA Settings:
-			DMA für RX & TX
-			Mode: Normal
+		// DMA Settings: 
+		// 	DMA für RX & TX
+		// 	Mode: Normal
 		NVIC Settings:
 			[x] USART3 global interrupt
+			
+### Audio Codec
+	I2S2:
+		Mode: Full-Duplex Master
+		[x] Master Clock Output
+		GPIO Settings:
+			PIN(PB12): I2S2_WS (I2S2_SCLK)
+			PIN(PB13): I2S2_CK (I2S2_BCLK)
+			PIN(PC1):  I2S2_SD (I2S2_SDA)
+			PIN(PC2):  I2S2_ext_SD 	(I2S2_SDA_ext)
+			PIN(PC6):  I2S2_MCK (I2S2_MCLK)
+			
+		Parameter Settings:
+			Transmission Mode: Mode Master Transmit
+			Communication Standard: I2S Philips
+			Data and Frame Format: 16Bit Data on 16 Bits Frame
+			Selected Audio Frequency: 48KHz
+			
+		DMA Settings:
+			SPI2_TX:
+				Mode: Circular
+				Data Width: Half Word
+			
 	
 		
 		

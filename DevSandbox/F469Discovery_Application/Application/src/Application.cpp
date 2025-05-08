@@ -14,6 +14,7 @@ void setup()
 	VoiceMailBox::setup();
 	sendToWifi("AT\r\n");
 
+	delay(10);
 	while(!canReceiveFromWifi())
 	{
 		println("Waiting for response from WIFI...");
