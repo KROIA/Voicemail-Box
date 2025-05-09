@@ -4,6 +4,7 @@
 
 #include <stdbool.h>
 #include <stdint.h>
+#include "Codec_TLV320AIC3104.hpp"
 
 namespace VoiceMailBox
 {
@@ -44,6 +45,8 @@ namespace VoiceMailBox
 	void print(const char* str, ...);
 	void println(const char* str, ...);
 	void delay(uint32_t ms);
+
+	Codec_TLV320AIC3104& getCodec();
 
 
 	//void on_uart_rx_dma_received(void* huart, uint16_t Size);

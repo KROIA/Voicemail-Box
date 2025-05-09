@@ -13,66 +13,18 @@
 #include <stdint.h>
 #include <cstdarg>
 
+#include "digitalPin.hpp"
+#include "analogPin.hpp"
+#include "uart.hpp"
+#include "i2c.hpp"
+#include "Codec_TLV320AIC3104.hpp"
+
 namespace VoiceMailBox
 {
-	struct DIGITAL_PIN
-	{
-		void* gpio;		// GPIO_TypeDef*
-		uint16_t pin;	// Pin number
-
-		void set(bool on);
-		void toggle();
-		bool get();
-	};
-
-	struct ANALOG_PIN
-	{
-		void* adc;		// ADC_TypeDef*
-
-		uint32_t getValue();
-	};
-
-	struct UART
-	{
-		static constexpr std::size_t buffer_size = 256;
-#define UART_USE_TX_DMA 0
-#define UART_USE_RX_DMA 0
-
-		void* uart;		// UART_HandleTypeDef*
-		
-		UART(void* uartHandle);
-		void setup();
-
-		void send(const char* str);
-		void send(uint8_t* data, uint16_t size);
-
-		uint16_t hasBytesReceived();
-		bool receive(uint8_t* data, uint16_t size);
-		//void receive(uint8_t* data, uint16_t size, uint32_t timeout);
+	
 
 
-#if UART_USE_RX_DMA == 1
-		void onDMAReceivedData(uint16_t size);
-#else
-		void onITReceivedData();
-#endif
-		private:
-
-#if UART_USE_RX_DMA == 1
-		uint8_t rx_buffer[2][buffer_size];
-		uint16_t dataSize = 0;
-		uint8_t* current_RX_Buffer = nullptr;
-		bool bufferSwitcher;
-#else
-		uint8_t rx_buffer[buffer_size];
-		uint8_t rx_data;
-		uint16_t rx_write_index;
-		uint16_t rx_read_index;
-#endif
-		uint8_t tx_buffer[buffer_size];
-		
-		
-	};
+	
 
 /*
 -------------------------------------------------------------------------
@@ -95,6 +47,8 @@ namespace VoiceMailBox
 		static UART dbgUart;
 		static UART wifiUart;
 
+		// Audio Codec
+		static Codec_TLV320AIC3104 codec;
 
 		static void setup();
 	};
@@ -112,7 +66,6 @@ namespace VoiceMailBox
 		void delay(uint32_t ms);
 		void print(const char* str, va_list args);
 		void println(const char* str, va_list args);
-
 	}
 
 }

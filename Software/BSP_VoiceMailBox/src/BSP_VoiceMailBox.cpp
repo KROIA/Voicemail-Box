@@ -69,6 +69,11 @@ namespace VoiceMailBox
 		Utility::delay(ms); // Call the platform-specific delay function
 	}
 
+	Codec_TLV320AIC3104& getCodec()
+	{
+		return Platform::codec;
+	}
+
 
 	/*void on_uart_rx_dma_received(void* huart, uint16_t Size)
 	{

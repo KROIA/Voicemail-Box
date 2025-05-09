@@ -63,6 +63,9 @@ ADC_HandleTypeDef* getADC_POT1();
 UART_HandleTypeDef* getUART_DEBUG();
 UART_HandleTypeDef* getUART_WIFI();
 
+I2C_HandleTypeDef* getI2C_CODEC();
+I2S_HandleTypeDef* getI2S_CODEC();
+
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/

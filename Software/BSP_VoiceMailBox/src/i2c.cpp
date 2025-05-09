@@ -1,0 +1,39 @@
+#include "i2c.hpp"
+#include "main.h"
+
+
+namespace VoiceMailBox
+{
+	I2C::I2C(void* i2cHandle)
+		: i2c(i2cHandle)
+	{
+
+	}
+
+
+	I2C::Status I2C::writeRegister(uint8_t deviceAddress, uint8_t registerAddress, uint8_t data)
+	{
+		HAL_StatusTypeDef status = HAL_I2C_Mem_Write(static_cast<I2C_HandleTypeDef*>(i2c),
+			deviceAddress << 1,
+			registerAddress,
+			I2C_MEMADD_SIZE_8BIT,
+			&data,
+			1,
+			HAL_MAX_DELAY);
+
+		return (Status)status; // 1 : 1 mapping
+	}
+
+	I2C::Status I2C::readRegister(uint8_t deviceAddress, uint8_t registerAddress, uint8_t& data)
+	{
+		HAL_StatusTypeDef status = HAL_I2C_Mem_Read(static_cast<I2C_HandleTypeDef*>(i2c),
+			deviceAddress << 1,
+			registerAddress,
+			I2C_MEMADD_SIZE_8BIT,
+			&data,
+			1,
+			HAL_MAX_DELAY);
+
+		return (Status)status; // 1 : 1 mapping
+	}
+}

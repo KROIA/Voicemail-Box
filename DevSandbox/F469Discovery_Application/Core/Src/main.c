@@ -91,6 +91,14 @@ UART_HandleTypeDef* getUART_WIFI()
 {
 	return &huart6;
 }
+I2C_HandleTypeDef* getI2C_CODEC()
+{
+	return &hi2c1;
+}
+I2S_HandleTypeDef* getI2S_CODEC()
+{
+	return &hi2s2;
+}
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -122,144 +130,6 @@ void MX_USB_HOST_Process(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-#define BUFFER_SIZE 128
-int16_t adcData[BUFFER_SIZE];
-int16_t dacData[BUFFER_SIZE];
-
-static volatile int16_t* inBufPtr;
-static volatile int16_t* outBufPtr = &dacData[0];
-uint8_t dataReadyFlag = 0;
-
-void HAL_I2SEx_TxRxHalfCpltCallback(I2S_HandleTypeDef *hi2s)
-{
-	inBufPtr = &adcData[0];
-	outBufPtr = &dacData[0];
-
-	dataReadyFlag = 1;
-}
-
-
-void HAL_I2SEx_TxRxCpltCallback(I2S_HandleTypeDef *hi2s)
-{
-	inBufPtr = &adcData[BUFFER_SIZE/2];
-	outBufPtr = &dacData[BUFFER_SIZE/2];
-
-	dataReadyFlag = 1;
-}
-
-void processData()
-{
-	static float leftIn, leftOut;
-	static float rightIn, rightOut;
-
-	static float absFIER = 0;
-	const static float scale = 0.01f;
-	const static float scaleInv =  1/scale;
-
-	for(uint8_t n=0; n<BUFFER_SIZE/2-1; n+=2)
-	{
-		// Left Channel
-
-		// Get ADC input and convert to float
-		leftIn = inBufPtr[n] * scale;
-		//if(leftIn > 1.0f)
-		//	leftIn -= 2.0f;
-
-		leftOut = leftIn;
-
-		outBufPtr[n] = (int16_t)(leftOut * scaleInv);
-
-
-		// Right Channel
-
-		// Get ADC input and convert to float
-		rightIn = inBufPtr[n+1] * scale;
-		//if(rightIn > 1.0f)
-		//	rightIn -= 2.0f;
-
-		rightOut = rightIn;
-
-		float absL = leftIn;
-		float absR = rightIn;
-		if(absL < 0)
-			absL = -absL;
-		if(absR < 0)
-			absR = -absR;
-
-		absFIER = (absFIER*0.9f) + (0.1f*(absL + absR));
-
-		outBufPtr[n+1] = (int16_t)(rightOut * scaleInv);
-
-
-
-	}
-	char buffer[32] = {0};
-	snprintf(buffer, sizeof(buffer), "%.1f\r", absFIER);
-
-	HAL_UART_Transmit_IT(getUART_DEBUG(), buffer, strlen(buffer));
-	dataReadyFlag = 0;
-}
-
-
-// 0001'1000b
-#define GDSP_CODEC_I2C_ADDR 0x18
-
-
-typedef struct {
-	I2C_HandleTypeDef *I2Chandle;
-	GPIO_TypeDef *nrstPinBank;
-	uint16_t nrstPin;
-
-
-} GDSP_Codec;
-
-HAL_StatusTypeDef GDSP_Codec_WriteRegister(GDSP_Codec *codec, uint8_t regAddr, uint8_t val){
-	HAL_StatusTypeDef status = HAL_I2C_Mem_Write(codec->I2Chandle, GDSP_CODEC_I2C_ADDR << 1, regAddr, I2C_MEMADD_SIZE_8BIT, &val, 1, HAL_MAX_DELAY);
-	return status;
-}
-
-HAL_StatusTypeDef GDSP_Codec_ReadRegister(GDSP_Codec *codec, uint8_t regAddr, uint8_t val){
-	HAL_StatusTypeDef status = HAL_I2C_Mem_Read(codec->I2Chandle, GDSP_CODEC_I2C_ADDR << 1, regAddr, I2C_MEMADD_SIZE_8BIT, &val, 1, HAL_MAX_DELAY);
-	return status;
-}
-HAL_StatusTypeDef GDSP_Codec_Init(GDSP_Codec *codec, I2C_HandleTypeDef *I2Chandle, GPIO_TypeDef *nrstPinBank, uint16_t nrstPin){
-	codec->I2Chandle = I2Chandle;
-	codec->nrstPinBank = nrstPinBank;
-	codec->nrstPin = nrstPin;
-
-	GDSP_Codec_Reset(codec);
-
-	HAL_StatusTypeDef status;
-
-	status = GDSP_Codec_WriteRegister(codec, 0x01, 0x01); //Software Reset
-	HAL_Delay(10);
-
-	status = GDSP_Codec_WriteRegister(codec, 0x03, 0x10); //Disable PLL, 2 = 4. MCLK = 256 * 48Khz, fs(ref) = MCLK / (128 * Q)
-
-	status = GDSP_Codec_WriteRegister(codec, 0x07, 0x08); //fs(ref) = 48khz, left DAC data path plays left-channel input data, right DAC data path is muted
-
-	status = GDSP_Codec_WriteRegister(codec, 0x0F, 0x00); //Un-mute left ADC PGA
-	status = GDSP_Codec_WriteRegister(codec, 0x10, 0x80); //Mute right ADC PGA
-	status = GDSP_Codec_WriteRegister(codec, 0x11, 0x0F); //Connect MIC2L/LINE2L to left ADC PGA (@0db gain), do not connect MIC2R/LINE2R to left ADC PGA
-	status = GDSP_Codec_WriteRegister(codec, 0x13, 0x7C); //Power up left ADC
-	status = GDSP_Codec_WriteRegister(codec, 0x25, 0x80); //Power up left DAC
-	status = GDSP_Codec_WriteRegister(codec, 0x28, 0x80); //Output common mode voltage = 1,65V (= VCC / 2)
-	status = GDSP_Codec_WriteRegister(codec, 0x2B, 0x00); //Unmute left DAC channel
-	status = GDSP_Codec_WriteRegister(codec, 0x52, 0x80); //Route left DAC to left line output
-	status = GDSP_Codec_WriteRegister(codec, 0x56, 0x0B); //Unmute left line output
-	status = GDSP_Codec_WriteRegister(codec, 0x65, 0x01); //CODEC_CLKIN uses CLKDIV_OUT
-
-
-	return status;
-}
-
-void GDSP_Codec_Reset(GDSP_Codec *codec){
-	HAL_GPIO_WritePin(codec->nrstPinBank, codec->nrstPin, GPIO_PIN_RESET);
-	HAL_Delay(25);
-	HAL_GPIO_WritePin(codec->nrstPinBank, codec->nrstPin, GPIO_PIN_SET);
-	HAL_Delay(25);
-}
-
 
 /* USER CODE END 0 */
 
@@ -316,10 +186,6 @@ int main(void)
   MX_I2S2_Init();
   /* USER CODE BEGIN 2 */
   setup();
-  GDSP_Codec codec;
-  HAL_StatusTypeDef status1 = GDSP_Codec_Init(&codec, &hi2c1, CODEC_NRESET_GPIO_Port, CODEC_NRESET_Pin);
-  HAL_Delay(50);
-  HAL_StatusTypeDef status2 = HAL_I2SEx_TransmitReceive_DMA(&hi2s2, (uint16_t*)dacData, (uint16_t*)adcData, BUFFER_SIZE);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -327,12 +193,8 @@ int main(void)
   while (1)
   {
 	  loop();
-	  if(dataReadyFlag)
-	  {
-		  processData();
-	  }
     /* USER CODE END WHILE */
-    MX_USB_HOST_Process();
+    //MX_USB_HOST_Process();
 
     /* USER CODE BEGIN 3 */
   }
@@ -1033,7 +895,7 @@ static void MX_USART3_UART_Init(void)
 
   /* USER CODE END USART3_Init 1 */
   huart3.Instance = USART3;
-  huart3.Init.BaudRate = 921600;
+  huart3.Init.BaudRate = 1500000;
   huart3.Init.WordLength = UART_WORDLENGTH_8B;
   huart3.Init.StopBits = UART_STOPBITS_1;
   huart3.Init.Parity = UART_PARITY_NONE;
