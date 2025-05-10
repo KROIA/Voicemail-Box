@@ -142,26 +142,16 @@ namespace VoiceMailBox
 		void reset();
 		void setup();
 
-		bool isDataReady() const { return m_dataReadyFlag; }
-		bool isDataReadyAndClear() {
-			bool dataReady = m_dataReadyFlag;
+		bool isDataReady() const { return m_i2s.isDataReady(); }
+		bool isDataReadyAndClear() { return m_i2s.isDataReadyAndClear(); }
+		void clearDataReadyFlag() { m_i2s.clearDataReadyFlag(); }
 
-			// To prevent race condition between reading the ready flag and resetting it, 
-			// the reset is only done if the flag was set
-			if (dataReady)
-				m_dataReadyFlag = 0;
-			return dataReady;
-		}
-		void clearDataReadyFlag() { m_dataReadyFlag = 0; }
-
-		volatile int16_t* getRxBufPtr() { return m_inBufPtr; }
-		volatile int16_t* getTxBufPtr() { return m_outBufPtr; }
-		uint16_t getBufferSize() const { return m_dmaBufferSize/2; }
+		volatile int16_t* getRxBufPtr() { return m_i2s.getRxBufPtr(); }
+		volatile int16_t* getTxBufPtr() { return m_i2s.getTxBufPtr(); }
+		uint16_t getBufferSize() const { return m_i2s.getBufferSize(); }
 
 
-		// This functions must only be called from the I2S DMA interrupt context
-		void onI2S_DMA_TxRx_HalfCpltCallback();
-		void onI2S_DMA_TxRx_CpltCallback();
+		
 
 		const I2S& getI2S() { return m_i2s; }
 
@@ -239,6 +229,10 @@ namespace VoiceMailBox
 		uint8_t getCurrentRegisterPage();
 		void setCurrentRegisterPage(uint8_t page);
 
+		// This functions must only be called from the I2S DMA interrupt context
+		void onI2S_DMA_TxRx_HalfCpltCallback();
+		void onI2S_DMA_TxRx_CpltCallback();
+
 		I2C m_i2c;
 		uint8_t m_deviceAddress;
 		DIGITAL_PIN m_nResetPin;
@@ -246,16 +240,7 @@ namespace VoiceMailBox
 
 		uint8_t m_currentRegisterPage = 0; // Current page number selected for accessing registers
 
-		/**
-		 * @brief DMA Pingpong buffer
-		 */
-		static constexpr uint16_t m_dmaBufferSize = 128; // Size of the DMA Pingpong-Buffer
-		volatile int16_t m_adcDataBuffer[m_dmaBufferSize]; // Buffer for ADC data
-		volatile int16_t m_dacDataBuffer[m_dmaBufferSize]; // Buffer for DAC data
-		volatile uint8_t m_dataReadyFlag = 0; // Flag to indicate if data is ready for processing
-		volatile int16_t* m_inBufPtr  = &m_adcDataBuffer[0]; // Pointer to the current ADC buffer (Depending on the pingpong state)
-		volatile int16_t* m_outBufPtr = &m_dacDataBuffer[0]; // Pointer to the current DAC buffer (Depending on the pingpong state)
-
+		
 		// Performance mesurements
 #if ENABLE_CODEC_PERFORMANCE_MEASUREMENTS == 1
 		uint32_t m_startDataProcessingTick = 0;

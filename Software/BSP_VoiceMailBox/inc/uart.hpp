@@ -16,6 +16,7 @@ namespace VoiceMailBox
 		void* uart;		// UART_HandleTypeDef*
 
 		UART(void* uartHandle);
+		~UART();
 		void setup();
 
 		void send(const char* str);
@@ -31,6 +32,14 @@ namespace VoiceMailBox
 #else
 		void onITReceivedData();
 #endif
+
+
+#if UART_USE_RX_DMA == 1
+		static void onDMAReceivedData(void* huart, uint16_t Size);
+#else
+		static void onITReceivedData(void* huart);
+#endif
+
 	private:
 
 #if UART_USE_RX_DMA == 1
@@ -46,7 +55,9 @@ namespace VoiceMailBox
 #endif
 		uint8_t tx_buffer[buffer_size];
 
-
+		// The list of instances is used to distribute the interrupts received on the peripheral
+		static constexpr std::size_t max_instances = 20; // Maximum number of UART instances
+		static UART* s_instances[max_instances]; // Array can hold instances of UART
 	};
 }
 #endif

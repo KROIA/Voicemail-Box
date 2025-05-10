@@ -10,14 +10,13 @@ namespace VoiceMailBox
 		: m_i2c(i2cHandle)
 		, m_deviceAddress(deviceAddress)
 		, m_nResetPin{ nResetPort, nResetPin }
-		, m_i2s{i2sHandle}
+		, m_i2s(i2sHandle, 128)
 		, m_currentRegisterPage(0)
-		, m_dacDataBuffer{ 0 }
-		, m_adcDataBuffer{ 0 }
-		, m_inBufPtr(nullptr)
-		, m_outBufPtr(& m_dacDataBuffer[0])
 	{
-
+#if ENABLE_CODEC_PERFORMANCE_MEASUREMENTS == 1
+		m_i2s.setHalfCpltCallback([this]() { onI2S_DMA_TxRx_HalfCpltCallback(); });
+		m_i2s.setCpltCallback([this]() { onI2S_DMA_TxRx_CpltCallback(); });
+#endif
 	}
 
 	Codec_TLV320AIC3104::~Codec_TLV320AIC3104()
@@ -96,16 +95,13 @@ namespace VoiceMailBox
 		writeRegister(REG::PAGE_0::CLOCK, 0x01); //CODEC_CLKIN uses CLKDIV_OUT
 
 		// Setup I2S for DMA transmit and receive
-		m_i2s.setup_transmitReceive_DMA((uint16_t*)m_dacDataBuffer, (uint16_t*)m_adcDataBuffer, m_dmaBufferSize); 
+		//m_i2s.setup_transmitReceive_DMA((uint16_t*)m_dacDataBuffer, (uint16_t*)m_adcDataBuffer, m_dmaBufferSize);
+		m_i2s.setupDMA();
 	}
 
 	void Codec_TLV320AIC3104::onI2S_DMA_TxRx_HalfCpltCallback()
 	{
 		// Inside ISR context! 
-		m_inBufPtr = &m_adcDataBuffer[0];
-		m_outBufPtr = &m_dacDataBuffer[0];
-
-		m_dataReadyFlag = 1;
 #if ENABLE_CODEC_PERFORMANCE_MEASUREMENTS == 1
 		m_DMA_halfTransferTick = Utility::getTickCount();
 #endif
@@ -114,10 +110,6 @@ namespace VoiceMailBox
 	void Codec_TLV320AIC3104::onI2S_DMA_TxRx_CpltCallback()
 	{
 		// Inside ISR context! 
-		m_inBufPtr = &m_adcDataBuffer[m_dmaBufferSize/2];
-		m_outBufPtr = &m_dacDataBuffer[m_dmaBufferSize/2];
-
-		m_dataReadyFlag = 1;
 #if ENABLE_CODEC_PERFORMANCE_MEASUREMENTS == 1
 		m_DMA_halfProcessingTicks = Utility::getTickCount() - m_DMA_halfTransferTick;
 #endif

@@ -14,13 +14,13 @@ void setup()
 
 	using namespace VoiceMailBox;
 	VoiceMailBox::setup();
-	/*sendToWifi("AT\r\n");
+	sendToWifi("AT\r\n");
 
-	delay(10);
+	delay(3);
 	while(!canReceiveFromWifi())
 	{
 		println("Waiting for response from WIFI...");
-		delay(100);
+		delay(2);
 		sendToWifi("AT\r\n");
 	}
 	char response[20] = { 0 };
@@ -29,8 +29,7 @@ void setup()
 		print("Response: ");
 		delay(10);
 		println(response);
-	}*/
-
+	}
 }
 
 void loop()

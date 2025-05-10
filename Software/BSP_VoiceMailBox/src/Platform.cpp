@@ -8,7 +8,7 @@
  */
 
 #include "platform.hpp"
-#include "main.h"
+#include "HAL_abstraction.hpp"
 #include <stdint.h>
 
 #include <cstdarg>   // <-- required for va_list and related macros
@@ -60,13 +60,7 @@ namespace VoiceMailBox
 
 	void Platform::setup()
 	{
-		// Setup Tick counter
-		// Enable TRC (Trace)
-		CoreDebug->DEMCR |= CoreDebug_DEMCR_TRCENA_Msk;
-		// Enable the cycle counter
-		DWT->CTRL |= DWT_CTRL_CYCCNTENA_Msk;
-		// Optional: Reset the counter to 0
-		DWT->CYCCNT = 0;
+		VMB_HAL_InitTickCounter();
 
 
 		dbgUart.setup();
@@ -98,7 +92,7 @@ namespace VoiceMailBox
 
 		void delay(uint32_t ms)
 		{
-			HAL_Delay(ms);
+			VMB_HAL_Delay(ms);
 		}
 		void print(const char* str, va_list args)
 		{
@@ -124,12 +118,11 @@ namespace VoiceMailBox
 
 		uint32_t getTickCount()
 		{
-			//return HAL_GetTick();
-			return DWT->CYCCNT;
+			return VMB_HAL_GetTickCount();
 		}
 		void resetTickCount()
 		{
-			DWT->CYCCNT = 0;
+			VMB_HAL_ResetTickCounter();
 		}
 	}
 
@@ -138,50 +131,7 @@ namespace VoiceMailBox
 }
 
 
-#if UART_USE_RX_DMA == 1
-void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef* huart, uint16_t Size)
-{
-	if (huart == static_cast<UART_HandleTypeDef*>(VoiceMailBox::Platform::wifiUart.uart)) {
-		VoiceMailBox::Platform::wifiUart.onDMAReceivedData(Size);
-	}
-	else if (huart == static_cast<UART_HandleTypeDef*>(VoiceMailBox::Platform::dbgUart.uart)) {
-		VoiceMailBox::Platform::dbgUart.onDMAReceivedData(Size);
-	}
-	else {
-		// Handle other UARTs if necessary
-	}
-}
-#else
-// Called when one byte is received
-void HAL_UART_RxCpltCallback(UART_HandleTypeDef* huart)
-{
-	if (huart == static_cast<UART_HandleTypeDef*>(VoiceMailBox::Platform::wifiUart.uart)) {
-		VoiceMailBox::Platform::wifiUart.onITReceivedData();
-	}
-	else if (huart == static_cast<UART_HandleTypeDef*>(VoiceMailBox::Platform::dbgUart.uart)) {
-		VoiceMailBox::Platform::dbgUart.onITReceivedData();
-	}
-	else {
-		// Handle other UARTs if necessary
-	}
-}
-#endif
 
 
 
-void HAL_I2SEx_TxRxHalfCpltCallback(I2S_HandleTypeDef* hi2s)
-{
-	if (VoiceMailBox::Platform::codec.getI2S().i2s == hi2s)
-	{
-		VoiceMailBox::Platform::codec.onI2S_DMA_TxRx_HalfCpltCallback();
-	}
-}
 
-
-void HAL_I2SEx_TxRxCpltCallback(I2S_HandleTypeDef* hi2s)
-{
-	if (VoiceMailBox::Platform::codec.getI2S().i2s == hi2s)
-	{
-		VoiceMailBox::Platform::codec.onI2S_DMA_TxRx_CpltCallback();
-	}
-}
