@@ -1,8 +1,0 @@
-/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/DevSandbox/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_type_uri.c:164:17:ndefRtdUriPayloadGetLength	24	static
-/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/DevSandbox/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_type_uri.c:180:23:ndefRtdUriToPayloadItem	32	static
-/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/DevSandbox/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_type_uri.c:226:19:ndefRtdUriProtocolAutodetect	24	static
-/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/DevSandbox/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_type_uri.c:257:12:ndefRtdUriInit	40	static
-/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/DevSandbox/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_type_uri.c:293:12:ndefGetRtdUri	32	static
-/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/DevSandbox/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_type_uri.c:315:19:ndefPayloadToRtdUri	32	static
-/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/DevSandbox/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_type_uri.c:342:12:ndefRecordToRtdUri	24	static
-/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/DevSandbox/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_type_uri.c:368:12:ndefRtdUriToRecord	16	static
