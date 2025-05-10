@@ -6,6 +6,7 @@
  */
 #include "Application.h"
 #include "BSP_VoiceMailBox.hpp"
+#include <math.h>
 
 void processData();
 void setup()
@@ -35,8 +36,8 @@ void setup()
 void loop()
 {
 	using namespace VoiceMailBox;
-	setLed(LED::LED0, getButtonState(Button::BTN0));
-	setLed(LED::LED1, getButtonState(Button::BTN1));
+	//setLed(LED::LED0, getButtonState(Button::BTN0));
+	//setLed(LED::LED1, getButtonState(Button::BTN1));
 
 
 	Codec_TLV320AIC3104& codec = getCodec();
@@ -47,7 +48,10 @@ void loop()
 void processData()
 {
 	using namespace VoiceMailBox;
+	setLed(LED::LED0, 1);
 	Codec_TLV320AIC3104& codec = getCodec();
+	codec.startDataProcessing();
+	static float performance = 0;
 	static float leftIn, leftOut;
 	static float rightIn, rightOut;
 
@@ -58,10 +62,16 @@ void processData()
 	volatile int16_t* adcData = codec.getRxBufPtr();
 	volatile int16_t* dacData = codec.getTxBufPtr();
 
+	static uint32_t maxPotiVal = getPotiMaxValue(Poti::POT1);
+
+
+	uint32_t rawPoti = getPotiValue(Poti::POT1);
+	float poti = std::exp(0.5f-(float)rawPoti/(float)maxPotiVal);
+
 	for(uint8_t n=0; n<codec.getBufferSize(); n++)
 	{
 		// redirect microphone to speaker
-		dacData[n] = adcData[n];
+		dacData[n] = (int16_t)((float)adcData[n]*poti);
 		//print("%i\r", adcData[n]);
 	}
 	/*for(uint8_t n=0; n<codec.getBufferSize()/2-1; n+=2)
@@ -102,4 +112,9 @@ void processData()
 		//print("%.1f\r", absFIER);
 
 	}*/
+
+	//print("%f\r", performance);
+	performance = codec.getProcessingTimeRatio();
+	setLed(LED::LED0, 0);
+	codec.endDataProcessing();
 }

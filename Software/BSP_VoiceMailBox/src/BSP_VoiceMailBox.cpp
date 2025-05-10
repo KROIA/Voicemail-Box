@@ -11,6 +11,10 @@ namespace VoiceMailBox
 	}
 
 
+	DIGITAL_PIN& getLed(LED led)
+	{
+		return Platform::led[static_cast<int>(led)];
+	}
 	void setLed(LED led, bool on)
 	{
 		Platform::led[static_cast<int>(led)].set(on);
@@ -20,14 +24,26 @@ namespace VoiceMailBox
 		Platform::led[static_cast<int>(led)].toggle();
 	}
 
+	DIGITAL_PIN& getButton(Button button)
+	{
+		return Platform::button[static_cast<int>(button)];
+	}
 	bool getButtonState(Button button)
 	{
 		return Platform::button[static_cast<int>(button)].get();
 	}
 
+	ANALOG_PIN& getPoti(Poti poti)
+	{
+		return Platform::adcPotis[static_cast<int>(poti)];
+	}
 	uint32_t getPotiValue(Poti poti)
 	{
 		return Platform::adcPotis[static_cast<int>(poti)].getValue();
+	}
+	uint32_t getPotiMaxValue(Poti poti)
+	{
+		return Platform::adcPotis[static_cast<int>(poti)].getMaxValue();
 	}
 
 	void sendToWifi(const char* str)

@@ -1,6 +1,8 @@
 #include "Codec_TLV320AIC3104.hpp"
 #include "platform.hpp"
 
+// DEBUG
+//#include "BSP_VoiceMailBox.hpp"
 
 namespace VoiceMailBox
 {
@@ -36,7 +38,6 @@ namespace VoiceMailBox
 	}
 	void Codec_TLV320AIC3104::setup()
 	{
-		m_i2s.setup_transmitReceive_DMA((uint16_t*)m_dacDataBuffer, (uint16_t*)m_adcDataBuffer, m_dmaBufferSize); // Setup I2S for DMA transmit and receive
 		reset(); // Reset the codec
 		setCurrentRegisterPage(0); // Set the current register page to 0
 
@@ -94,22 +95,47 @@ namespace VoiceMailBox
 		//writeRegister(REG::PAGE_0::LEFT_LOP_M_OUTPUT_LEVEL_CONTROL, 0x0B); //Unmute left line output
 		writeRegister(REG::PAGE_0::CLOCK, 0x01); //CODEC_CLKIN uses CLKDIV_OUT
 
+		// Setup I2S for DMA transmit and receive
+		m_i2s.setup_transmitReceive_DMA((uint16_t*)m_dacDataBuffer, (uint16_t*)m_adcDataBuffer, m_dmaBufferSize); 
 	}
-
 
 	void Codec_TLV320AIC3104::onI2S_DMA_TxRx_HalfCpltCallback()
 	{
+		// Inside ISR context! 
 		m_inBufPtr = &m_adcDataBuffer[0];
 		m_outBufPtr = &m_dacDataBuffer[0];
 
 		m_dataReadyFlag = 1;
+#if ENABLE_CODEC_PERFORMANCE_MEASUREMENTS == 1
+		m_DMA_halfTransferTick = Utility::getTickCount();
+#endif
+		//setLed(LED::LED1, 1); // Set LED1 on		
 	}
 	void Codec_TLV320AIC3104::onI2S_DMA_TxRx_CpltCallback()
 	{
+		// Inside ISR context! 
 		m_inBufPtr = &m_adcDataBuffer[m_dmaBufferSize/2];
 		m_outBufPtr = &m_dacDataBuffer[m_dmaBufferSize/2];
 
 		m_dataReadyFlag = 1;
+#if ENABLE_CODEC_PERFORMANCE_MEASUREMENTS == 1
+		m_DMA_halfProcessingTicks = Utility::getTickCount() - m_DMA_halfTransferTick;
+#endif
+		//setLed(LED::LED1, 0); // Set LED1 off
+	}
+
+
+	void Codec_TLV320AIC3104::startDataProcessing()
+	{
+#if ENABLE_CODEC_PERFORMANCE_MEASUREMENTS == 1
+		m_startDataProcessingTick = Utility::getTickCount();
+#endif
+	}
+	void Codec_TLV320AIC3104::endDataProcessing()
+	{
+#if ENABLE_CODEC_PERFORMANCE_MEASUREMENTS == 1
+		m_dataProcessingTicks = Utility::getTickCount() - m_startDataProcessingTick;
+#endif
 	}
 
 

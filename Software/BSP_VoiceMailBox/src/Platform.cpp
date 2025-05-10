@@ -60,6 +60,15 @@ namespace VoiceMailBox
 
 	void Platform::setup()
 	{
+		// Setup Tick counter
+		// Enable TRC (Trace)
+		CoreDebug->DEMCR |= CoreDebug_DEMCR_TRCENA_Msk;
+		// Enable the cycle counter
+		DWT->CTRL |= DWT_CTRL_CYCCNTENA_Msk;
+		// Optional: Reset the counter to 0
+		DWT->CYCCNT = 0;
+
+
 		dbgUart.setup();
 		wifiUart.setup();
 
@@ -111,6 +120,16 @@ namespace VoiceMailBox
 			buffer[size+1] = '\n'; // Add newline character
 			buffer[size+2] = 0; // Add newline character
 			Platform::dbgUart.send((uint8_t*)buffer, strlen(buffer));
+		}
+
+		uint32_t getTickCount()
+		{
+			//return HAL_GetTick();
+			return DWT->CYCCNT;
+		}
+		void resetTickCount()
+		{
+			DWT->CYCCNT = 0;
 		}
 	}
 

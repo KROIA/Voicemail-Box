@@ -66,6 +66,10 @@ namespace VoiceMailBox
 		void delay(uint32_t ms);
 		void print(const char* str, va_list args);
 		void println(const char* str, va_list args);
+
+		uint32_t getTickCount();
+		void resetTickCount();
+
 	}
 
 }

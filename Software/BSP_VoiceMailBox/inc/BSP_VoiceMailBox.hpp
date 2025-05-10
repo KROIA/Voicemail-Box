@@ -4,6 +4,11 @@
 
 #include <stdbool.h>
 #include <stdint.h>
+
+#include "digitalPin.hpp"
+#include "analogPin.hpp"
+#include "uart.hpp"
+#include "i2c.hpp"
 #include "Codec_TLV320AIC3104.hpp"
 
 namespace VoiceMailBox
@@ -28,14 +33,22 @@ namespace VoiceMailBox
 		POT1
 	};
 
+    
+
 	void setup();
 
+	DIGITAL_PIN& getLed(LED led);
 	void setLed(LED led, bool on);
 	void toggleLed(LED led);
 
+
+	DIGITAL_PIN& getButton(Button button);
 	bool getButtonState(Button button);
 
+	ANALOG_PIN& getPoti(Poti poti);
 	uint32_t getPotiValue(Poti poti);
+	uint32_t getPotiMaxValue(Poti poti);
+
 
 	void sendToWifi(const char* str);
 	bool canReceiveFromWifi();
@@ -47,10 +60,6 @@ namespace VoiceMailBox
 	void delay(uint32_t ms);
 
 	Codec_TLV320AIC3104& getCodec();
-
-
-	//void on_uart_rx_dma_received(void* huart, uint16_t Size);
-
 }
 
 #endif

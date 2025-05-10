@@ -10,7 +10,8 @@ namespace VoiceMailBox
 	{
 		void* adc;		// ADC_TypeDef*
 
-		uint32_t getValue();
+		uint32_t getValue() const;
+		uint32_t getMaxValue() const;
 	};
 }
 #endif
