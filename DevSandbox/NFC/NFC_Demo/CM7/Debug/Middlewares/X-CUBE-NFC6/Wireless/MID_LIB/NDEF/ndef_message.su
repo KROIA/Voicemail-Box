@@ -1,8 +1,0 @@
-/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/DevSandbox/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_message.c:61:20:ndefAllocRecord	4	static
-/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/DevSandbox/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_message.c:82:12:ndefMessageInit	16	static
-/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/DevSandbox/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_message.c:100:12:ndefMessageGetInfo	32	static
-/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/DevSandbox/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_message.c:129:10:ndefMessageGetRecordCount	24	static
-/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/DevSandbox/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_message.c:143:12:ndefMessageAppend	24	static
-/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/DevSandbox/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_message.c:190:12:ndefMessageDecode	40	static
-/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/DevSandbox/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_message.c:237:12:ndefMessageEncode	48	static
-/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/DevSandbox/NFC/NFC_Demo/Middlewares/ST/ndef/Src/message/ndef_message.c:287:13:ndefMessageFindRecordType	32	static
