@@ -153,6 +153,7 @@ int main(void)
   MX_FATFS_Init();
   MX_USB_OTG_FS_HCD_Init();
   /* USER CODE BEGIN 2 */
+
 	if(res = f_mount(&SDFatFS, (TCHAR const*)SDPath, 0) != FR_OK)
 	{
 		Error_Handler();
