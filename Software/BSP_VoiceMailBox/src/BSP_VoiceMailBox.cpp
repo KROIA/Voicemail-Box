@@ -46,22 +46,9 @@ namespace VoiceMailBox
 		return Platform::adcPotis[static_cast<int>(poti)].getMaxValue();
 	}
 
-	void sendToWifi(const char* str)
+	ATCommandClient& getPmodESP()
 	{
-		Platform::wifiUart.send(str);
-	}
-	bool canReceiveFromWifi()
-	{
-		return Platform::wifiUart.hasBytesReceived() != 0;
-	}
-	bool receiveFromWifi(char* data, uint16_t size)
-	{
-		if (Platform::wifiUart.hasBytesReceived() != 0)
-		{
-			Platform::wifiUart.receive((uint8_t*)data, size);
-			return true;
-		}
-		return false;
+		return Platform::pmodESP; // Return the ATCommandClient instance
 	}
 
 

@@ -10,6 +10,8 @@
 #include "uart.hpp"
 #include "i2c.hpp"
 #include "Codec_TLV320AIC3104.hpp"
+#include "ATCommandClient.hpp"
+#include "File.hpp"
 
 namespace VoiceMailBox
 {
@@ -50,10 +52,7 @@ namespace VoiceMailBox
 	uint32_t getPotiMaxValue(Poti poti);
 
 
-	void sendToWifi(const char* str);
-	bool canReceiveFromWifi();
-	bool receiveFromWifi(char* data, uint16_t size);
-
+	ATCommandClient& getPmodESP();
 
 	void print(const char* str, ...);
 	void println(const char* str, ...);

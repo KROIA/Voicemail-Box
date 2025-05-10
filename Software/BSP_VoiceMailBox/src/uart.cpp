@@ -8,8 +8,17 @@ namespace VoiceMailBox
 	UART* UART::s_instances[20] = { nullptr };
 
 
-	UART::UART(void* uartHandle)
+	UART::UART(void* uartHandle, std::size_t bufferSize)
 		: uart(uartHandle)
+		, m_bufferSize(bufferSize)
+		, rx_buffer(new uint8_t[bufferSize])
+		, rx_data(0)
+		, rx_write_index(0)
+		, rx_read_index(0)
+		, tx_buffer(new uint8_t[bufferSize])
+		, tx_write_index(0)
+		, tx_read_index(0)
+		, m_sending(false)
 	{
 		for (std::size_t i = 0; i < max_instances; i++)
 		{
@@ -22,15 +31,9 @@ namespace VoiceMailBox
 
 		memset(tx_buffer, 0, sizeof(tx_buffer));
 		memset(rx_buffer, 0, sizeof(rx_buffer));
-#if UART_USE_RX_DMA == 1
-		current_RX_Buffer = rx_buffer[0];
-		bufferSwitcher = 1;
-		dataSize = 0;
-#else
 		rx_data = 0;
 		rx_write_index = 0;
 		rx_read_index = 0;
-#endif
 	}
 	UART::~UART()
 	{
@@ -42,14 +45,12 @@ namespace VoiceMailBox
 				break;
 			}
 		}
+		delete[] rx_buffer;
+		delete[] tx_buffer;
 	}
 	void UART::setup()
 	{
-#if UART_USE_RX_DMA == 1
-		VMB_HAL_UARTEx_ReceiveToIdle_DMA(static_cast<VMB_UART_Handle*>(uart), current_RX_Buffer, buffer_size);
-#else
 		VMB_HAL_UART_Receive_IT(static_cast<VMB_UART_Handle*>(uart), &rx_data, 1);
-#endif
 	}
 
 	void UART::send(const char* str)
@@ -58,30 +59,37 @@ namespace VoiceMailBox
 	}
 	void UART::send(uint8_t* data, uint16_t size)
 	{
-		if (size > buffer_size)
+		if (size > m_bufferSize)
 		{
-			size = buffer_size;
+			size = m_bufferSize;
 		}
 		if (data == nullptr)
 		{
 			return;
 		}
-		memcpy(tx_buffer, data, size);
-#if UART_USE_TX_DMA == 1
-		VMB_HAL_UART_Transmit_DMA(static_cast<VMB_UART_Handle*>(uart), tx_buffer, size);
-#else
-		//VMB_HAL_UART_Transmit(static_cast<VMB_UART_Handle*>(uart), tx_buffer, size,100);
-		VMB_HAL_UART_Transmit_IT(static_cast<VMB_UART_Handle*>(uart), tx_buffer, size);
-#endif
+		//memcpy(tx_buffer, data, size);
+		//VMB_HAL_UART_Transmit(static_cast<VMB_UART_Handle*>(uart), tx_buffer, size, 100);
+		//VMB_HAL_UART_Transmit_IT(static_cast<VMB_UART_Handle*>(uart), tx_buffer, size);
+		for (uint16_t i = 0; i < size; i++)
+		{
+			tx_buffer[tx_write_index] = data[i];
+			tx_write_index = (tx_write_index + 1) % m_bufferSize;
+			if(tx_read_index == tx_write_index)
+				tx_read_index = (tx_read_index + 1) % m_bufferSize;
+		}
+		if (size > 0 && !m_sending) // Buffer overflow
+		{
+			m_sending = true;
+			uint16_t index = tx_read_index;
+			tx_read_index = (tx_read_index + 1) % m_bufferSize; // Overwrite the oldest data
+			VMB_HAL_UART_Transmit_IT(static_cast<VMB_UART_Handle*>(uart), &tx_buffer[index], 1);
+		}		
 	}
 
-	uint16_t UART::hasBytesReceived()
+
+	uint16_t UART::hasBytesReceived() const
 	{
-#if UART_USE_RX_DMA == 1
-		return dataSize;
-#else
 		return rx_write_index - rx_read_index;
-#endif
 	}
 	bool UART::receive(uint8_t* data, uint16_t size)
 	{
@@ -89,20 +97,6 @@ namespace VoiceMailBox
 		{
 			return false;
 		}
-#if UART_USE_RX_DMA == 1
-		if (dataSize == 0)
-		{
-			return false;
-		}
-		if (size > dataSize)
-		{
-			size = dataSize;
-		}
-
-		memcpy(data, current_RX_Buffer, size);
-		dataSize = 0;
-		return true;
-#else
 		uint16_t bytesReceived = hasBytesReceived();
 		if (bytesReceived == 0)
 		{
@@ -114,59 +108,25 @@ namespace VoiceMailBox
 		}
 		for (uint16_t i = 0; i < size; i++)
 		{
-			data[i] = rx_buffer[(rx_read_index + i) % buffer_size];
+			data[i] = rx_buffer[(rx_read_index + i) % m_bufferSize];
 		}
-		rx_read_index = (rx_read_index + size) % buffer_size; // Update read index
+		rx_read_index = (rx_read_index + size) % m_bufferSize; // Update read index
 		return true;
-#endif
 	}
-	//void UART::receive(uint8_t* data, uint16_t size, uint32_t timeout)
-	//{
-	//	HAL_UART_Receive(static_cast<VMB_UART_Handle*>(uart), data, size, timeout);
-	//}
-#if UART_USE_RX_DMA == 1
-	void UART::onDMAReceivedData(uint16_t size)
+
+	void UART::flush()
 	{
-		uint8_t* nextBuffer = rx_buffer[bufferSwitcher];
-		bufferSwitcher = !bufferSwitcher;
-
-		HAL_UARTEx_ReceiveToIdle_DMA(static_cast<VMB_UART_Handle*>(uart), nextBuffer, buffer_size);
-		//HAL_UART_Receive_DMA(static_cast<VMB_UART_Handle*>(uart), nextBuffer, buffer_size);
-		dataSize = size;
-		//dataReceived = true;
-		current_RX_Buffer = rx_buffer[bufferSwitcher];
+		rx_write_index = 0;
+		rx_read_index = 0;
+		tx_write_index = 0;
+		tx_read_index = 0;
+		m_sending = false;
+		memset(rx_buffer, 0, sizeof(rx_buffer));
+		memset(tx_buffer, 0, sizeof(tx_buffer));
 	}
-#else
-	void UART::onITReceivedData()
-	{
-		// Circular buffer implementation
-		rx_buffer[rx_write_index] = rx_data;
-		rx_write_index = (rx_write_index + 1) % buffer_size;
 
+	
 
-		if (rx_write_index == rx_read_index) // Buffer overflow
-		{
-			rx_read_index = (rx_read_index + 1) % buffer_size; // Overwrite the oldest data
-		}
-		VMB_HAL_UART_Receive_IT(static_cast<VMB_UART_Handle*>(uart), &rx_data, 1);
-	}
-#endif
-
-
-
-#if UART_USE_RX_DMA == 1
-	void UART::onDMAReceivedData(void* huart, uint16_t Size)
-	{
-		for (std::size_t i = 0; i < max_instances; i++)
-		{
-			if (s_instances[i] != nullptr && s_instances[i]->uart == huart)
-			{
-				s_instances[i]->onDMAReceivedData(Size);
-				return;
-			}
-		}
-	}
-#else
 	void UART::onITReceivedData(void* huart)
 	{
 		for (std::size_t i = 0; i < max_instances; i++)
@@ -178,42 +138,57 @@ namespace VoiceMailBox
 			}
 		}
 	}
-#endif
+	void UART::onITByteSent(void* huart)
+	{
+		for (std::size_t i = 0; i < max_instances; i++)
+		{
+			if (s_instances[i] != nullptr && s_instances[i]->uart == huart)
+			{
+				s_instances[i]->onITByteSent();
+				return;
+			}
+		}
+	}
+
+
+	void UART::onITReceivedData()
+	{
+		// Circular buffer implementation
+		rx_buffer[rx_write_index] = rx_data;
+		rx_write_index = (rx_write_index + 1) % m_bufferSize;
+
+
+		if (rx_write_index == rx_read_index) // Buffer overflow
+		{
+			rx_read_index = (rx_read_index + 1) % m_bufferSize; // Overwrite the oldest data
+		}
+		VMB_HAL_UART_Receive_IT(static_cast<VMB_UART_Handle*>(uart), &rx_data, 1);
+	}
+	void UART::onITByteSent()
+	{
+		if (tx_write_index != tx_read_index) // Buffer overflow
+		{
+			uint16_t index = tx_read_index;
+			tx_read_index = (tx_read_index + 1) % m_bufferSize; // Overwrite the oldest data
+			VMB_HAL_UART_Transmit_IT(static_cast<VMB_UART_Handle*>(uart), &tx_buffer[index], 1);
+		}
+		else
+			m_sending = false;
+	}
 }
 
 
 
 
-#if UART_USE_RX_DMA == 1
-void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef* huart, uint16_t Size)
-{
-	VoiceMailBox::UART::onDMAReceivedData(huart, Size);
-	/*if (huart == static_cast<VMB_UART_Handle*>(VoiceMailBox::Platform::wifiUart.uart)) {
-		VoiceMailBox::Platform::wifiUart.onDMAReceivedData(Size);
-	}
-	else if (huart == static_cast<VMB_UART_Handle*>(VoiceMailBox::Platform::dbgUart.uart)) {
-		VoiceMailBox::Platform::dbgUart.onDMAReceivedData(Size);
-	}
-	else {
-		// Handle other UARTs if necessary
-	}*/
-}
-#else
 // Called when one byte is received
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef* huart)
 {
 	VoiceMailBox::UART::onITReceivedData(huart);
-	/*if (huart == static_cast<VMB_UART_Handle*>(VoiceMailBox::Platform::wifiUart.uart)) {
-		VoiceMailBox::Platform::wifiUart.onITReceivedData();
-	}
-	else if (huart == static_cast<VMB_UART_Handle*>(VoiceMailBox::Platform::dbgUart.uart)) {
-		VoiceMailBox::Platform::dbgUart.onITReceivedData();
-	}
-	else {
-		// Handle other UARTs if necessary
-	}*/
 }
-#endif
+void HAL_UART_TxCpltCallback(UART_HandleTypeDef* huart)
+{
+	VoiceMailBox::UART::onITByteSent(huart);
+}
 
 
 

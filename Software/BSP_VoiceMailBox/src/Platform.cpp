@@ -49,8 +49,8 @@ namespace VoiceMailBox
 	/*
 		Fill in the UART_HandleTypeDef* value, generated from the CUBEMX for the UART
 	*/
-	UART Platform::dbgUart = { getUART_DEBUG() }; // maybe problematic because of static initialisation order
-	UART Platform::wifiUart = { getUART_WIFI() }; // maybe problematic because of static initialisation order
+	UART Platform::dbgUart(getUART_DEBUG(), 256); // maybe problematic because of static initialisation order
+	//UART Platform::wifiUart(getUART_WIFI(), 64); // maybe problematic because of static initialisation order
 
 
 	// 0x18 is the default address for the TLV320AIC3104
@@ -58,13 +58,16 @@ namespace VoiceMailBox
 										getI2C_CODEC(), 0x18,  // maybe problematic because of static initialisation order
 										CODEC_NRESET_GPIO_Port, CODEC_NRESET_Pin);
 
+	ATCommandClient Platform::pmodESP(getUART_WIFI(), 256); // maybe problematic because of static initialisation order
+
 	void Platform::setup()
 	{
 		VMB_HAL_InitTickCounter();
 
 
 		dbgUart.setup();
-		wifiUart.setup();
+		pmodESP.setup();
+		//wifiUart.setup();
 
 		codec.setup();
 	}

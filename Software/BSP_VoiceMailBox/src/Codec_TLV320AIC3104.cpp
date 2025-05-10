@@ -2,7 +2,7 @@
 #include "platform.hpp"
 
 // DEBUG
-//#include "BSP_VoiceMailBox.hpp"
+#include "BSP_VoiceMailBox.hpp"
 
 namespace VoiceMailBox
 {
@@ -10,7 +10,7 @@ namespace VoiceMailBox
 		: m_i2c(i2cHandle)
 		, m_deviceAddress(deviceAddress)
 		, m_nResetPin{ nResetPort, nResetPin }
-		, m_i2s(i2sHandle, 128)
+		, m_i2s(i2sHandle, 512)
 		, m_currentRegisterPage(0)
 	{
 #if ENABLE_CODEC_PERFORMANCE_MEASUREMENTS == 1
@@ -105,7 +105,7 @@ namespace VoiceMailBox
 #if ENABLE_CODEC_PERFORMANCE_MEASUREMENTS == 1
 		m_DMA_halfTransferTick = Utility::getTickCount();
 #endif
-		//setLed(LED::LED1, 1); // Set LED1 on		
+		setLed(LED::LED1, 1); // Set LED1 on		
 	}
 	void Codec_TLV320AIC3104::onI2S_DMA_TxRx_CpltCallback()
 	{
@@ -113,7 +113,7 @@ namespace VoiceMailBox
 #if ENABLE_CODEC_PERFORMANCE_MEASUREMENTS == 1
 		m_DMA_halfProcessingTicks = Utility::getTickCount() - m_DMA_halfTransferTick;
 #endif
-		//setLed(LED::LED1, 0); // Set LED1 off
+		setLed(LED::LED1, 0); // Set LED1 off
 	}
 
 

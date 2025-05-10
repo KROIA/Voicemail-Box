@@ -81,7 +81,21 @@
 	GPIO:
 		PIN(PG13): CODEC_NRESET Digital Output
 	
-		
+### SD-Card
+	System Core:
+		NVIC:
+			SDIO global interrupt: ON
+	Connectivity:
+		SDIO:
+			Mode = "SD 1 bit"
+			DMA Setting:
+				SDIO_RX, DMA2 Stream 3, Peripheral To Memory, Low
+				SDIO_TX, DMA2 Stream 6, Memory To Peripheral, Low
+	Middleware and Software Packs:
+		FATFS:
+		    SD Card: ON
+		    Advanced Settings->SDIO:
+		    Use dma template: Enabled
 		
 ## Project Properties
 		C/C++ General->Paths and Symbols:

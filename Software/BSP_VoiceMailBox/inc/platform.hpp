@@ -18,6 +18,8 @@
 #include "uart.hpp"
 #include "i2c.hpp"
 #include "Codec_TLV320AIC3104.hpp"
+#include "ATCommandClient.hpp"
+
 
 namespace VoiceMailBox
 {
@@ -45,10 +47,13 @@ namespace VoiceMailBox
 
 		// UART
 		static UART dbgUart;
-		static UART wifiUart;
+		//static UART wifiUart;
+		
 
 		// Audio Codec
 		static Codec_TLV320AIC3104 codec;
+
+		static ATCommandClient pmodESP;
 
 		static void setup();
 	};
