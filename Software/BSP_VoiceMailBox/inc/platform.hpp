@@ -13,12 +13,16 @@
 #include <stdint.h>
 #include <cstdarg>
 
+#include "settings.h"
+
 #include "digitalPin.hpp"
 #include "analogPin.hpp"
 #include "uart.hpp"
 #include "i2c.hpp"
 #include "Codec_TLV320AIC3104.hpp"
 #include "ATCommandClient.hpp"
+
+
 
 
 namespace VoiceMailBox
@@ -54,6 +58,10 @@ namespace VoiceMailBox
 		static Codec_TLV320AIC3104 codec;
 
 		static ATCommandClient pmodESP;
+
+#ifdef VMB_DEVELOPMENT_CONFIGURATION
+		static DIGITAL_PIN dbgPins[];
+#endif
 
 		static void setup();
 	};

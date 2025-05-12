@@ -19,7 +19,7 @@ void create_wav_header(VoiceMailBox::File &file, uint32_t sample_rate, uint16_t 
 VoiceMailBox::File file;
 uint32_t sampleCounter = 0;
 uint32_t targetSamples = 48000*20;
-bool isRecording = true;
+bool isRecording = false;
 
 void setup()
 {
@@ -32,6 +32,7 @@ void setup()
 		Codec_TLV320AIC3104& codec = getCodec();
 		create_wav_header(file, 48000, 16, 2, targetSamples); // Create WAV header
 	}
+	//sendDemoHTTPRequest();
 	//testFile();
 }
 
@@ -50,7 +51,10 @@ void loop()
 void processData()
 {
 	using namespace VoiceMailBox;
-	setLed(LED::LED0, 1);
+#ifdef VMB_DEVELOPMENT_CONFIGURATION
+	setDbgPin(DBG_PIN::DBG1, 1); // Set DBG1 on
+#endif
+
 	Codec_TLV320AIC3104& codec = getCodec();
 	codec.startDataProcessing();
 	static float performance = 0;
@@ -69,6 +73,7 @@ void processData()
 
 	uint32_t rawPoti = getPotiValue(Poti::POT1);
 	float poti = std::exp(0.5f - (float)rawPoti / (float)maxPotiVal);
+
 
 	//uint8_t tmp[64];
 	for (uint32_t n = 0; n < codecBufferSize; n++)
@@ -89,7 +94,7 @@ void processData()
 			count = targetSamples - sampleCounter;
 		if (count > 1)
 		{
-			file.write((const char*)adcData, codec.getBufferSize()); // Write to file
+			file.write((const char*)adcData, codec.getBufferSize()*2); // Write to file
 			sampleCounter += count/2;
 		}
 		else
@@ -99,7 +104,9 @@ void processData()
 		}
 	}
 	performance = codec.getProcessingTimeRatio();
-	setLed(LED::LED0, 0);
+#ifdef VMB_DEVELOPMENT_CONFIGURATION
+	setDbgPin(DBG_PIN::DBG1, 0); // Set DBG1 off
+#endif
 	codec.endDataProcessing();
 }
 
@@ -265,7 +272,7 @@ void create_wav_header(VoiceMailBox::File& file, uint32_t sample_rate, uint16_t 
 	uint32_t data_chunk_size = num_samples * block_align;
 	uint32_t riff_chunk_size = 36 + data_chunk_size;
 
-	sample_rate /= num_channels;
+	//sample_rate /= num_channels;
 
 	uint8_t header[44];
 

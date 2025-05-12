@@ -1,7 +1,5 @@
 #include <BSP_VoiceMailBox.hpp>
-#include <platform.hpp>
-
-
+#include "platform.hpp"
 
 namespace VoiceMailBox
 {
@@ -77,9 +75,18 @@ namespace VoiceMailBox
 		return Platform::codec;
 	}
 
-
-	/*void on_uart_rx_dma_received(void* huart, uint16_t Size)
+#ifdef VMB_DEVELOPMENT_CONFIGURATION
+	DIGITAL_PIN& getDbgPin(DBG_PIN pin)
 	{
-		VoiceMailBox::HAL_UARTEx_RxEventCallback(huart, Size); // Call the platform-specific UART RX DMA received callback
-	}*/
+		return Platform::dbgPins[static_cast<int>(pin)];
+	}
+	void setDbgPin(DBG_PIN pin, bool on)
+	{
+		Platform::dbgPins[static_cast<int>(pin)].set(on);
+	}
+	void toggleDbgPin(DBG_PIN pin)
+	{
+		Platform::dbgPins[static_cast<int>(pin)].toggle();
+	}
+#endif
 }

@@ -5,6 +5,8 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+#include "settings.h"
+
 #include "digitalPin.hpp"
 #include "analogPin.hpp"
 #include "uart.hpp"
@@ -35,6 +37,14 @@ namespace VoiceMailBox
 		POT1
 	};
 
+#ifdef VMB_DEVELOPMENT_CONFIGURATION
+	enum class DBG_PIN
+	{
+		DBG0,
+		DBG1,
+		DBG2,
+	};
+#endif
     
 
 	void setup();
@@ -59,6 +69,14 @@ namespace VoiceMailBox
 	void delay(uint32_t ms);
 
 	Codec_TLV320AIC3104& getCodec();
+
+#ifdef VMB_DEVELOPMENT_CONFIGURATION
+	DIGITAL_PIN& getDbgPin(DBG_PIN pin);
+	void setDbgPin(DBG_PIN pin, bool on);
+	void toggleDbgPin(DBG_PIN pin);
+#endif
+
+
 }
 
 #endif

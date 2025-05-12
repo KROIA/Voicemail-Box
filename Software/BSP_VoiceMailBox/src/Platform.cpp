@@ -54,11 +54,22 @@ namespace VoiceMailBox
 
 
 	// 0x18 is the default address for the TLV320AIC3104
-	Codec_TLV320AIC3104 Platform::codec(getI2S_CODEC(),
+	Codec_TLV320AIC3104 Platform::codec(getI2S_CODEC(), 512,
 										getI2C_CODEC(), 0x18,  // maybe problematic because of static initialisation order
 										CODEC_NRESET_GPIO_Port, CODEC_NRESET_Pin);
 
 	ATCommandClient Platform::pmodESP(getUART_WIFI(), 256); // maybe problematic because of static initialisation order
+
+
+#ifdef VMB_DEVELOPMENT_CONFIGURATION
+	DIGITAL_PIN Platform::dbgPins[] =
+	{
+		{ DBG0_GPIO_Port, DBG0_Pin },
+		{ DBG1_GPIO_Port, DBG1_Pin },
+		{ DBG2_GPIO_Port, DBG2_Pin }
+	};
+#endif
+
 
 	void Platform::setup()
 	{

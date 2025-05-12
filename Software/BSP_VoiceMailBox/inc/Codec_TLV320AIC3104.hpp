@@ -8,12 +8,14 @@
 */
 
 #include <stdint.h>
+
+#include "settings.h"
+
 #include "digitalPin.hpp"
 #include "i2c.hpp"
 #include "i2s.hpp"
 
 
-#define ENABLE_CODEC_PERFORMANCE_MEASUREMENTS 1  // Set to 0 to disable performance measurements
 
 namespace VoiceMailBox
 {
@@ -134,7 +136,7 @@ namespace VoiceMailBox
 
 	public:
 		// 0x18 is the default address for the TLV320AIC3104
-		Codec_TLV320AIC3104(void* i2sHandle, 
+		Codec_TLV320AIC3104(void* i2sHandle, uint16_t i2sBufferSize,
 						    void* i2cHandle, uint8_t deviceAddress,
 							void* nResetPort, uint16_t nResetPin);
 		~Codec_TLV320AIC3104();
@@ -213,7 +215,7 @@ namespace VoiceMailBox
 		 */
 		float getProcessingTimeRatio() const
 		{
-#if ENABLE_CODEC_PERFORMANCE_MEASUREMENTS == 1
+#if VMB_ENABLE_CODEC_PERFORMANCE_MEASUREMENTS == 1
 			if (m_DMA_halfProcessingTicks == 0)
 				return 0.0f;
 			return static_cast<float>(m_dataProcessingTicks) / static_cast<float>(m_DMA_halfProcessingTicks);
@@ -242,7 +244,7 @@ namespace VoiceMailBox
 
 		
 		// Performance mesurements
-#if ENABLE_CODEC_PERFORMANCE_MEASUREMENTS == 1
+#if VMB_ENABLE_CODEC_PERFORMANCE_MEASUREMENTS == 1
 		uint32_t m_startDataProcessingTick = 0;
 		uint32_t m_dataProcessingTicks = 0;
 		uint32_t m_DMA_halfTransferTick = 0;

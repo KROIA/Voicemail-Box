@@ -113,6 +113,88 @@ namespace VoiceMailBox
 		rx_read_index = (rx_read_index + size) % m_bufferSize; // Update read index
 		return true;
 	}
+	void UART::waitUntil(char character, uint32_t timeoutMS)
+	{
+		uint32_t startTime = VMB_HAL_GetTickCountInMs();
+		uint16_t readIndex = rx_read_index;
+		// Search first occurrence of character in the buffer
+		for (uint16_t i = rx_read_index; i < rx_write_index; i++)
+		{
+			if (rx_buffer[i] == character)
+			{
+				return;
+			}
+		}
+		readIndex = (rx_write_index-1) % m_bufferSize; // Update read index to the end of the buffer + 1
+
+		// If not found, wait for the character to be received
+		uint16_t currentReceivedBytes = hasBytesReceived();
+		while (VMB_HAL_GetTickCountInMs() - startTime < timeoutMS)
+		{
+			uint16_t rb = hasBytesReceived();
+			if (currentReceivedBytes != rb)
+			{
+				currentReceivedBytes = rb;
+				if (rx_buffer[readIndex] == character)
+				{
+					return; // Character found
+				}
+				readIndex = (rx_write_index-1) % m_bufferSize;
+			}
+		}
+	}
+	void UART::waitUntil(const char* str, uint32_t timeoutMS)
+	{
+		uint16_t strLength = strlen(str);
+		uint32_t startTime = VMB_HAL_GetTickCountInMs();
+		// Search first occurrence of string in the buffer
+		for (uint16_t i = rx_read_index; i < rx_write_index; i++)
+		{
+			bool found = true;
+			for (uint16_t j = 0; j < strLength; j++)
+			{
+				if (rx_buffer[(i + j) % m_bufferSize] != str[j])
+				{
+					found = false;
+					break;
+				}
+			}
+			if (found)
+			{
+				return;
+			}
+		}
+		// If not found, wait for the string to be received
+		uint16_t currentReceivedBytes = hasBytesReceived();
+		while (VMB_HAL_GetTickCountInMs() - startTime < timeoutMS)
+		{
+			uint16_t rb = hasBytesReceived();
+			if (currentReceivedBytes != rb)
+			{
+				currentReceivedBytes = rb;
+				for (uint16_t i = rx_read_index; i < rx_write_index; i++)
+				{
+					bool found = true;
+					for (uint16_t j = 0; j < strLength; j++)
+					{
+						if (rx_buffer[(i + j) % m_bufferSize] != str[j])
+						{
+							found = false;
+							break;
+						}
+					}
+					if (found)
+					{
+						return;
+					}
+				}
+			}
+		}
+		// Timeout reached
+		// No string found
+
+	}
+
 
 	void UART::flush()
 	{

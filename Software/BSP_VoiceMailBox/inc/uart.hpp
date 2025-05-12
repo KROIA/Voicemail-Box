@@ -23,6 +23,10 @@ namespace VoiceMailBox
 		uint16_t hasBytesReceived() const;
 		bool receive(uint8_t* data, uint16_t size);
 		//void receive(uint8_t* data, uint16_t size, uint32_t timeout);
+
+		// Timeout in ms
+		void waitUntil(char character, uint32_t timeoutMS = 0xFFFFFFFF); // Wait until a character is received (blocking)
+		void waitUntil(const char* str, uint32_t timeoutMS = 0xFFFFFFFF); // Wait until a string is received (blocking)
 		void flush();
 
 		bool isSending() const

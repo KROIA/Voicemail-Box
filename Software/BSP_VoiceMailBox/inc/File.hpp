@@ -44,6 +44,8 @@ namespace VoiceMailBox
 		bool isOpen() const { return m_isOpen; }
 		bool flush();
 
+		bool eof() const;
+
 
 		FRESULT getLastError() const { return m_lastError; }
 

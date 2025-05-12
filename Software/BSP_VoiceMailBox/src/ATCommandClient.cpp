@@ -38,9 +38,11 @@ namespace VoiceMailBox
 
 	bool ATCommandClient::doesRespond()
 	{
-		sendCommand("AT");
+		sendCommand("ATE0");
+		m_uart.waitUntil("OK\r\n", 5000);
+
 		// Wait for a short period to allow the AT command client to respond
-		VMB_HAL_Delay(5);
+		//VMB_HAL_Delay(5);
 		uint16_t size = m_uart.hasBytesReceived();
 		if (size > 0)
 		{

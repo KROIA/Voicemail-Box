@@ -129,6 +129,8 @@ I2S_HandleTypeDef* getI2S_CODEC();
 #define D26_GPIO_Port GPIOI
 #define USB_FS1_N_Pin GPIO_PIN_11
 #define USB_FS1_N_GPIO_Port GPIOA
+#define DBG1_Pin GPIO_PIN_13
+#define DBG1_GPIO_Port GPIOC
 #define A0_Pin GPIO_PIN_0
 #define A0_GPIO_Port GPIOF
 #define FMC_NBL3_Pin GPIO_PIN_5
@@ -171,6 +173,8 @@ I2S_HandleTypeDef* getI2S_CODEC();
 #define A2_GPIO_Port GPIOF
 #define uSD_D0_Pin GPIO_PIN_8
 #define uSD_D0_GPIO_Port GPIOC
+#define DBG0_Pin GPIO_PIN_7
+#define DBG0_GPIO_Port GPIOC
 #define A3_Pin GPIO_PIN_3
 #define A3_GPIO_Port GPIOF
 #define I2C2_SCL_Pin GPIO_PIN_4
@@ -235,6 +239,8 @@ I2S_HandleTypeDef* getI2S_CODEC();
 #define BTN3_GPIO_Port GPIOA
 #define WAKEUP_Pin GPIO_PIN_0
 #define WAKEUP_GPIO_Port GPIOA
+#define DBG2_Pin GPIO_PIN_4
+#define DBG2_GPIO_Port GPIOA
 #define POT0_Pin GPIO_PIN_4
 #define POT0_GPIO_Port GPIOC
 #define A7_Pin GPIO_PIN_13

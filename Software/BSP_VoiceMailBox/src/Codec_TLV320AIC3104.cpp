@@ -6,14 +6,16 @@
 
 namespace VoiceMailBox
 {
-	Codec_TLV320AIC3104::Codec_TLV320AIC3104(void* i2sHandle, void* i2cHandle, uint8_t deviceAddress, void* nResetPort, uint16_t nResetPin)
+	Codec_TLV320AIC3104::Codec_TLV320AIC3104(void* i2sHandle, uint16_t i2sBufferSize, 
+											 void* i2cHandle, uint8_t deviceAddress, 
+											 void* nResetPort, uint16_t nResetPin)
 		: m_i2c(i2cHandle)
 		, m_deviceAddress(deviceAddress)
 		, m_nResetPin{ nResetPort, nResetPin }
-		, m_i2s(i2sHandle, 512)
+		, m_i2s(i2sHandle, i2sBufferSize)
 		, m_currentRegisterPage(0)
 	{
-#if ENABLE_CODEC_PERFORMANCE_MEASUREMENTS == 1
+#if VMB_ENABLE_CODEC_PERFORMANCE_MEASUREMENTS == 1
 		m_i2s.setHalfCpltCallback([this]() { onI2S_DMA_TxRx_HalfCpltCallback(); });
 		m_i2s.setCpltCallback([this]() { onI2S_DMA_TxRx_CpltCallback(); });
 #endif
@@ -95,37 +97,40 @@ namespace VoiceMailBox
 		writeRegister(REG::PAGE_0::CLOCK, 0x01); //CODEC_CLKIN uses CLKDIV_OUT
 
 		// Setup I2S for DMA transmit and receive
-		//m_i2s.setup_transmitReceive_DMA((uint16_t*)m_dacDataBuffer, (uint16_t*)m_adcDataBuffer, m_dmaBufferSize);
 		m_i2s.setupDMA();
 	}
 
 	void Codec_TLV320AIC3104::onI2S_DMA_TxRx_HalfCpltCallback()
 	{
 		// Inside ISR context! 
-#if ENABLE_CODEC_PERFORMANCE_MEASUREMENTS == 1
+#if VMB_ENABLE_CODEC_PERFORMANCE_MEASUREMENTS == 1
 		m_DMA_halfTransferTick = Utility::getTickCount();
 #endif
-		setLed(LED::LED1, 1); // Set LED1 on		
+#ifdef VMB_DEVELOPMENT_CONFIGURATION
+		setDbgPin(DBG_PIN::DBG0, 1); // Set DBG0 on	
+#endif
 	}
 	void Codec_TLV320AIC3104::onI2S_DMA_TxRx_CpltCallback()
 	{
 		// Inside ISR context! 
-#if ENABLE_CODEC_PERFORMANCE_MEASUREMENTS == 1
+#if VMB_ENABLE_CODEC_PERFORMANCE_MEASUREMENTS == 1
 		m_DMA_halfProcessingTicks = Utility::getTickCount() - m_DMA_halfTransferTick;
 #endif
-		setLed(LED::LED1, 0); // Set LED1 off
+#ifdef VMB_DEVELOPMENT_CONFIGURATION
+		setDbgPin(DBG_PIN::DBG0, 0); // Set DBG0 off	
+#endif
 	}
 
 
 	void Codec_TLV320AIC3104::startDataProcessing()
 	{
-#if ENABLE_CODEC_PERFORMANCE_MEASUREMENTS == 1
+#if VMB_ENABLE_CODEC_PERFORMANCE_MEASUREMENTS == 1
 		m_startDataProcessingTick = Utility::getTickCount();
 #endif
 	}
 	void Codec_TLV320AIC3104::endDataProcessing()
 	{
-#if ENABLE_CODEC_PERFORMANCE_MEASUREMENTS == 1
+#if VMB_ENABLE_CODEC_PERFORMANCE_MEASUREMENTS == 1
 		m_dataProcessingTicks = Utility::getTickCount() - m_startDataProcessingTick;
 #endif
 	}

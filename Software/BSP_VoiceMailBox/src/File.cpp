@@ -125,6 +125,11 @@ namespace VoiceMailBox
 		m_lastError = f_sync(&m_fileHandle);
 		return m_lastError == FR_OK;
 	}
+	bool File::eof() const
+	{
+		if (!m_isOpen) return false;
+		return f_eof(&m_fileHandle);
+	}
 
 	bool File::remove(const char* path) {
 		return f_unlink(path) == FR_OK;

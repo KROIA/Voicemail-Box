@@ -141,6 +141,10 @@ namespace VoiceMailBox
 	{
 		return DWT->CYCCNT;
 	}
+	inline uint32_t VMB_HAL_GetTickCountInMs()
+	{
+		return DWT->CYCCNT / (SystemCoreClock / 1000);
+	}
 	inline void VMB_HAL_ResetTickCounter()
 	{
 		DWT->CYCCNT = 0;
