@@ -32,7 +32,7 @@ void setup()
 		//Codec_TLV320AIC3104& codec = getCodec();
 		create_wav_header(file, 48000, 16, 2, targetSamples); // Create WAV header
 	}
-	//sendDemoHTTPRequest();
+	sendDemoHTTPRequest();
 	//testFile();
 }
 
@@ -122,7 +122,13 @@ void sendDemoHTTPRequest()
 		println("PmodESP does respond");
 		char response[256] = { 0 };
 
-		pmodESP.sendCommand("ATE0");
+		while (!pmodESP.connectToWifi("Alex-PC", "87924ikR"))
+		{
+			delay(1000);
+			println("Try to reconnect to WIFI");
+		}
+
+		/*pmodESP.sendCommand("ATE0");
 		delay(10);
 
 		// connect to wifi
@@ -130,31 +136,15 @@ void sendDemoHTTPRequest()
 
 		// wait for response
 		delay(10);
-		while (!pmodESP.hasResponse())
+		while (!pmodESP.waitUntil("WIFI GOT IP\r\n\r\nOK\r\n"))
 		{
 			println("Waiting for response from WIFI...");
 			delay(2);
 		}
 		bool isConnected = false;
-		while (!isConnected)
-		{
-			pmodESP.getResponse((uint8_t*)response, sizeof(response));
-			print("Response: ");
-			println(response);
-
-			// Wait until the response contains "CONNECTED"
-			if (strstr((const char*)response, "CONNECTED") != nullptr)
-			{
-				println("Connected to WiFi");
-				isConnected = true;
-				break;
-			}
-			else
-			{
-				println("Failed to connect to WiFi");
-				delay(20);
-			}
-		}
+		pmodESP.getResponse((uint8_t*)response, sizeof(response));
+		print("Response: ");
+		println(response);*/
 		delay(15);
 
 		// Request ip address
@@ -171,14 +161,89 @@ void sendDemoHTTPRequest()
 			println(response);
 		}
 
+		bool repeat = true;
+		while (repeat)
+		{
+			if (pmodESP.sendFileToServer("testFile.txt", "192.168.137.1", 8000))
+			{
+				println("File sent successfully");
+			}
+			else
+			{
+				println("Failed to send file");
+			}
+			delay(6000);
+		}
+
+
+
 
 		// Send request to server
-		pmodESP.sendCommand("AT+HTTPCLIENT=3,0,\"https://embsys1.duckdns.org/dataPort/test-from-imes/\",\"embsys1.duckdns.org\",\"/dataPort/test-from-imes/\",2,\"sender=SOL01&access_token=emb1Sys10Lab&data={\\\"test\\\":PenisEnlargmentRequest}\"");
-		delay(50);
-		while (!pmodESP.hasResponse())
+		std::string startRequest = "AT+CIPSTART=\"TCP\",\"192.168.137.1\",8000";
+		pmodESP.sendCommand(startRequest.c_str());
+		//delay(50);
+		while (!pmodESP.waitUntil("OK"))
 		{
 			println("Waiting for response from WIFI...");
 			delay(2);
+		}
+		//delay(100);
+		if (pmodESP.getResponse((uint8_t*)response, sizeof(response)))
+		{
+			print("Response: ");
+			println(response);
+		}
+
+		std::string sizeInfo = "AT+CIPSEND=401";
+		pmodESP.sendCommand(sizeInfo.c_str());
+		//delay(50);
+		while (!pmodESP.waitUntil(">"))
+		{
+			println("Waiting for response from WIFI...");
+			delay(2);
+		}
+		//delay(100);
+		if (pmodESP.getResponse((uint8_t*)response, sizeof(response)))
+		{
+			print("Response: ");
+			println(response);
+		}
+		//delay(50);
+
+
+		// Send post request
+		int delayMS = 0;
+		pmodESP.sendCommand("POST /devicesbackend/upload/ HTTP/1.1");
+		delay(delayMS);
+		pmodESP.sendCommand("Host: 192.168.1.116:8000\r\nUser-Agent: ESP32");
+		delay(delayMS);
+		//pmodESP.sendCommand("User-Agent: ESP32");
+		delay(delayMS);
+		pmodESP.sendCommand("Content-Length: 202");
+		delay(delayMS);
+		pmodESP.sendCommand("Content-Type: multipart/form-data; boundary=------------------------eYRLjSUtcTX8XlV9TLI4k1");
+		delay(delayMS);
+		pmodESP.sendCommand("");
+		delay(delayMS);
+		pmodESP.sendCommand("--------------------------eYRLjSUtcTX8XlV9TLI4k1");
+		delay(delayMS);
+		pmodESP.sendCommand("Content-Disposition: form-data; name=\"test\"; filename=\"aaa.txt\"");
+		delay(delayMS);
+		pmodESP.sendCommand("Content-Type: text/plain");
+		delay(delayMS);
+		pmodESP.sendCommand("");
+		delay(delayMS);
+		pmodESP.sendCommand("12345");
+		delay(delayMS);
+		pmodESP.sendCommand("--------------------------eYRLjSUtcTX8XlV9TLI4k1--");
+		delay(delayMS);
+
+		//pmodESP.sendCommand("AT+CIPCLOSE");
+		while (!pmodESP.waitUntil("SEND"))
+		{
+			println("Waiting for response from WIFI...");
+			delay(20);
+			pmodESP.sendCommand("AT+CIPCLOSE");
 		}
 		delay(100);
 		if (pmodESP.getResponse((uint8_t*)response, sizeof(response)))
@@ -186,7 +251,6 @@ void sendDemoHTTPRequest()
 			print("Response: ");
 			println(response);
 		}
-
 
 	}
 	else

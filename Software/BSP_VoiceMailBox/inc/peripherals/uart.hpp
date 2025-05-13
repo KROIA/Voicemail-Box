@@ -42,7 +42,7 @@ namespace VoiceMailBox
 		 * @param data pointer to the array of bytes to send
 		 * @param size amount of bytes to send
 		 */
-		void send(uint8_t* data, uint16_t size);
+		void send(const uint8_t* data, uint16_t size);
 
 		/**
 		 * @brief Returns the amount of bytes what have been received and not yet read.
@@ -65,15 +65,17 @@ namespace VoiceMailBox
 		 * @brief Waits until the given character is received or the timeout is reached.
 		 * @param character target character to wait for
 		 * @param timeoutMS timeout in milliseconds
+		 * @return true if the character was received, false if the timeout was reached.
 		 */
-		void waitUntil(char character, uint32_t timeoutMS = 0xFFFFFFFF); // Wait until a character is received (blocking)
+		bool waitUntil(char character, uint32_t timeoutMS = 0xFFFFFFFF); // Wait until a character is received (blocking)
 		
 		/**
 		 * @brief Waits until the given string was found in the RX buffer or the timeout is reached.
 		 * @param str to search for in the RX buffer
 		 * @param timeoutMS timeout in milliseconds
+		 * @return true if the string was found, false if the timeout was reached.
 		 */
-		void waitUntil(const char* str, uint32_t timeoutMS = 0xFFFFFFFF); // Wait until a string is received (blocking)
+		bool waitUntil(const char* str, uint32_t timeoutMS = 0xFFFFFFFF); // Wait until a string is received (blocking)
 		
 		/**
 		 * @brief Resets the Circular buffer counters and clears the RX and TX buffers.

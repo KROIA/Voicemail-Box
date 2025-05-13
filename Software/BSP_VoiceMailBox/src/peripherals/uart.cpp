@@ -67,7 +67,7 @@ namespace VoiceMailBox
 	{
 		send((uint8_t*)str, strlen(str));
 	}
-	void UART::send(uint8_t* data, uint16_t size)
+	void UART::send(const uint8_t* data, uint16_t size)
 	{
 		if (size > m_bufferSize)
 		{
@@ -123,7 +123,7 @@ namespace VoiceMailBox
 		rx_read_index = (rx_read_index + size) % m_bufferSize; // Update read index
 		return true;
 	}
-	void UART::waitUntil(char character, uint32_t timeoutMS)
+	bool UART::waitUntil(char character, uint32_t timeoutMS)
 	{
 		uint32_t startTime = VMB_HAL_GetTickCountInMs();
 		uint16_t readIndex = rx_read_index;
@@ -132,7 +132,7 @@ namespace VoiceMailBox
 		{
 			if (rx_buffer[i] == character)
 			{
-				return;
+				return true;
 			}
 		}
 		readIndex = (rx_write_index-1) % m_bufferSize; // Update read index to the end of the buffer + 1
@@ -147,13 +147,15 @@ namespace VoiceMailBox
 				currentReceivedBytes = rb;
 				if (rx_buffer[readIndex] == character)
 				{
-					return; // Character found
+					return true; // Character found
 				}
 				readIndex = (rx_write_index-1) % m_bufferSize;
 			}
 		}
+		// Timeout reached
+		return false;
 	}
-	void UART::waitUntil(const char* str, uint32_t timeoutMS)
+	bool UART::waitUntil(const char* str, uint32_t timeoutMS)
 	{
 		uint16_t strLength = strlen(str);
 		uint32_t startTime = VMB_HAL_GetTickCountInMs();
@@ -171,7 +173,7 @@ namespace VoiceMailBox
 			}
 			if (found)
 			{
-				return;
+				return true;
 			}
 		}
 		// If not found, wait for the string to be received
@@ -195,14 +197,13 @@ namespace VoiceMailBox
 					}
 					if (found)
 					{
-						return;
+						return true;
 					}
 				}
 			}
 		}
 		// Timeout reached
-		// No string found
-
+		return false;
 	}
 
 
