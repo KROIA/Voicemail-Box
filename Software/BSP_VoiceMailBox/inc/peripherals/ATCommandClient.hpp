@@ -1,7 +1,7 @@
 #ifndef ATCOMMAND_CLIENT_H
 #define ATCOMMAND_CLIENT_H
 
-#include <stdint.h>
+#include "HAL_abstraction.hpp"
 #include "uart.hpp"
 
 namespace VoiceMailBox
@@ -9,7 +9,7 @@ namespace VoiceMailBox
 	class ATCommandClient
 	{
 	public:
-		ATCommandClient(void* uartHandle, uint16_t uartBufferSize);
+		ATCommandClient(VMB_UART_Handle* uartHandle, uint16_t uartBufferSize);
 		~ATCommandClient();
 
 		void setup();

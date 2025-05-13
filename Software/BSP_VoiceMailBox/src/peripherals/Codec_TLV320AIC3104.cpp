@@ -1,23 +1,24 @@
-#include "Codec_TLV320AIC3104.hpp"
-#include "platform.hpp"
+#include "peripherals/Codec_TLV320AIC3104.hpp"
 
-// DEBUG
-#include "BSP_VoiceMailBox.hpp"
+
+#ifdef VMB_DEVELOPMENT_CONFIGURATION
+	#include "BSP_VoiceMailBox.hpp"
+#endif
 
 namespace VoiceMailBox
 {
-	Codec_TLV320AIC3104::Codec_TLV320AIC3104(void* i2sHandle, uint16_t i2sBufferSize, 
-											 void* i2cHandle, uint8_t deviceAddress, 
-											 void* nResetPort, uint16_t nResetPin)
+	Codec_TLV320AIC3104::Codec_TLV320AIC3104(VMB_I2S_Handle* i2sHandle, uint16_t i2sBufferSize,
+											 VMB_I2C_Handle* i2cHandle, uint8_t i2cDeviceAddress,
+											 VMB_GPIO* nResetPort, uint16_t nResetPin)
 		: m_i2c(i2cHandle)
-		, m_deviceAddress(deviceAddress)
+		, m_i2cDeviceAddress(i2cDeviceAddress)
 		, m_nResetPin{ nResetPort, nResetPin }
 		, m_i2s(i2sHandle, i2sBufferSize)
 		, m_currentRegisterPage(0)
 	{
-#if VMB_ENABLE_CODEC_PERFORMANCE_MEASUREMENTS == 1
-		m_i2s.setHalfCpltCallback([this]() { onI2S_DMA_TxRx_HalfCpltCallback(); });
-		m_i2s.setCpltCallback([this]() { onI2S_DMA_TxRx_CpltCallback(); });
+#ifdef VMB_ENABLE_CODEC_PERFORMANCE_MEASUREMENTS
+		m_i2s.setHalfCpltCallback([this](I2S& caller) { onI2S_DMA_TxRx_HalfCpltCallback(); });
+		m_i2s.setCpltCallback([this](I2S& caller) { onI2S_DMA_TxRx_CpltCallback(); });
 #endif
 	}
 
@@ -29,13 +30,13 @@ namespace VoiceMailBox
 	void Codec_TLV320AIC3104::reset()
 	{
 		m_nResetPin.set(false); // Set nReset pin low
-		Utility::delay(25); // Wait for 10ms
+		delay(25); // Wait for 10ms
 		m_nResetPin.set(true); // Set nReset pin high
-		Utility::delay(25); // Wait for 10ms
+		delay(25); // Wait for 10ms
 
 		// Software reset
 		writeRegister(REG::PAGE_0::SOFTWRE_RESET, 0x01); // Example register write for software reset
-		Utility::delay(10); // Wait for 10ms
+		delay(10); // Wait for 10ms
 	}
 	void Codec_TLV320AIC3104::setup()
 	{
@@ -103,43 +104,43 @@ namespace VoiceMailBox
 	void Codec_TLV320AIC3104::onI2S_DMA_TxRx_HalfCpltCallback()
 	{
 		// Inside ISR context! 
-#if VMB_ENABLE_CODEC_PERFORMANCE_MEASUREMENTS == 1
-		m_DMA_halfTransferTick = Utility::getTickCount();
+#ifdef VMB_ENABLE_CODEC_PERFORMANCE_MEASUREMENTS
+		m_DMA_halfTransferTick = getTickCount();
 #endif
 #ifdef VMB_DEVELOPMENT_CONFIGURATION
-		setDbgPin(DBG_PIN::DBG0, 1); // Set DBG0 on	
+		setDbgPin(DBG_PIN::DBG0, 1); // Set DBG0 on
 #endif
 	}
 	void Codec_TLV320AIC3104::onI2S_DMA_TxRx_CpltCallback()
 	{
 		// Inside ISR context! 
-#if VMB_ENABLE_CODEC_PERFORMANCE_MEASUREMENTS == 1
-		m_DMA_halfProcessingTicks = Utility::getTickCount() - m_DMA_halfTransferTick;
+#ifdef VMB_ENABLE_CODEC_PERFORMANCE_MEASUREMENTS
+		m_DMA_halfProcessingTicks = getTickCount() - m_DMA_halfTransferTick;
 #endif
 #ifdef VMB_DEVELOPMENT_CONFIGURATION
-		setDbgPin(DBG_PIN::DBG0, 0); // Set DBG0 off	
+		setDbgPin(DBG_PIN::DBG0, 0); // Set DBG0 off
 #endif
 	}
 
 
 	void Codec_TLV320AIC3104::startDataProcessing()
 	{
-#if VMB_ENABLE_CODEC_PERFORMANCE_MEASUREMENTS == 1
-		m_startDataProcessingTick = Utility::getTickCount();
+#ifdef VMB_ENABLE_CODEC_PERFORMANCE_MEASUREMENTS
+		m_startDataProcessingTick = getTickCount();
 #endif
 	}
 	void Codec_TLV320AIC3104::endDataProcessing()
 	{
-#if VMB_ENABLE_CODEC_PERFORMANCE_MEASUREMENTS == 1
-		m_dataProcessingTicks = Utility::getTickCount() - m_startDataProcessingTick;
+#ifdef VMB_ENABLE_CODEC_PERFORMANCE_MEASUREMENTS
+		m_dataProcessingTicks = getTickCount() - m_startDataProcessingTick;
 #endif
 	}
 
 
 	void Codec_TLV320AIC3104::writeRegister(uint8_t registerAddress, uint8_t data)
 	{
-		I2C::Status status = m_i2c.writeRegister(m_deviceAddress, registerAddress, data);
-		if (status != I2C::Status::OK)
+		VMB_HAL_Status status = m_i2c.writeRegister(m_i2cDeviceAddress, registerAddress, data);
+		if (status != VMB_HAL_Status::OK)
 		{
 			// Handle error
 		}
@@ -148,8 +149,8 @@ namespace VoiceMailBox
 	uint8_t Codec_TLV320AIC3104::readRegister(uint8_t registerAddress)
 	{
 		uint8_t data = 0;
-		I2C::Status status = m_i2c.readRegister(m_deviceAddress, registerAddress, data);
-		if (status != I2C::Status::OK)
+		VMB_HAL_Status status = m_i2c.readRegister(m_i2cDeviceAddress, registerAddress, data);
+		if (status != VMB_HAL_Status::OK)
 		{
 			// Handle error
 		}

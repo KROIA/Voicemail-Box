@@ -1,15 +1,16 @@
 #ifndef CODEC_TLV320AIC3104_HPP
 #define CODEC_TLV320AIC3104_HPP
-
-/*
-	Author:		Alex Krieg
-	Created on:	May 9, 2025
-
+/**
+ * @brief This file contains the interface to the TLV320AIC3104 codec.
+ * @details This codec is used to record and play audio data
+ * 
+ * @note Only the core features are implemented and tested.
 */
 
-#include <stdint.h>
+
 
 #include "settings.h"
+#include "HAL_abstraction.hpp"
 
 #include "digitalPin.hpp"
 #include "i2c.hpp"
@@ -21,7 +22,13 @@ namespace VoiceMailBox
 {
 	class Codec_TLV320AIC3104
 	{
-		// Register addresses
+		/**
+		 * @brief Register map
+		 * @details
+		 * The Register map is divided into two pages.
+		 * Page 0 contains the most important registers for the codec.
+		 * @see setCurrentRegisterPage() and getCurrentRegisterPage() to change the page.
+		 */
 		struct REG {
 			struct PAGE_0 {                                                                                //  DECIMAL
 				static constexpr uint8_t PAGE_SELECT = 0x00;											   //   0
@@ -135,45 +142,85 @@ namespace VoiceMailBox
 
 
 	public:
-		// 0x18 is the default address for the TLV320AIC3104
-		Codec_TLV320AIC3104(void* i2sHandle, uint16_t i2sBufferSize,
-						    void* i2cHandle, uint8_t deviceAddress,
-							void* nResetPort, uint16_t nResetPin);
+		/**
+		 * @brief Constructor
+		 * @param i2sHandle used to receive and transmit audio samples
+		 * @param i2sBufferSize size for the i2s DMA buffer
+		 * @param i2cHandle used to configure the codec
+		 * @param i2cDeviceAddress  of the codec on the I2C bus. Default address is 0x18
+		 * @param nResetPort port on which the nReset pin is connected 
+		 * @param nResetPin  pin the nReset port
+		 */
+		Codec_TLV320AIC3104(VMB_I2S_Handle* i2sHandle, uint16_t i2sBufferSize,
+							VMB_I2C_Handle* i2cHandle, uint8_t i2cDeviceAddress,
+							VMB_GPIO* nResetPort, uint16_t nResetPin);
 		~Codec_TLV320AIC3104();
 
 		void reset();
 		void setup();
 
+		/**
+		 * @return true if a new batch of audio samples is ready to be processed.
+		 */
 		bool isDataReady() const { return m_i2s.isDataReady(); }
+
+		/**
+		 * @brief Checks the data ready flag and clears it if it was set.
+		 * @return true if a new batch of audio samples is ready to be processed.
+		 */
 		bool isDataReadyAndClear() { return m_i2s.isDataReadyAndClear(); }
+
+		/**
+		 * @brief Clears the data ready flag.
+		 */
 		void clearDataReadyFlag() { m_i2s.clearDataReadyFlag(); }
 
+		/**
+		 * @brief Gets the current ADC buffer pointer.
+		 * @return current ADC buffer pointer
+		 */
 		volatile int16_t* getRxBufPtr() { return m_i2s.getRxBufPtr(); }
+
+		/**
+		 * @brief Gets the current DAC buffer pointer.
+		 * @return current DAC buffer pointer
+		 */
 		volatile int16_t* getTxBufPtr() { return m_i2s.getTxBufPtr(); }
+
+		/**
+		 * @brief Gets the size of the ping and pong buffer.
+		 * @return size of the ping and pong buffer
+		 */
 		uint16_t getBufferSize() const { return m_i2s.getBufferSize(); }
 
 
 		
-
+		/**
+		 * @brief Gets the I2S Object.
+		 * @return I2S object
+		 */
 		const I2S& getI2S() { return m_i2s; }
 
-
-		// Performance measurements
-
+		// -----------------------------------------------------------------
+		//    Performance measurements
+		// -----------------------------------------------------------------
 		/**
 		 * @brief In order to use the function getProcessingTimeRatio(),
 		 *        the function startDataProcessing() must be called on start of the data processing
+		 * @note The VMB_ENABLE_CODEC_PERFORMANCE_MEASUREMENTS macro must be defined, otherwise this function does nothing
 		 */
 		void startDataProcessing();
 
 		/**
 		 * @brief In order to use the function getProcessingTimeRatio(),
 		 *        the function endDataProcessing() must be called on end of the data processing
+		 * @note The VMB_ENABLE_CODEC_PERFORMANCE_MEASUREMENTS macro must be defined, otherwise this function does nothing
 		 */
 		void endDataProcessing();
 
 		/**
 		 * @brief Returns the ratio of the processing time to the DMA transfer time
+		 * @note The VMB_ENABLE_CODEC_PERFORMANCE_MEASUREMENTS macro must be defined, otherwise this function does nothing
 		 * @details: The ratio is calculated as follows:
 		 * 
 		 * 	               |  DMA has new data ready      DMA has new data ready  
@@ -215,7 +262,7 @@ namespace VoiceMailBox
 		 */
 		float getProcessingTimeRatio() const
 		{
-#if VMB_ENABLE_CODEC_PERFORMANCE_MEASUREMENTS == 1
+#ifdef VMB_ENABLE_CODEC_PERFORMANCE_MEASUREMENTS
 			if (m_DMA_halfProcessingTicks == 0)
 				return 0.0f;
 			return static_cast<float>(m_dataProcessingTicks) / static_cast<float>(m_DMA_halfProcessingTicks);
@@ -225,10 +272,31 @@ namespace VoiceMailBox
 		}
 
 	private:
+
+		/**
+		 * @brief Writes the data byte to the given register address of the codec.
+		 * @param registerAddress which can be on page 0 or page 1.
+		 * @param data byte to be set
+		 */
 		void writeRegister(uint8_t registerAddress, uint8_t data);
+
+		/**
+		 * @brief Reads a byte from the given register address of the codec.
+		 * @param registerAddress which can be on page 0 or page 1.
+		 * @return the register value of the selected register at the current selected register-page.
+		 */
 		uint8_t readRegister(uint8_t registerAddress);
 
+		/**
+		 * @brief Reads the current selected register-page
+		 * @return 0 if page 0 is selected, 1 if page 1 is selected
+		 */
 		uint8_t getCurrentRegisterPage();
+
+		/**
+		 * @brief Select a specific register-page
+		 * @param page to select. (0 or 1)
+		 */
 		void setCurrentRegisterPage(uint8_t page);
 
 		// This functions must only be called from the I2S DMA interrupt context
@@ -236,15 +304,15 @@ namespace VoiceMailBox
 		void onI2S_DMA_TxRx_CpltCallback();
 
 		I2C m_i2c;
-		uint8_t m_deviceAddress;
-		DIGITAL_PIN m_nResetPin;
+		uint8_t m_i2cDeviceAddress;
+		DigitalPin m_nResetPin;
 		I2S m_i2s; 
 
 		uint8_t m_currentRegisterPage = 0; // Current page number selected for accessing registers
 
 		
 		// Performance mesurements
-#if VMB_ENABLE_CODEC_PERFORMANCE_MEASUREMENTS == 1
+#ifdef VMB_ENABLE_CODEC_PERFORMANCE_MEASUREMENTS
 		uint32_t m_startDataProcessingTick = 0;
 		uint32_t m_dataProcessingTicks = 0;
 		uint32_t m_DMA_halfTransferTick = 0;

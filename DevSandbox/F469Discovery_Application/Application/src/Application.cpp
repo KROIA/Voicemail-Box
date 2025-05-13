@@ -29,7 +29,7 @@ void setup()
 	if(isRecording)
 	{
 		file.open("record.wav", FA_WRITE | FA_CREATE_ALWAYS);
-		Codec_TLV320AIC3104& codec = getCodec();
+		//Codec_TLV320AIC3104& codec = getCodec();
 		create_wav_header(file, 48000, 16, 2, targetSamples); // Create WAV header
 	}
 	//sendDemoHTTPRequest();
@@ -94,7 +94,7 @@ void processData()
 			count = targetSamples - sampleCounter;
 		if (count > 1)
 		{
-			file.write((const char*)adcData, codec.getBufferSize()*2); // Write to file
+			file.write((uint8_t*)adcData, codec.getBufferSize()*2); // Write to file
 			sampleCounter += count/2;
 		}
 		else
@@ -316,7 +316,7 @@ void create_wav_header(VoiceMailBox::File& file, uint32_t sample_rate, uint16_t 
 
 	if (file.isOpen())
 	{
-		file.write((const char*)header, sizeof(header));
+		file.write(header, sizeof(header));
 		println("WAV header written to file");
 	}
 	else

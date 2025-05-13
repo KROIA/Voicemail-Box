@@ -1,5 +1,9 @@
-#include <BSP_VoiceMailBox.hpp>
+#include "BSP_VoiceMailBox.hpp"
 #include "platform.hpp"
+
+#include <cstdarg>   // <-- required for va_list and related macros
+#include <cstdio>    // <-- required for vsnprintf
+#include <cstring>
 
 namespace VoiceMailBox
 {
@@ -9,7 +13,7 @@ namespace VoiceMailBox
 	}
 
 
-	DIGITAL_PIN& getLed(LED led)
+	DigitalPin& getLed(LED led)
 	{
 		return Platform::led[static_cast<int>(led)];
 	}
@@ -22,7 +26,7 @@ namespace VoiceMailBox
 		Platform::led[static_cast<int>(led)].toggle();
 	}
 
-	DIGITAL_PIN& getButton(Button button)
+	DigitalPin& getButton(Button button)
 	{
 		return Platform::button[static_cast<int>(button)];
 	}
@@ -31,7 +35,7 @@ namespace VoiceMailBox
 		return Platform::button[static_cast<int>(button)].get();
 	}
 
-	ANALOG_PIN& getPoti(Poti poti)
+	AnalogPin& getPoti(Poti poti)
 	{
 		return Platform::adcPotis[static_cast<int>(poti)];
 	}
@@ -50,33 +54,13 @@ namespace VoiceMailBox
 	}
 
 
-	void print(const char* str, ...)
-	{
-		va_list args;
-		va_start(args, str);
-		Utility::print(str, args); // Call the platform-specific print function
-		va_end(args);
-	}
-	void println(const char* str, ...)
-	{
-		va_list args;
-		va_start(args, str);
-		Utility::println(str, args); // Call the platform-specific print function
-		va_end(args);
-	}
-
-	void delay(uint32_t ms)
-	{
-		Utility::delay(ms); // Call the platform-specific delay function
-	}
-
 	Codec_TLV320AIC3104& getCodec()
 	{
 		return Platform::codec;
 	}
 
 #ifdef VMB_DEVELOPMENT_CONFIGURATION
-	DIGITAL_PIN& getDbgPin(DBG_PIN pin)
+	DigitalPin& getDbgPin(DBG_PIN pin)
 	{
 		return Platform::dbgPins[static_cast<int>(pin)];
 	}
@@ -89,4 +73,56 @@ namespace VoiceMailBox
 		Platform::dbgPins[static_cast<int>(pin)].toggle();
 	}
 #endif
+
+
+
+
+	void print(const char* str, ...)
+	{
+		va_list args;
+		va_start(args, str);
+		std::size_t size = Platform::dbgUart.getBufferSize();
+		char* buffer = new char[size];
+		vsnprintf(buffer, size, str, args);
+		Platform::dbgUart.send((uint8_t*)buffer, strlen(buffer));
+ 		va_end(args);
+		delete[] buffer;
+	}
+	void println(const char* str, ...)
+	{
+		va_list args;
+		va_start(args, str);
+		std::size_t buffSize = Platform::dbgUart.getBufferSize();
+		char* buffer = new char[buffSize];
+		std::size_t size = strlen(str);
+		if (size > buffSize - 3) // Ensure there's space for newline characters
+		{
+			size = buffSize - 3; // Leave space for newline characters
+		}
+		vsnprintf(buffer, sizeof(buffer), str, args);
+
+		buffer[size] = '\r'; // Add newline character
+		buffer[size + 1] = '\n'; // Add newline character
+		buffer[size + 2] = 0; // Add newline character
+		Platform::dbgUart.send((uint8_t*)buffer, strlen(buffer));
+		va_end(args);
+		delete[] buffer;
+	}
+	void delay(uint32_t ms)
+	{
+		VMB_HAL_Delay(ms);
+	}
+	uint32_t getTickCount()
+	{
+		return VMB_HAL_GetTickCount();
+	}
+	uint32_t getTickCountInMs()
+	{
+		return VMB_HAL_GetTickCountInMs();
+	}
+	void resetTickCount()
+	{
+		VMB_HAL_ResetTickCounter();
+	}
+
 }

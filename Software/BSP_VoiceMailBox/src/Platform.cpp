@@ -22,7 +22,7 @@ namespace VoiceMailBox
 	/*
 		Fill in the GPIO_TypeDef* and pin values, generated from the CUBEMX for the LEDs
 	*/
-	DIGITAL_PIN Platform::led[] = {
+	DigitalPin Platform::led[] = {
 		{ LED0_GPIO_Port, LED0_Pin },
 		{ LED1_GPIO_Port, LED1_Pin }
 	};
@@ -30,7 +30,7 @@ namespace VoiceMailBox
 	/*
 		Fill in the GPIO_TypeDef* and pin values, generated from the CUBEMX for the buttons
 	*/
-	DIGITAL_PIN Platform::button[] = {
+	DigitalPin Platform::button[] = {
 		{ BTN0_GPIO_Port, BTN0_Pin },
 		{ BTN1_GPIO_Port, BTN1_Pin },
 		{ BTN2_GPIO_Port, BTN2_Pin },
@@ -41,9 +41,9 @@ namespace VoiceMailBox
 	/*
 		Fill in the ADC_TypeDef* and channel values, generated from the CUBEMX for the ADC Potis
 	*/
-	ANALOG_PIN Platform::adcPotis[] = {
-		{ (void*)getADC_POT0() }, // maybe problematic because of static initialization order
-		{ (void*)getADC_POT1() }
+	AnalogPin Platform::adcPotis[] = {
+		{ static_cast<VMB_ADC_Handle*>(getADC_POT0()) }, // maybe problematic because of static initialization order
+		{ static_cast<VMB_ADC_Handle*>(getADC_POT1()) }
 	};
 
 	/*
@@ -62,7 +62,7 @@ namespace VoiceMailBox
 
 
 #ifdef VMB_DEVELOPMENT_CONFIGURATION
-	DIGITAL_PIN Platform::dbgPins[] =
+	DigitalPin Platform::dbgPins[] =
 	{
 		{ DBG0_GPIO_Port, DBG0_Pin },
 		{ DBG1_GPIO_Port, DBG1_Pin },
@@ -81,67 +81,7 @@ namespace VoiceMailBox
 		//wifiUart.setup();
 
 		codec.setup();
-	}
-
-
-
-	
-
-
-
-	
-
-
-
-	
-
-
-
-	namespace Utility
-	{
-		constexpr std::size_t print_buffer_size = 256;
-
-
-		
-
-		void delay(uint32_t ms)
-		{
-			VMB_HAL_Delay(ms);
-		}
-		void print(const char* str, va_list args)
-		{
-			char buffer[print_buffer_size];
-			vsnprintf(buffer, sizeof(buffer), str, args);
-			Platform::dbgUart.send((uint8_t*)buffer, strlen(buffer));
-		}
-		void println(const char* str, va_list args)
-		{
-			char buffer[print_buffer_size];
-			uint16_t size = strlen(str);
-			if(size > sizeof(buffer) - 3) // Ensure there's space for newline characters
-			{
-				size = sizeof(buffer) - 3; // Leave space for newline characters
-			}
-			vsnprintf(buffer, sizeof(buffer), str, args);
-			
-			buffer[size] = '\r'; // Add newline character
-			buffer[size+1] = '\n'; // Add newline character
-			buffer[size+2] = 0; // Add newline character
-			Platform::dbgUart.send((uint8_t*)buffer, strlen(buffer));
-		}
-
-		uint32_t getTickCount()
-		{
-			return VMB_HAL_GetTickCount();
-		}
-		void resetTickCount()
-		{
-			VMB_HAL_ResetTickCounter();
-		}
-	}
-
-
-	
+	}	
 }
 
 

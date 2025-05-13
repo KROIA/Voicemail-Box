@@ -1,11 +1,10 @@
-#include "ATCommandClient.hpp"
-#include "HAL_abstraction.hpp"
+#include "peripherals/ATCommandClient.hpp"
 #include <string>
 #include <cstring>
 
 namespace VoiceMailBox
 {
-	ATCommandClient::ATCommandClient(void* uartHandle, uint16_t uartBufferSize)
+	ATCommandClient::ATCommandClient(VMB_UART_Handle* uartHandle, uint16_t uartBufferSize)
 		: m_uart(uartHandle, uartBufferSize)
 	{
 

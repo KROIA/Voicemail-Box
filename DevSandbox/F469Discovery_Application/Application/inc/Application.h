@@ -17,8 +17,8 @@
 extern "C" {
 #endif
 
-void setup();
-void loop();
+extern void setup();
+extern void loop();
 
 
 #ifdef __cplusplus

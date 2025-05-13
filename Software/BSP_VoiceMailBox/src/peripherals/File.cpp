@@ -1,5 +1,4 @@
-#include "File.hpp"
-#include "HAL_abstraction.hpp"
+#include "peripherals/File.hpp"
 #include <cstring>
 
 namespace VoiceMailBox
@@ -98,10 +97,10 @@ namespace VoiceMailBox
 		m_lastError = f_write(&m_fileHandle, text, strlen(text), &written);
 		return written;
 	}
-	unsigned int File::write(const char* text, uint16_t size) {
+	unsigned int File::write(const uint8_t* data, uint16_t size) {
 		if (!m_isOpen) return 0;
 		UINT written;
-		m_lastError = f_write(&m_fileHandle, text, size, &written);
+		m_lastError = f_write(&m_fileHandle, data, size, &written);
 		return written;
 	}
 	unsigned int File::read(char* buffer, unsigned int length) {
@@ -109,6 +108,11 @@ namespace VoiceMailBox
 		UINT bytesRead;
 		m_lastError = f_read(&m_fileHandle, buffer, length, &bytesRead);
 		return bytesRead;
+	}
+	unsigned int File::read(std::string& output, unsigned int length)
+	{
+		output.resize(length);
+		return read(&output[0], length);
 	}
 	bool File::seek(unsigned int position) {
 		if (!m_isOpen) return false;
