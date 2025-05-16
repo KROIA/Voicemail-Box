@@ -3,6 +3,7 @@
 
 #include "HAL_abstraction.hpp"
 #include "uart.hpp"
+#include "File.hpp"
 #include <string>
 
 namespace VoiceMailBox
@@ -36,15 +37,22 @@ namespace VoiceMailBox
 		{
 			return m_uart.receive(data, size);
 		}
+		
 
 
 		bool doesRespond();
 
 
 		bool connectToWifi(const std::string& ssid, const std::string& password);
-		bool sendFileToServer(const std::string& fileName, const std::string& serverIP, uint16_t serverPort);
+		bool sendFileToServer(const std::string& localFileName, const std::string& urlPath, const std::string& serverIP, uint16_t serverPort);
+		bool downloadFileFromServer(const std::string& localFileName, const std::string& urlPath, const std::string& serverIP, uint16_t serverPort);
+
+
+		
 
 	private:
+		bool readFileDownloadResponse(File &file, std::string& response, uint32_t timeout);
+		bool convertToUInt16(const std::string& str, uint16_t& outValue);
 		void log(const std::string &msg);
 
 		UART m_uart;

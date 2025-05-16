@@ -11,7 +11,7 @@
 
 #include "settings.h"
 #include "HAL_abstraction.hpp"
-
+#include <atomic>
 
 namespace VoiceMailBox
 {
@@ -60,6 +60,9 @@ namespace VoiceMailBox
 		 *         false if the data pointer is null, the size is 0 or no data available.
 		 */
 		bool receive(uint8_t* data, uint16_t size);
+
+
+		bool receiveUntil(uint8_t* data, uint16_t size, uint8_t* target, uint8_t targetSize, uint32_t timeoutMS = 0xFFFFFFFF);
 
 		/**
 		 * @brief Waits until the given character is received or the timeout is reached.
@@ -143,6 +146,7 @@ namespace VoiceMailBox
 		uint16_t tx_write_index;
 		uint16_t tx_read_index;
 		volatile bool m_sending;
+		std::atomic<uint16_t> m_bytesToSend;
 
 		// The list of instances is used to distribute the interrupts received on the peripheral
 		static UART* s_instances[VMB_UART_MAX_INSTANCES]; // Array can hold instances of UART

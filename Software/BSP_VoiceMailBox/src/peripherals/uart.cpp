@@ -25,6 +25,7 @@ namespace VoiceMailBox
 		, tx_write_index(0)
 		, tx_read_index(0)
 		, m_sending(false)
+		, m_bytesToSend(0)
 	{
 		for (std::size_t i = 0; i < sizeof(s_instances); i++)
 		{
@@ -84,15 +85,17 @@ namespace VoiceMailBox
 		{
 			tx_buffer[tx_write_index] = data[i];
 			tx_write_index = (tx_write_index + 1) % m_bufferSize;
-			if(tx_read_index == tx_write_index)
-				tx_read_index = (tx_read_index + 1) % m_bufferSize;
+			//if(tx_read_index == tx_write_index)
+			//	tx_read_index = (tx_read_index + 1) % m_bufferSize;
 		}
+		m_bytesToSend += size;
 		if (size > 0 && !m_sending) // Buffer overflow
 		{
 			m_sending = true;
-			uint16_t index = tx_read_index;
-			tx_read_index = (tx_read_index + 1) % m_bufferSize; // Overwrite the oldest data
-			VMB_HAL_UART_Transmit_IT(m_uart, &tx_buffer[index], 1);
+			m_bytesToSend--;
+			//uint16_t index = tx_read_index;
+			//tx_read_index = (tx_read_index + 1) % m_bufferSize; // Overwrite the oldest data
+			VMB_HAL_UART_Transmit_IT(m_uart, &tx_buffer[tx_read_index], 1);
 		}		
 	}
 
@@ -123,6 +126,50 @@ namespace VoiceMailBox
 		rx_read_index = (rx_read_index + size) % m_bufferSize; // Update read index
 		return true;
 	}
+	bool UART::receiveUntil(uint8_t* data, uint16_t size, uint8_t* target, uint8_t targetSize, uint32_t timeoutMS)
+	{
+		if (data == nullptr || target == nullptr)
+		{
+			return false;
+		}
+		uint32_t startTime = VMB_HAL_GetTickCountInMs();
+		uint16_t currentWriteIndex = 0;
+
+		while (VMB_HAL_GetTickCountInMs() - startTime < timeoutMS)
+		{
+			uint16_t rb = hasBytesReceived();
+			if (rb > targetSize)
+			{
+				bool found = true;
+				uint16_t foundIndex = 0;
+				for (uint16_t i = rx_read_index; i < rx_write_index; i = (i + 1) % m_bufferSize)
+				{
+					foundIndex = (rx_read_index + i) % m_bufferSize;
+					for (uint16_t j = 0; j < targetSize; j++)
+					{
+						if (rx_buffer[(i + j) % m_bufferSize] != target[j])
+						{
+							found = false;
+							break;
+						}
+					}
+				}
+
+
+
+				for (uint16_t i = 0; i < rb - targetSize; i++)
+				{
+					
+					if (!found)
+					{
+						data[currentWriteIndex] = rx_buffer[rx_read_index];
+						rx_read_index = (rx_read_index + 1) % m_bufferSize; // Update read index
+					}
+				}
+			}
+		}
+		return false;
+	}
 	bool UART::waitUntil(char character, uint32_t timeoutMS)
 	{
 		uint32_t startTime = VMB_HAL_GetTickCountInMs();
@@ -138,7 +185,7 @@ namespace VoiceMailBox
 		readIndex = (rx_write_index-1) % m_bufferSize; // Update read index to the end of the buffer + 1
 
 		// If not found, wait for the character to be received
-		uint16_t currentReceivedBytes = hasBytesReceived();
+		uint16_t currentReceivedBytes = 0;
 		while (VMB_HAL_GetTickCountInMs() - startTime < timeoutMS)
 		{
 			uint16_t rb = hasBytesReceived();
@@ -160,7 +207,7 @@ namespace VoiceMailBox
 		uint16_t strLength = strlen(str);
 		uint32_t startTime = VMB_HAL_GetTickCountInMs();
 		// Search first occurrence of string in the buffer
-		for (uint16_t i = rx_read_index; i < rx_write_index; i++)
+		for (uint16_t i = rx_read_index; i < rx_write_index; i = (i+1) % m_bufferSize)
 		{
 			bool found = true;
 			for (uint16_t j = 0; j < strLength; j++)
@@ -177,14 +224,14 @@ namespace VoiceMailBox
 			}
 		}
 		// If not found, wait for the string to be received
-		uint16_t currentReceivedBytes = hasBytesReceived();
+		uint16_t currentReceivedBytes = 0;
 		while (VMB_HAL_GetTickCountInMs() - startTime < timeoutMS)
 		{
 			uint16_t rb = hasBytesReceived();
 			if (currentReceivedBytes != rb)
 			{
 				currentReceivedBytes = rb;
-				for (uint16_t i = rx_read_index; i < rx_write_index; i++)
+				for (uint16_t i = rx_read_index; i < rx_write_index; i = (i + 1) % m_bufferSize)
 				{
 					bool found = true;
 					for (uint16_t j = 0; j < strLength; j++)
@@ -259,11 +306,11 @@ namespace VoiceMailBox
 	}
 	void UART::onITByteSent()
 	{
-		if (tx_write_index != tx_read_index) // Buffer overflow
+		tx_read_index = (tx_read_index + 1) % m_bufferSize;
+		if (m_bytesToSend > 0) // Buffer overflow
 		{
-			uint16_t index = tx_read_index;
-			tx_read_index = (tx_read_index + 1) % m_bufferSize; // Overwrite the oldest data
-			VMB_HAL_UART_Transmit_IT(m_uart, &tx_buffer[index], 1);
+			VMB_HAL_UART_Transmit_IT(m_uart, &tx_buffer[tx_read_index], 1);
+			m_bytesToSend--;
 		}
 		else
 			m_sending = false;

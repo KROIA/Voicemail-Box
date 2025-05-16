@@ -3,6 +3,8 @@
 #include "BSP_VoiceMailBox.hpp"
 #include <string>
 #include <cstring>
+#include <limits>
+#include <charconv>  // For std::from_chars (C++17 and later)
 
 namespace VoiceMailBox
 {
@@ -101,19 +103,19 @@ namespace VoiceMailBox
 		}
 	}
 
-	bool ATCommandClient::sendFileToServer(const std::string& fileName, const std::string& serverIP, uint16_t serverPort)
+	bool ATCommandClient::sendFileToServer(const std::string& localFileName, const std::string& urlPath, const std::string& serverIP, uint16_t serverPort)
 	{
 		File file;
-		if (!file.open(fileName.c_str(), File::AccessMode::read))
+		if (!file.open(localFileName.c_str(), File::AccessMode::read))
 		{
-			log("Failed to open file: \"" +fileName+"\"");
+			log("Failed to open file: \"" +localFileName+"\"");
 			return false; // Failed to open the file
 		}
 
 		uint32_t fileSize = file.getSize();
 		if (fileSize == 0)
 		{
-			log("File is empty: \"" + fileName + "\"");
+			log("File is empty: \"" + localFileName + "\"");
 			return false; // File is empty
 		}
 
@@ -126,28 +128,28 @@ namespace VoiceMailBox
 			return false; // Failed to connect to the server
 		}
 
-		std::string _fileName = fileName;
-		if (_fileName.find("/") != std::string::npos)
+		std::string _localFileName = localFileName;
+		if (_localFileName.find("/") != std::string::npos)
 		{
-			_fileName = _fileName.substr(_fileName.find_last_of("/") + 1);
+			_localFileName = _localFileName.substr(_localFileName.find_last_of("/") + 1);
 		}
-		else if (_fileName.find("\\") != std::string::npos)
+		else if (_localFileName.find("\\") != std::string::npos)
 		{
-			_fileName = _fileName.substr(_fileName.find_last_of("\\") + 1);
+			_localFileName = _localFileName.substr(_localFileName.find_last_of("\\") + 1);
 		}
 
 		std::string boundary = "------------------------eYRLjSUtcTX8XlV9TLI4k1";
 		//std::string boundary = "----4k1";
 
 
-		std::string post = "POST /devicesbackend/upload/ HTTP/1.1\r\n";
+		std::string post = "POST /"+ urlPath +" HTTP / 1.1\r\n";
 		std::string host = "Host: " + serverIP + ":" + std::to_string(serverPort) + "\r\n";
 		std::string userAgent = "User-Agent: ESP32\r\n";
 		//std::string accept = "Accept: */*\r\n";
 		std::string contentType = "Content-Type: multipart/form-data; boundary=" + boundary + "\r\n";
 		std::string emptyLine = "\r\n";
 		std::string boundaryStart = "--" + boundary + "\r\n";
-		std::string contentDisposition = "Content-Disposition: form-data; name=\"test\"; filename=\"" + _fileName + "\"\r\n";
+		std::string contentDisposition = "Content-Disposition: form-data; name=\"test\"; localFileName=\"" + _localFileName + "\"\r\n";
 		std::string contentTypeFile = "Content-Type: text/plain\r\n";
 		std::string boundaryEnd = "--" + boundary + "--\r\n";
 
@@ -157,33 +159,6 @@ namespace VoiceMailBox
 		std::string contentLength = "Content-Length: " + std::to_string(fileSize + boundaryStart.size() + 
 			contentDisposition.size() + contentTypeFile.size() + emptyLine.size() + boundaryEnd.size() + 2) + "\r\n";
 
-
-		
-
-		//std::string contentHeaderTop =
-		//	"\r\n"+boundary+"\r\n"
-		//	"Content-Disposition: form-data; name=\"test\"; filename=\"" + _fileName + "\"\r\n"
-		//	"Content-Type: text/plain\r\n";
-		//
-		//std::string contentHeaderBottom =
-		//	"\r\n"+boundary+"--\r\n";
-
-		//uint32_t contentLength = contentHeaderTop.length() + fileSize + contentHeaderBottom.length();
-
-		//std::vector<std::string> headers = {
-		//	"POST /devicesbackend/upload/ HTTP/1.1\r\n",
-		//	"Host: " + serverIP + ":" + std::to_string(serverPort)+"\r\n",
-		//	"User-Agent: ESP32\r\n",
-		//	"Content-Length: " + std::to_string(contentLength) + "\r\n",
-		//	"Content-Type: multipart/form-data; boundary=" + boundary + "\r\n",
-		//};
-
-		//std::string postRequest =
-		//	"POST /devicesbackend/upload/ HTTP/1.1\r\n"
-		//	"Host: 192.168.1.116:8000\r\n"
-		//	"User-Agent: ESP32\r\n"
-		//	"Content-Length: " + std::to_string(contentLength) + "\r\n"
-		//	"Content-Type: multipart/form-data; boundary="+boundary+"\r\n";
 
 		uint32_t postRequestSize =
 			post.length() +
@@ -196,29 +171,20 @@ namespace VoiceMailBox
 			boundaryStart.length() +
 			contentDisposition.length() +
 			contentTypeFile.length() +
-			emptyLine.length() +
-			fileSize +
-			boundaryEnd.length()+2;
-		//for (const auto& header : headers)
-		//{
-		//	postRequestSize += header.length();
-		//}
+			emptyLine.length();
+			//fileSize +
+			//boundaryEnd.length()+2;
+
 
 		sendCommand("AT+CIPSEND=" + std::to_string(postRequestSize));
-
 		if (!waitUntil(">", 5000))
 		{
 			log("Failed to send data to server");
 			return false; // Failed to send data to the server
 		}
 
-		delay(50); // Give the ESP some time to process the command
+		//delay(50); // Give the ESP some time to process the command
 
-		//for (const auto& header : headers)
-		//{
-		//	sendBytes((const uint8_t*)header.c_str(), header.size());
-		//	//delay(10); // Give the ESP some time to process the command
-		//}
 
 		//sendCommand(postRequest.c_str());
 		//sendBytes((const uint8_t*)contentHeaderTop.c_str(), contentHeaderTop.size());
@@ -233,47 +199,87 @@ namespace VoiceMailBox
 		sendBytes((const uint8_t*)contentDisposition.c_str(), contentDisposition.size());
 		sendBytes((const uint8_t*)contentTypeFile.c_str(), contentTypeFile.size());
 		sendBytes((const uint8_t*)emptyLine.c_str(), emptyLine.size());
+		if (!waitUntil("SEND OK\r\n", 5000))
+		{
+			log("Failed to send file data");
+			return false; // Failed to send file data
+		}
+		//delay(20); // Give the ESP some time to process the command
+
+
+		// Read the file and send it in chunks
 		uint8_t* buffer = new uint8_t[fileSize];
 		if (file.read((char*)buffer, fileSize) != fileSize)
 		{
-			log("Failed to read file: \"" + fileName + "\"");
+			log("Failed to read file: \"" + localFileName + "\"");
 			delete[] buffer;
 			return false; // Failed to read the file
 		}
 		uint32_t currentSendPos = 0;
-		uint32_t deltaPos = m_uart.getBufferSize() / 2;
+		uint32_t deltaPos = std::min(m_uart.getBufferSize(), (uint16_t)1024);
 		uint32_t splits = fileSize / deltaPos;
+
 		for (uint32_t i = 0; i < splits; ++i)
 		{
+			sendCommand("AT+CIPSEND=" + std::to_string(deltaPos));
+			if (!waitUntil(">", 5000))
+			{
+				log("Failed to send data to server");
+				return false; // Failed to send data to the server
+			}
 			if (!sendBytes(buffer + currentSendPos, deltaPos))
 			{
 				log("Failed to send file data");
 				delete[] buffer;
 				return false; // Failed to send file data
 			}
+			if (!waitUntil("SEND OK\r\n", 5000))
+			{
+				log("Failed to send file data");
+				return false; // Failed to send file data
+			}
+			//delay(20); // Give the ESP some time to process the command
 			//delay(5); // Give the ESP some time to process the command
 			currentSendPos += deltaPos;
 		}
 		if (currentSendPos < fileSize)
 		{
+			sendCommand("AT+CIPSEND=" + std::to_string(fileSize - currentSendPos));
+			if (!waitUntil(">", 5000))
+			{
+				log("Failed to send data to server");
+				return false; // Failed to send data to the server
+			}
 			if (!sendBytes(buffer + currentSendPos, fileSize - currentSendPos))
 			{
 				log("Failed to send file data");
 				delete[] buffer;
 				return false; // Failed to send file data
 			}
+			if (!waitUntil("SEND OK\r\n", 5000))
+			{
+				log("Failed to send file data");
+				return false; // Failed to send file data
+			}
+			//delay(20); // Give the ESP some time to process the command
+		}
+		sendCommand("AT+CIPSEND=" + std::to_string(2 + boundaryEnd.size()));
+		if (!waitUntil(">", 5000))
+		{
+			log("Failed to send data to server");
+			return false; // Failed to send data to the server
 		}
 		sendBytes((const uint8_t*)"\r\n", 2); // Send the empty line after the file data
-		delete[] buffer;
-		buffer = nullptr;
-		//delay(20); // Give the ESP some time to process the command
-		//sendBytes((const uint8_t*)contentHeaderBottom.c_str(), contentHeaderBottom.size());
-		sendBytes((const uint8_t*)boundaryEnd.c_str(), boundaryEnd.size());
+		sendBytes((const uint8_t*)boundaryEnd.c_str(), boundaryEnd.size()); // Send the empty line after the file data
+
 		if (!waitUntil("SEND OK\r\n", 5000))
 		{
 			log("Failed to send file data");
 			return false; // Failed to send file data
 		}
+
+		delete[] buffer;
+		buffer = nullptr;
 
 		if (!waitUntil("same-origin", 10000))
 		{
@@ -281,7 +287,7 @@ namespace VoiceMailBox
 			return false; // Failed to send file data
 		}
 
-		delay(100); // Give the ESP some time to process the command
+		//delay(100); // Give the ESP some time to process the command
 		sendCommand("AT+CIPCLOSE");
 		if (!waitUntil("CLOSED\r\n", 5000))
 		{
@@ -289,9 +295,127 @@ namespace VoiceMailBox
 			return false; // Failed to close connection
 		}
 
-		log("File sent successfully: \"" + fileName + "\" to "+ serverIP+":"+std::to_string(serverPort));
+		log("File sent successfully: \"" + localFileName + "\" to "+ serverIP+":"+std::to_string(serverPort));
 		return true;
 	}
+
+
+	bool ATCommandClient::downloadFileFromServer(const std::string& locallocalFileName, const std::string& urlPath, const std::string& serverIP, uint16_t serverPort)
+	{
+		// Open TCP connection to the server
+		std::string startRequest = "AT+CIPSTART=\"TCP\",\"" + serverIP + "\"," + std::to_string(serverPort);
+		sendCommand(startRequest.c_str());
+		if (!waitUntil("OK\r\n", 5000)) {
+			log("Failed to connect to server: \"" + serverIP + ":" + std::to_string(serverPort) + "\"");
+			return false;
+		}
+
+		std::string getRequest =
+			"GET /" + urlPath + " HTTP/1.1\r\n" +
+			"Host: " + serverIP + ":" + std::to_string(serverPort) + "\r\n" +
+			"User-Agent: ESP32\r\n" +
+			"Connection: close\r\n\r\n";
+
+		sendCommand("AT+CIPSEND=" + std::to_string(getRequest.size()));
+		if (!waitUntil(">", 5000)) {
+			log("Failed to prepare to send GET request");
+			return false;
+		}
+
+		sendBytes(reinterpret_cast<const uint8_t*>(getRequest.c_str()), getRequest.size());
+
+		if (!waitUntil("SEND OK\r\n", 5000)) {
+			log("Failed to send GET request");
+			return false;
+		}
+
+		// Wait for HTTP response headers and body
+		std::string response;
+		File file;
+		if (!readFileDownloadResponse(file, response, 10000)) { // You need to implement this method to read raw data from the ESP module
+			log("Failed to read response from server");
+			return false;
+		}
+
+		// Find the start of the body
+		size_t headerEnd = response.find("\r\n\r\n");
+		if (headerEnd == std::string::npos) {
+			log("Malformed HTTP response, no header-body delimiter found");
+			return false;
+		}
+
+		size_t bodyStart = headerEnd + 4;
+		std::string body = response.substr(bodyStart);
+
+		// Open file for writing
+		//File file;
+		if (!file.open(locallocalFileName.c_str(), File::AccessMode::write)) {
+			log("Failed to open file for writing: \"" + locallocalFileName + "\"");
+			return false;
+		}
+
+		if (file.write((uint8_t*)body.c_str(), body.size()) != body.size()) {
+			log("Failed to write all data to file");
+			return false;
+		}
+
+		sendCommand("AT+CIPCLOSE");
+		waitUntil("CLOSED\r\n", 5000); // Ignore if fails, we are done
+
+		log("File downloaded successfully: \"" + locallocalFileName + "\" from " + urlPath);
+		return true;
+	}
+
+	bool ATCommandClient::readFileDownloadResponse(File& file, std::string& response, uint32_t timeout)
+	{
+		waitUntil("\r\nCLOSED\r\n", timeout); // Wait for the end of the HTTP headers
+
+		std::string buffer(1024, '\0'); // Buffer to store the response
+		getResponse((uint8_t*)buffer.data(), buffer.size()); // Read the response into the buffer
+
+		// Find Content-Length:
+		// "Content-Length: 14"
+		size_t contentLengthPos = buffer.find("Content-Length: ");
+		uint16_t contentLength = 0;
+		if (contentLengthPos != std::string::npos) {
+			contentLengthPos += 16; // Move past "Content-Length: "
+			size_t endPos = buffer.find("\r\n", contentLengthPos);
+			if (endPos != std::string::npos) {
+				std::string lengthStr = buffer.substr(contentLengthPos, endPos - contentLengthPos);
+				if (!convertToUInt16(lengthStr, contentLength)) {
+					log("Failed to convert Content-Length to uint16_t");
+					return false; // Failed to convert Content-Length
+				}
+			}
+		}
+		else {
+			log("Content-Length not found in response");
+			return false; // Content-Length not found
+		}
+
+		std::string fileData = buffer.substr(buffer.find("Content-Length: ")); // Extract the file data from the response
+		fileData = fileData.substr(fileData.find("\r\n\r\n") + 4); // Extract the file data from the response
+		fileData = fileData.substr(0, fileData.find("\r\nCLOSED\r\n")); // Extract the file data from the response
+		response = fileData; // Store the file data in the response variable
+
+		return true; // Timeout reached
+	}
+
+
+	bool ATCommandClient::convertToUInt16(const std::string& str, uint16_t& outValue)
+	{
+		// Use std::from_chars for efficient and safe conversion (C++17+)
+		uint32_t temp = 0; // Use a larger type to detect overflow
+		auto [ptr, ec] = std::from_chars(str.data(), str.data() + str.size(), temp);
+
+		if (ec != std::errc() || ptr != str.data() + str.size() || temp > std::numeric_limits<uint16_t>::max()) {
+			return false;
+		}
+
+		outValue = static_cast<uint16_t>(temp);
+		return true;
+	}
+
 
 
 	void ATCommandClient::log(const std::string& msg)
