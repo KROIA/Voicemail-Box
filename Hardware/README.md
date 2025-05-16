@@ -22,7 +22,7 @@ multiple Microcontrollerboards (F469 and H755)
 
 The partial configuration is made for people that are inexperienced with soldering / are lacking equipment.  
 The full configuration is made as the de-facto correct way of manufacturing at the cost off beeing way more difficult to produce.
-> [ !CAUTION ]  
+> [!CAUTION]  
 > When fully soldering the NFC part will likely require a microscope  
 > and the Wifi part will require an aditional USB to UART Converter with 3.3V logic level write the flash memory of ESP32.
 
