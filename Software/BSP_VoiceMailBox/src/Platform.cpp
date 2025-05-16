@@ -1,4 +1,5 @@
-/*
+/**
+ * @details 
  * In case this Project is ported to another STM controller, a new IOC configuration had to be done.
  * For example the GPIO for the leds and the buttons can be named differently in the CUBEMX.
  * In this case, change the initialisation of the arrays for the leds and buttons. 
