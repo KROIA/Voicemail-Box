@@ -2527,7 +2527,7 @@
 		)
 		(uuid "06263ce8-63a4-404b-adb6-1b5ba056bb0b")
 	)
-	(text "J103:\n------------------\nSPI      |UART   |\n- set    |- open |\n- set    |- open |\n- set    |- open |\n- set    |- open |\n         |       |\n- open   |- set  |\n- open   |- set  |\n- open   |- set  |\n"
+	(text "J103:\n------------------\nSPI      |UART   |\n- set    |- open |\n- set    |- open |\n- set    |- open |\n- set    |- open |\n         |       |\n- open   |- set  |\n- open   |- set  |\n- set    |- open |\n"
 		(exclude_from_sim no)
 		(at 88.9 69.342 0)
 		(effects
