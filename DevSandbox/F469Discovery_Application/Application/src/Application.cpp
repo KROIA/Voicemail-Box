@@ -19,7 +19,7 @@ void create_wav_header(VoiceMailBox::File &file, uint32_t sample_rate, uint16_t 
 VoiceMailBox::File file;
 uint32_t sampleCounter = 0;
 uint32_t targetSamples = 48000 * 20; //487 K samples for 20 seconds
-bool isRecording = true;
+bool isRecording = false;
 
 void setup()
 {
@@ -32,7 +32,7 @@ void setup()
 		//Codec_TLV320AIC3104& codec = getCodec();
 		create_wav_header(file, 48000, 16, 2, targetSamples); // Create WAV header
 	}
-	//sendDemoHTTPRequest();
+	sendDemoHTTPRequest();
 	//testFile();
 }
 
@@ -161,10 +161,10 @@ void sendDemoHTTPRequest()
 			println(response);
 		}
 
-		bool repeatSend = true;
+		bool repeatSend = false;
 		while (repeatSend)
 		{
-			if (pmodESP.sendFileToServer("testFile.txt", "devicesbackend/upload", "192.168.137.1", 8000))
+			if (pmodESP.sendFileToServer("testFile.txt", "devicesbackend/upload/", "192.168.137.1", 8000))
 			{
 				println("File sent successfully");
 			}
@@ -175,16 +175,46 @@ void sendDemoHTTPRequest()
 			delay(6000);
 		}
 
+		/*{
+			File file;
+			uint8_t buf[10240] = {0};
+
+			if (file.open("aaa.txt", File::AccessMode::read))
+			{
+				file.read((char*)buf, file.getSize());
+			}
+
+			File file2;
+			if (file2.open("aaa2.txt", File::AccessMode::write))
+			{
+				uint32_t currentStart = 0;
+				uint32_t sizes[] = {
+						2555,
+						2920,
+						2183
+				};
+				for(int i=0; i<3; ++i)
+				{
+
+					file2.write(&buf[currentStart], sizes[i]);
+					currentStart += sizes[i];
+				}
+
+			}
+			file.close();
+			file2.close();
+		}*/
+
 		// Download a file
-		bool repeatDownload = false;
+		bool repeatDownload = true;
 		while (repeatDownload)
 		{
-			if (pmodESP.downloadFileFromServer("downloaded.txt", "media/aaa.txt", "192.168.137.1", 8000))
+			if (pmodESP.downloadFileFromServer("aaa.txt", "media/aaa.txt", "192.168.137.1", 8000))
 			{
 				println("File downloaded successfully");
 				// Read the downloaded file
 				File file;
-				if (file.open("downloaded.txt", File::AccessMode::read))
+				if (file.open("aaa.txt", File::AccessMode::read))
 				{
 					println("File content:");
 					while (!file.eof())
@@ -194,7 +224,7 @@ void sendDemoHTTPRequest()
 						print(buffer);
 					}
 					file.close();
-					println("File content end");
+					println("\r\nFile content end");
 				}
 				else
 				{

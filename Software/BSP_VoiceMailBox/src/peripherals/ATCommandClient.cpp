@@ -142,7 +142,7 @@ namespace VoiceMailBox
 		//std::string boundary = "----4k1";
 
 
-		std::string post = "POST /"+ urlPath +" HTTP / 1.1\r\n";
+		std::string post = "POST /"+ urlPath +" HTTP/1.1\r\n";
 		std::string host = "Host: " + serverIP + ":" + std::to_string(serverPort) + "\r\n";
 		std::string userAgent = "User-Agent: ESP32\r\n";
 		//std::string accept = "Accept: */*\r\n";
@@ -216,7 +216,7 @@ namespace VoiceMailBox
 			return false; // Failed to read the file
 		}
 		uint32_t currentSendPos = 0;
-		uint32_t deltaPos = std::min(m_uart.getBufferSize(), (uint16_t)1024);
+		uint32_t deltaPos = std::min(m_uart.getBufferSize(), (uint32_t)1024);
 		uint32_t splits = fileSize / deltaPos;
 
 		for (uint32_t i = 0; i < splits; ++i)
@@ -324,81 +324,396 @@ namespace VoiceMailBox
 
 		sendBytes(reinterpret_cast<const uint8_t*>(getRequest.c_str()), getRequest.size());
 
-		if (!waitUntil("SEND OK\r\n", 5000)) {
+		if (!waitUntil("bytes\r\n", 5000)) {
 			log("Failed to send GET request");
 			return false;
 		}
+		uint8_t flushBuffer[100] = { 0 };
+		m_uart.receiveUntil(flushBuffer, sizeof(flushBuffer), (uint8_t*)"+IPD,", 5, 1000);
+		//m_uart.receive(flushBuffer, 7); // Flush the buffer until the connection is closed
+
 
 		// Wait for HTTP response headers and body
 		std::string response;
-		File file;
-		if (!readFileDownloadResponse(file, response, 10000)) { // You need to implement this method to read raw data from the ESP module
+		//File file;
+		if (!readFileDownloadResponse(response, 10000)) { // You need to implement this method to read raw data from the ESP module
 			log("Failed to read response from server");
 			return false;
 		}
-
-		// Find the start of the body
-		size_t headerEnd = response.find("\r\n\r\n");
-		if (headerEnd == std::string::npos) {
-			log("Malformed HTTP response, no header-body delimiter found");
-			return false;
-		}
-
-		size_t bodyStart = headerEnd + 4;
-		std::string body = response.substr(bodyStart);
-
-		// Open file for writing
-		//File file;
-		if (!file.open(locallocalFileName.c_str(), File::AccessMode::write)) {
-			log("Failed to open file for writing: \"" + locallocalFileName + "\"");
-			return false;
-		}
-
-		if (file.write((uint8_t*)body.c_str(), body.size()) != body.size()) {
-			log("Failed to write all data to file");
-			return false;
-		}
-
-		sendCommand("AT+CIPCLOSE");
-		waitUntil("CLOSED\r\n", 5000); // Ignore if fails, we are done
 
 		log("File downloaded successfully: \"" + locallocalFileName + "\" from " + urlPath);
 		return true;
 	}
 
-	bool ATCommandClient::readFileDownloadResponse(File& file, std::string& response, uint32_t timeout)
+	bool ATCommandClient::readFileDownloadResponse(std::string& response, uint32_t timeout)
 	{
-		waitUntil("\r\nCLOSED\r\n", timeout); // Wait for the end of the HTTP headers
+		DownloadData data;
+		data.state = DownloadState::ExtractingHeaderData;
+		data.contentLength = 0;
+		data.contentReceived = 0;
+		data.fileComplete = false;
 
-		std::string buffer(1024, '\0'); // Buffer to store the response
-		getResponse((uint8_t*)buffer.data(), buffer.size()); // Read the response into the buffer
+		//delay(1000);
+		while (!data.fileComplete)
+		{
+#ifdef VMB_DEVELOPMENT_ENABLE_DBG_PINS_IN_ATCOMMAND_CLIENT
+			setDbgPin(DBG_PIN::DBG0, 1); // Set DBG0 on
+#endif
+			if (!m_uart.waitUntil("+IPD,", timeout)) // Wait for the start of the response
+			{
+				log("Failed to read framesize");
+				return false; // Failed to read response from server
+			}
+#ifdef VMB_DEVELOPMENT_ENABLE_DBG_PINS_IN_ATCOMMAND_CLIENT
+			setDbgPin(DBG_PIN::DBG0, 0); // Set DBG0 on
+#endif
+			std::string ipdResponse;
+			ipdResponse.resize(512); // Allocate a buffer for the IPD response
+			uint32_t bytesReaded = m_uart.receiveUntil((uint8_t*)ipdResponse.c_str(), 512, (uint8_t*)"+IPD,", 5, timeout);
+			bytesReaded += m_uart.receiveUntil((uint8_t*)ipdResponse.c_str()+bytesReaded, 512-bytesReaded, (uint8_t*)":", 1, timeout);
+			ipdResponse = ipdResponse.substr(ipdResponse.find("+IPD,") + 5);
+			ipdResponse.shrink_to_fit();
+			uint8_t flushDummy;
+			m_uart.receive(&flushDummy, 1); // Read the end of the IPD response
+			uint32_t frameSize = 0;
+			if (!convertToUInt32(ipdResponse, frameSize)) {
+				log("Failed to convert framesize to uint32_t");
+				return false; // Failed to convert framesize
+			}
 
-		// Find Content-Length:
-		// "Content-Length: 14"
-		size_t contentLengthPos = buffer.find("Content-Length: ");
-		uint16_t contentLength = 0;
-		if (contentLengthPos != std::string::npos) {
-			contentLengthPos += 16; // Move past "Content-Length: "
-			size_t endPos = buffer.find("\r\n", contentLengthPos);
-			if (endPos != std::string::npos) {
-				std::string lengthStr = buffer.substr(contentLengthPos, endPos - contentLengthPos);
-				if (!convertToUInt16(lengthStr, contentLength)) {
-					log("Failed to convert Content-Length to uint16_t");
-					return false; // Failed to convert Content-Length
+			// Wait until the amount of bytes received is equal to the frame size
+			uint32_t startTime = VMB_HAL_GetTickCountInMs();
+			while (m_uart.hasBytesReceived() < frameSize)
+			{
+				if (VMB_HAL_GetTickCountInMs() - startTime > timeout)
+				{
+					log("Timeout waiting for file content");
+					return false; // Timeout waiting for file content
 				}
 			}
-		}
-		else {
-			log("Content-Length not found in response");
-			return false; // Content-Length not found
+
+			//std::string content;
+			//content.resize(frameSize); // Allocate a buffer for the file content
+			//m_uart.receive((uint8_t*)content.c_str(), frameSize);
+			AlignedString content;
+			content.resize(frameSize);
+#ifdef VMB_DEVELOPMENT_ENABLE_DBG_PINS_IN_ATCOMMAND_CLIENT
+			setDbgPin(DBG_PIN::DBG0, 1); // Set DBG0 on
+#endif
+			uint32_t bytesRead = m_uart.receive((uint8_t*)content.c_str(), frameSize);
+#ifdef VMB_DEVELOPMENT_ENABLE_DBG_PINS_IN_ATCOMMAND_CLIENT
+			setDbgPin(DBG_PIN::DBG0, 0); // Set DBG0 on
+#endif
+			uint32_t stillInUartBuff = m_uart.hasBytesReceived();
+			if(stillInUartBuff >  100)
+			{
+				int a=0;
+			}
+			log("Still in uartBuff: "+std::to_string(stillInUartBuff));
+
+			if (!processFrame(data, (uint8_t*)content.c_str(), frameSize))
+			{
+				log("Failed to process frame");
+				//delete[] content;
+				return false; // Failed to process frame
+			}
+			
+			if(data.state == DownloadState::ParsingStartOfFile)
+			{
+				if (!processFrame(data, (uint8_t*)content.c_str(), frameSize))
+				{
+					log("Failed to process start of file");
+					//delete[] content;
+					//content = nullptr;
+					return false; // Failed to process frame
+				}
+			}
+			//delete[] content;
+			//content = nullptr;
 		}
 
-		std::string fileData = buffer.substr(buffer.find("Content-Length: ")); // Extract the file data from the response
-		fileData = fileData.substr(fileData.find("\r\n\r\n") + 4); // Extract the file data from the response
-		fileData = fileData.substr(0, fileData.find("\r\nCLOSED\r\n")); // Extract the file data from the response
-		response = fileData; // Store the file data in the response variable
+		data.file.close(); // Close the file
 
-		return true; // Timeout reached
+		return data.fileComplete;
+
+
+
+
+
+
+
+
+
+
+
+
+
+		//waitUntil("\r\nCLOSED\r\n", timeout); // Wait for the end of the HTTP headers
+		// if (!waitUntil("\r\n\r\n", timeout))
+		// {
+		// 	log("Failed to read response from server");
+		// 	return false; // Failed to read response from server
+		// }
+		// 
+		// std::string fileHeader;
+		// uint32_t firstFrameReadedBytes = 0;
+		// fileHeader.resize(1024); // Allocate a buffer for the HTTP headers
+		// if ((firstFrameReadedBytes = m_uart.receiveUntil((uint8_t*)fileHeader.c_str(), 1020, (uint8_t*)"\r\n\r\n", 4, 1000)) == 0)
+		// {
+		// 	log("Failed to read HTTP header from server");
+		// 	return false; // Failed to read response from server
+		// }
+		// firstFrameReadedBytes += m_uart.receive((uint8_t*)fileHeader.c_str() + firstFrameReadedBytes, 4); // Read the end of the header
+		// 
+		// uint32_t frameSize = 0;
+		// std::string frameSizeStr = fileHeader.substr(fileHeader.find("+IPD,") + 5); // Extract the Content-Length from the response
+		// frameSizeStr = frameSizeStr.substr(0, frameSizeStr.find(":")); // Extract the Content-Length from the response
+		// if (!convertToUInt32(frameSizeStr, frameSize)) {
+		// 	log("Failed to convert framesize to uint32_t");
+		// 	return false;
+		// }
+		// frameSize -= firstFrameReadedBytes+;
+		// 
+		// uint32_t contentLength = 0;
+		// std::string contentLengthStr = fileHeader.substr(fileHeader.find("Content-Length: ") + 16); // Extract the Content-Length from the response
+		// contentLengthStr = contentLengthStr.substr(0, contentLengthStr.find("\r\n")); // Extract the Content-Length from the response
+		// if (!convertToUInt32(contentLengthStr, contentLength)) {
+		// 	log("Failed to convert Content-Length to uint32_t");
+		// 	return false; // Failed to convert Content-Length
+		// }
+		// 
+		// std::string fileName = fileHeader.substr(fileHeader.find("filename=\"") + 10); // Extract the file name from the response
+		// fileName = fileName.substr(0, fileName.find("\"")); // Extract the file name from the response
+		// 
+		// std::string startOfFileContent; // = fileHeader.substr(fileHeader.find("\r\n\r\n") + 4); // Extract the file content from the response
+		// uint32_t currentContentCount = 0;
+		// File file;
+		// if (!file.open(fileName.c_str(), File::AccessMode::write)) {
+		// 	log("Failed to open file for writing: \"" + fileName + "\"");
+		// 	return false; // Failed to open the file
+		// }
+		// //file.write((uint8_t*)startOfFileContent.c_str(), startOfFileContent.size()); // Write the file content to the file
+		// //currentContentCount += startOfFileContent.size(); // Get the size of the file content
+		// 
+		// uint32_t startTime = VMB_HAL_GetTickCountInMs();
+		// //uint32_t frameSizeTrackCount = 0;
+		// while (currentContentCount < contentLength)
+		// {
+		// 	while (m_uart.hasBytesReceived() < frameSize)
+		// 	{
+		// 		if (VMB_HAL_GetTickCountInMs() - startTime > timeout)
+		// 		{
+		// 			log("Timeout waiting for file content");
+		// 			return false; // Timeout waiting for file content
+		// 		}
+		// 	}
+		// 
+		// 	uint8_t buffer[VMB_UART_STATIC_BUFFER_SIZE / 2] = { 0 }; // Buffer to store the received data
+		// 	uint32_t bytesRead = m_uart.receive(buffer, frameSize);
+		// 
+		// 	if (bytesRead > 0)
+		// 	{
+		// 		file.write(buffer, bytesRead); // Write the file content to the file
+		// 		currentContentCount += bytesRead; // Get the size of the file content
+		// 	}
+		// 	else
+		// 	{
+		// 		log("Failed to read file content");
+		// 		return false; // Failed to read file content
+		// 	}
+		// 
+		// 	if (currentContentCount >= contentLength)
+		// 	{
+		// 		break; // Break the loop if the file is completely read
+		// 	}
+		// 
+		// 	if (!m_uart.waitUntil("+IPD,", timeout))
+		// 	{
+		// 		log("Failed to read response from server");
+		// 		return false; // Failed to read response from server
+		// 	}
+		// 	std::string ipdResponse;
+		// 	ipdResponse.resize(512); // Allocate a buffer for the IPD response
+		// 	uint32_t bytesReaded = m_uart.receiveUntil((uint8_t*)ipdResponse.c_str(), 512, (uint8_t*)":", 1, timeout);
+		// 	bytesReaded += m_uart.receive((uint8_t*)ipdResponse.c_str() + bytesReaded, 1); // Read the end of the IPD response
+		// 	if (bytesReaded == 0)
+		// 	{
+		// 		log("Failed to read IPD response from server");
+		// 		return false; // Failed to read response from server
+		// 	}
+		// 	ipdResponse = ipdResponse.substr(ipdResponse.find("IPD,") + 4); // Extract the IPD response
+		// 	ipdResponse = ipdResponse.substr(0, ipdResponse.find(":"));
+		// 	frameSize = 0;
+		// 	if (!convertToUInt32(ipdResponse, frameSize)) {
+		// 		log("Failed to convert framesize to uint32_t");
+		// 		return false; // Failed to convert framesize
+		// 	}
+		// 
+		// 
+		// 
+		// 	/*while (!hasResponse())
+		// 	{
+		// 		if (VMB_HAL_GetTickCountInMs() - startTime > timeout)
+		// 		{
+		// 			log("Timeout waiting for file content");
+		// 			return false; // Timeout waiting for file content
+		// 		}
+		// 	}
+		// 	while (hasResponse())
+		// 	{
+		// 		uint8_t buffer[1024] = { 0 }; // Buffer to store the received data
+		// 		uint32_t bytesToRead = std::min(contentLength - currentContentCount, (uint32_t)1024);
+		// 		uint32_t bytesRead = m_uart.receive(buffer, bytesToRead);
+		// 		if (bytesRead > 0)
+		// 		{
+		// 			//frameSizeTrackCount += bytesRead;
+		// 			if (frameSizeTrackCount + bytesRead >= frameSize)
+		// 			{
+		// 				frameSizeTrackCount = 0;
+		// 				file.write(buffer, frameSize - frameSizeTrackCount);
+		// 				currentContentCount += frameSize - frameSizeTrackCount;
+		// 				break; // Break the loop if the frame size is reached
+		// 			}
+		// 			file.write(buffer, bytesRead); // Write the file content to the file
+		// 			currentContentCount += bytesRead; // Get the size of the file content
+		// 			if (currentContentCount >= contentLength)
+		// 			{
+		// 				goto waitForClosed;
+		// 			}
+		// 		}
+		// 	}*/
+		// }
+		// waitForClosed:
+		// file.close(); // Close the file
+		// // Wait for the end of the file content
+		// if (!waitUntil("CLOSED\r\n", timeout))
+		// {
+		// 	log("Failed to read response from server");
+		// 	return false; // Failed to read response from server
+		// }
+		// return true; // Timeout reached
+	}
+
+	bool ATCommandClient::processFrame(DownloadData& data, uint8_t* frame, uint32_t size)
+	{
+		switch (data.state)
+		{
+		case DownloadState::ExtractingHeaderData:
+		{
+			// Extract the header data from the frame
+			std::string frameStr((char*)frame, size);
+			size_t contentLengthIndex = frameStr.find("Content-Length: ");
+			if (contentLengthIndex != std::string::npos)
+			{
+				contentLengthIndex += 16; // Move the index to the start of the content length value
+				std::string contentLengthStr = frameStr.substr(contentLengthIndex, frameStr.find("\r\n", contentLengthIndex) - contentLengthIndex);
+				uint32_t contentLength = 0;
+				if (convertToUInt32(contentLengthStr, contentLength))
+				{
+					data.contentLength = contentLength;
+				}
+			}
+
+
+			size_t fileNameIndex = frameStr.find("filename=\"");
+			if (fileNameIndex != std::string::npos)
+			{
+				fileNameIndex += 10; // Move the index to the start of the file name value
+				std::string fileNameStr = frameStr.substr(fileNameIndex, frameStr.find("\"", fileNameIndex) - fileNameIndex);
+				data.fileName = fileNameStr;
+			}
+
+			if(data.contentLength > 0 && data.fileName.size() > 0)
+			{
+				data.file.open(data.fileName.c_str(), File::AccessMode::write);
+				if (!data.file.isOpen())
+				{
+					log("Failed to open file for writing: \"" + data.fileName + "\"");
+					return false; // Failed to open the file
+				}
+				if(frameStr.find("\r\n\r\n") != std::string::npos)
+					data.state = DownloadState::ParsingStartOfFile;
+			}
+			break;
+		}
+		case DownloadState::ParsingStartOfFile:
+		{
+			// Extract the file content from the frame
+			std::string frameStr((char*)frame, size);
+			size_t contentStartIndex = frameStr.find("\r\n\r\n");
+			if (contentStartIndex != std::string::npos)
+			{
+				contentStartIndex += 4; // Move the index to the start of the file content
+				std::string fileContentStr = frameStr.substr(contentStartIndex, frameStr.size() - contentStartIndex);
+				uint32_t bytesToSave = fileContentStr.size();
+				if (data.contentReceived + bytesToSave > data.contentLength)
+				{
+					bytesToSave = data.contentLength - data.contentReceived;
+				}
+
+				log("Writing block: "+std::to_string(0) + " at: "+std::to_string(data.contentReceived) + " with size: "+std::to_string(bytesToSave));
+#ifdef VMB_DEVELOPMENT_ENABLE_DBG_PINS_IN_ATCOMMAND_CLIENT
+				setDbgPin(DBG_PIN::DBG1, 1); // Set DBG0 on
+#endif
+				data.contentReceived += data.file.write((uint8_t*)fileContentStr.c_str(), bytesToSave); // Write the file content to the file
+#ifdef VMB_DEVELOPMENT_ENABLE_DBG_PINS_IN_ATCOMMAND_CLIENT
+				//setDbgPin(DBG_PIN::DBG1, 0); // Set DBG0 on
+				setDbgPin(DBG_PIN::DBG1, 0); // Set DBG0 on
+#endif
+				//delay(10);
+				if (data.contentReceived >= data.contentLength)
+				{
+					data.fileComplete = true; // File download complete
+					data.file.close(); // Close the file
+				}
+			}
+			else
+			{
+				log("Failed to find start of file content in frame");
+				return false; // Failed to find start of file content
+			}
+			data.state = DownloadState::ParsingFile;
+			break;
+		}
+		case DownloadState::ParsingFile:
+		{
+			static uint32_t count = 1;
+			uint32_t bytesToSave = size;
+			if(data.contentReceived + bytesToSave > data.contentLength)
+			{
+				bytesToSave = data.contentLength - data.contentReceived;
+			}
+			/*data.file.close();
+			std::string fileName = data.fileName.substr(0, data.fileName.find("."));
+			data.file.open((fileName+"_"+std::to_string(count++)+".txt").c_str(), File::AccessMode::write);
+			//data.file.open(data.fileName.c_str(), File::AccessMode::append);
+			if (!data.file.isOpen())//
+			{
+				log("Failed to open file for writing: \"" + data.fileName + "\"");
+				return false; // Failed to open the file
+			}*/
+			log("Writing block: "+std::to_string(count++) + " at: "+std::to_string(data.contentReceived)  + " with size: "+std::to_string(bytesToSave));
+#ifdef VMB_DEVELOPMENT_ENABLE_DBG_PINS_IN_ATCOMMAND_CLIENT
+			setDbgPin(DBG_PIN::DBG1, 1); // Set DBG0 on
+#endif
+			uint32_t written = data.file.write(frame, bytesToSave); // Write the file content to the file
+#ifdef VMB_DEVELOPMENT_ENABLE_DBG_PINS_IN_ATCOMMAND_CLIENT
+			//setDbgPin(DBG_PIN::DBG1, 0); // Set DBG0 on
+			setDbgPin(DBG_PIN::DBG1, 0); // Set DBG0 on
+#endif
+			data.contentReceived += written;
+			if (data.contentReceived >= data.contentLength)
+			{
+				data.fileComplete = true; // File download complete
+				data.file.close(); // Close the file
+			}
+			break;
+		}
+		default:
+			log("Invalid download state");
+			return false; // Invalid download state
+		}
+		return true; // Frame processed successfully
 	}
 
 
@@ -408,12 +723,37 @@ namespace VoiceMailBox
 		uint32_t temp = 0; // Use a larger type to detect overflow
 		auto [ptr, ec] = std::from_chars(str.data(), str.data() + str.size(), temp);
 
-		if (ec != std::errc() || ptr != str.data() + str.size() || temp > std::numeric_limits<uint16_t>::max()) {
-			return false;
+		outValue = static_cast<uint32_t>(temp);
+		std::string cmp = std::to_string(outValue);
+		size_t minSize = std::min(str.size(), cmp.size());
+		bool compared = true;
+		for(size_t i=0; i<minSize; ++i)
+		{
+			if(cmp[i] != str[i])
+			{
+				compared = false;
+				break;
+			}
 		}
-
-		outValue = static_cast<uint16_t>(temp);
-		return true;
+	}
+	bool ATCommandClient::convertToUInt32(const std::string& str, uint32_t& outValue)
+	{
+		// Use std::from_chars for efficient and safe conversion (C++17+)
+		uint64_t temp = 0; // Use a larger type to detect overflow
+		auto [ptr, ec] = std::from_chars(str.data(), str.data() + str.size(), temp);
+		outValue = static_cast<uint32_t>(temp);
+		std::string cmp = std::to_string(outValue);
+		size_t minSize = std::min(str.size(), cmp.size());
+		bool compared = true;
+		for(size_t i=0; i<minSize; ++i)
+		{
+			if(cmp[i] != str[i])
+			{
+				compared = false;
+				break;
+			}
+		}
+		return compared;
 	}
 
 

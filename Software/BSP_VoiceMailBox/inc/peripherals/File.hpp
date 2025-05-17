@@ -68,7 +68,7 @@ namespace VoiceMailBox
 		 * @param size The amount of bytes to write
 		 * @return The amount of bytes written
 		 */
-		unsigned int write(const uint8_t* data, uint16_t size);
+		unsigned int write(const uint8_t* data, uint32_t size);
 
 		/**
 		 * @brief Writes the given string to the file
@@ -86,7 +86,7 @@ namespace VoiceMailBox
 		 * @param length amount of bytes to be read
 		 * @return The amount of bytes read
 		 */
-		unsigned int read(char* buffer, unsigned int length);
+		unsigned int read(char* buffer, uint32_t length);
 
 		/**
 		 * @brief Reads the given amount of bytes from the file
@@ -94,7 +94,7 @@ namespace VoiceMailBox
 		 * @param length amount of bytes to be read
 		 * @return The amount of bytes read
 		 */
-		unsigned int read(std::string& output, unsigned int length);
+		unsigned int read(std::string& output, uint32_t length);
 
 		/**
 		 * @brief Sets the cursor to the given location

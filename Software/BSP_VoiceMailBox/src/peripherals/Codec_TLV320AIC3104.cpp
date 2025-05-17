@@ -1,9 +1,5 @@
 #include "peripherals/Codec_TLV320AIC3104.hpp"
-
-
-#ifdef VMB_DEVELOPMENT_CONFIGURATION
-	#include "BSP_VoiceMailBox.hpp"
-#endif
+#include "BSP_VoiceMailBox.hpp"
 
 namespace VoiceMailBox
 {
@@ -16,7 +12,7 @@ namespace VoiceMailBox
 		, m_i2s(i2sHandle, i2sBufferSize)
 		, m_currentRegisterPage(0)
 	{
-#ifdef VMB_ENABLE_CODEC_PERFORMANCE_MEASUREMENTS
+#if defined(VMB_ENABLE_CODEC_PERFORMANCE_MEASUREMENTS)
 		m_i2s.setHalfCpltCallback([this](I2S& caller) { onI2S_DMA_TxRx_HalfCpltCallback(); });
 		m_i2s.setCpltCallback([this](I2S& caller) { onI2S_DMA_TxRx_CpltCallback(); });
 #endif
@@ -107,7 +103,7 @@ namespace VoiceMailBox
 #ifdef VMB_ENABLE_CODEC_PERFORMANCE_MEASUREMENTS
 		m_DMA_halfTransferTick = getTickCount();
 #endif
-#ifdef VMB_DEVELOPMENT_CONFIGURATION
+#if  defined(VMB_DEVELOPMENT_ENABLE_DBG_PINS_IN_CODEC)
 		setDbgPin(DBG_PIN::DBG0, 1); // Set DBG0 on
 #endif
 	}
@@ -117,7 +113,7 @@ namespace VoiceMailBox
 #ifdef VMB_ENABLE_CODEC_PERFORMANCE_MEASUREMENTS
 		m_DMA_halfProcessingTicks = getTickCount() - m_DMA_halfTransferTick;
 #endif
-#ifdef VMB_DEVELOPMENT_CONFIGURATION
+#if defined(VMB_DEVELOPMENT_ENABLE_DBG_PINS_IN_CODEC)
 		setDbgPin(DBG_PIN::DBG0, 0); // Set DBG0 off
 #endif
 	}

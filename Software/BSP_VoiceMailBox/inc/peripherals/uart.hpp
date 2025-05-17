@@ -42,13 +42,13 @@ namespace VoiceMailBox
 		 * @param data pointer to the array of bytes to send
 		 * @param size amount of bytes to send
 		 */
-		void send(const uint8_t* data, uint16_t size);
+		void send(const uint8_t* data, uint32_t size);
 
 		/**
 		 * @brief Returns the amount of bytes what have been received and not yet read.
 		 * @return number of unread bytes in the RX buffer
 		 */
-		uint16_t hasBytesReceived() const;
+		uint32_t hasBytesReceived() const;
 
 		/**
 		 * @brief Reads the given amount of bytes from the RX buffer.
@@ -56,13 +56,23 @@ namespace VoiceMailBox
 		 *          It will read the min(size, hasBytesReceived()) bytes from the RX buffer.
 		 * @param data buffer to store the read bytes
 		 * @param size target amount of bytes to read
-		 * @return true if reading was successfull.
-		 *         false if the data pointer is null, the size is 0 or no data available.
+		 * @return amount of bytes read from the RX buffer
 		 */
-		bool receive(uint8_t* data, uint16_t size);
+		uint32_t receive(uint8_t* data, uint32_t size);
 
-
-		bool receiveUntil(uint8_t* data, uint16_t size, uint8_t* target, uint8_t targetSize, uint32_t timeoutMS = 0xFFFFFFFF);
+		/**
+		 * @brief Reads all bytes from the RX buffer until the target string is found or the timeout is reached or the <data> buffer is full.
+		 * @param data buffer to store the read bytes
+		 * @param size of the <data> buffer
+		 * @param target string to search for in the RX buffer
+		 * @param targetSize of the <target> string
+		 * @param timeoutMS to stop waiting for the target string
+		 * @return amount of bytes read from the RX buffer
+		 * 
+		 * @details This function will block until the target string has been found or the timeout has been reached.
+		 *          If the <data> buffer is full, the function will no longer wait for the target string.
+		 */
+		uint32_t receiveUntil(uint8_t* data, uint32_t size, uint8_t* target, uint32_t targetSize, uint32_t timeoutMS = 0xFFFFFFFF);
 
 		/**
 		 * @brief Waits until the given character is received or the timeout is reached.
@@ -104,7 +114,7 @@ namespace VoiceMailBox
 		 * @brief Gets the buffersize of the circular RX/TX Buffer
 		 * @return buffersize
 		 */
-		uint16_t getBufferSize() const { return m_bufferSize; }
+		uint32_t getBufferSize() const { return m_bufferSize; }
 		
 
 		/**
@@ -128,7 +138,7 @@ namespace VoiceMailBox
 
 		VMB_UART_Handle * const m_uart;		// UART_HandleTypeDef*
 
-		const uint16_t m_bufferSize;
+		const uint32_t m_bufferSize;
 
 		// RX buffer
 #ifdef VMB_UART_USE_STATIC_BUFFER_SIZE
@@ -139,12 +149,12 @@ namespace VoiceMailBox
 		uint8_t* tx_buffer;
 #endif
 		uint8_t rx_data;
-		uint16_t rx_write_index;
-		uint16_t rx_read_index;
+		uint32_t rx_write_index;
+		uint32_t rx_read_index;
 
 		
-		uint16_t tx_write_index;
-		uint16_t tx_read_index;
+		uint32_t tx_write_index;
+		uint32_t tx_read_index;
 		volatile bool m_sending;
 		std::atomic<uint16_t> m_bytesToSend;
 

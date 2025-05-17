@@ -97,19 +97,50 @@ namespace VoiceMailBox
 		m_lastError = f_write(&m_fileHandle, text, strlen(text), &written);
 		return written;
 	}
-	unsigned int File::write(const uint8_t* data, uint16_t size) {
+	unsigned int File::write(const uint8_t* data, uint32_t size) {
 		if (!m_isOpen) return 0;
 		UINT written;
-		m_lastError = f_write(&m_fileHandle, data, size, &written);
-		return written;
+		static constexpr size_t pageSize = 512; // Assuming a page size of 512 bytes
+
+		if (size > pageSize)
+		{
+			uint16_t bytesToFillPage = pageSize - (m_fileHandle.fptr % pageSize); // bytes to fill the page
+			uint8_t dataAlignment = (uint32_t)data % 4; // data alignment
+
+			if (bytesToFillPage % 4 == dataAlignment)
+			{
+				m_lastError = f_write(&m_fileHandle, data, size, &written);
+				return written;
+			}
+			else
+			{
+				// Force FATFS to use its own buffer instead of writing to the DMA from the string directly.
+				// This is a workaround to prevent the alignment issue when using the DMA which otherwise leads to false file content. (multiple characters)
+				UINT writtenSum = 0;
+				static constexpr size_t subPageSize = pageSize / 2;
+				for (uint32_t i = 0; i < size / subPageSize; ++i)
+				{
+					m_lastError = f_write(&m_fileHandle, data + i * subPageSize, subPageSize, &written);
+					writtenSum += written;
+				}
+				m_lastError = f_write(&m_fileHandle, data + (size / subPageSize) * subPageSize, size % subPageSize, &written);
+				writtenSum += written;
+				return writtenSum;
+			}
+		}
+		else
+		{
+			m_lastError = f_write(&m_fileHandle, data, size, &written);
+			return written;
+		}
 	}
-	unsigned int File::read(char* buffer, unsigned int length) {
+	unsigned int File::read(char* buffer, uint32_t length) {
 		if (!m_isOpen) return 0;
 		UINT bytesRead;
 		m_lastError = f_read(&m_fileHandle, buffer, length, &bytesRead);
 		return bytesRead;
 	}
-	unsigned int File::read(std::string& output, unsigned int length)
+	unsigned int File::read(std::string& output, uint32_t length)
 	{
 		output.resize(length);
 		return read(&output[0], length);
