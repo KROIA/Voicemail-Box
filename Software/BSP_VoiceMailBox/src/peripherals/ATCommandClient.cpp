@@ -129,6 +129,25 @@ namespace VoiceMailBox
 
 	bool ATCommandClient::connectToWifi(const std::string& ssid, const std::string& password)
 	{
+		std::string command = "AT+CWJAP=\"" + ssid + "\",\"" + password + "\"";
+		sendCommand(command.c_str());
+		if (waitUntil("WIFI GOT IP\r\n", 10000))
+		{
+			// Successfully connected to WiFi
+			log("Connected to WiFi");
+			return true;
+		}
+		else
+		{
+			// Failed to connect to WiFi
+			log("Failed to connect to WiFi");
+			return false;
+		}
+	}
+
+	bool ATCommandClient::sendFileToServer(const std::string& localFileName, const std::string& urlPath, const std::string& serverIP, uint16_t serverPort)
+	{
+
 		AutoLedClearer clearer(m_trafficLed);
 
 		flushRX();
