@@ -145,7 +145,7 @@ namespace VoiceMailBox
 		while (VMB_HAL_GetTickCountInMs() - startTime < timeoutMS)
 		{
 			uint32_t rb = hasBytesReceived();
-			if (rb > targetSize)
+			if (rb >= targetSize)
 			{
 				//setDbgPin(DBG_PIN::DBG2, 1);
 				bool found = false;
@@ -191,11 +191,6 @@ namespace VoiceMailBox
 							data[currentWriteIndex] = rx_buffer[rx_read_index];
 							rx_read_index = (rx_read_index + 1) % m_bufferSize; // Update read index
 							currentWriteIndex++;
-							if (rx_write_index == rx_read_index) // Buffer overflow
-									{
-										int a=0;
-									}
-
 						}
 						else
 						{
@@ -213,10 +208,6 @@ namespace VoiceMailBox
 							data[currentWriteIndex] = rx_buffer[rx_read_index];
 							currentWriteIndex++;
 							rx_read_index = (rx_read_index + 1) % m_bufferSize; // Update read index
-							if (rx_write_index == rx_read_index) // Buffer overflow
-									{
-										int a=0;
-									}
 						}
 						else
 						{
@@ -265,12 +256,28 @@ namespace VoiceMailBox
 	}
 	bool UART::waitUntil(const char* str, uint32_t timeoutMS)
 	{
+		uint32_t startIndex = 0;
+		return waitUntil_internal(str, timeoutMS, startIndex);
+	}
+	bool UART::waitUntilAndFlush(const char* str, uint32_t timeoutMS)
+	{
+		uint32_t startIndex = 0;
+		bool result = waitUntil_internal(str, timeoutMS, startIndex);
+		if (result)
+		{
+			rx_read_index = (startIndex + strlen(str)) % m_bufferSize; // Update read index
+		}
+		return result;
+	}
+
+	bool UART::waitUntil_internal(const char* str, uint32_t timeoutMS, uint32_t& startIndex)
+	{
 		uint16_t strLength = strlen(str);
 		uint32_t startTime = VMB_HAL_GetTickCountInMs();
 		uint32_t startOffset = 0;
-		uint16_t currentReceivedBytes =  hasBytesReceived();
+		uint16_t currentReceivedBytes = hasBytesReceived();
 		// Search first occurrence of string in the buffer
-		if(currentReceivedBytes >= strLength)
+		if (currentReceivedBytes >= strLength)
 		{
 			for (uint16_t i = 0; i <= currentReceivedBytes - strLength; ++i)
 			{
@@ -288,6 +295,7 @@ namespace VoiceMailBox
 
 				if (found)
 				{
+					startIndex = i;
 					return true;
 				}
 			}
@@ -297,12 +305,12 @@ namespace VoiceMailBox
 		while (VMB_HAL_GetTickCountInMs() - startTime < timeoutMS)
 		{
 			uint16_t rb = hasBytesReceived();
-			if (rb - currentReceivedBytes > strLength)
+			if (rb - currentReceivedBytes >= strLength)
 			{
 				setDbgPin(DBG_PIN::DBG2, 1);
 				currentReceivedBytes = rb - strLength;
 				//for (uint16_t i = (rx_read_index + startOffset) % m_bufferSize; i != rx_write_index; i = (i + 1) % m_bufferSize)
-				for(uint32_t i=startOffset; i<=currentReceivedBytes; ++i)
+				for (uint32_t i = startOffset; i <= currentReceivedBytes; ++i)
 				{
 					bool found = true;
 					for (uint16_t j = 0; j < strLength; j++)
@@ -317,6 +325,7 @@ namespace VoiceMailBox
 					if (found)
 					{
 						setDbgPin(DBG_PIN::DBG2, 0);
+						startIndex = i;
 						return true;
 					}
 				}
@@ -337,6 +346,26 @@ namespace VoiceMailBox
 		m_sending = false;
 		memset(rx_buffer, 0, m_bufferSize);
 		memset(tx_buffer, 0, m_bufferSize);
+	}
+	void UART::flushRX()
+	{
+		rx_read_index = rx_write_index; // Update read index
+	}
+
+	uint32_t UART::flushNBytes(uint32_t nBytes)
+	{
+		uint32_t startTime = VMB_HAL_GetTickCountInMs();
+		uint32_t currentReceivedBytes = hasBytesReceived();
+		if (currentReceivedBytes == 0)
+		{
+			return 0;
+		}
+		if (nBytes > currentReceivedBytes)
+		{
+			nBytes = currentReceivedBytes;
+		}
+		rx_read_index = (rx_read_index + nBytes) % m_bufferSize; // Update read index
+		return nBytes;
 	}
 
 	

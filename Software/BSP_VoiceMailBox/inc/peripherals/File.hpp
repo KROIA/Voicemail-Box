@@ -39,7 +39,7 @@ namespace VoiceMailBox
 		 * @param mode how to access the file
 		 * @return true if the file was opened successfully, otherwise false
 		 */
-		bool open(const char* path, AccessMode mode);
+		bool open(const std::string& path, AccessMode mode);
 
 		/**
 		 * @brief Try's to open a file with the given path and mode.
@@ -47,7 +47,7 @@ namespace VoiceMailBox
 		 * @param mode how to access the file
 		 * @return true if the file was opened successfully, otherwise false
 		 */
-		bool open(const char* path, int fa_mode);
+		bool open(const std::string& path, int fa_mode);
 
 		/**
 		 * @brief Closes the open file.
@@ -56,11 +56,17 @@ namespace VoiceMailBox
 		bool close();
 
 		/**
+		 * @brief Gets the current open file path
+		 * @return path to the file
+		 */
+		const std::string& getPath() const { return m_path; }
+
+		/**
 		 * @brief Writes the given string to the file
 		 * @param text to write to the file. Expecting a null-terminated string.
 		 * @return The amount of bytes to write
 		 */
-		unsigned int write(const char* text);
+		uint32_t write(const char* text);
 
 		/**
 		 * @brief Writes the given data to the file
@@ -68,15 +74,17 @@ namespace VoiceMailBox
 		 * @param size The amount of bytes to write
 		 * @return The amount of bytes written
 		 */
-		unsigned int write(const uint8_t* data, uint32_t size);
+		uint32_t write(const uint8_t* data, uint32_t size);
+		uint32_t write(const char* data, uint32_t size) {
+			return write((uint8_t*)data, size);
+		}
 
 		/**
 		 * @brief Writes the given string to the file
 		 * @param text to write to the file.
 		 * @return The amount of bytes written
 		 */
-		unsigned int write(const std::string& text)
-		{
+		uint32_t write(const std::string& text) {
 			return write(text.c_str());
 		}
 
@@ -86,7 +94,10 @@ namespace VoiceMailBox
 		 * @param length amount of bytes to be read
 		 * @return The amount of bytes read
 		 */
-		unsigned int read(char* buffer, uint32_t length);
+		uint32_t read(uint8_t* buffer, uint32_t length);
+		uint32_t read(char* buffer, uint32_t length) {
+			return read((uint8_t*)buffer, length);
+		}
 
 		/**
 		 * @brief Reads the given amount of bytes from the file
@@ -94,20 +105,27 @@ namespace VoiceMailBox
 		 * @param length amount of bytes to be read
 		 * @return The amount of bytes read
 		 */
-		unsigned int read(std::string& output, uint32_t length);
+		uint32_t read(std::string& output, uint32_t length);
 
 		/**
 		 * @brief Sets the cursor to the given location
 		 * @param position to set the cursor to
 		 * @return true if the cursor was set successfully, otherwise false
 		 */
-		bool seek(unsigned int position);
+		bool seek(uint32_t position);
+
+
+		/**
+		 * @brief Gets the current curser position
+		 * @return index of the cursor position
+		 */
+		uint32_t getCursorPosition() const;
 
 		/**
 		 * @brief Gets the filesize in bytes
 		 * @return filesize in bytes
 		 */
-		unsigned int getSize() const;
+		uint32_t getSize() const;
 
 		/**
 		 * @return true if the file is open, otherwise false
@@ -136,6 +154,23 @@ namespace VoiceMailBox
 		 * @brief Clears the last error
 		 */
 		void clearLastError() { m_lastError = FRESULT::FR_OK; }
+
+
+		/**
+		 * @brief Gets the current access mode of the file
+		 * @return access mode of the file
+		 */
+		AccessMode getAccessMode() const
+		{
+			if(m_currentMode & FA_READ)
+				return AccessMode::read;
+			if (m_currentMode & FA_WRITE)
+				return AccessMode::write;
+			if (m_currentMode & FA_OPEN_APPEND)
+				return AccessMode::append;
+
+			return AccessMode::read; // Default to read if no mode is set
+		}
 
 
 		/**

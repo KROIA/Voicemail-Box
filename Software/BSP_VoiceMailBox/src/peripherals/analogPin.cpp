@@ -1,4 +1,4 @@
-#include "peripherals/analogPin.hpp"
+#include "peripherals/AnalogPin.hpp"
 
 namespace VoiceMailBox
 {

@@ -19,33 +19,118 @@ void create_wav_header(VoiceMailBox::File &file, uint32_t sample_rate, uint16_t 
 VoiceMailBox::File file;
 uint32_t sampleCounter = 0;
 uint32_t targetSamples = 48000 * 20; //487 K samples for 20 seconds
-bool isRecording = false;
+bool isRecording = true;
+
+VoiceMailBox::AudioRecorder* recorder = nullptr;
+VoiceMailBox::AudioPlayer* player = nullptr;
 
 void setup()
 {
 	using namespace VoiceMailBox;
 	VoiceMailBox::setup();
 
+	recorder = new VoiceMailBox::AudioRecorder(getCodec(), getLed(LED::LED0));
+	player = new VoiceMailBox::AudioPlayer(getCodec(), getLed(LED::LED0));
+
+	ATCommandClient& pmodESP = getPmodESP();
+	int counter = 5; 
+	while (!pmodESP.connectToWifi("Alex-PC", "87924ikR") && counter > 0)
+	{
+		delay(1000);
+		
+		--counter;
+		if (counter > 0)
+		{
+			println("Try to reconnect to WIFI");
+		}
+		else
+		{
+			println("Failed to connect to WIFI");
+		}
+	}
+
+	getButton(Button::BTN0).setOnFallingEdgeCallback([](DigitalPin&) {
+		if (player->isPlaying())
+			player->stopPlayback();
+		if (recorder->isRecording())
+		{
+			recorder->stopRecording();
+		}
+		else
+		{
+			recorder->startRecording();
+		}
+		});
+
+	getButton(Button::BTN1).setOnFallingEdgeCallback([](DigitalPin&) {
+		if (recorder->isRecording())
+			recorder->stopRecording();
+		if (player->isPlaying())
+		{
+			player->stopPlayback();
+		}
+		else
+		{
+			player->startPlayback();
+		}
+		});
+
+	getButton(Button::BTN2).setOnFallingEdgeCallback([&pmodESP](DigitalPin&) {
+		if (player->isPlaying())
+			player->stopPlayback();
+		if (recorder->isRecording())
+			recorder->stopRecording();
+		//if (pmodESP.sendFileToServer("record.wav", "devicesbackend/upload/", "192.168.137.1", 8000))
+		if (pmodESP.sendFileToServer("AAA2.txt", "devicesbackend/upload/", "192.168.137.1", 8000))
+		{
+			println("File sent successfully");
+		}
+		else
+		{
+			println("Failed to send file");
+		}
+		});
+
+	getButton(Button::BTN3).setOnFallingEdgeCallback([&pmodESP](DigitalPin&) {
+		if (player->isPlaying())
+			player->stopPlayback();
+		if (recorder->isRecording())
+			recorder->stopRecording();
+		if (pmodESP.downloadFileFromServer("AAA2.txt", "media/AAA2.txt", "192.168.137.1", 8000))
+		{
+			println("File downloaded successfully");
+		}
+		else
+		{
+			println("Failed to download file");
+		}
+		});
+
+
 	if(isRecording)
 	{
-		file.open("record.wav", FA_WRITE | FA_CREATE_ALWAYS);
-		//Codec_TLV320AIC3104& codec = getCodec();
-		create_wav_header(file, 48000, 16, 2, targetSamples); // Create WAV header
+		//recorder->startRecording();
+		//file.open("record.wav", FA_WRITE | FA_CREATE_ALWAYS);
+		//create_wav_header(file, 48000, 16, 2, 1); // Create WAV header
 	}
-	sendDemoHTTPRequest();
+	//sendDemoHTTPRequest();
 	//testFile();
 }
 
 void loop()
 {
 	using namespace VoiceMailBox;
+	VoiceMailBox::update();
+
+	recorder->update();
+	player->update();
 	//setLed(LED::LED0, getButtonState(Button::BTN0));
 	//setLed(LED::LED1, getButtonState(Button::BTN1));
 
 
-	Codec_TLV320AIC3104& codec = getCodec();
-	if(codec.isDataReadyAndClear())
-		processData();
+	//Codec_TLV320AIC3104& codec = getCodec();
+	//if(codec.isDataReadyAndClear())
+	//	processData();
 }
 
 void processData()
@@ -99,6 +184,8 @@ void processData()
 		}
 		else
 		{
+			file.seek(0); // Go to the beginning of the file
+			create_wav_header(file, 48000, 16, 2, sampleCounter); // Create WAV header
 			file.close();
 			isRecording = false;
 		}
@@ -340,7 +427,7 @@ bool testFile()
 	// Open the same file for reading
 	if (file.open("test.txt", FA_READ)) {
 		char buffer[20] = { 0 };
-		file.read(buffer, sizeof(buffer) - 1);
+		file.read((uint8_t*)buffer, sizeof(buffer) - 1);
 		print("Read from file: %s\n\r", buffer);
 		file.close();
 	}

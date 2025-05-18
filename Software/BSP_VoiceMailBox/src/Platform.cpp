@@ -24,8 +24,8 @@ namespace VoiceMailBox
 		Fill in the GPIO_TypeDef* and pin values, generated from the CUBEMX for the LEDs
 	*/
 	DigitalPin Platform::led[] = {
-		{ LED0_GPIO_Port, LED0_Pin },
-		{ LED1_GPIO_Port, LED1_Pin }
+		{ LED0_GPIO_Port, LED0_Pin, true},
+		{ LED1_GPIO_Port, LED1_Pin, true}
 	};
 
 	/*
@@ -59,7 +59,7 @@ namespace VoiceMailBox
 										getI2C_CODEC(), 0x18,  // maybe problematic because of static initialisation order
 										CODEC_NRESET_GPIO_Port, CODEC_NRESET_Pin);
 
-	ATCommandClient Platform::pmodESP(getUART_WIFI(), 256); // maybe problematic because of static initialisation order
+	ATCommandClient Platform::pmodESP(getUART_WIFI(), 256, Platform::led[1]); // maybe problematic because of static initialisation order
 
 
 #ifdef VMB_DEVELOPMENT_CONFIGURATION
@@ -75,14 +75,22 @@ namespace VoiceMailBox
 	void Platform::setup()
 	{
 		VMB_HAL_InitTickCounter();
-
+		codec.setup();
 
 		dbgUart.setup();
 		pmodESP.setup();
 		//wifiUart.setup();
 
-		codec.setup();
+
 	}	
+
+	void Platform::update()
+	{
+		for (auto& btn : button)
+		{
+			btn.update();
+		}
+	}
 }
 
 

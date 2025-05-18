@@ -89,11 +89,15 @@ namespace VoiceMailBox
 		 * @return true if the string was found, false if the timeout was reached.
 		 */
 		bool waitUntil(const char* str, uint32_t timeoutMS = 0xFFFFFFFF); // Wait until a string is received (blocking)
+		bool waitUntilAndFlush(const char* str, uint32_t timeoutMS = 0xFFFFFFFF); // Wait until a string is received (blocking)
 		
 		/**
 		 * @brief Resets the Circular buffer counters and clears the RX and TX buffers.
 		 */
 		void flush();
+		void flushRX();
+
+		uint32_t flushNBytes(uint32_t nBytes);
 
 		/**
 		 * @brief Gets the current status of a TX transfer.
@@ -133,6 +137,7 @@ namespace VoiceMailBox
 
 
 	private:
+		bool waitUntil_internal(const char* str, uint32_t timeoutMS, uint32_t &startIndex);
 		void onITReceivedData();
 		void onITByteSent();
 

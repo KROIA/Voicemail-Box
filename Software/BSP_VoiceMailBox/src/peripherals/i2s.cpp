@@ -5,7 +5,7 @@ namespace VoiceMailBox
 {
 	I2S* I2S::s_instances[] = { nullptr };
 
-	I2S::I2S(VMB_I2S_Handle* i2sHandle, uint16_t bufferSize)
+	I2S::I2S(VMB_I2S_Handle* i2sHandle, uint32_t bufferSize)
 		: m_i2s(i2sHandle)
 		, m_halfCpltCallback(nullptr)
 		, m_cpltCallback(nullptr)
@@ -48,9 +48,14 @@ namespace VoiceMailBox
 #endif
 	}
 
-	bool I2S::setupDMA()
+	bool I2S::startDMA()
 	{
 		VMB_HAL_Status status = VMB_HAL_I2SEx_TransmitReceive_DMA(m_i2s, (uint16_t*)(m_dacDataBuffer), (uint16_t*)(m_adcDataBuffer), m_dmaBufferSize);
+		return status == VMB_HAL_Status::OK;
+	}
+	bool I2S::stopDMA()
+	{
+		VMB_HAL_Status status = VMB_HAL_I2S_DMAStop(m_i2s);
 		return status == VMB_HAL_Status::OK;
 	}
 

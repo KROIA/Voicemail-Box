@@ -30,7 +30,7 @@ namespace VoiceMailBox
 
 	}
 
-	bool File::open(const char* path, AccessMode mode)
+	bool File::open(const std::string& path, AccessMode mode)
 	{
 		if (m_isOpen)
 		{
@@ -39,35 +39,35 @@ namespace VoiceMailBox
 		}
 		switch (mode)
 		{
-		case AccessMode::read:
-		{
-			return open(path, FA_READ);
-		}
-		case AccessMode::write:
-		{
-			return open(path, FA_WRITE | FA_CREATE_ALWAYS);
-		}
-		case AccessMode::append:
-		{
-			return open(path, FA_OPEN_APPEND | FA_WRITE);
-		}
+			case AccessMode::read:
+			{
+				return open(path, FA_READ);
+			}
+			case AccessMode::write:
+			{
+				return open(path, FA_WRITE | FA_CREATE_ALWAYS);
+			}
+			case AccessMode::append:
+			{
+				return open(path, FA_OPEN_APPEND | FA_WRITE);
+			}
 
-		default:
-		{
-			// Unknown mode
-			return false;
-		}
+			default:
+			{
+				// Unknown mode
+				return false;
+			}
 		}
 		return false;
 	}
-	bool File::open(const char* path, int fa_mode)
+	bool File::open(const std::string& path, int fa_mode)
 	{
 		if (m_isOpen)
 		{
 			// Already open
 			return false;
 		}
-		m_lastError = f_open(&m_fileHandle, path, fa_mode);
+		m_lastError = f_open(&m_fileHandle, path.c_str(), fa_mode);
 		if (m_lastError == FR_OK) {
 			m_isOpen = true;
 			m_path = path;
@@ -91,13 +91,13 @@ namespace VoiceMailBox
 		return m_lastError == FRESULT::FR_OK;
 	}
 
-	unsigned int File::write(const char* text) {
+	uint32_t File::write(const char* text) {
 		if (!m_isOpen) return 0;
 		UINT written;
 		m_lastError = f_write(&m_fileHandle, text, strlen(text), &written);
 		return written;
 	}
-	unsigned int File::write(const uint8_t* data, uint32_t size) {
+	uint32_t File::write(const uint8_t* data, uint32_t size) {
 		if (!m_isOpen) return 0;
 		UINT written;
 		static constexpr size_t pageSize = 512; // Assuming a page size of 512 bytes
@@ -134,24 +134,29 @@ namespace VoiceMailBox
 			return written;
 		}
 	}
-	unsigned int File::read(char* buffer, uint32_t length) {
+	uint32_t File::read(uint8_t* buffer, uint32_t length) {
 		if (!m_isOpen) return 0;
 		UINT bytesRead;
 		m_lastError = f_read(&m_fileHandle, buffer, length, &bytesRead);
 		return bytesRead;
 	}
-	unsigned int File::read(std::string& output, uint32_t length)
+	uint32_t File::read(std::string& output, uint32_t length)
 	{
 		output.resize(length);
-		return read(&output[0], length);
+		return read((uint8_t*)&output[0], length);
 	}
-	bool File::seek(unsigned int position) {
+	bool File::seek(uint32_t position) {
 		if (!m_isOpen) return false;
 		m_lastError = f_lseek(&m_fileHandle, position);
 		return m_lastError == FR_OK;
 	}
+	uint32_t File::getCursorPosition() const
+	{
+		if (!m_isOpen) return 0;
+		return f_tell(&m_fileHandle);
+	}
 
-	unsigned int File::getSize() const {
+	uint32_t File::getSize() const {
 		if (!m_isOpen) return 0;
 		return f_size(&m_fileHandle);
 	}

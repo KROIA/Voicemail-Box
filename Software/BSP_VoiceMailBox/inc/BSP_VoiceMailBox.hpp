@@ -6,13 +6,16 @@
 
 #include "settings.h"
 
-#include "peripherals/digitalPin.hpp"
-#include "peripherals/analogPin.hpp"
+#include "peripherals/DigitalPin.hpp"
+#include "peripherals/AnalogPin.hpp"
 #include "peripherals/uart.hpp"
 #include "peripherals/i2c.hpp"
 #include "peripherals/Codec_TLV320AIC3104.hpp"
 #include "peripherals/ATCommandClient.hpp"
 #include "peripherals/File.hpp"
+
+#include "utilities/AudioRecorder.hpp"
+#include "utilities/AudioPlayer.hpp"
 
 namespace VoiceMailBox
 {
@@ -50,6 +53,8 @@ namespace VoiceMailBox
 	 *	Call this function once at startup after the HAL has initialized the peripherals.
 	 */
 	void setup();
+
+	void update();
 
 	/**
 	 *	@brief Gets the led object for the given LED.

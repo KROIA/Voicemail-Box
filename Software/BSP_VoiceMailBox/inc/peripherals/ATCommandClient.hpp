@@ -2,8 +2,10 @@
 #define ATCOMMAND_CLIENT_H
 
 #include "HAL_abstraction.hpp"
+#include "peripherals/DigitalPin.hpp"
 #include "uart.hpp"
 #include "File.hpp"
+#include "utilities/Logger.hpp"
 #include <string>
 #include <cstdlib>
 #include <memory>
@@ -14,52 +16,11 @@
 
 namespace VoiceMailBox
 {
-
-	template <typename T, std::size_t Alignment>
-	struct AlignedAllocator {
-		using value_type = T;
-
-		AlignedAllocator() noexcept = default;
-
-		template <typename U>
-		AlignedAllocator(const AlignedAllocator<U, Alignment>&) noexcept {}
-
-		T* allocate(std::size_t n) noexcept {
-			std::size_t size = n * sizeof(T);
-			std::uintptr_t raw = reinterpret_cast<std::uintptr_t>(std::malloc(size + Alignment + sizeof(void*)));
-			if (!raw) return nullptr;
-
-			std::uintptr_t aligned = (raw + sizeof(void*) + Alignment - 1) & ~(Alignment - 1);
-			reinterpret_cast<void**>(aligned)[-1] = reinterpret_cast<void*>(raw);
-			return reinterpret_cast<T*>(aligned);
-		}
-
-		void deallocate(T* p, std::size_t) noexcept {
-			if (p) {
-				void* raw = reinterpret_cast<void**>(p)[-1];
-				std::free(raw);
-			}
-		}
-
-		template <typename U>
-		struct rebind {
-			using other = AlignedAllocator<U, Alignment>;
-		};
-	};
-
-	template <class T, class U, std::size_t A1, std::size_t A2>
-	bool operator==(const AlignedAllocator<T, A1>&, const AlignedAllocator<U, A2>&) { return A1 == A2; }
-
-	template <class T, class U, std::size_t A1, std::size_t A2>
-	bool operator!=(const AlignedAllocator<T, A1>&, const AlignedAllocator<U, A2>&) { return !(A1 == A2); }
-
-	using AlignedString = std::basic_string<char, std::char_traits<char>, AlignedAllocator<char, 4>>;
-
-
-	class ATCommandClient
+	class ATCommandClient : public Logger
 	{
 	public:
 		ATCommandClient(VMB_UART_Handle* uartHandle, uint16_t uartBufferSize);
+		ATCommandClient(VMB_UART_Handle* uartHandle, uint16_t uartBufferSize, DigitalPin &trafficLed);
 		~ATCommandClient();
 
 		void setup();
@@ -75,6 +36,9 @@ namespace VoiceMailBox
 		bool sendBytes(const uint8_t* data, uint16_t size);
 
 		bool waitUntil(const char* response, uint32_t timeout = 5000);
+		bool waitUntilAndFlush(const char* response, uint32_t timeout = 5000);
+		void flushRX();
+		uint32_t flushNBytes(uint32_t nBytes);
 
 		bool hasResponse() const
 		{
@@ -119,11 +83,18 @@ namespace VoiceMailBox
 
 		bool convertToUInt16(const std::string& str, uint16_t& outValue);
 		bool convertToUInt32(const std::string& str, uint32_t& outValue);
-		void log(const std::string &msg);
+
+		void toggleLED() {
+			if (m_trafficLed)
+				m_trafficLed->toggle();
+		}
+		void setLED(bool on) {
+			if (m_trafficLed)
+				m_trafficLed->set(on);
+		}
 
 		UART m_uart;
-		bool m_enableLogging = true;
-
+		DigitalPin* m_trafficLed;	// LED to visualize the UP/DOWNLOAD of files
 	};
 }
 #endif

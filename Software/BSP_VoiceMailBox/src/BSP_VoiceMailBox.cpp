@@ -12,6 +12,10 @@ namespace VoiceMailBox
 		Platform::setup(); // Call the platform-specific setup function
 	}
 
+	void update()
+	{
+		Platform::update(); // Call the platform-specific update function
+	}
 
 	DigitalPin& getLed(LED led)
 	{

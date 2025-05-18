@@ -8,6 +8,7 @@
  */
 
 #include <functional>
+#include <cstring>
 #include "settings.h"
 #include "HAL_abstraction.hpp"
 
@@ -23,14 +24,16 @@ namespace VoiceMailBox
 		 * @param bufferSize Size of the DMA buffer. Each buffer element is 2 bytes (16 bit).
 		 *                   The size is only used when the VMB_I2S_USE_STATIC_BUFFER_SIZE macro is not defined
 		 */
-		I2S(VMB_I2S_Handle* i2sHandle, uint16_t bufferSize);
+		I2S(VMB_I2S_Handle* i2sHandle, uint32_t bufferSize);
 		~I2S();
 
 		/**
 		 * @brief Starts the I2S DMA transfer.
 		 * @return true if successful, false otherwise.
 		 */
-		bool setupDMA();
+		bool startDMA();
+
+		bool stopDMA();
 
 		/**
 		 * @brief Sets a custom callback function to be called when the DMA transfer is half complete.
@@ -93,13 +96,20 @@ namespace VoiceMailBox
 		 * @brief Gets the size of the ping and pong buffer.
 		 * @return size of the ping and pong buffer
 		 */
-		uint16_t getBufferSize() const { return m_dmaBufferSize / 2; }
+		uint32_t getBufferSize() const { return m_dmaBufferSize / 2; }
 		
 		/**
 		 * @brief Gets the I2S HAL handle. 
 		 * @return i2s handle
 		 */
 		VMB_I2S_Handle * const getHandle() const { return m_i2s; }
+
+		/**
+		 * @brief Sets all DAC values to 0.
+		 */
+		void clearTxBuf() {
+			memset((uint16_t*)m_dacDataBuffer, 0, m_dmaBufferSize * sizeof(int16_t)); // Clear the DAC buffer
+		}
 
 
 
@@ -129,7 +139,7 @@ namespace VoiceMailBox
 		/**
 		 * @brief DMA Pingpong buffer
 		 */
-		const uint16_t m_dmaBufferSize; // Size of the DMA Pingpong-Buffer
+		const uint32_t m_dmaBufferSize; // Size of the DMA Pingpong-Buffer
 #ifdef VMB_I2S_USE_STATIC_BUFFER_SIZE
 		volatile int16_t m_adcDataBuffer[VMB_I2S_STATIC_BUFFER_SIZE]; // Buffer for ADC data
 		volatile int16_t m_dacDataBuffer[VMB_I2S_STATIC_BUFFER_SIZE]; // Buffer for DAC data

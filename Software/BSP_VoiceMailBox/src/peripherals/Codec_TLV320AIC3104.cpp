@@ -6,7 +6,8 @@ namespace VoiceMailBox
 	Codec_TLV320AIC3104::Codec_TLV320AIC3104(VMB_I2S_Handle* i2sHandle, uint16_t i2sBufferSize,
 											 VMB_I2C_Handle* i2cHandle, uint8_t i2cDeviceAddress,
 											 VMB_GPIO* nResetPort, uint16_t nResetPin)
-		: m_i2c(i2cHandle)
+		: AudioCodec()
+		, m_i2c(i2cHandle)
 		, m_i2cDeviceAddress(i2cDeviceAddress)
 		, m_nResetPin{ nResetPort, nResetPin }
 		, m_i2s(i2sHandle, i2sBufferSize)
@@ -94,7 +95,7 @@ namespace VoiceMailBox
 		writeRegister(REG::PAGE_0::CLOCK, 0x01); //CODEC_CLKIN uses CLKDIV_OUT
 
 		// Setup I2S for DMA transmit and receive
-		m_i2s.setupDMA();
+		m_i2s.startDMA();
 	}
 
 	void Codec_TLV320AIC3104::onI2S_DMA_TxRx_HalfCpltCallback()

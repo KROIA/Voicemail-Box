@@ -12,7 +12,8 @@
 #include "settings.h"
 #include "HAL_abstraction.hpp"
 
-#include "digitalPin.hpp"
+#include "AudioCodec.hpp"
+#include "DigitalPin.hpp"
 #include "i2c.hpp"
 #include "i2s.hpp"
 
@@ -20,7 +21,7 @@
 
 namespace VoiceMailBox
 {
-	class Codec_TLV320AIC3104
+	class Codec_TLV320AIC3104 : public AudioCodec
 	{
 		/**
 		 * @brief Register map
@@ -159,41 +160,59 @@ namespace VoiceMailBox
 		void reset();
 		void setup();
 
+		bool startDMA() override { return m_i2s.startDMA();	}
+		bool stopDMA() override { return m_i2s.stopDMA(); }
+
 		/**
 		 * @return true if a new batch of audio samples is ready to be processed.
 		 */
-		bool isDataReady() const { return m_i2s.isDataReady(); }
+		bool isDataReady() const override { return m_i2s.isDataReady(); }
 
 		/**
 		 * @brief Checks the data ready flag and clears it if it was set.
 		 * @return true if a new batch of audio samples is ready to be processed.
 		 */
-		bool isDataReadyAndClear() { return m_i2s.isDataReadyAndClear(); }
+		bool isDataReadyAndClear() override { return m_i2s.isDataReadyAndClear(); }
 
 		/**
 		 * @brief Clears the data ready flag.
 		 */
-		void clearDataReadyFlag() { m_i2s.clearDataReadyFlag(); }
+		void clearDataReadyFlag() override { m_i2s.clearDataReadyFlag(); }
 
 		/**
 		 * @brief Gets the current ADC buffer pointer.
 		 * @return current ADC buffer pointer
 		 */
-		volatile int16_t* getRxBufPtr() { return m_i2s.getRxBufPtr(); }
+		volatile int16_t* getRxBufPtr() override { return m_i2s.getRxBufPtr(); }
 
 		/**
 		 * @brief Gets the current DAC buffer pointer.
 		 * @return current DAC buffer pointer
 		 */
-		volatile int16_t* getTxBufPtr() { return m_i2s.getTxBufPtr(); }
+		volatile int16_t* getTxBufPtr() override { return m_i2s.getTxBufPtr(); }
 
 		/**
 		 * @brief Gets the size of the ping and pong buffer.
 		 * @return size of the ping and pong buffer
 		 */
-		uint16_t getBufferSize() const { return m_i2s.getBufferSize(); }
+		uint32_t getBufferSize() const override { return m_i2s.getBufferSize(); }
 
+		uint32_t getSampleRate() const override {
+			return 48000; // The codec is always configured to 48kHz
+		}
 
+		uint16_t getBitsPerSample() const override {
+			return 16; // The codec is always configured to 16 bit
+		}
+
+		uint16_t getNumChannels() const override {
+			return 2; // The codec is always configured to 2 channels
+		}
+
+		/**
+		 * @brief Sets all DAC values to 0.
+		 */
+		void clearTxBuf() override { m_i2s.clearTxBuf(); }
 		
 		/**
 		 * @brief Gets the I2S Object.
@@ -209,14 +228,14 @@ namespace VoiceMailBox
 		 *        the function startDataProcessing() must be called on start of the data processing
 		 * @note The VMB_ENABLE_CODEC_PERFORMANCE_MEASUREMENTS macro must be defined, otherwise this function does nothing
 		 */
-		void startDataProcessing();
+		void startDataProcessing() override;
 
 		/**
 		 * @brief In order to use the function getProcessingTimeRatio(),
 		 *        the function endDataProcessing() must be called on end of the data processing
 		 * @note The VMB_ENABLE_CODEC_PERFORMANCE_MEASUREMENTS macro must be defined, otherwise this function does nothing
 		 */
-		void endDataProcessing();
+		void endDataProcessing() override;
 
 		/**
 		 * @brief Returns the ratio of the processing time to the DMA transfer time
@@ -260,7 +279,7 @@ namespace VoiceMailBox
 		 * 
 		 * @return Processing time ratio
 		 */
-		float getProcessingTimeRatio() const
+		float getProcessingTimeRatio() const override
 		{
 #ifdef VMB_ENABLE_CODEC_PERFORMANCE_MEASUREMENTS
 			if (m_DMA_halfProcessingTicks == 0)

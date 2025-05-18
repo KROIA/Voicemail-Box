@@ -140,6 +140,10 @@ namespace VoiceMailBox
 	{
 		return (VMB_HAL_Status)HAL_I2SEx_TransmitReceive_DMA(hi2s, pTxData, pRxData, Size);
 	}
+	inline VMB_HAL_Status VMB_HAL_I2S_DMAStop(VMB_I2S_Handle* hi2s)
+	{
+		return (VMB_HAL_Status)HAL_I2S_DMAStop(hi2s);
+	}
 
 
 
