@@ -106,7 +106,6 @@ void setup()
 		}
 		});
 
-
 	if(isRecording)
 	{
 		//recorder->startRecording();
