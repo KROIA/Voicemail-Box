@@ -44,12 +44,13 @@ namespace VoiceMailBox
 			return false;
 		}
 
-		m_isRecording = true;
+
 		if (m_wavFile.open("record.wav", File::AccessMode::write))
 		{
 			logln("Recording started");
 			if (m_recordingLed)
 				m_recordingLed->set(true);
+			m_isRecording = true;
 			return true;
 		}
 		logln("Failed to open file for recording");

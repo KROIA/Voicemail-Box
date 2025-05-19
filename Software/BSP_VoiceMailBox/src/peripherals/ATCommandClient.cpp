@@ -184,31 +184,31 @@ namespace VoiceMailBox
 			_localFileName = _localFileName.substr(_localFileName.find_last_of("\\") + 1);
 		}
 
-		std::string boundary = "------------------------eYRLjSUtcTX8XlV9TLI4k1";
+		std::string boundary = "ESP";
 		//std::string boundary = "----4k1";
 
 
 		std::string post = "POST /"+ urlPath +" HTTP/1.1\r\n";
 		std::string host = "Host: " + serverIP + ":" + std::to_string(serverPort) + "\r\n";
-		std::string userAgent = "User-Agent: ESP32\r\n";
+		//std::string userAgent = "User-Agent: ESP32\r\n";
 		std::string contentType = "Content-Type: multipart/form-data; boundary=" + boundary + "\r\n";
 		std::string emptyLine = "\r\n";
 		std::string boundaryStart = "--" + boundary + "\r\n";
-		std::string contentDisposition = "Content-Disposition: form-data; name=\"test\"; localFileName=\"" + _localFileName + "\"\r\n";
+		std::string contentDisposition = "Content-Disposition: form-data; name=\"test\"; filename=\"" + _localFileName + "\"\r\n";
 		std::string contentTypeFile = "Content-Type: text/plain\r\n";
-		std::string boundaryEnd = "--" + boundary + "--\r\n";
+		std::string boundaryEnd = "\r\n--" + boundary + "--\r\n";
 
 
 
 
 		std::string contentLength = "Content-Length: " + std::to_string(fileSize + boundaryStart.size() + 
-			contentDisposition.size() + contentTypeFile.size() + emptyLine.size() + boundaryEnd.size() + 2) + "\r\n";
+			contentDisposition.size() + contentTypeFile.size() + emptyLine.size()*2 + boundaryEnd.size()) + "\r\n";
 
 
 		uint32_t postRequestSize =
 			post.length() +
 			host.length() +
-			userAgent.length() +
+			//userAgent.length() +
 			//accept.length() +
 			contentLength.length() +
 			contentType.length() +
@@ -237,10 +237,10 @@ namespace VoiceMailBox
 		//sendBytes((const uint8_t*)contentHeaderTop.c_str(), contentHeaderTop.size());
 		sendBytes((const uint8_t*)post.c_str(), post.size());
 		sendBytes((const uint8_t*)host.c_str(), host.size());
-		sendBytes((const uint8_t*)userAgent.c_str(), userAgent.size());
+		//sendBytes((const uint8_t*)userAgent.c_str(), userAgent.size());
 		//sendBytes((const uint8_t*)accept.c_str(), accept.size());
-		sendBytes((const uint8_t*)contentLength.c_str(), contentLength.size());
 		sendBytes((const uint8_t*)contentType.c_str(), contentType.size());
+		sendBytes((const uint8_t*)contentLength.c_str(), contentLength.size());
 		sendBytes((const uint8_t*)emptyLine.c_str(), emptyLine.size());
 		sendBytes((const uint8_t*)boundaryStart.c_str(), boundaryStart.size());
 		sendBytes((const uint8_t*)contentDisposition.c_str(), contentDisposition.size());
@@ -296,6 +296,7 @@ namespace VoiceMailBox
 			
 		}
 		uint32_t bytesRead = file.read((uint8_t*)buffer.c_str(), fileSize - splits * deltaPos);
+		file.close();
 		if (bytesRead > 0)
 		{
 			toggleLED();
@@ -318,13 +319,13 @@ namespace VoiceMailBox
 			//delay(20); // Give the ESP some time to process the command
 		}
 		toggleLED();
-		sendCommand("AT+CIPSEND=" + std::to_string(2 + boundaryEnd.size()));
+		sendCommand("AT+CIPSEND=" + std::to_string(boundaryEnd.size()));
 		if (!waitUntilAndFlush(">", 5000))
 		{
 			logln("Failed to send data to server 4");
 			return false; // Failed to send data to the server
 		}
-		sendBytes((const uint8_t*)"\r\n", 2); // Send the empty line after the file data
+		//sendBytes((const uint8_t*)"\r\n", 2); // Send the empty line after the file data
 		sendBytes((const uint8_t*)boundaryEnd.c_str(), boundaryEnd.size()); // Send the empty line after the file data
 
 		if (!waitUntilAndFlush("SEND OK\r\n", 5000))
@@ -333,13 +334,13 @@ namespace VoiceMailBox
 			return false; // Failed to send file data
 		}
 
-		if (!waitUntilAndFlush("same-origin", 10000))
-		{
-			logln("Failed to send file data");
-			return false; // Failed to send file data
-		}
+		//if (!waitUntilAndFlush("same-origin", 10000))
+		//{
+		//	logln("Failed to send file data");
+		//	return false; // Failed to send file data
+		//}
 
-		//delay(100); // Give the ESP some time to process the command
+		//delay(1000); // Give the ESP some time to process the command
 		sendCommand("AT+CIPCLOSE");
 		if (!waitUntilAndFlush("CLOSED\r\n", 5000))
 		{
@@ -612,8 +613,10 @@ namespace VoiceMailBox
 			break;
 		}
 		default:
-			logln("Invalid download state");
+		{
+			//logln("Invalid download state");
 			return false; // Invalid download state
+		}
 		}
 		return true; // Frame processed successfully
 	}

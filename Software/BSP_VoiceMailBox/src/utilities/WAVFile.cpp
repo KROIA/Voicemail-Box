@@ -39,8 +39,9 @@ namespace VoiceMailBox
 				logln("Unknown file access mode: " + std::to_string((int)mode));
 				return false;
 			}
+			return true;
 		}
-		return true;
+		return false;
 	}
 
 	bool WAVFile::close()

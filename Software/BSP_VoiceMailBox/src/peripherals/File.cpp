@@ -27,7 +27,7 @@ namespace VoiceMailBox
 	}
 	File::~File()
 	{
-
+		close();
 	}
 
 	bool File::open(const std::string& path, AccessMode mode)
