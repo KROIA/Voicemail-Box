@@ -12,7 +12,7 @@
  */
 #define VMB_DEVELOPMENT_CONFIGURATION
 #ifdef VMB_DEVELOPMENT_CONFIGURATION
-	//#define VMB_DEVELOPMENT_ENABLE_DBG_PINS_IN_CODEC
+	#define VMB_DEVELOPMENT_ENABLE_DBG_PINS_IN_CODEC
 	#define VMB_DEVELOPMENT_ENABLE_DBG_PINS_IN_ATCOMMAND_CLIENT
 #endif
 
@@ -56,7 +56,12 @@
  *  dynamic buffer size defined by the constructor parameter.
  */
 #define VMB_I2S_USE_STATIC_BUFFER_SIZE
-#define VMB_I2S_STATIC_BUFFER_SIZE 1024*50
+//#define VMB_I2S_STATIC_BUFFER_SIZE 1024*50
+
+// Since the MP3 encoder needs 576 sanmples per processing, the buffer size should be multiple of 576.
+// Multiplication by 4 because of 2 channels (left and right) and PING and PONG buffers which are 2 halfs of the whole buffer size
+// Multiplication by 10 to process 10 frames at once
+#define VMB_I2S_STATIC_BUFFER_SIZE 576 * 4 * 10
 
 /**
  * @details

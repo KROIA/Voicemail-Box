@@ -1,6 +1,7 @@
 #include "utilities/AudioRecorder.hpp"
 #include "BSP_VoiceMailBox.hpp"
 
+
 namespace VoiceMailBox
 {
 	AudioRecorder::AudioRecorder(AudioCodec& codec)
@@ -45,7 +46,8 @@ namespace VoiceMailBox
 		}
 
 
-		if (m_wavFile.open("record.wav", File::AccessMode::write))
+		//if (m_wavFile.open("record.wav", File::AccessMode::write))
+		if (m_mp3File.open("record.mp3", File::AccessMode::write))
 		{
 			logln("Recording started");
 			if (m_recordingLed)
@@ -65,7 +67,8 @@ namespace VoiceMailBox
 			return false;
 		}
 		m_isRecording = false;
-		m_wavFile.close();
+		//m_wavFile.close();
+		m_mp3File.close();
 		if (m_recordingLed)
 			m_recordingLed->set(false);
 		logln("Recording stopped");
@@ -82,9 +85,34 @@ namespace VoiceMailBox
 
 	void AudioRecorder::processAudioSamples(volatile int16_t* samples, uint32_t size)
 	{
+		
+
+		//if (size != 576 * 2) // 576 samples = 1152 bytes = 1.5ms @ 48kHz
+		//{
+		//	logln("Invalid size: " + std::to_string(size));
+		//	return;
+		//}
+
+		for (uint32_t i = 0; i < size / (2 * 576); ++i)
+		{
+			if (m_recordingLed)
+				m_recordingLed->toggle();
+			int8_t* mp3Buffer = nullptr;
+			uint32_t bytesToWrite = m_mp3.encode(mp3Buffer, (int16_t*)(samples + (i* 2 * 576)));
+			if (bytesToWrite > 0)
+			{
+				m_mp3File.write((const char*)mp3Buffer, bytesToWrite);
+				logln("Processing " + std::to_string(bytesToWrite) + " audio samples");
+			}
+			else
+			{
+				//logln("Failed to encode audio samples");
+			}
+		}
 		if (m_recordingLed)
-			m_recordingLed->toggle();
-		m_wavFile.writeAudioSamples(samples, size);
+			m_recordingLed->set(0);
+
+		//m_wavFile.writeAudioSamples(samples, size);
 		//log("Processing " + std::to_string(size) + " audio samples");
 	}
 }

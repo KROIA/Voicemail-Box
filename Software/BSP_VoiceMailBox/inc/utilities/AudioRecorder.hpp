@@ -16,6 +16,7 @@
 #include "peripherals/DigitalPin.hpp"
 
 #include "WAVFile.hpp"
+#include "MP3.hpp"
 
 namespace VoiceMailBox
 {
@@ -41,8 +42,12 @@ namespace VoiceMailBox
 		bool m_isRecording;
 
 		WAVFile m_wavFile;	// WAV file object
+		File m_mp3File;	// MP3 file object
 
 		DigitalPin* m_recordingLed;	// Recording LED pin
+
+
+		MP3 m_mp3;	// MP3 encoder object
 	};
 }
 #endif

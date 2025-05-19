@@ -80,7 +80,7 @@ void setup()
 			player->stopPlayback();
 		if (recorder->isRecording())
 			recorder->stopRecording();
-		if (pmodESP.sendFileToServer("record.wav", "devicesbackend/upload/", "192.168.137.1", 8000))
+		if (pmodESP.sendFileToServer("record.mp3", "devicesbackend/upload/", "192.168.137.1", 8000))
 		//if (pmodESP.sendFileToServer("AAA2.txt", "devicesbackend/upload/", "192.168.137.1", 8000))
 		{
 			println("File sent successfully");
