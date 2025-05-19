@@ -272,7 +272,7 @@ namespace VoiceMailBox
 		for (uint32_t i = 0; i < splits; ++i)
 		{
 			toggleLED();
-			logln("Uploading: %.2f %",(float)i*100.f / (float)splits);
+			logln("Uploading: %.2f %%",(float)i*100.f / (float)splits);
 			sendCommand("AT+CIPSEND=" + std::to_string(deltaPos));
 
 			uint32_t bytesRead = file.read((uint8_t*)buffer.c_str(), deltaPos);
@@ -604,7 +604,7 @@ namespace VoiceMailBox
 			setDbgPin(DBG_PIN::DBG1, 0); // Set DBG0 on
 #endif
 			data.contentReceived += written;
-			logln("Downloading: %.2f %", (float)data.contentReceived * 100.f / (float)data.contentLength);
+			logln("Downloading: %.2f %%", (float)data.contentReceived * 100.f / (float)data.contentLength);
 			if (data.contentReceived >= data.contentLength)
 			{
 				data.fileComplete = true; // File download complete
