@@ -29,7 +29,6 @@ VoiceMailBox::AudioRecorder* recorder = nullptr;
 VoiceMailBox::AudioPlayer* player = nullptr;
 
 
-
 void setup()
 {
 	using namespace VoiceMailBox;
