@@ -49,7 +49,10 @@ namespace VoiceMailBox
 			uint8_t encodedFrameIndexSwitch = 0;	// Switch between the two encoded frame data buffers
 		};
 
-		
+		struct DecoderData
+		{
+			TSpiritMP3Decoder decoder;
+		};
 
 		EncoderData m_encoder;
 	};
