@@ -1,55 +1,26 @@
+# BSP Voice Mail Box
 
+## About
+The Voice-Mail-Box Project (VMB in short) provides a Board Support Package (BSP) that abstracts all key peripheral components using c++.
 
-```mermaid
+## Overview
+A very brief visualisation about the software hirarchy is displayed below.
+<tr>
+<td>
+<div align="center">
+    <img src="documentation/images/SoftwareStack.png" width="300"> 
+</div>
+</td>
 
-```
+## Detailed Software structure overview 
+This view displays the relation between the key software components delivered by the BSP.
+The Application must include only the **BSP_VoiceMailBox.h** header file, it already includes all relevant hardware components and software tools related to the VMB.
 
-
-```mermaid
-flowchart TD
-    main[main.h]
-    HAL_abstraction[HAL_abstraction.h]
-    BSP_files[BSP files...]
-    BSP_VoiceMailBox[BSP_VoiceMailBox.hpp]
-    Application[Application]
-
-    main --> HAL_abstraction
-    HAL_abstraction --> BSP_files
-    BSP_files --> BSP_VoiceMailBox
-    BSP_VoiceMailBox --> Application
-
-```
-
-
-```mermaid
-
-flowchart TD
-    Application["Application Layer"]
-    BSP["Board Support Package (BSP)"]
-    HAL["Hardware Abstraction Layer (HAL)"]
-    Divider["--- SW/HW Boundary ---"]
-    MicroController["Micro Controller"]
-    VoiceMailBoxPCB["Voice Mail Box PCB"]
-
-    Application --> BSP
-    BSP --> HAL
-    HAL --> Divider
-    Divider --> MicroController
-    MicroController --> VoiceMailBoxPCB
-
-    style Divider stroke-dasharray: 5, 5
-    style Divider stroke-width:2px
-    style Divider fill:#ffffff,stroke:#000000
-
-
-
-```
-
-```mermaid
-
-
-
-```
-
+<tr>
+<td>
+<div align="center">
+    <img src="documentation/images/SoftwareStructureOverview.png" width="500"> 
+</div>
+</td>
 
 
