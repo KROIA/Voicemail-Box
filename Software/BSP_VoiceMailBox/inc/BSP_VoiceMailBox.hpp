@@ -12,8 +12,8 @@
 #include "peripherals/i2c.hpp"
 #include "peripherals/Codec_TLV320AIC3104.hpp"
 #include "peripherals/ATCommandClient.hpp"
-#include "peripherals/File.hpp"
 
+#include "utilities/File.hpp"
 #include "utilities/AudioRecorder.hpp"
 #include "utilities/AudioPlayer.hpp"
 
