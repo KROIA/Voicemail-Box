@@ -118,11 +118,26 @@ packet-beta title MIC2 L/R TO LEFT ADC CONTROL - 0x11
 	- 1x I2C
 
 - H755
-	- 
-	- 
-	- 
+	- I2S_SDA  | PB15
+    - I2S_SDAe | PB4
+    - I2S_MCLK | PC6
+    - I2S_WCLK | PB12
+	- I2S_BCLK | PB13
+    (Jumper SB8 on H755 needs to be placed)  
+    ---
+    - I2C_SDA | PB8
+    - I2C_SCL | PB9
+    ---
+    - nReset  | PG14
 
 - F469:
-	- 
-	- 
-	- 
+	- I2S_SDA  | PC1
+    - I2S_SDAe | PC2
+    - I2S_MCLK | PC6
+    - I2S_WCLK | PB12
+	- I2S_BCLK | PB13
+    ---
+    - I2C_SDA PB8
+    - I2C_SCL PB9
+    ---
+    - nReset  | PG13

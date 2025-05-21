@@ -28,11 +28,9 @@ class a7 highlighter
 	- 1x UART
 
 - H755
-	- 
-	- 
-	- 
+    - UART_TX | PB6
+	- UART_RX | PB7
 
 - F469:
-	- 
-	- 
-	- 
+    - UART_TX | PG14
+	- UART_RX | PG9

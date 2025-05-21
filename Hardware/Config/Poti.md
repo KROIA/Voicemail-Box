@@ -40,9 +40,9 @@ s
 	- 2x Analog In
 
 - H755
-	- PB1 = Pot 0
-	- PC3 = Pot 1
+	- Potentiometer 0 | PB1
+	- Potentiometer 1 | PC3
 
 - F469:
-	- PC4 = Pot 0
-	- PC3 = Pot 1
+	- Potentiometer 0 | PC4
+	- Potentiometer 1 | PC3

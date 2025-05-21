@@ -17,3 +17,15 @@ class a0 highlighter
 class a1 highlighter
 class a2 highlighter
 ```
+
+- H755
+    - I2C_SDA | PB8
+    - I2C_SCL | PB9
+    ---
+    - NFC_int | PA3
+
+- F469:
+    - I2C_SDA | PB8
+    - I2C_SCL | PB9
+    ---
+    - NFC_int | PB1

@@ -3551,6 +3551,18 @@
 		)
 		(uuid "198948b9-fd25-449e-9859-a8ab94a1865a")
 	)
+	(text "PB15"
+		(exclude_from_sim no)
+		(at 197.866 31.75 0)
+		(effects
+			(font
+				(face "Courier 10 Pitch")
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "1f0fd972-57ed-4cad-8cab-3e96e25433b0")
+	)
 	(text "PB9  | PB9"
 		(exclude_from_sim no)
 		(at 233.934 31.75 0)
@@ -3562,6 +3574,30 @@
 			(justify left bottom)
 		)
 		(uuid "29087ed3-9a4c-4970-bb86-9bc72786e991")
+	)
+	(text "PC7"
+		(exclude_from_sim no)
+		(at 197.866 41.91 0)
+		(effects
+			(font
+				(face "Courier 10 Pitch")
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "2b952524-3b98-4863-9ce7-4b9f42a3eb40")
+	)
+	(text "PB4"
+		(exclude_from_sim no)
+		(at 197.866 52.07 0)
+		(effects
+			(font
+				(face "Courier 10 Pitch")
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "2c9b28be-b124-40fb-8191-5e9796353043")
 	)
 	(text "PC1"
 		(exclude_from_sim no)
@@ -3659,7 +3695,7 @@
 		)
 		(uuid "49b1e90e-5b1d-432d-828d-0671e3ddd3dc")
 	)
-	(text "?  | PG13"
+	(text "PG14 | PG13"
 		(exclude_from_sim no)
 		(at 235.204 77.47 0)
 		(effects
@@ -3729,6 +3765,18 @@
 		)
 		(uuid "613c8d36-bea9-4789-9bea-77732331a109")
 	)
+	(text "PG8"
+		(exclude_from_sim no)
+		(at 102.362 48.26 0)
+		(effects
+			(font
+				(face "Courier 10 Pitch")
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "64191aad-5d20-4a0b-97a5-232c31a21ddd")
+	)
 	(text "PC6"
 		(exclude_from_sim no)
 		(at 59.182 142.24 0)
@@ -3740,6 +3788,18 @@
 			(justify left bottom)
 		)
 		(uuid "69c07864-7eb3-490a-bbfd-a603b582d95e")
+	)
+	(text "PA15"
+		(exclude_from_sim no)
+		(at 197.866 39.37 0)
+		(effects
+			(font
+				(face "Courier 10 Pitch")
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "6ea5049e-9ea0-43e2-babf-0297d90a9dd0")
 	)
 	(text "PC2  | PC5"
 		(exclude_from_sim no)
@@ -3753,7 +3813,7 @@
 		)
 		(uuid "6eed5c47-6462-4720-b6b4-3a0e757af7b7")
 	)
-	(text "?| PA2"
+	(text "PE11 | PA2"
 		(exclude_from_sim no)
 		(at 235.204 69.85 0)
 		(effects
@@ -3764,6 +3824,30 @@
 			(justify left bottom)
 		)
 		(uuid "70fb82e2-df34-4edb-aea3-3972cb95ffaa")
+	)
+	(text "PA4"
+		(exclude_from_sim no)
+		(at 197.866 49.53 0)
+		(effects
+			(font
+				(face "Courier 10 Pitch")
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "750dc48a-40de-4277-a6d9-02703faa92d3")
+	)
+	(text "PC6"
+		(exclude_from_sim no)
+		(at 197.866 29.21 0)
+		(effects
+			(font
+				(face "Courier 10 Pitch")
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "7c43244d-5ed5-4e15-9dbf-12fe8f58689d")
 	)
 	(text "PC12"
 		(exclude_from_sim no)
@@ -3777,7 +3861,7 @@
 		)
 		(uuid "7fd105ed-cb65-4589-89ec-12ef28c86ce2")
 	)
-	(text "?  | PG14"
+	(text "PB6  | PG14"
 		(exclude_from_sim no)
 		(at 235.204 80.01 0)
 		(effects
@@ -3813,7 +3897,19 @@
 		)
 		(uuid "8fe022e7-41fb-4d45-85f6-e1ad034a1e51")
 	)
-	(text "?  | PG12"
+	(text "PB12"
+		(exclude_from_sim no)
+		(at 197.866 36.83 0)
+		(effects
+			(font
+				(face "Courier 10 Pitch")
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "94b373fc-bf48-4073-882b-df6a2a24af83")
+	)
+	(text "PE14 | PG12"
 		(exclude_from_sim no)
 		(at 235.204 72.39 0)
 		(effects
@@ -3837,7 +3933,7 @@
 		)
 		(uuid "9cb61a53-320a-42d3-a5a3-707027bc4bb2")
 	)
-	(text "? | PA7"
+	(text "PD15 | PA7"
 		(exclude_from_sim no)
 		(at 233.934 49.53 0)
 		(effects
@@ -3885,6 +3981,30 @@
 		)
 		(uuid "a5bd059e-df9a-4acf-b1dd-61760071d5c6")
 	)
+	(text "H755"
+		(exclude_from_sim no)
+		(at 197.866 26.416 0)
+		(effects
+			(font
+				(face "Courier 10 Pitch")
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "a80ca555-21a3-4394-8961-c9750c765d98")
+	)
+	(text "PB3"
+		(exclude_from_sim no)
+		(at 197.866 46.99 0)
+		(effects
+			(font
+				(face "Courier 10 Pitch")
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "b412656e-2336-48ec-8989-869a43d4253f")
+	)
 	(text "Orange Marked = Arduino UNO Standard Pinout\nYellow Marked = Nucleo144 Expansion to Arduino Standard"
 		(exclude_from_sim no)
 		(at 147.828 116.332 0)
@@ -3895,7 +4015,7 @@
 		)
 		(uuid "b7382757-c712-4e41-b7da-ff5c2d91c2ee")
 	)
-	(text "?| PG11"
+	(text "PG12 | PG11"
 		(exclude_from_sim no)
 		(at 235.204 64.77 0)
 		(effects
@@ -3943,7 +4063,7 @@
 		)
 		(uuid "bcab9689-e982-4bc9-b4c3-c19a4b1cd72b")
 	)
-	(text "?  | PA1"
+	(text "PE13 | PA1"
 		(exclude_from_sim no)
 		(at 235.204 74.93 0)
 		(effects
@@ -3978,7 +4098,7 @@
 		)
 		(uuid "cdd25c03-2855-4966-97a8-306920daf9bd")
 	)
-	(text "?  | PA6"
+	(text "PA8  | PA6"
 		(exclude_from_sim no)
 		(at 235.204 67.31 0)
 		(effects
@@ -3990,7 +4110,7 @@
 		)
 		(uuid "cedbd678-e8b8-4995-85d8-835de28e9a20")
 	)
-	(text "? | PG10"
+	(text "PG9 | PG10"
 		(exclude_from_sim no)
 		(at 233.934 52.07 0)
 		(effects
@@ -4002,7 +4122,19 @@
 		)
 		(uuid "d28f4aff-c3ba-41df-8094-89067e4a89f0")
 	)
-	(text "? | PG9"
+	(text "PB5"
+		(exclude_from_sim no)
+		(at 197.866 44.45 0)
+		(effects
+			(font
+				(face "Courier 10 Pitch")
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "d58cfd55-d9c9-4d3a-af2c-a0ec3703a6e6")
+	)
+	(text "PB7  | PG9"
 		(exclude_from_sim no)
 		(at 235.204 82.55 0)
 		(effects
@@ -4013,6 +4145,18 @@
 			(justify left bottom)
 		)
 		(uuid "ddc29290-e9ee-444e-be86-d9cc317a1133")
+	)
+	(text "PB13 (jumper!)"
+		(exclude_from_sim no)
+		(at 193.802 34.29 0)
+		(effects
+			(font
+				(face "Courier 10 Pitch")
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "e37c0d34-02c3-4a5d-9cdf-c0e768ed4254")
 	)
 	(text "PG10"
 		(exclude_from_sim no)
@@ -4396,7 +4540,7 @@
 	)
 	(wire
 		(pts
-			(xy 204.47 44.45) (xy 209.55 44.45)
+			(xy 193.04 44.45) (xy 209.55 44.45)
 		)
 		(stroke
 			(width 0)
@@ -4406,7 +4550,7 @@
 	)
 	(wire
 		(pts
-			(xy 204.47 34.29) (xy 209.55 34.29)
+			(xy 193.04 34.29) (xy 209.55 34.29)
 		)
 		(stroke
 			(width 0)
@@ -4556,7 +4700,7 @@
 	)
 	(wire
 		(pts
-			(xy 204.47 36.83) (xy 209.55 36.83)
+			(xy 193.04 36.83) (xy 209.55 36.83)
 		)
 		(stroke
 			(width 0)
@@ -4656,7 +4800,7 @@
 	)
 	(wire
 		(pts
-			(xy 204.47 46.99) (xy 209.55 46.99)
+			(xy 193.04 46.99) (xy 209.55 46.99)
 		)
 		(stroke
 			(width 0)
@@ -4826,7 +4970,7 @@
 	)
 	(wire
 		(pts
-			(xy 204.47 31.75) (xy 209.55 31.75)
+			(xy 193.04 31.75) (xy 209.55 31.75)
 		)
 		(stroke
 			(width 0)
@@ -4866,7 +5010,7 @@
 	)
 	(wire
 		(pts
-			(xy 204.47 29.21) (xy 209.55 29.21)
+			(xy 193.04 29.21) (xy 209.55 29.21)
 		)
 		(stroke
 			(width 0)
@@ -4976,7 +5120,7 @@
 	)
 	(wire
 		(pts
-			(xy 204.47 52.07) (xy 209.55 52.07)
+			(xy 193.04 52.07) (xy 209.55 52.07)
 		)
 		(stroke
 			(width 0)
@@ -5096,7 +5240,7 @@
 	)
 	(wire
 		(pts
-			(xy 204.47 49.53) (xy 209.55 49.53)
+			(xy 193.04 49.53) (xy 209.55 49.53)
 		)
 		(stroke
 			(width 0)
@@ -5462,7 +5606,7 @@
 	)
 	(hierarchical_label "I2S_MCLK"
 		(shape bidirectional)
-		(at 204.47 29.21 180)
+		(at 193.04 29.21 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5473,7 +5617,7 @@
 	)
 	(hierarchical_label "SPI2_NSS"
 		(shape bidirectional)
-		(at 204.47 49.53 180)
+		(at 193.04 49.53 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5506,7 +5650,7 @@
 	)
 	(hierarchical_label "SPI2_SCK"
 		(shape bidirectional)
-		(at 204.47 46.99 180)
+		(at 193.04 46.99 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5649,7 +5793,7 @@
 	)
 	(hierarchical_label "I2S_BCLK"
 		(shape bidirectional)
-		(at 204.47 34.29 180)
+		(at 193.04 34.29 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5660,7 +5804,7 @@
 	)
 	(hierarchical_label "I2S_SDA"
 		(shape bidirectional)
-		(at 204.47 31.75 180)
+		(at 193.04 31.75 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5704,7 +5848,7 @@
 	)
 	(hierarchical_label "I2S_SDA_ext"
 		(shape bidirectional)
-		(at 204.47 52.07 180)
+		(at 193.04 52.07 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5726,7 +5870,7 @@
 	)
 	(hierarchical_label "SPI2_MOSI"
 		(shape bidirectional)
-		(at 204.47 44.45 180)
+		(at 193.04 44.45 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5737,7 +5881,7 @@
 	)
 	(hierarchical_label "I2S_WCLK"
 		(shape bidirectional)
-		(at 204.47 36.83 180)
+		(at 193.04 36.83 180)
 		(effects
 			(font
 				(size 1.27 1.27)
