@@ -8,6 +8,9 @@
 
 
 #include "HAL_abstraction.hpp"
+#include "utilities/File.hpp"
+#include "peripherals/digitalPin.hpp"
+#include <string>
 #include "../Middlewares/ST/STM32_Audio/Codecs/SpiritDSP_MP3_Enc/inc/spiritMP3Enc.h"
 #include "../Middlewares/ST/STM32_Audio/Codecs/SpiritDSP_MP3_Dec/inc/spiritMP3Dec.h"
 
@@ -29,7 +32,16 @@ namespace VoiceMailBox
 		 */
 		uint32_t encode(int8_t*& outputBuffer, int16_t* inputBuffer);
 
+
+		bool startDecode(const std::string& mp3FilePath, uint32_t dmaTxSize, DigitalPin*dbgLed);
+		bool stopDecode();
+		bool decodeProcess(int16_t* dmaTx, uint32_t dmaTxSize);
 	private:
+
+		static unsigned int decoderReadCallback(
+			void* pMP3CompressedData,                 
+			unsigned int nMP3DataSizeInChars,           
+			void* pUserData);                           
 
 		struct EncoderData
 		{
@@ -52,9 +64,14 @@ namespace VoiceMailBox
 		struct DecoderData
 		{
 			TSpiritMP3Decoder decoder;
+			fnSpiritMP3ReadCallback* readCallback = nullptr;
+			File file;
+			int16_t* tmpTxBuffer = nullptr;
+			DigitalPin* dbgLed = nullptr;
 		};
 
 		EncoderData m_encoder;
+		DecoderData m_decoder;
 	};
 }
 #endif

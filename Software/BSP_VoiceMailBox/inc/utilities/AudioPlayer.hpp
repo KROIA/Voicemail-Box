@@ -15,6 +15,7 @@
 #include "peripherals/AudioCodec.hpp"
 #include "peripherals/DigitalPin.hpp"
 
+#include "MP3.hpp"
 #include "WAVFile.hpp"
 
 namespace VoiceMailBox
@@ -40,7 +41,8 @@ namespace VoiceMailBox
 		AudioCodec& m_codec;	// AudioCodec
 		bool m_isPlaying;
 
-		WAVFile m_wavFile;	// WAV file object
+		//WAVFile m_wavFile;	// WAV file object
+		MP3 m_mp3;			// MP3 object
 
 		DigitalPin* m_playingLed;	// Recording LED pin
 	};

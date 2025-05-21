@@ -7,23 +7,23 @@ namespace VoiceMailBox
 		: Logger("AudioPlayer")
 		, m_codec(codec)
 		, m_isPlaying(false)
-		, m_wavFile()
+		//, m_wavFile()
 		, m_playingLed(nullptr)
 	{
-		m_wavFile.setBitsPerSample(codec.getBitsPerSample());
-		m_wavFile.setNumChannels(codec.getNumChannels());
-		m_wavFile.setSampleRate(codec.getSampleRate());
+		//m_wavFile.setBitsPerSample(codec.getBitsPerSample());
+		//m_wavFile.setNumChannels(codec.getNumChannels());
+		//m_wavFile.setSampleRate(codec.getSampleRate());
 	}
 	AudioPlayer::AudioPlayer(AudioCodec& codec, DigitalPin& playingLed)
 		: Logger("AudioPlayer")
 		, m_codec(codec)
 		, m_isPlaying(false)
-		, m_wavFile()
+		//, m_wavFile()
 		, m_playingLed(&playingLed)
 	{
-		m_wavFile.setBitsPerSample(codec.getBitsPerSample());
-		m_wavFile.setNumChannels(codec.getNumChannels());
-		m_wavFile.setSampleRate(codec.getSampleRate());
+		//m_wavFile.setBitsPerSample(codec.getBitsPerSample());
+		//m_wavFile.setNumChannels(codec.getNumChannels());
+		//m_wavFile.setSampleRate(codec.getSampleRate());
 		if (m_playingLed)
 			m_playingLed->set(false);
 	}
@@ -44,15 +44,22 @@ namespace VoiceMailBox
 			return false;
 		}
 
-		m_isPlaying = true;
-		if (m_wavFile.open("record.wav", File::AccessMode::read))
+		if (m_mp3.startDecode("record.mp3", m_codec.getBufferSize(), m_playingLed))
+		{
+			logln("Playing started");
+			if (m_playingLed)
+				m_playingLed->set(true);
+			m_isPlaying = true;
+			return true;
+		}
+		/*if (m_wavFile.open("record.wav", File::AccessMode::read))
 		{
 			logln("Playing started");
 			if (m_playingLed)
 				m_playingLed->set(true);
 			return true;
 		}
-		logln("Failed to open file for playing");
+		logln("Failed to open file for playing");*/
 		return false;
 	}
 	bool AudioPlayer::stopPlayback()
@@ -66,7 +73,8 @@ namespace VoiceMailBox
 		m_isPlaying = false;
 		// Clear TX buffer
 		m_codec.clearTxBuf();
-		m_wavFile.close();
+		m_mp3.stopDecode();
+		//m_wavFile.close();
 		if (m_playingLed)
 			m_playingLed->set(false);
 		logln("Playing stopped");
@@ -83,7 +91,20 @@ namespace VoiceMailBox
 
 	void AudioPlayer::processAudioSamples(volatile int16_t* samples, uint32_t size)
 	{
-		if (m_wavFile.isOpen())
+		if (m_playingLed)
+			m_playingLed->set(1);
+		if (m_mp3.decodeProcess((int16_t*)samples, size))
+		{
+			
+		}
+		else
+		{
+			logln("Failed to decode audio samples");
+			stopPlayback();
+		}
+		if (m_playingLed)
+			m_playingLed->set(0);
+		/*if (m_wavFile.isOpen())
 		{
 			uint32_t bytesRead = m_wavFile.readAudioSamples(samples, size);
 			if (m_playingLed)
@@ -97,6 +118,6 @@ namespace VoiceMailBox
 		else
 		{
 			logln("Failed to read audio samples, file is not open: " + m_wavFile.getPath());
-		}
+		}*/
 	}
 }
