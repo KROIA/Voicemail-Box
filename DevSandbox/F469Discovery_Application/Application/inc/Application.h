@@ -8,17 +8,12 @@
 #ifndef APPLICATION_INC_APPLICATION_H_
 #define APPLICATION_INC_APPLICATION_H_
 
-#include "main.h"
-
-
-
-
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-void setup();
-void loop();
+extern void setup();
+extern void loop();
 
 
 #ifdef __cplusplus

@@ -1,13 +1,22 @@
 #ifndef HAL_ABSTRACTION_H
 #define HAL_ABSTRACTION_H
+/**
+ * @brief This file encapsulates all HAL functions and types used in this project.
+ * @details The goal of this is, to make the code more portable.
+ *	        For example, if we want to use a different HAL library, we only need to change this file.
+ * @author Alex Krieg
+ */
 
+
+/**
+ * @note The main.h must be included only once here.
+ *       This is because in a STM-Project, the STM-HAL library gets included by the codegenerator in the main.h file.
+ */
 #include "main.h"
-#include <stdint.h>
 
 
 namespace VoiceMailBox
 {
-	//using VMB_HAL_Status = HAL_StatusTypeDef;
 	enum class VMB_HAL_Status : uint32_t
 	{
 		OK = HAL_StatusTypeDef::HAL_OK,
@@ -15,6 +24,8 @@ namespace VoiceMailBox
 		BUSY = HAL_StatusTypeDef::HAL_BUSY,
 		TIMEOUT = HAL_StatusTypeDef::HAL_TIMEOUT
 	};
+
+	// Renaming HAL types to VMB types
 	using VMB_ADC_Handle = ADC_HandleTypeDef;
 	using VMB_GPIO = GPIO_TypeDef;
 	using VMB_GPIO_PinState = GPIO_PinState;
@@ -45,6 +56,20 @@ namespace VoiceMailBox
 	inline uint32_t VMB_HAL_ADC_GetValue(VMB_ADC_Handle* adc)
 	{
 		return HAL_ADC_GetValue(adc);
+	}
+	inline uint32_t VMB_HAL_ADC_GetMaxValue(VMB_ADC_Handle* adc)
+	{
+		switch (adc->Init.Resolution) {
+			case VMB_ADC_RESOLUTION_12B:
+				return 4095;
+			case VMB_ADC_RESOLUTION_10B:
+				return 1023;
+			case VMB_ADC_RESOLUTION_8B:
+				return 255;
+			case VMB_ADC_RESOLUTION_6B:
+				return 63;
+		}
+		return 0;
 	}
 
 
@@ -115,6 +140,10 @@ namespace VoiceMailBox
 	{
 		return (VMB_HAL_Status)HAL_I2SEx_TransmitReceive_DMA(hi2s, pTxData, pRxData, Size);
 	}
+	inline VMB_HAL_Status VMB_HAL_I2S_DMAStop(VMB_I2S_Handle* hi2s)
+	{
+		return (VMB_HAL_Status)HAL_I2S_DMAStop(hi2s);
+	}
 
 
 
@@ -140,6 +169,10 @@ namespace VoiceMailBox
 	inline uint32_t VMB_HAL_GetTickCount()
 	{
 		return DWT->CYCCNT;
+	}
+	inline uint32_t VMB_HAL_GetTickCountInMs()
+	{
+		return DWT->CYCCNT / (SystemCoreClock / 1000);
 	}
 	inline void VMB_HAL_ResetTickCounter()
 	{

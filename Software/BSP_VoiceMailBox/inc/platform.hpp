@@ -1,83 +1,74 @@
-/*
- * platform.h
- *
- *  Created on: May 7, 2025
- *      Author: Alex
+#ifndef PLATFORM_HPP
+#define PLATFORM_HPP
+/**
+ * @brief Platform abstraction layer
+ * @details This file contains the declaration of all low level components
+ *          from the ViceMailBox platform.
  * 
- * This file contains the declaration of all low level components from the ViceMailBox research Platform.
+ *  @author Alex Krieg
  */
 
-#ifndef INC_PLATFORM_HPP_
-#define INC_PLATFORM_HPP_
+#include "settings.h"
 
-#include <stdint.h>
-#include <cstdarg>
+#include "peripherals/DigitalPin.hpp"
+#include "peripherals/AnalogPin.hpp"
+#include "peripherals/uart.hpp"
+#include "peripherals/i2c.hpp"
+#include "peripherals/Codec_TLV320AIC3104.hpp"
+#include "peripherals/ATCommandClient.hpp"
 
-#include "digitalPin.hpp"
-#include "analogPin.hpp"
-#include "uart.hpp"
-#include "i2c.hpp"
-#include "Codec_TLV320AIC3104.hpp"
-#include "ATCommandClient.hpp"
 
 
 namespace VoiceMailBox
 {
-	
-
-
-	
-
-/*
--------------------------------------------------------------------------
-	C O M P O N E N T S
--------------------------------------------------------------------------
-*/
 	struct Platform
 	{
+		/**
+		 * @brief Leds available on the Voice Mail Box board.
+		 */
+		static DigitalPin led[];
 
-		// LEDs
-		static DIGITAL_PIN led[];
+		/**
+		 * @brief Buttons available on the Voice Mail Box board.
+		 */
+		static DigitalPin button[];
 
-		// Buttons
-		static DIGITAL_PIN button[];
+		/**
+		 * @brief Potentiometers available on the Voice Mail Box board.
+		 */
+		static AnalogPin adcPotis[];
 
-		// ADC Potis
-		static ANALOG_PIN adcPotis[];
-
-		// UART
+		/**
+		 * @brief UART connections available on the Voice Mail Box board.
+		 * @details The UART is used for debugging and is connected to the ST-Link.
+		 */
 		static UART dbgUart;
-		//static UART wifiUart;
 		
-
-		// Audio Codec
+		/**
+		 * @brief Audiocodec TLV320AIC3104 available on the Voice Mail Box board.
+		 */
 		static Codec_TLV320AIC3104 codec;
 
+		/**
+		 * @brief Encapsulation of a UART/SPI connection for the ESP32 module.
+		 */
 		static ATCommandClient pmodESP;
 
+#ifdef VMB_DEVELOPMENT_CONFIGURATION
+		/**
+		 * @brief Debug pins available on the Voice Mail Box board.
+		 * @details These pins are not routed to a connector and therefore must be soldered
+		 *          manually on the board.
+		 */
+		static DigitalPin dbgPins[];
+#endif
+
+		/**
+		 * @brief Setup the platform.
+		 */
 		static void setup();
+
+		static void update();
 	};
-
-
-/*
--------------------------------------------------------------------------
-	U T I L I T Y
--------------------------------------------------------------------------
-*/
-	namespace Utility
-	{
-		
-
-		void delay(uint32_t ms);
-		void print(const char* str, va_list args);
-		void println(const char* str, va_list args);
-
-		uint32_t getTickCount();
-		void resetTickCount();
-
-	}
-
 }
-
-
-#endif /* INC_PLATFORM_HPP_ */
+#endif /* PLATFORM_HPP */
