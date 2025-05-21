@@ -8,23 +8,17 @@ namespace VoiceMailBox
 		: Logger("AudioRecorder")
 		, m_codec(codec)
 		, m_isRecording(false)
-		, m_wavFile()
+		, m_file(codec.getSampleRate(), 48, codec.getNumChannels())
 		, m_recordingLed(nullptr)
 	{
-		m_wavFile.setBitsPerSample(codec.getBitsPerSample());
-		m_wavFile.setNumChannels(codec.getNumChannels());
-		m_wavFile.setSampleRate(codec.getSampleRate());
 	}
 	AudioRecorder::AudioRecorder(AudioCodec& codec, DigitalPin& recordingLed)
 		: Logger("AudioRecorder")
 		, m_codec(codec)
 		, m_isRecording(false)
-		, m_wavFile()
+		, m_file(codec.getSampleRate(), 48, codec.getNumChannels())
 		, m_recordingLed(&recordingLed)
 	{
-		m_wavFile.setBitsPerSample(codec.getBitsPerSample());
-		m_wavFile.setNumChannels(codec.getNumChannels());
-		m_wavFile.setSampleRate(codec.getSampleRate());
 		if (m_recordingLed)
 			m_recordingLed->set(false);
 	}
@@ -36,23 +30,19 @@ namespace VoiceMailBox
 		}
 	}
 
-	bool AudioRecorder::startRecording()
+	bool AudioRecorder::startRecording(const std::string& filePath)
 	{
 		if (m_isRecording)
 		{
 			logln("Already recording");
-			// Already recording
 			return false;
 		}
 
-
-		//if (m_wavFile.open("record.wav", File::AccessMode::write))
-		if (m_mp3File.open("record.mp3", File::AccessMode::write))
+		if (m_file.open(filePath, File::AccessMode::write))
 		{
 			logln("Recording started");
-			if (m_recordingLed)
-				m_recordingLed->set(true);
 			m_isRecording = true;
+			m_codec.clearDataReadyFlag();
 			return true;
 		}
 		logln("Failed to open file for recording");
@@ -63,14 +53,10 @@ namespace VoiceMailBox
 		if (!m_isRecording)
 		{
 			logln("Not recording");
-			// Not recording
 			return false;
 		}
 		m_isRecording = false;
-		//m_wavFile.close();
-		m_mp3File.close();
-		if (m_recordingLed)
-			m_recordingLed->set(false);
+		m_file.close();
 		logln("Recording stopped");
 		return true;
 	}
@@ -83,36 +69,16 @@ namespace VoiceMailBox
 			processAudioSamples(m_codec.getRxBufPtr(), m_codec.getBufferSize());
 	}
 
-	void AudioRecorder::processAudioSamples(volatile int16_t* samples, uint32_t size)
+	void AudioRecorder::processAudioSamples(volatile int16_t* dmaRxBuff, uint32_t size)
 	{
-		
+		if (m_recordingLed)
+			m_recordingLed->set(1);
+		// size/2 because, size is in the DMA size namespace which means size of int16_t elements.
+		// readAudioSamples requires the amount of samples, each sample consists of 2 * 16 bit samples (left and right channel)
+		uint32_t bytesWritten = m_file.writeAudioSamples((int16_t*)dmaRxBuff, size / 2);
 
-		//if (size != 576 * 2) // 576 samples = 1152 bytes = 1.5ms @ 48kHz
-		//{
-		//	logln("Invalid size: " + std::to_string(size));
-		//	return;
-		//}
-
-		for (uint32_t i = 0; i < size / (2 * 576); ++i)
-		{
-			if (m_recordingLed)
-				m_recordingLed->toggle();
-			int8_t* mp3Buffer = nullptr;
-			uint32_t bytesToWrite = m_mp3.encode(mp3Buffer, (int16_t*)(samples + (i* 2 * 576)));
-			if (bytesToWrite > 0)
-			{
-				m_mp3File.write((const char*)mp3Buffer, bytesToWrite);
-				logln("Processing " + std::to_string(bytesToWrite) + " audio samples");
-			}
-			else
-			{
-				//logln("Failed to encode audio samples");
-			}
-		}
+		logln("Saved " + std::to_string(bytesWritten) + " bytes to mp3");
 		if (m_recordingLed)
 			m_recordingLed->set(0);
-
-		//m_wavFile.writeAudioSamples(samples, size);
-		//log("Processing " + std::to_string(size) + " audio samples");
 	}
 }
