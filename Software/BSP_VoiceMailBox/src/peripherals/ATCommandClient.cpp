@@ -377,7 +377,7 @@ namespace VoiceMailBox
 			logln("Failed to prepare to send GET request");
 			return false;
 		}
-		toggleLED();
+		//toggleLED();
 		sendBytes(reinterpret_cast<const uint8_t*>(getRequest.c_str()), getRequest.size());
 
 		if (!waitUntilAndFlush("bytes\r\n", 5000)) {
@@ -388,14 +388,15 @@ namespace VoiceMailBox
 		m_uart.receiveUntil(flushBuffer, sizeof(flushBuffer), (uint8_t*)"+IPD,", 5, 1000);
 		//m_uart.receive(flushBuffer, 7); // Flush the buffer until the connection is closed
 
-		toggleLED();
+		
 		// Wait for HTTP response headers and body
 		std::string response;
 		//File file;
-		if (!readFileDownloadResponse(response, 10000)) { // You need to implement this method to read raw data from the ESP module
+		if (!readFileDownloadResponse(response, 10000)) { 
 			logln("Failed to read response from server");
 			return false;
 		}
+		//toggleLED();
 
 		logln("File downloaded successfully: \"" + locallocalFileName + "\" from " + urlPath);
 		return true;
@@ -415,7 +416,7 @@ namespace VoiceMailBox
 		{
 			toggleLED();
 #ifdef VMB_DEVELOPMENT_ENABLE_DBG_PINS_IN_ATCOMMAND_CLIENT
-			setDbgPin(DBG_PIN::DBG0, 1); // Set DBG0 on
+			setDbgPin(DBG_PIN::DBG1, 1); // Set DBG0 on
 #endif
 			if (!m_uart.waitUntil("+IPD,", timeout)) // Wait for the start of the response
 			{
@@ -423,9 +424,9 @@ namespace VoiceMailBox
 				return false; // Failed to read response from server
 			}
 #ifdef VMB_DEVELOPMENT_ENABLE_DBG_PINS_IN_ATCOMMAND_CLIENT
-			setDbgPin(DBG_PIN::DBG0, 0); // Set DBG0 on
+			setDbgPin(DBG_PIN::DBG1, 0); // Set DBG0 on
 #endif
-			toggleLED();
+			//toggleLED();
 			std::string ipdResponse;
 			ipdResponse.resize(512); // Allocate a buffer for the IPD response
 			uint32_t bytesReaded = m_uart.receiveUntil((uint8_t*)ipdResponse.c_str(), 512, (uint8_t*)"+IPD,", 5, timeout);
@@ -457,11 +458,11 @@ namespace VoiceMailBox
 			std::string content;
 			content.resize(frameSize);
 #ifdef VMB_DEVELOPMENT_ENABLE_DBG_PINS_IN_ATCOMMAND_CLIENT
-			setDbgPin(DBG_PIN::DBG0, 1); // Set DBG0 on
+			setDbgPin(DBG_PIN::DBG1, 1); // Set DBG0 on
 #endif
 			uint32_t bytesRead = m_uart.receive((uint8_t*)content.c_str(), frameSize);
 #ifdef VMB_DEVELOPMENT_ENABLE_DBG_PINS_IN_ATCOMMAND_CLIENT
-			setDbgPin(DBG_PIN::DBG0, 0); // Set DBG0 on
+			setDbgPin(DBG_PIN::DBG1, 0); // Set DBG0 on
 #endif
 			uint32_t stillInUartBuff = m_uart.hasBytesReceived();
 			if(stillInUartBuff >  100)
@@ -555,12 +556,12 @@ namespace VoiceMailBox
 
 				logln("Writing block: "+std::to_string(0) + " at: "+std::to_string(data.contentReceived) + " with size: "+std::to_string(bytesToSave));
 #ifdef VMB_DEVELOPMENT_ENABLE_DBG_PINS_IN_ATCOMMAND_CLIENT
-				setDbgPin(DBG_PIN::DBG1, 1); // Set DBG0 on
+				setDbgPin(DBG_PIN::DBG2, 1); // Set DBG0 on
 #endif
 				data.contentReceived += data.file.write((uint8_t*)fileContentStr.c_str(), bytesToSave); // Write the file content to the file
 #ifdef VMB_DEVELOPMENT_ENABLE_DBG_PINS_IN_ATCOMMAND_CLIENT
 				//setDbgPin(DBG_PIN::DBG1, 0); // Set DBG0 on
-				setDbgPin(DBG_PIN::DBG1, 0); // Set DBG0 on
+				setDbgPin(DBG_PIN::DBG2, 0); // Set DBG0 on
 #endif
 				//delay(10);
 				if (data.contentReceived >= data.contentLength)
@@ -596,12 +597,12 @@ namespace VoiceMailBox
 			}*/
 			logln("Writing block: "+std::to_string(count++) + " at: "+std::to_string(data.contentReceived)  + " with size: "+std::to_string(bytesToSave));
 #ifdef VMB_DEVELOPMENT_ENABLE_DBG_PINS_IN_ATCOMMAND_CLIENT
-			setDbgPin(DBG_PIN::DBG1, 1); // Set DBG0 on
+			setDbgPin(DBG_PIN::DBG2, 1); // Set DBG0 on
 #endif
 			uint32_t written = data.file.write(frame, bytesToSave); // Write the file content to the file
 #ifdef VMB_DEVELOPMENT_ENABLE_DBG_PINS_IN_ATCOMMAND_CLIENT
 			//setDbgPin(DBG_PIN::DBG1, 0); // Set DBG0 on
-			setDbgPin(DBG_PIN::DBG1, 0); // Set DBG0 on
+			setDbgPin(DBG_PIN::DBG2, 0); // Set DBG0 on
 #endif
 			data.contentReceived += written;
 			logln("Downloading: %.2f %%", (float)data.contentReceived * 100.f / (float)data.contentLength);

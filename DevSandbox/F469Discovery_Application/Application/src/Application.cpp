@@ -11,17 +11,17 @@
 #include <cstring>
 
  // WiFi Settings
-const std::string WIFI_SSID = "Schmarotzer WLAN";
-const std::string WIFI_PASSWORD = "ScheissZahlekombination";
+const std::string WIFI_SSID = "Alex-PC";
+const std::string WIFI_PASSWORD = "87924ikR";
 
 // Server Settings
-const std::string serverIP = "192.168.86.110";
+const std::string serverIP = "192.168.137.1";
 const uint16_t serverPort = 8000;
 const std::string uploadURL = "devicesbackend/upload/";
 const std::string downloadURL = "media/";
 
 // File Settings
-const std::string fileName = "record.wav";
+const std::string fileName = "record.mp3";
 
 
 
@@ -61,7 +61,7 @@ void setup()
 			if (recorder->isRecording())
 				recorder->stopRecording();
 			else
-				recorder->startRecording();
+				recorder->startRecording(fileName);
 		});
 
 	getButton(Button::BTN1).setOnFallingEdgeCallback([](DigitalPin&) {
@@ -70,7 +70,7 @@ void setup()
 			if (player->isPlaying())
 				player->stopPlayback();
 			else
-				player->startPlayback();
+				player->startPlayback(fileName);
 		});
 
 	getButton(Button::BTN2).setOnFallingEdgeCallback([&pmodESP](DigitalPin&) {
