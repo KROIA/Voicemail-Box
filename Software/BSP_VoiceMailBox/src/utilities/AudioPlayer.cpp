@@ -7,23 +7,18 @@ namespace VoiceMailBox
 		: Logger("AudioPlayer")
 		, m_codec(codec)
 		, m_isPlaying(false)
-		//, m_wavFile()
+	    , m_file(codec.getSampleRate(), 48, codec.getNumChannels())
 		, m_playingLed(nullptr)
 	{
-		//m_wavFile.setBitsPerSample(codec.getBitsPerSample());
-		//m_wavFile.setNumChannels(codec.getNumChannels());
-		//m_wavFile.setSampleRate(codec.getSampleRate());
+
 	}
 	AudioPlayer::AudioPlayer(AudioCodec& codec, DigitalPin& playingLed)
 		: Logger("AudioPlayer")
 		, m_codec(codec)
 		, m_isPlaying(false)
-		//, m_wavFile()
+		, m_file(codec.getSampleRate(), 48, codec.getNumChannels())
 		, m_playingLed(&playingLed)
 	{
-		//m_wavFile.setBitsPerSample(codec.getBitsPerSample());
-		//m_wavFile.setNumChannels(codec.getNumChannels());
-		//m_wavFile.setSampleRate(codec.getSampleRate());
 		if (m_playingLed)
 			m_playingLed->set(false);
 	}
@@ -35,31 +30,23 @@ namespace VoiceMailBox
 		}
 	}
 
-	bool AudioPlayer::startPlayback()
+	bool AudioPlayer::startPlayback(const std::string& filePath)
 	{
 		if (m_isPlaying)
 		{
 			logln("Already Playing");
-			// Already Playing
 			return false;
 		}
-
-		if (m_mp3.startDecode("record.mp3", m_codec.getBufferSize(), m_playingLed))
+		if (m_file.open(filePath, File::AccessMode::read))
 		{
 			logln("Playing started");
-			if (m_playingLed)
-				m_playingLed->set(true);
 			m_isPlaying = true;
+			m_codec.clearTxBuf();
+			m_codec.clearDataReadyFlag();
+			m_firstPlayingUpdate = true;
 			return true;
 		}
-		/*if (m_wavFile.open("record.wav", File::AccessMode::read))
-		{
-			logln("Playing started");
-			if (m_playingLed)
-				m_playingLed->set(true);
-			return true;
-		}
-		logln("Failed to open file for playing");*/
+		logln("Failed to open file for playing");
 		return false;
 	}
 	bool AudioPlayer::stopPlayback()
@@ -67,16 +54,11 @@ namespace VoiceMailBox
 		if (!m_isPlaying)
 		{
 			logln("Not Playing");
-			// Not Playing
 			return false;
 		}
 		m_isPlaying = false;
-		// Clear TX buffer
 		m_codec.clearTxBuf();
-		m_mp3.stopDecode();
-		//m_wavFile.close();
-		if (m_playingLed)
-			m_playingLed->set(false);
+		m_file.close();
 		logln("Playing stopped");
 		return true;
 	}
@@ -85,39 +67,38 @@ namespace VoiceMailBox
 	{
 		if (!m_isPlaying)
 			return;
+		
 		if (m_codec.isDataReadyAndClear())
 			processAudioSamples(m_codec.getTxBufPtr(), m_codec.getBufferSize());
 	}
 
-	void AudioPlayer::processAudioSamples(volatile int16_t* samples, uint32_t size)
+	void AudioPlayer::processAudioSamples(volatile int16_t* dmaTxBuff, uint32_t size)
 	{
 		if (m_playingLed)
 			m_playingLed->set(1);
-		if (m_mp3.decodeProcess((int16_t*)samples, size))
+
+		// size/2 because, size is in the DMA size namespace which means size of int16_t elements.
+		// readAudioSamples requires the amount of samples, each sample consists of 2 * 16 bit samples (left and right channel)
+		uint32_t decodedSamples = m_file.readAudioSamples((int16_t*)dmaTxBuff, size / 2);
+		if (m_firstPlayingUpdate)
 		{
-			
+			if (m_playingLed)
+				m_playingLed->set(0);
+			// At the start of the file, the convertion must be done twice. 
+			// We loose some audio because of that but otherwise it creates a lot of noise in the beginning.
+			decodedSamples += m_file.readAudioSamples((int16_t*)dmaTxBuff, size / 2);
+			m_firstPlayingUpdate = false;
+			if (m_playingLed)
+				m_playingLed->set(1);
 		}
-		else
+		logln("Decoded " + std::to_string(decodedSamples) + " audio samples from mp3");
+		if(decodedSamples < size/2)
 		{
-			logln("Failed to decode audio samples");
+			logln("End of file reached");
 			stopPlayback();
 		}
+		
 		if (m_playingLed)
 			m_playingLed->set(0);
-		/*if (m_wavFile.isOpen())
-		{
-			uint32_t bytesRead = m_wavFile.readAudioSamples(samples, size);
-			if (m_playingLed)
-				m_playingLed->toggle();
-			if (bytesRead == 0)
-			{
-				logln("End of file reached");
-				stopPlayback();
-			}
-		}
-		else
-		{
-			logln("Failed to read audio samples, file is not open: " + m_wavFile.getPath());
-		}*/
 	}
 }

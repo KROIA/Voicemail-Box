@@ -61,7 +61,7 @@ void setup()
 			if (recorder->isRecording())
 				recorder->stopRecording();
 			else
-				recorder->startRecording();
+				recorder->startRecording(fileName);
 		});
 
 	getButton(Button::BTN1).setOnFallingEdgeCallback([](DigitalPin&) {
@@ -70,7 +70,7 @@ void setup()
 			if (player->isPlaying())
 				player->stopPlayback();
 			else
-				player->startPlayback();
+				player->startPlayback(fileName);
 		});
 
 	getButton(Button::BTN2).setOnFallingEdgeCallback([&pmodESP](DigitalPin&) {
