@@ -25,18 +25,28 @@ class a3 highlighter
 class a7 highlighter
 ```
 
-### Pinout:
-- peripheries needed:
-    - 1x SPI
+---
 
-- H755
-	- SPI_MOSI | PB5 (validate!!!)
-    - SPI_MISO | PA6
-    - SPI_SCK  | PA5
-	- SPI_NSS  | PD14
+# Pinout F469:
 
-- F469:
-	- SPI_MOSI | PB15
-    - SPI_MISO | PB14
-    - SPI_SCK  | PD3
-	- SPI_NSS  | PH6
+### SPI ?
+| Function | Pin | Info |
+|----------|-----|------|
+| SPI_MOSI  | PB15 | |
+| SPI_MISO | PB14 | |
+| SPI_SCK | PD3 | |
+| SPI_NSS | PH6 | |
+
+---
+
+# Pinout H755:
+
+### SPI ?
+| Function | Pin | Info |
+|----------|-----|------|
+| SPI_MOSI  | PB5 | validate!!! |
+| SPI_MISO | PA6 | |
+| SPI_SCK | PA5 | |
+| SPI_NSS | PD14 | |
+
+---

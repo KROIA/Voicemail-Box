@@ -28,12 +28,27 @@ Connect the annode of the led to the pos Voltage of Choice (+5V is available on 
 > the led output is low active.
 > do not connect a positive Voltage greater than 30V.
 
-## Pinout:
+---
 
-- H755
-	- LED 0 | PA8
-    - LED 1 | PPG12
+# Pinout F469:
+
+### GPIOs
+| Function | Pin | Info |
+|----------|-----|------|
+| LED 0   | PA6 | Output |
+| LED 1   | PG11 | Output |
+
+---
+
+# Pinout H755
+
+### GPIOs
+| Function | Pin | Info |
+|----------|-----|------|
+| LED 0   | PA8 | Output |
+| LED 1   | PG12 | Output |
+
+---
+
+
  
-- F469:
-	- LED 0 | PA6
-    - LED 1 | PG11

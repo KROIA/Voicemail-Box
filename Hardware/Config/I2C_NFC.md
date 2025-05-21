@@ -18,14 +18,34 @@ class a1 highlighter
 class a2 highlighter
 ```
 
-- H755
-    - I2C_SDA | PB8
-    - I2C_SCL | PB9
-    ---
-    - NFC_int | PA3
+---
 
-- F469:
-    - I2C_SDA | PB8
-    - I2C_SCL | PB9
-    ---
-    - NFC_int | PB1
+# Pinout F469:
+
+### I2C
+| Function | Pin | Info |
+|----------|-----|------|
+| I2C_SDA  | PB8 | shared |
+| I2C_SDA  | PB9 | shared |
+
+### GPIOs
+| Function | Pin | Info |
+|----------|-----|------|
+| NFC_int   | PB1 | Input |
+
+---
+
+# Pinout H755:
+
+### I2C
+| Function | Pin | Info |
+|----------|-----|------|
+| I2C_SDA  | PB8 | shared |
+| I2C_SDA  | PB9 | shared |
+
+### GPIOs
+| Function | Pin | Info |
+|----------|-----|------|
+| NFC_int   | PA3 | Input |
+
+---

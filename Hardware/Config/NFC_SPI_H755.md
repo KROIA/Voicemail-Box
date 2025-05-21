@@ -1,16 +1,14 @@
-# H755 Jumper Positions
-
-## J104
+## J106
 ```mermaid
 block-beta
     block
-        columns 10
+        columns 1
         a0["Set"]
         a1["Set"]
         a2["Set"]
         a3["Set"]
-        a4["Set"]
-        a5["open"]
+        a4["3.3V"]
+        a5["GND"]
         a6["open"]
         a7["open"]
         a8["open"]
@@ -22,8 +20,17 @@ class a0 highlighter
 class a1 highlighter
 class a2 highlighter
 class a3 highlighter
-class a4 highlighter
 ```
 
-- [SPI](../Config/NFC_SPI_H755.md)
-- [I2C](../Config/NFC_I2C_H755.md)
+## J106
+```mermaid
+block-beta
+    block
+        columns 1
+        a0["open"]
+        a1["open"]
+        a2["open"]
+    end
+
+classDef highlighter fill:#8bc8e8,stroke:#6c757d,color:#000000,stroke-width:1.5px;
+```

@@ -14,23 +14,35 @@ block-beta
         a4["n.c."]
         a5["set"]
         a6["set"]
-        a7["set"]
+        a7["open"]
     end
 
 classDef highlighter fill:#8bc8e8,stroke:#6c757d,color:#000000,stroke-width:1.5px;
 class a5 highlighter
 class a6 highlighter
-class a7 highlighter
 ```
 
-### Pinout:
-- peripheries needed:
-	- 1x UART
+---
 
-- H755
-    - UART_TX | PB6
-	- UART_RX | PB7
+# Pinout F469:
 
-- F469:
-    - UART_TX | PG14
-	- UART_RX | PG9
+### UART
+| Function | Pin | Info |
+|----------|-----|------|
+| UART_TX  | PG14 |  |
+| UART_RX  | PG9 |  |
+
+---
+
+# Pinout H755:
+
+### UART
+| Function | Pin | Info |
+|----------|-----|------|
+| UART_TX  | PB6 |  |
+| UART_RX  | PB7 |  |
+
+---
+
+
+

@@ -1,16 +1,14 @@
-# F469 Jumper Positions
-
-J104 [Audio]
+## J106
 ```mermaid
 block-beta
     block
-        columns 10
+        columns 1
         a0["open"]
         a1["open"]
         a2["open"]
         a3["open"]
-        a4["open"]
-        a5["Set"]
+        a4["3.3V"]
+        a5["GND"]
         a6["Set"]
         a7["Set"]
         a8["Set"]
@@ -18,12 +16,24 @@ block-beta
     end
 
 classDef highlighter fill:#8bc8e8,stroke:#6c757d,color:#000000,stroke-width:1.5px;
-class a5 highlighter
 class a6 highlighter
 class a7 highlighter
 class a8 highlighter
 class a9 highlighter
 ```
 
-- [SPI](../Config/NFC_SPI_F469.md)
-- [I2C](../Config/NFC_I2C_F469.md)
+## J106
+```mermaid
+block-beta
+    block
+        columns 1
+        a0["open"]
+        a1["open"]
+        a2["open"]
+    end
+
+classDef highlighter fill:#8bc8e8,stroke:#6c757d,color:#000000,stroke-width:1.5px;
+```
+ 
+
+
