@@ -63,7 +63,7 @@ namespace VoiceMailBox
 		 * @note The flag is reset automatically after reading it.
 		 * @return true if new data is ready, false otherwise
 		 */
-		bool isDataReadyAndClear() {
+		bool isDataReadyAndClearFlag() {
 			bool dataReady = m_dataReadyFlag;
 
 			// To prevent race condition between reading the ready flag and resetting it, 

@@ -57,7 +57,7 @@ namespace VoiceMailBox
 		 *                    This buffer must contain 576 samples (2 channels * 576 samples * 16 bits = 2304 bytes)
 		 * @return the size of the output buffer in bytes
 		 */
-		uint32_t encode(int8_t*& outputBuffer, int16_t* inputBuffer);
+		uint32_t encode(int8_t*& outputBuffer, const int16_t* inputBuffer);
 
 
 		uint32_t getSampleRate() const { return m_sampleRate; }

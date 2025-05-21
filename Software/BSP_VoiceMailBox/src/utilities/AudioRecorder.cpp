@@ -65,7 +65,7 @@ namespace VoiceMailBox
 	{
 		if (!m_isRecording)
 			return;
-		if (m_codec.isDataReadyAndClear())
+		if (m_codec.isDataReadyAndClearFlag())
 			processAudioSamples(m_codec.getRxBufPtr(), m_codec.getBufferSize());
 	}
 

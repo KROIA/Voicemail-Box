@@ -172,7 +172,7 @@ namespace VoiceMailBox
 		 * @brief Checks the data ready flag and clears it if it was set.
 		 * @return true if a new batch of audio samples is ready to be processed.
 		 */
-		bool isDataReadyAndClear() override { return m_i2s.isDataReadyAndClear(); }
+		bool isDataReadyAndClearFlag() override { return m_i2s.isDataReadyAndClearFlag(); }
 
 		/**
 		 * @brief Clears the data ready flag.

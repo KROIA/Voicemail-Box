@@ -32,7 +32,7 @@ namespace VoiceMailBox
 		 * @brief Checks the data ready flag and clears it if it was set.
 		 * @return true if a new batch of audio samples is ready to be processed.
 		 */
-		virtual bool isDataReadyAndClear() = 0;
+		virtual bool isDataReadyAndClearFlag() = 0;
 
 		/**
 		 * @brief Clears the data ready flag.
