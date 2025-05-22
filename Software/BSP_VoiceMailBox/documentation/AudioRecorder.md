@@ -31,6 +31,8 @@ AudioRecorder* recorder = nullptr;
 
 void setup()
 {
+    VoiceMailBox::setup();
+    
     recorder = new AudioRecorder(getCodec());
 }
 
