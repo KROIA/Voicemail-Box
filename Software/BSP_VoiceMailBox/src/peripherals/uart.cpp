@@ -354,7 +354,6 @@ namespace VoiceMailBox
 
 	uint32_t UART::flushNBytes(uint32_t nBytes)
 	{
-		uint32_t startTime = VMB_HAL_GetTickCountInMs();
 		uint32_t currentReceivedBytes = hasBytesReceived();
 		if (currentReceivedBytes == 0)
 		{

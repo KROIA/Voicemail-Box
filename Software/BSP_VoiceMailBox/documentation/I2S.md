@@ -1,18 +1,26 @@
 # I2C
 This class is a simplfied interface to access the i2s peripheral.
 Only basic functions, which are used in the project, are implemented.
-The implementation does use a DMA for RX and TX.
+The implementation does use a DMA in Full-Duplex mode.
 
 - [Features](#features)
 - [Setup](#setup)
 - [Usage](#usage)
     - [Modify main.h and main.c](#modify-mainh-and-mainc)
     - [Inside the C++ Application](#inside-the-c-application)
+- [I2S behind the scenes](#i2s-behind-the-scenes)
+    - [Data flow](#data-flow)
+    - [Ping-Pong Buffering](#ping-pong-buffering)
 
 ---
 ## Features
 - Writing audio samples using a DMA
-- Receaving audio samples using a DMA
+- Receiving audio samples using a DMA
+
+---
+## What is I2S
+I2S (Inter-IC Sound) is a serial interface specifically designed for audio data transfer. It is commonly used to transfer digital audio data between microcontrollers, digital-to-analog converters (DACs), and other audio components.
+[Click here](#i2s-behind-the-scenes) to learn about how it is implemented in this project.
 
 ---
 ## Setup    
@@ -68,7 +76,7 @@ I2S_HandleTypeDef* getI2S_handle()
 #### Inside the C++ Application
 ``` C++ 
 // Application.cpp
-#include "BSP_VoiceMailBox.hpp" // includes "peripherals/DigitalPin.hpp"
+#include "BSP_VoiceMailBox.hpp" // includes "peripherals/i2s.hpp"
 #include "main.h" // Is needed to access the handle get function
 #include <cstring> // Used for memcpy()
 
@@ -107,6 +115,21 @@ void loop()
 ```
 
 
-``` C++ 
+## I2S behind the scenes
+### Data flow
+Since we use the I2S in Full-Duplex mode, we have 2 audio DMA streams which are processed at the same time by the DMA.
 
-```
+>> Bild das den Datenfluss beider DMA Streams zeigt
+
+### Ping-Pong Buffering
+Audio data is sampled continuously and it is not possible to store a infinite amount of samples until the recording stops. A simple solution to this problem is a ping-pong buffer.
+A ping-pong buffer is a array that is split in 2 equal sized sub array's.
+
+At the start of a DMA transmit, the start of the array is given to the HAL's DMA start call with the half size of the whole array.
+While the DMA is processing the first half of the array, the CPU can be used to fill the second half of the DMA buffer.
+When the DMA triggers an half complete interrupt, the DMA gets restarted but now with the second half of the array, now using the prepared data in the second half of the array.
+While the DMA sends these samples over i2s, the CPU can now fill the first half of the array with new data.
+
+>> Bild das die Zeitliche Abfolge des Ping-Pong buffers und DMA ISR zeigt
+
+Two of these Ping-Pong Buffer array's are implemented in the I2S class. One for microphone data and one for audio output samples.
