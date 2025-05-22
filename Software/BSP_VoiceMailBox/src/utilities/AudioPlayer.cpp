@@ -1,21 +1,32 @@
 #include "utilities/AudioPlayer.hpp"
-#include "BSP_VoiceMailBox.hpp"
 
 namespace VoiceMailBox
 {
 	AudioPlayer::AudioPlayer(AudioCodec& codec)
+#ifdef VMB_USE_LOGGER_OBJECTS
 		: Logger("AudioPlayer")
 		, m_codec(codec)
+#else
+		: m_codec(codec)
+#endif
 		, m_isPlaying(false)
+		, m_isPaused(false)
+		, m_loopCount(0)
 	    , m_file(codec.getSampleRate(), 48, codec.getNumChannels())
 		, m_playingLed(nullptr)
 	{
 
 	}
 	AudioPlayer::AudioPlayer(AudioCodec& codec, DigitalPin& playingLed)
+#ifdef VMB_USE_LOGGER_OBJECTS
 		: Logger("AudioPlayer")
 		, m_codec(codec)
+#else
+		: m_codec(codec)
+#endif
 		, m_isPlaying(false)
+		, m_isPaused(false)
+		, m_loopCount(0)
 		, m_file(codec.getSampleRate(), 48, codec.getNumChannels())
 		, m_playingLed(&playingLed)
 	{
@@ -26,46 +37,91 @@ namespace VoiceMailBox
 	{
 		if (isPlaying())
 		{
-			stopPlayback();
+			stop();
 		}
 	}
 
-	bool AudioPlayer::startPlayback(const std::string& filePath)
+	bool AudioPlayer::start(const std::string& filePath)
 	{
+		return start(filePath, 1);
+	}
+	bool AudioPlayer::start(const std::string& filePath, uint32_t repetitions)
+	{
+		if (repetitions == 0)
+			return false;
 		if (m_isPlaying)
 		{
-			logln("Already Playing");
+			VMB_LOGLN("Already Playing");
 			return false;
 		}
 		if (m_file.open(filePath, File::AccessMode::read))
 		{
-			logln("Playing started");
+			VMB_LOGLN("Playing started");
 			m_isPlaying = true;
+			m_isPaused = false;
 			m_codec.clearTxBuf();
 			m_codec.clearDataReadyFlag();
 			m_firstPlayingUpdate = true;
+			m_loopCount = repetitions;
 			return true;
 		}
-		logln("Failed to open file for playing");
+		VMB_LOGLN("Failed to open file for playing");
 		return false;
 	}
-	bool AudioPlayer::stopPlayback()
+	bool AudioPlayer::stop()
 	{
 		if (!m_isPlaying)
 		{
-			logln("Not Playing");
+			VMB_LOGLN("Not Playing");
 			return false;
 		}
 		m_isPlaying = false;
+		m_isPaused = false;
+		m_loopCount = 0;
 		m_codec.clearTxBuf();
 		m_file.close();
-		logln("Playing stopped");
+		VMB_LOGLN("Playing stopped");
 		return true;
+	}
+
+	bool AudioPlayer::pause()
+	{
+		if (m_isPlaying && !m_isPaused)
+		{
+			m_isPaused = true;
+			m_codec.clearTxBuf();
+			VMB_LOGLN("Playing paused");
+			return true;
+		}
+		if (!m_isPlaying)
+		{
+			VMB_LOGLN("Not Playing");
+			return false;
+		}
+		VMB_LOGLN("Already Paused");
+		return false;
+	}
+
+	bool AudioPlayer::resume()
+	{
+		if (m_isPlaying && m_isPaused)
+		{
+			m_isPaused = false;
+			VMB_LOGLN("Playing resumed");
+			return true;
+		}
+		if (!m_isPlaying)
+		{
+			VMB_LOGLN("Not Playing");
+			return false;
+		}
+		VMB_LOGLN("Already Playing");
+		return false;
 	}
 
 	void AudioPlayer::update()
 	{
-		if (!m_isPlaying)
+		if (!m_isPlaying || m_isPaused)
 			return;
 		
 		if (m_codec.isDataReadyAndClearFlag())
@@ -91,11 +147,18 @@ namespace VoiceMailBox
 			if (m_playingLed)
 				m_playingLed->set(1);
 		}
-		logln("Decoded " + std::to_string(decodedSamples) + " audio samples from mp3");
+		VMB_LOGLN("Decoded " + std::to_string(decodedSamples) + " audio samples from mp3");
 		if(decodedSamples < size/2)
 		{
-			logln("End of file reached");
-			stopPlayback();
+			VMB_LOGLN("End of file reached");
+			if (m_loopCount > 1)
+			{
+				--m_loopCount;
+				m_firstPlayingUpdate = true;
+				m_file.seek(0);
+			}
+			else
+				stop();
 		}
 		
 		if (m_playingLed)

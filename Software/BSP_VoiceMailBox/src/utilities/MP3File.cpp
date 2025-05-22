@@ -4,8 +4,12 @@
 namespace VoiceMailBox
 {
 	MP3File::MP3File(uint32_t sampleRate, uint16_t bitrate, uint16_t numChannels)
+#ifdef VMB_USE_LOGGER_OBJECTS
 		: Logger("MP3File")
 		, m_sampleSize(4) // Size in bytes per sample. 1 sample = Left + Right channel @ 16 bits per channel --> 4 bytes
+#else
+		: m_sampleSize(4) // Size in bytes per sample. 1 sample = Left + Right channel @ 16 bits per channel --> 4 bytes
+#endif
 		, m_file()
 		, m_encoder(sampleRate, bitrate, numChannels)
 		, m_decoder(decoderReadCallback, this, m_sampleSize)
@@ -22,12 +26,12 @@ namespace VoiceMailBox
 	{
 		if (!m_file.isOpen())
 		{
-			logln("Failed to write audio samples, file is not open: " + m_file.getPath());
+			VMB_LOGLN("Failed to write audio samples, file is not open: " + m_file.getPath());
 			return 0;
 		}
 		if (m_file.getAccessMode() != File::AccessMode::write)
 		{
-			logln("Failed to write audio samples, file is not opened in write mode: " + m_file.getPath());
+			VMB_LOGLN("Failed to write audio samples, file is not opened in write mode: " + m_file.getPath());
 			return 0;
 		}
 
@@ -47,12 +51,12 @@ namespace VoiceMailBox
 	{
 		if (!m_file.isOpen())
 		{
-			logln("Failed to write audio samples, file is not open: " + m_file.getPath());
+			VMB_LOGLN("Failed to write audio samples, file is not open: " + m_file.getPath());
 			return 0;
 		}
 		if (m_file.getAccessMode() != File::AccessMode::read)
 		{
-			logln("Failed to read audio samples, file is not opened in read mode: " + m_file.getPath());
+			VMB_LOGLN("Failed to read audio samples, file is not opened in read mode: " + m_file.getPath());
 			return 0;
 		}
 		

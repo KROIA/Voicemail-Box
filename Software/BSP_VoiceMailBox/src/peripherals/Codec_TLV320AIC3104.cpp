@@ -1,5 +1,5 @@
 #include "peripherals/Codec_TLV320AIC3104.hpp"
-#include "BSP_VoiceMailBox.hpp"
+#include "platform.hpp"
 
 namespace VoiceMailBox
 {
@@ -27,13 +27,13 @@ namespace VoiceMailBox
 	void Codec_TLV320AIC3104::reset()
 	{
 		m_nResetPin.set(false); // Set nReset pin low
-		delay(25); // Wait for 10ms
+		VMB_HAL_Delay(25); // Wait for 10ms
 		m_nResetPin.set(true); // Set nReset pin high
-		delay(25); // Wait for 10ms
+		VMB_HAL_Delay(25); // Wait for 10ms
 
 		// Software reset
 		writeRegister(REG::PAGE_0::SOFTWRE_RESET, 0x01); // Example register write for software reset
-		delay(10); // Wait for 10ms
+		VMB_HAL_Delay(10); // Wait for 10ms
 	}
 	void Codec_TLV320AIC3104::setup()
 	{
@@ -102,20 +102,20 @@ namespace VoiceMailBox
 	{
 		// Inside ISR context! 
 #ifdef VMB_ENABLE_CODEC_PERFORMANCE_MEASUREMENTS
-		m_DMA_halfTransferTick = getTickCount();
+		m_DMA_halfTransferTick = VMB_HAL_GetTickCountInMs();
 #endif
-#if  defined(VMB_DEVELOPMENT_ENABLE_DBG_PINS_IN_CODEC)
-		setDbgPin(DBG_PIN::DBG0, 1); // Set DBG0 on
+#if  defined(VMB_DEVELOPMENT_ENABLE_DBG_PINS_IN_CODEC) && defined(VMB_USE_INTERNAL_LEDS)
+		Platform::getDebugPin(DBG_PIN::DBG0).set(1); // Set DBG0 on
 #endif
 	}
 	void Codec_TLV320AIC3104::onI2S_DMA_TxRx_CpltCallback()
 	{
 		// Inside ISR context! 
 #ifdef VMB_ENABLE_CODEC_PERFORMANCE_MEASUREMENTS
-		m_DMA_halfProcessingTicks = getTickCount() - m_DMA_halfTransferTick;
+		m_DMA_halfProcessingTicks = VMB_HAL_GetTickCountInMs() - m_DMA_halfTransferTick;
 #endif
-#if defined(VMB_DEVELOPMENT_ENABLE_DBG_PINS_IN_CODEC)
-		setDbgPin(DBG_PIN::DBG0, 0); // Set DBG0 off
+#if defined(VMB_DEVELOPMENT_ENABLE_DBG_PINS_IN_CODEC) && defined(VMB_USE_INTERNAL_LEDS)
+		Platform::getDebugPin(DBG_PIN::DBG0).set(0); // Set DBG0 off
 #endif
 	}
 
@@ -123,13 +123,13 @@ namespace VoiceMailBox
 	void Codec_TLV320AIC3104::startDataProcessing()
 	{
 #ifdef VMB_ENABLE_CODEC_PERFORMANCE_MEASUREMENTS
-		m_startDataProcessingTick = getTickCount();
+		m_startDataProcessingTick = VMB_HAL_GetTickCountInMs();
 #endif
 	}
 	void Codec_TLV320AIC3104::endDataProcessing()
 	{
 #ifdef VMB_ENABLE_CODEC_PERFORMANCE_MEASUREMENTS
-		m_dataProcessingTicks = getTickCount() - m_startDataProcessingTick;
+		m_dataProcessingTicks = VMB_HAL_GetTickCountInMs() - m_startDataProcessingTick;
 #endif
 	}
 

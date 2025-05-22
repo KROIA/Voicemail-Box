@@ -12,6 +12,7 @@
 #include "peripherals/AudioCodec.hpp"
 #include "peripherals/DigitalPin.hpp"
 
+#include "Updatable.hpp"
 #include "WAVFile.hpp"
 #include "MP3File.hpp"
 
@@ -29,7 +30,11 @@ namespace VoiceMailBox
 	 *          This indicates the time it takes to convert the audio samples provided from the last DMA transfer.
 	 *          This time must always be less than the time it takes for the DMA to finish its half transfer.
 	 */
-	class AudioRecorder : public Logger
+	class AudioRecorder :
+#ifdef VMB_USE_LOGGER_OBJECTS
+		public Logger,
+#endif
+		public Updatable
 	{
 	public:
 		/**
@@ -52,25 +57,42 @@ namespace VoiceMailBox
 		 * @param filePath to the mp3 file. Example: "myAudio.mp3"
 		 * @return true if the recording was started successfully, false otherwise.
 		 */
-		virtual bool startRecording(const std::string& filePath);
+		virtual bool start(const std::string& filePath);
 
 		/**
 		 * @brief Stops the recording of the current audio file.
 		 * @return true if the recording was stopped successfully
 		 *         false if no recording was in progress
 		 */
-		virtual bool stopRecording();
+		virtual bool stop();
+
+		/**
+		 * @brief Pauses the playback of the current audio file.
+		 * @return true if the playback was paused successfully, false if no playback was active
+		 */
+		virtual bool pause();
+
+		/**
+		 * @brief Resumes a paused playback of the current audio file.
+		 * @return true if the playback was resumed successfully, false if no playback or pause was active
+		 */
+		virtual bool resume();
 
 		/**
 		 * @return true if recorder is currently recording, false otherwise.
 		 */
-		bool isRecording() { return m_isRecording; }
+		bool isRecording() { return m_isRecording && !m_isPaused; }
+
+		/**
+		 * @return true if a file is currently paused
+		 */
+		bool isPaused() { return m_isPaused; }
 
 		/**
 		 * @brief This function needs to be called in the main loop.
 		 *        It gathers the audio samples from the DMA buffer and saves it converted as mp3 to the specified file.
 		 */
-		virtual void update();
+		void update() override;
 
 	protected:
 		/**
@@ -83,6 +105,7 @@ namespace VoiceMailBox
 
 		AudioCodec& m_codec;	// AudioCodec
 		bool m_isRecording;
+		bool m_isPaused;
 
 		//WAVFile m_wavFile;	// WAV file object
 		MP3File m_file;	// MP3 file object

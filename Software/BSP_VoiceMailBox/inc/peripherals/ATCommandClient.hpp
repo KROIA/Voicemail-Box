@@ -16,7 +16,10 @@
 
 namespace VoiceMailBox
 {
-	class ATCommandClient : public Logger
+	class ATCommandClient 
+#ifdef VMB_USE_LOGGER_OBJECTS
+		: public Logger
+#endif
 	{
 	public:
 		ATCommandClient(VMB_UART_Handle* uartHandle, uint16_t uartBufferSize);
@@ -63,7 +66,7 @@ namespace VoiceMailBox
 		
 
 	private:
-		bool readFileDownloadResponse(std::string& response, uint32_t timeout);
+		bool readFileDownloadResponse(uint32_t timeout);
 
 		enum class DownloadState {
 			ExtractingHeaderData,

@@ -6,122 +6,96 @@
 
 #include "settings.h"
 
-#include "peripherals/DigitalPin.hpp"
-#include "peripherals/AnalogPin.hpp"
-#include "peripherals/uart.hpp"
-#include "peripherals/i2c.hpp"
-#include "peripherals/Codec_TLV320AIC3104.hpp"
-#include "peripherals/ATCommandClient.hpp"
+#include "platform.hpp"
 
 #include "utilities/File.hpp"
 #include "utilities/AudioRecorder.hpp"
 #include "utilities/AudioPlayer.hpp"
 
+#include <cstdarg>   // <-- required for va_list and related macros
+#include <cstdio>    // <-- required for vsnprintf
+
 namespace VoiceMailBox
 {
-	enum class LED
-	{
-		LED0,
-		LED1
-	};
 
-	enum class Button
-	{
-		BTN0,
-		BTN1,
-		BTN2,
-		BTN3
-	};
-
-	enum class Poti
-	{
-		POT0,
-		POT1
-	};
-
-#ifdef VMB_DEVELOPMENT_CONFIGURATION
-	enum class DBG_PIN
-	{
-		DBG0,
-		DBG1,
-		DBG2,
-	};
-#endif
     
 	/**
 	 *	@brief Setup the platform. 
 	 *	Call this function once at startup after the HAL has initialized the peripherals.
 	 */
-	void setup();
+	inline void setup() { Platform::setup(); }
 
-	void update();
+	/**
+	 * @brief Updates the updatable objects of the platform.
+	 */
+	inline void update() { Platform::update(); }
 
 	/**
 	 *	@brief Gets the led object for the given LED.
 	 *  @param led The LED to get.
 	 *	@return The led object.
 	 */
-	DigitalPin& getLed(LED led);
+	inline DigitalPin& getLed(LED led) { return Platform::getLed(led); }
 
 	/**
 	 * @brief Sets the state of the given LED.
 	 * @param led 
 	 * @param on 
 	 */
-	void setLed(LED led, bool on);
+	inline void setLed(LED led, bool on) { Platform::getLed(led).set(on); }
 
 	/**
 	 * @brief Toggles the state of the given LED.
 	 * @param led 
 	 */
-	void toggleLed(LED led);
+	inline void toggleLed(LED led) { Platform::getLed(led).toggle(); }
 
 	/**
 	 * @brief Gets the button object for the given button.
 	 * @param button The button to get. 
 	 * @return Digital pin instance for the button.
 	 */
-	DigitalPin& getButton(Button button);
+	inline DigitalPin& getButton(Button button) { return Platform::getButton(button); }
 
 	/**
 	 * @brief Reads the pin on which the given button is connected.
 	 * @param button to read the pin from
 	 * @return true if the button is pressed, false otherwise.
 	 */
-	bool getButtonState(Button button);
+	inline bool getButtonState(Button button) { return Platform::getButton(button).get(); }
 
 	/**
 	 * @brief Gets the ADC object for the given Poti.
 	 * @param poti 
 	 * @return ADC object for the given Poti.
 	 */
-	AnalogPin& getPoti(Poti poti);
+	inline AnalogPin& getPoti(Potentiometer poti) { return Platform::getPotentiometer(poti); }
 
 	/**
 	 * @brief Gets the current value of the given Poti.
 	 * @param poti to read the ADC value from
 	 * @return ADC value of the given Poti.
 	 */
-	uint32_t getPotiValue(Poti poti);
+	inline uint32_t getPotiValue(Potentiometer poti) { return Platform::getPotentiometer(poti).getValue(); }
 
 	/**
 	 * @brief Gets the maximum possible value of the given Poti.
 	 * @param poti 
 	 * @return the maximum ADC value possible of the given Poti.
 	 */
-	uint32_t getPotiMaxValue(Poti poti);
+	inline uint32_t getPotiMaxValue(Potentiometer poti) { return Platform::getPotentiometer(poti).getMaxValue(); }
 
 	/**
 	 * @brief Gets the ATCommandClient instance that represents the Pmod ESP Wifi/Bluetooth module.
 	 * @return Pmod ESP ATCommandClient instance.
 	 */
-	ATCommandClient& getPmodESP();
+	inline ATCommandClient& getPmodESP() { return Platform::getPmodESP(); }
 
 	/**
 	 * @brief Gets the Codec_TLV320AIC3104 instance that represents the audio codec.
 	 * @return Codec instance.
 	 */
-	Codec_TLV320AIC3104& getCodec();
+	inline Codec_TLV320AIC3104& getCodec() { return Platform::getCodec(); }
 
 
 #ifdef VMB_DEVELOPMENT_CONFIGURATION
@@ -130,20 +104,20 @@ namespace VoiceMailBox
 	 * @param pin The debug pin to get.
 	 * @return The digital pin instance for the given debug pin.
 	 */
-	DigitalPin& getDbgPin(DBG_PIN pin);
+	inline DigitalPin& getDbgPin(DBG_PIN pin) { return Platform::getDebugPin(pin); }
 
 	/**
 	 * @brief Sets the state of the given debug pin.
 	 * @param pin The debug pin to set.
 	 * @param on The state to set the debug pin to.
 	 */
-	void setDbgPin(DBG_PIN pin, bool on);
+	inline void setDbgPin(DBG_PIN pin, bool on) { Platform::getDebugPin(pin).set(on); }
 
 	/**
 	 * @brief Toggles the state of the given debug pin.
 	 * @param pin The debug pin to toggle.
 	 */
-	void toggleDbgPin(DBG_PIN pin);
+	inline void toggleDbgPin(DBG_PIN pin) { Platform::getDebugPin(pin).toggle(); }
 #endif
 
 	/**
@@ -153,7 +127,26 @@ namespace VoiceMailBox
 	 *
 	 * @note This function is variadic and uses the same format as printf.
 	 */
-	void print(const char* str, ...);
+	void print(const char* str, ...) 
+	{
+		va_list args;
+		va_start(args, str);
+		std::string buffer;
+		buffer.resize(Platform::getDebugUART().getBufferSize()); // Allocate a buffer of 256 bytes
+		int len = vsnprintf(&buffer[0], buffer.size(), str, args);
+		if (len < 0)
+		{
+			// Handle error
+			return;
+		}
+		if ((long)len >= (long)buffer.size())
+		{
+			// Handle buffer overflow
+			return;
+		}
+		Platform::getDebugUART().send((uint8_t*)buffer.data(), len); // Send the formatted string
+		va_end(args);
+	}
 
 	/**
 	 * @brief Print a string, with a newline at the end, to the debug UART,
@@ -163,30 +156,63 @@ namespace VoiceMailBox
 	 *
 	 * @note This function is variadic and uses the same format as printf.
 	 */
-	void println(const char* str, ...);
+	void println(const char* str, ...)
+	{
+		va_list args;
+		va_start(args, str);
+		std::string buffer;
+		buffer.resize(Platform::getDebugUART().getBufferSize()); // Allocate a buffer of 256 bytes
+		int len = vsnprintf(&buffer[0], buffer.size(), str, args);
+		if (len < 0)
+		{
+			// Handle error
+			return;
+		}
+		if ((long)len >= (long)buffer.size() - 2)
+		{
+			// Handle buffer overflow
+			return;
+		}
+		buffer[len++] = '\r'; // Add a newline character
+		buffer[len++] = '\n'; // Add a newline character
+		Platform::getDebugUART().send((uint8_t*)buffer.data(), len); // Send the formatted string
+		va_end(args);
+	}
 
 	/**
 	 * @brief waits until the given milli seconds have passed.
 	 * @param ms time to wait in milli seconds
 	 */
-	void delay(uint32_t ms);
+	inline void delay(uint32_t ms)
+	{
+		VMB_HAL_Delay(ms);
+	}
 
 	/**
 	 * @brief Gets the current cpu tick count.
 	 * @return current tick count.
 	 */
-	uint32_t getTickCount();
+	inline uint32_t getTickCount()
+	{
+		return VMB_HAL_GetTickCount();
+	}
 
 	/**
 	 * @brief Gets the current milli seconds since the tick counter was reset
 	 * @return current milliseconds since the tick counter was reset.
 	 */
-	uint32_t getTickCountInMs();
+	inline uint32_t getTickCountInMs()
+	{
+		return VMB_HAL_GetTickCountInMs();
+	}
 
 	/**
 	 * @brief Resets the tick count to 0.
 	 */
-	void resetTickCount();
+	inline void resetTickCount()
+	{
+		VMB_HAL_ResetTickCounter();
+	}
 }
 
 #endif
