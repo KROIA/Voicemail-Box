@@ -44,8 +44,10 @@ namespace VoiceMailBox
 		writeRegister(REG::PAGE_0::PLL_PROGRAMMING_A, 0x10); //Disable PLL, 2 = 4. MCLK = 256 * 48Khz, fs(ref) = MCLK / (128 * Q)
 
 
-		writeRegister(REG::PAGE_0::LEFT_ADC_PGA_GAIN_CONTROL,  0x00); //Un-mute left ADC PGA
-		writeRegister(REG::PAGE_0::RIGHT_ADC_PGA_GAIN_CONTROL, 0x00); //Un-mute right ADC PGA
+		float gainDB = 50.f;
+		uint32_t microphoneGainDB_2 = (uint32_t)(2.f * gainDB) & 0xEF;
+		writeRegister(REG::PAGE_0::LEFT_ADC_PGA_GAIN_CONTROL,  0x00 | microphoneGainDB_2); //Un-mute left ADC PGA
+		writeRegister(REG::PAGE_0::RIGHT_ADC_PGA_GAIN_CONTROL, 0x00 | microphoneGainDB_2); //Un-mute right ADC PGA
 		writeRegister(REG::PAGE_0::MIC2_L_R_TO_LEFT_ADC_CONTROL, 0x0F); //Connect MIC2L/LINE2L to left ADC PGA (@0db gain), do not connect MIC2R/LINE2R to left ADC PGA
 		writeRegister(REG::PAGE_0::MIC2_LINE2_TO_RIGHT_ADC_CONTROL, 0xF0); //Connect MIC2R/LINE2R to right ADC PGA (@0db gain), do not connect MIC2L/LINE2L to right ADC PGA
 		writeRegister(REG::PAGE_0::MIC1LP_LINE1LP_TO_LEFT_ADC_CONTROL, 0x7C); //Power up left ADC
