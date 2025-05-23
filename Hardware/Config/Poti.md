@@ -4,7 +4,6 @@
 
 Select on-board Potentiometer
 ```mermaid
-Header 
 block-beta
     block:group1
         columns 3
@@ -34,15 +33,25 @@ block-beta
 classDef highlighter fill:#8bc8e8,stroke:#6c757d,color:#000000,stroke-width:1.5px;
 class c highlighter
 ```
-s
-### Pinout:
-- peripheries needed:
-	- 2x Analog In
 
-- H755
-	- PB1 = Pot 0
-	- PC3 = Pot 1
+---
 
-- F469:
-	- PC4 = Pot 0
-	- PC3 = Pot 1
+# Pinout F469:
+
+### Analog
+| Function | Pin | Info |
+|----------|-----|------|
+| Potentiometer 0   | PC4 | Input |
+| Potentiometer 1   | PC3 | Input |
+
+---
+
+# Pinout H755
+
+### Analog
+| Function | Pin | Info |
+|----------|-----|------|
+| Potentiometer 0   | PB1 | Input |
+| Potentiometer 1   | PC3 | Input |
+
+---

@@ -112,17 +112,53 @@ packet-beta title MIC2 L/R TO LEFT ADC CONTROL - 0x11
     4-7: "Right Gain 0dB - -12dB - 0xFF = Mute"  
 ```
 
-## Pinout:
-- peripheries needed:
-	- 1x I2S full duplex
-	- 1x I2C
+---
 
-- H755
-	- 
-	- 
-	- 
+# Pinout F469:
 
-- F469:
-	- 
-	- 
-	- 
+### I2S 2
+| Function | Pin | Info |
+|----------|-----|------|
+| I2S_SDA  | PC1 | |
+| I2S_SDAe | PC2 | |
+| I2S_MCLK | PC6 | |
+| I2S_WCLK | PB12 | |
+| I2S_BCLK | PB13 | |
+
+### I2C
+| Function | Pin | Info |
+|----------|-----|------|
+| I2C_SDA  | PB8 | shared |
+| I2C_SCL  | PB9 | shared |
+
+### GPIOs
+| Function | Pin | Info |
+|----------|-----|------|
+| nReset   | PG13 | Output |
+
+---
+
+# Pinout H755:
+
+### I2S ?
+| Function | Pin | Info |
+|----------|-----|------|
+| I2S_SDA  | PB15 | |
+| I2S_SDAe | PB4 | |
+| I2S_MCLK | PC6 | |
+| I2S_WCLK | PC6 | |
+| I2S_BCLK | PB13 | Jumper SB8 on H755 needs to be placed |
+
+### I2C
+| Function | Pin | Info |
+|----------|-----|------|
+| I2C_SDA  | PB8 | shared |
+| I2C_SCL  | PB9 | shared |
+
+### GPIOs
+| Function | Pin | Info |
+|----------|-----|------|
+| nReset   | PG14 | Output |
+
+---
+
