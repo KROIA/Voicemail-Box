@@ -36,8 +36,8 @@ to use one or the other, select the correct BOM to solder and only solder the me
 - [Go to full BOM](BOM/BOM_full.csv)
 
 ## Select Microcontroller Board in use (get the correct Jumper settings)
-- [Configure Board for H755](H755/H755.md)
-- [Configure Board for F469](F469/F469.md)
+- [Configure Board for H755](Config/H755/H755.md)
+- [Configure Board for F469](Config/F469/F469.md)
 
 ## Configure periperal Conections (for those which offer this feature)
 Some devices can use different Connection Interfaces offereing different benefits.
