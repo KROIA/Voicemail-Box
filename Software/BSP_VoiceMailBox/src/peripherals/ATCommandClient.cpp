@@ -61,7 +61,14 @@ namespace VoiceMailBox
 
 
 		sendCommand("ATE0");
-		waitUntilAndFlush("OK\r\n", 5000); // Disable echo
+		if(waitUntilAndFlush("OK\r\n", 5000)) // Disable echo
+		{
+			VMB_LOGLN("Echo deactivated");
+		}
+		else
+		{
+			VMB_LOGLN("Can't deactivate echo");
+		}
 	}
 
 
@@ -137,18 +144,25 @@ namespace VoiceMailBox
 
 	bool ATCommandClient::connectToWifi(const std::string& ssid, const std::string& password)
 	{
+		sendCommand("AT+CWMODE=1");
+		if (!waitUntilAndFlush("OK\r\n", 5000)) // Set WiFi mode to station
+		{
+			VMB_LOGLN("Can't set ESP to station mode");
+			return false;
+		}
+
 		std::string command = "AT+CWJAP=\"" + ssid + "\",\"" + password + "\"";
 		sendCommand(command.c_str());
 		if (waitUntil("WIFI GOT IP\r\n", 10000))
 		{
 			// Successfully connected to WiFi
-			VMB_LOG("Connected to WiFi");
+			VMB_LOGLN("Connected to WiFi");
 			return true;
 		}
 		else
 		{
 			// Failed to connect to WiFi
-			VMB_LOG("Failed to connect to WiFi");
+			VMB_LOGLN("Failed to connect to WiFi");
 			return false;
 		}
 	}
