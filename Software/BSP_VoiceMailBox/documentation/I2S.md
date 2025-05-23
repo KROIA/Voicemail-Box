@@ -1,6 +1,6 @@
 # I2C
 This class is a simplfied interface to access the i2s peripheral.
-Only basic functions, which are used in the project, are implemented.
+All Basic functions used in the project are implemented here.
 The implementation does use a DMA in Full-Duplex mode.
 
 - [Features](#features)

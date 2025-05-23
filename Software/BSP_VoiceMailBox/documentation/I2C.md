@@ -1,7 +1,7 @@
 # I2C
-This class is a simplfied interface to access the i2c peripheral.
-Only basic functions, which are used in the project, are implemented.
-The implementation does not use DMA, it is designed to be blocking.
+This class is a simplfied interface for the i2c peripheral.
+All Basic functions used in the project are implemented here.
+The implementaion is designed to be blocking.
 
 - [Features](#features)
 - [Setup](#setup)
