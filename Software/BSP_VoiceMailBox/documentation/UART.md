@@ -1,8 +1,11 @@
 # UART
-This class is a simplfied interface to access the uart peripheral.
-Only basic functions, which are used in the project, are implemented.
-The implementation does not use DMA, but it uses a interrupt controlled circular buffer
+This class implements the interface for the uart peripheral.
+All Basic functions used in the project are implemented here.
+The data aquisition is made unsing a interupt-based ring-buffer.
+No DMA is used for this implementation.
 
+---
+## Content
 - [Features](#features)
 - [Setup](#setup)
 - [Usage](#usage)
@@ -11,7 +14,7 @@ The implementation does not use DMA, but it uses a interrupt controlled circular
 
 ---
 ## Features
-- Sending a byte array over uart
+- Sending byte array's over uart
 - Receiving byte array's from uart
 - Wait and waitAndRead functionality for given strings
 
@@ -27,7 +30,7 @@ The **UART** class needs access to that handle. Since the C++ code can't be used
 Make sure the C++ application is setup, you can find the instructions on how to do so [here](CppFromC.md).
 
 #### Modify main.h and main.c
-In the **main.h** create a get function that returns a pointer to the handle we want.
+In the **main.h** create a get function that returns a pointer to the handle we need.
 ``` C
 // main.h
 
@@ -62,7 +65,7 @@ UART_HandleTypeDef* getUART_handle()
 using namespace VoiceMailBox; 
 
 // Create a UART object and providing the handle from the main.c
-// Specify the circular buffer size to 1024 bytes.
+// Specify the ring-buffer size to 1024 bytes.
 UART uart(getUART_handle(), 1024);
 
 // Called periodically
