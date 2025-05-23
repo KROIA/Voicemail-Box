@@ -156,6 +156,23 @@ namespace VoiceMailBox
 	{
 		HAL_Delay(Delay);
 	}
+
+	inline uint64_t VMB_HAL_UpdateTick(uint64_t setTickMask = -1)
+	{
+		static uint32_t DWT_LastCYCCNT = 0;
+		static uint64_t DWT_Tick = 0;
+	    uint32_t curr = DWT->CYCCNT;
+	    uint32_t last = DWT_LastCYCCNT;
+
+	    // Handle wraparound
+	    uint32_t delta = (curr - last);
+
+	    DWT_Tick += ((uint64_t)delta) ;
+	    DWT_Tick &= setTickMask;
+
+	    DWT_LastCYCCNT = curr;
+	    return DWT_Tick / ((uint64_t)SystemCoreClock / 1000000L);
+	}
 	inline void VMB_HAL_InitTickCounter()
 	{
 		// Setup Tick counter
@@ -165,18 +182,25 @@ namespace VoiceMailBox
 		DWT->CTRL |= DWT_CTRL_CYCCNTENA_Msk;
 		// Optional: Reset the counter to 0
 		DWT->CYCCNT = 0;
+		VMB_HAL_UpdateTick(0);
 	}
 	inline uint32_t VMB_HAL_GetTickCount()
 	{
 		return DWT->CYCCNT;
 	}
-	inline uint32_t VMB_HAL_GetTickCountInMs()
+	inline uint64_t VMB_HAL_GetTickCountInUs()
 	{
-		return DWT->CYCCNT / (SystemCoreClock / 1000);
+		return VMB_HAL_UpdateTick();
+	}
+	inline uint64_t VMB_HAL_GetTickCountInMs()
+	{
+		return VMB_HAL_UpdateTick() / 1000;
 	}
 	inline void VMB_HAL_ResetTickCounter()
 	{
 		DWT->CYCCNT = 0;
+		VMB_HAL_UpdateTick(0);
 	}
+
 }
 #endif

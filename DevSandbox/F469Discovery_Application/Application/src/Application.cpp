@@ -11,11 +11,11 @@
 #include <cstring>
 
  // WiFi Settings
-const std::string WIFI_SSID = "Alex-PC";
-const std::string WIFI_PASSWORD = "87924ikR";
+const std::string WIFI_SSID = "Schmarotzer WLAN";
+const std::string WIFI_PASSWORD = "ScheissZahlekombination";
 
 // Server Settings
-const std::string serverIP = "192.168.137.1";
+const std::string serverIP = "192.168.86.110";
 const uint16_t serverPort = 8000;
 const std::string uploadURL = "devicesbackend/upload/";
 const std::string downloadURL = "media/";
@@ -109,5 +109,24 @@ void setup()
 
 void loop()
 {
+	using namespace VoiceMailBox;
 	VoiceMailBox::update();
+
+	static uint32_t time = getTickCountInMs();
+	static float lastMicrophoneGainDB = 0;
+	uint32_t currentMs = getTickCountInMs();
+	if (time + 1000 < currentMs)
+	{
+		time = getTickCountInMs();
+		auto& codec = getCodec();
+		float gainDB = 59.5f - getPotentiometer(Potentiometer::POT1).getValue() * 59.5f / getPotentiometer(Potentiometer::POT1).getMaxValue();
+		if(std::abs(gainDB - lastMicrophoneGainDB) > 0.25f)
+		{
+			lastMicrophoneGainDB = gainDB;
+			codec.setMicrophoneGainDB(gainDB);
+			println("Set microphone gain to %.2f dB", gainDB);
+		}
+		println("Time: %.3f", getTickCountInMs() / 1000.0f);
+	}
+
 }

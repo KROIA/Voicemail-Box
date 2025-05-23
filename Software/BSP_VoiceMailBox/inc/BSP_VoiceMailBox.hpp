@@ -66,10 +66,10 @@ namespace VoiceMailBox
 
 	/**
 	 * @brief Gets the ADC object for the given Poti.
-	 * @param poti 
+	 * @param poti index
 	 * @return ADC object for the given Poti.
 	 */
-	inline AnalogPin& getPoti(Potentiometer poti) { return Platform::getPotentiometer(poti); }
+	inline AnalogPin& getPotentiometer(Potentiometer poti) { return Platform::getPotentiometer(poti); }
 
 	/**
 	 * @brief Gets the current value of the given Poti.
@@ -197,11 +197,17 @@ namespace VoiceMailBox
 		return VMB_HAL_GetTickCount();
 	}
 
+
+	inline uint64_t getTickCountInUs()
+	{
+		return VMB_HAL_GetTickCountInUs();
+	}
+
 	/**
 	 * @brief Gets the current milli seconds since the tick counter was reset
 	 * @return current milliseconds since the tick counter was reset.
 	 */
-	inline uint32_t getTickCountInMs()
+	inline uint64_t getTickCountInMs()
 	{
 		return VMB_HAL_GetTickCountInMs();
 	}

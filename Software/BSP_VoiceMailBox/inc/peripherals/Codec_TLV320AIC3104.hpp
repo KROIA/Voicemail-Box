@@ -311,6 +311,12 @@ namespace VoiceMailBox
 #endif
 		}
 
+		/**
+		 * @brief Sets the input gain of the microphone for Left and Right
+		 * @param db in a range from 0dB to 59.5dB in 0.5dB steps
+		 */
+		void setMicrophoneGainDB(float db);
+
 	private:
 
 		/**

@@ -44,7 +44,7 @@ namespace VoiceMailBox
 		writeRegister(REG::PAGE_0::PLL_PROGRAMMING_A, 0x10); //Disable PLL, 2 = 4. MCLK = 256 * 48Khz, fs(ref) = MCLK / (128 * Q)
 
 
-		float gainDB = 50.f;
+		float gainDB = 0;
 		uint32_t microphoneGainDB_2 = (uint32_t)(2.f * gainDB) & 0xEF;
 		writeRegister(REG::PAGE_0::LEFT_ADC_PGA_GAIN_CONTROL,  0x00 | microphoneGainDB_2); //Un-mute left ADC PGA
 		writeRegister(REG::PAGE_0::RIGHT_ADC_PGA_GAIN_CONTROL, 0x00 | microphoneGainDB_2); //Un-mute right ADC PGA
@@ -135,6 +135,22 @@ namespace VoiceMailBox
 #endif
 	}
 
+	void Codec_TLV320AIC3104::setMicrophoneGainDB(float db)
+	{
+		uint8_t leftGainReg = readRegister(REG::PAGE_0::LEFT_ADC_PGA_GAIN_CONTROL);
+		uint8_t rightGainReg = readRegister(REG::PAGE_0::RIGHT_ADC_PGA_GAIN_CONTROL);
+
+		if(db < 0)
+			db = 0;
+		else if (db > 59.5)
+			db = 59.5;
+		uint32_t microphoneGainDB_2 = (uint32_t)(2.f * db) & 0xEF;
+		leftGainReg  = (leftGainReg & 0x01)  | microphoneGainDB_2;
+		rightGainReg = (rightGainReg & 0x01) | microphoneGainDB_2;
+
+		writeRegister(REG::PAGE_0::LEFT_ADC_PGA_GAIN_CONTROL, leftGainReg); //Un-mute left ADC PGA
+		writeRegister(REG::PAGE_0::RIGHT_ADC_PGA_GAIN_CONTROL, rightGainReg); //Un-mute right ADC PGA
+	}
 
 	void Codec_TLV320AIC3104::writeRegister(uint8_t registerAddress, uint8_t data)
 	{

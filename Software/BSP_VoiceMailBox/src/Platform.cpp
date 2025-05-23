@@ -154,6 +154,15 @@ namespace VoiceMailBox
 	void Platform::update()
 	{
 		Updatable::updateInstances();
+
+		// Update systick counters
+		static uint32_t lastTick = 0;
+		uint32_t currentTick = VMB_HAL_GetTickCount();
+		if (lastTick > currentTick) // Overflown
+		{
+			VMB_HAL_UpdateTick();
+		}
+		
 	}
 }
 
