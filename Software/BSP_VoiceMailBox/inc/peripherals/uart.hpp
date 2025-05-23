@@ -95,8 +95,18 @@ namespace VoiceMailBox
 		 * @brief Resets the Circular buffer counters and clears the RX and TX buffers.
 		 */
 		void flush();
+
+		/**
+		 * @brief Clears the RX buffer
+		 */
 		void flushRX();
 
+		/**
+		 * @brief Erases n bytes from the RX buffer
+		 * @param nBytes amount of bytes to be flushed
+		 * @return amount of bytes flushed (can be less than nBytes, 
+		 *         because the buffer may not contain as many bytes as nBytes.
+		 */
 		uint32_t flushNBytes(uint32_t nBytes);
 
 		/**

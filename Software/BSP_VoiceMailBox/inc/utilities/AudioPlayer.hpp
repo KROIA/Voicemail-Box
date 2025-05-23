@@ -12,6 +12,7 @@
 #include "peripherals/AudioCodec.hpp"
 #include "peripherals/DigitalPin.hpp"
 
+#include "Updatable.hpp"
 #include "WAVFile.hpp"
 #include "MP3File.hpp"
 
@@ -29,7 +30,11 @@ namespace VoiceMailBox
 	 *          This indicates the time it takes to convert the audio samples needed for the next DMA transfer.
 	 *          This time must always be less than the time it takes for the DMA to finish its half transfer.
 	 */
-	class AudioPlayer : public Logger
+	class AudioPlayer : 
+#ifdef VMB_USE_LOGGER_OBJECTS
+		public Logger, 
+#endif
+		public Updatable
 	{
 	public:
 		/**
@@ -45,7 +50,6 @@ namespace VoiceMailBox
 		 */
 		AudioPlayer(AudioCodec& codec, DigitalPin& playingLed);
 
-
 		virtual ~AudioPlayer();
 
 		/**
@@ -53,26 +57,50 @@ namespace VoiceMailBox
 		 * @param filePath to the mp3 file. Example: "myAudio.mp3"
 		 * @return true if the playback was started successfully, false otherwise.
 		 */
-		virtual bool startPlayback(const std::string &filePath);
+		virtual bool start(const std::string &filePath);
+
+		/**
+		 * @brief Starts the playback from a given mp3 file for a given number of repetitions.
+		 * @param filePath to the mp3 file. Example: "myAudio.mp3"
+		 * @param repetitions amount how many times the file should be played. Value must be greater than 0.
+		 * @return true if the playback was started successfully, false otherwise.
+		 */
+		virtual bool start(const std::string &filePath, uint32_t repetitions);
 
 		/**
 		 * @brief Stops the playback of the current audio file.
 		 * @return true if the playback was stopped successfully
 		 *         false if no playback was active
 		 */
-		virtual bool stopPlayback();
+		virtual bool stop();
+
+		/**
+		 * @brief Pauses the playback of the current audio file.
+		 * @return true if the playback was paused successfully, false if no playback was active
+		 */
+		virtual bool pause();
+
+		/**
+		 * @brief Resumes a paused playback of the current audio file.
+		 * @return true if the playback was resumed successfully, false if no playback or pause was active
+		 */
+		virtual bool resume();
 
 		/**
 		 * @return true if a file is currently playing 
 		 */
-		bool isPlaying() { return m_isPlaying; }
+		bool isPlaying() { return m_isPlaying && !m_isPaused; }
 
+		/**
+		 * @return true if a file is currently paused
+		 */
+		bool isPaused() { return m_isPaused; }
 
 		/**
 		 * @brief This function needs to be called in the main loop.
 		 *        It provides the audio codec with new audio samples when the codecs DMA is ready for new data.
 		 */
-		virtual void update();
+		void update() override;
 
 	protected:
 		/**
@@ -86,6 +114,8 @@ namespace VoiceMailBox
 
 		AudioCodec& m_codec;	// AudioCodec
 		bool m_isPlaying; 
+		bool m_isPaused;
+		uint32_t m_loopCount;
 		bool m_firstPlayingUpdate = false; 
 
 		//WAVFile m_wavFile;	// WAV file object

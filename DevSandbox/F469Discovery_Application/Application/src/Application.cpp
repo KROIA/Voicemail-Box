@@ -57,27 +57,37 @@ void setup()
 	// BTN3: Download
 	getButton(Button::BTN0).setOnFallingEdgeCallback([](DigitalPin&) {
 			if (player->isPlaying())
-				player->stopPlayback();
+				player->stop();
 			if (recorder->isRecording())
-				recorder->stopRecording();
+				recorder->stop();
 			else
-				recorder->startRecording(fileName);
+				recorder->start(fileName);
+
+			//if (player->isPlaying())
+			//	player->pause();
+			//else if (player->isPaused())
+			//	player->resume();
 		});
 
 	getButton(Button::BTN1).setOnFallingEdgeCallback([](DigitalPin&) {
 			if (recorder->isRecording())
-				recorder->stopRecording();
+				recorder->stop();
 			if (player->isPlaying())
-				player->stopPlayback();
+				player->stop();
 			else
-				player->startPlayback(fileName);
+				player->start(fileName, 1);
 		});
 
 	getButton(Button::BTN2).setOnFallingEdgeCallback([&pmodESP](DigitalPin&) {
+			//if (recorder->isRecording())
+			//	recorder->pause();
+			//else if(recorder->isPaused())
+			//	recorder->resume();
+
 			if (player->isPlaying())
-				player->stopPlayback();
+				player->stop();
 			if (recorder->isRecording())
-				recorder->stopRecording();
+				recorder->stop();
 			if (pmodESP.sendFileToServer(fileName, uploadURL, serverIP, serverPort))
 				println("File sent successfully");
 			else
@@ -86,9 +96,9 @@ void setup()
 
 	getButton(Button::BTN3).setOnFallingEdgeCallback([&pmodESP](DigitalPin&) {
 			if (player->isPlaying())
-				player->stopPlayback();
+				player->stop();
 			if (recorder->isRecording())
-				recorder->stopRecording();
+				recorder->stop();
 			if (pmodESP.downloadFileFromServer(fileName, downloadURL + fileName, serverIP, serverPort))
 				println("File downloaded successfully");
 			else
@@ -100,7 +110,4 @@ void setup()
 void loop()
 {
 	VoiceMailBox::update();
-
-	recorder->update();
-	player->update();
 }

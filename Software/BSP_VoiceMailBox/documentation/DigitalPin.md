@@ -101,6 +101,9 @@ void callbackWhenBtnDown(VoiceMailBox::DigitalPin& btn);
 // Called once on startup after peripheral initialisation
 void setup()
 {
+    // Setup the platform
+    VoiceMailBox::setup();
+
     // Subscribing using a lambda function as callback
     button1.setOnFallingEdgeCallback([](DigitalPin&)    
         {
@@ -126,6 +129,11 @@ void loop()
     // Needs to be called periodically
     // This function checks the pin state change and triggers the callback functions
     button1.update();
+
+    // The button1.update() already gets called from within this function:
+    VoiceMailBox::update();
+    // Therefore, if you put the VoiceMailBox::update(); in the loop, 
+    // updating buttons must not be done manually.
 }
 
 // Gets called by the DigitalPin class automatically in its update function.

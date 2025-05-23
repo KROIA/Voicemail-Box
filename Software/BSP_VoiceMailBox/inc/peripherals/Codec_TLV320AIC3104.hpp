@@ -160,7 +160,16 @@ namespace VoiceMailBox
 		void reset();
 		void setup();
 
+		/**
+		 * @brief Start the DMA for i2s
+		 * @return true if start was successful, otherwise false
+		 */
 		bool startDMA() override { return m_i2s.startDMA();	}
+
+		/**
+		 * @brief Stop the DMA for i2s
+		 * @return true if stop was successful, otherwise false
+		 */
 		bool stopDMA() override { return m_i2s.stopDMA(); }
 
 		/**
@@ -172,7 +181,7 @@ namespace VoiceMailBox
 		 * @brief Checks the data ready flag and clears it if it was set.
 		 * @return true if a new batch of audio samples is ready to be processed.
 		 */
-		bool isDataReadyAndClear() override { return m_i2s.isDataReadyAndClear(); }
+		bool isDataReadyAndClearFlag() override { return m_i2s.isDataReadyAndClearFlag(); }
 
 		/**
 		 * @brief Clears the data ready flag.
@@ -197,14 +206,26 @@ namespace VoiceMailBox
 		 */
 		uint32_t getBufferSize() const override { return m_i2s.getBufferSize(); }
 
+		/**
+		 * @brief Gets the sample rate of the audio codec
+		 * @return samplerate [Hz]
+		 */
 		uint32_t getSampleRate() const override {
 			return 48000; // The codec is always configured to 48kHz
 		}
 
+		/**
+		 * @brief Gets the sample resolution
+		 * @return amount of bits per sample
+		 */
 		uint16_t getBitsPerSample() const override {
 			return 16; // The codec is always configured to 16 bit
 		}
 
+		/**
+		 * @brief Gets the amount of channels
+		 * @return 1 for mono and 2 for stereo
+		 */
 		uint16_t getNumChannels() const override {
 			return 2; // The codec is always configured to 2 channels
 		}

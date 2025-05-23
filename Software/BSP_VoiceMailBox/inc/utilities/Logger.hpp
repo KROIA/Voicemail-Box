@@ -10,8 +10,24 @@
 #include <string>
 #include "settings.h"
 
+// Use these log macros inside a Logger derived class
+// By using these macros, the logger can be disabled completly from the build
+#ifdef VMB_USE_LOGGER_OBJECTS
+	#define VMB_LOG(x, ...) Logger::log(x, ##__VA_ARGS__)
+	#define VMB_LOGLN(x, ...) Logger::logln(x, ##__VA_ARGS__)
+	#define VMB_LOGGER_ENABLE Logger::enableLogging(true)
+	#define VMB_LOGGER_DISABLE Logger::enableLogging(false)
+
+#else
+	#define VMB_LOG(x, ...) 
+	#define VMB_LOGLN(x, ...) 
+	#define VMB_LOGGER_ENABLE
+	#define VMB_LOGGER_DISABLE
+#endif
+
 namespace VoiceMailBox
 {
+#ifdef VMB_USE_LOGGER_OBJECTS
 	class Logger
 	{
 	public:
@@ -32,5 +48,6 @@ namespace VoiceMailBox
 		std::string m_context;
 		bool m_enabled;
 	};
+#endif
 }
 #endif

@@ -4,8 +4,12 @@
 namespace VoiceMailBox
 {
 	WAVFile::WAVFile()
+#ifdef VMB_USE_LOGGER_OBJECTS
 		: Logger("WAVFile")
 		, m_file()
+#else
+		: m_file()
+#endif
 		, m_sampleCounter(0)
 		, m_sampleRate(16000)
 		, m_numChannels(1)
@@ -30,13 +34,13 @@ namespace VoiceMailBox
 			{
 				if (!readHeader())
 				{
-					logln("Failed to read WAV header from file: " + m_file.getPath());
+					VMB_LOGLN("Failed to read WAV header from file: " + m_file.getPath());
 					return false;
 				}
 			}
 			else
 			{
-				logln("Unknown file access mode: " + std::to_string((int)mode));
+				VMB_LOGLN("Unknown file access mode: " + std::to_string((int)mode));
 				return false;
 			}
 			return true;
@@ -57,7 +61,7 @@ namespace VoiceMailBox
 
 		}
 		else
-			logln("Failed to close file, file is not open: " + m_file.getPath());
+			VMB_LOGLN("Failed to close file, file is not open: " + m_file.getPath());
 		return m_file.close();
 	}
 
@@ -65,12 +69,12 @@ namespace VoiceMailBox
 	{
 		if (!m_file.isOpen())
 		{
-			logln("Failed to write audio samples, file is not open: " + m_file.getPath());
+			VMB_LOGLN("Failed to write audio samples, file is not open: " + m_file.getPath());
 			return 0;
 		}
 		if (m_file.getAccessMode() != File::AccessMode::write)
 		{
-			logln("Failed to write audio samples, file is not opened in write mode: " + m_file.getPath());
+			VMB_LOGLN("Failed to write audio samples, file is not opened in write mode: " + m_file.getPath());
 			return 0;
 		}
 		uint32_t written = m_file.write((uint8_t*)data, size * sizeof(int16_t));
@@ -81,17 +85,17 @@ namespace VoiceMailBox
 	{
 		if (!m_file.isOpen())
 		{
-			logln("Failed to write audio samples, file is not open: " + m_file.getPath());
+			VMB_LOGLN("Failed to write audio samples, file is not open: " + m_file.getPath());
 			return 0;
 		}
 		if (m_file.getAccessMode() != File::AccessMode::read)
 		{
-			logln("Failed to read audio samples, file is not opened in read mode: " + m_file.getPath());
+			VMB_LOGLN("Failed to read audio samples, file is not opened in read mode: " + m_file.getPath());
 			return 0;
 		}
 		if(m_sampleCounter == 0)
 		{
-			logln("No more audio samples to read");
+			VMB_LOGLN("No more audio samples to read");
 			return 0;
 		}
 		uint32_t read = m_file.read((uint8_t*)data, size * sizeof(int16_t));
@@ -112,7 +116,7 @@ namespace VoiceMailBox
 	{
 		if (m_file.getAccessMode() != File::AccessMode::write)
 		{
-			logln("Failed to write file header, file is not opened in write mode: " + m_file.getPath());
+			VMB_LOGLN("Failed to write file header, file is not opened in write mode: " + m_file.getPath());
 			return false;
 		}
 		uint32_t byte_rate = m_sampleRate * m_numChannels * (m_bitsPerSample / 8);
@@ -163,7 +167,7 @@ namespace VoiceMailBox
 		header[43] = (uint8_t)((data_chunk_size >> 24) & 0xFF);
 		if (m_file.write(header, sizeof(header)) != sizeof(header))
 		{
-			logln("Failed to write WAV header to file: " + m_file.getPath());
+			VMB_LOGLN("Failed to write WAV header to file: " + m_file.getPath());
 			return false;
 		}
 		return true;
@@ -172,18 +176,18 @@ namespace VoiceMailBox
 	{
 		if (m_file.getAccessMode() != File::AccessMode::read)
 		{
-			logln("Failed to read file header, file is not opened in read mode: " + m_file.getPath());
+			VMB_LOGLN("Failed to read file header, file is not opened in read mode: " + m_file.getPath());
 			return false;
 		}
 		uint8_t header[44];
 		if (m_file.read(header, sizeof(header)) != sizeof(header))
 		{
-			logln("Failed to read WAV header from file: " + m_file.getPath());
+			VMB_LOGLN("Failed to read WAV header from file: " + m_file.getPath());
 			return false;
 		}
 		if (memcmp(header, "RIFF", 4) != 0)
 		{
-			logln("Invalid WAV file: " + m_file.getPath());
+			VMB_LOGLN("Invalid WAV file: " + m_file.getPath());
 			return false;
 		}
 		uint32_t riff_chunk_size = 
@@ -194,7 +198,7 @@ namespace VoiceMailBox
 
 		if (memcmp(header + 8, "WAVEfmt ", 8) != 0)
 		{
-			logln("Invalid WAV file format: " + m_file.getPath());
+			VMB_LOGLN("Invalid WAV file format: " + m_file.getPath());
 			return false;
 		}
 
@@ -202,7 +206,7 @@ namespace VoiceMailBox
 
 		if (audio_format != 1)
 		{
-			logln("Unsupported audio format: " + std::to_string(audio_format));
+			VMB_LOGLN("Unsupported audio format: " + std::to_string(audio_format));
 			return false;
 		}
 
@@ -216,11 +220,11 @@ namespace VoiceMailBox
 			(((uint32_t)header[26]) << 16) |
 			(((uint32_t)header[27]) << 24);
 
-		uint32_t byte_rate =
-			  (uint32_t)header[28] |
-			(((uint32_t)header[29]) << 8) |
-			(((uint32_t)header[30]) << 16) |
-			(((uint32_t)header[31]) << 24);
+		//uint32_t byte_rate =
+		//	  (uint32_t)header[28] |
+		//	(((uint32_t)header[29]) << 8) |
+		//	(((uint32_t)header[30]) << 16) |
+		//	(((uint32_t)header[31]) << 24);
 
 		uint16_t block_align =
 			  (uint32_t)header[32] |
@@ -232,7 +236,7 @@ namespace VoiceMailBox
 
 		if (memcmp(header + 36, "data", 4) != 0)
 		{
-			logln("Invalid WAV data chunk: " + m_file.getPath());
+			VMB_LOGLN("Invalid WAV data chunk: " + m_file.getPath());
 			return false;
 		}
 		uint32_t data_chunk_size =
@@ -243,18 +247,18 @@ namespace VoiceMailBox
 
 		if (data_chunk_size != (riff_chunk_size - 36))
 		{
-			logln("Invalid WAV data chunk size: " + std::to_string(data_chunk_size));
+			VMB_LOGLN("Invalid WAV data chunk size: " + std::to_string(data_chunk_size));
 			return false;
 		}
 		if (m_numChannels != 1 && m_numChannels != 2)
 		{
-			logln("Unsupported number of channels: " + std::to_string(m_numChannels));
+			VMB_LOGLN("Unsupported number of channels: " + std::to_string(m_numChannels));
 			return false;
 		}
 
 		if (m_bitsPerSample != 8 && m_bitsPerSample != 16)
 		{
-			logln("Unsupported bits per sample: " + std::to_string(m_bitsPerSample));
+			VMB_LOGLN("Unsupported bits per sample: " + std::to_string(m_bitsPerSample));
 			return false;
 		}
 
@@ -263,7 +267,7 @@ namespace VoiceMailBox
 			m_sampleRate != 44100 &&
 			m_sampleRate != 48000)
 		{
-			logln("Unsupported sample rate: " + std::to_string(m_sampleRate));
+			VMB_LOGLN("Unsupported sample rate: " + std::to_string(m_sampleRate));
 			return false;
 		}
 

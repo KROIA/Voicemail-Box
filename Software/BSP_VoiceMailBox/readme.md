@@ -19,7 +19,7 @@ The Application must include only the **BSP_VoiceMailBox.h** header file, it alr
 <tr>
 <td>
 <div align="center">
-    <img src="documentation/images/SoftwareStructureOverview.png" width="500"> 
+    <img src="documentation/images/SoftwareStructureOverview.png" width="800"> 
 </div>
 </td>
 

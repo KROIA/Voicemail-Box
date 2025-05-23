@@ -53,7 +53,7 @@ I2C_HandleTypeDef* getI2C_handle()
 #### Inside the C++ Application
 ``` C++ 
 // Application.cpp
-#include "BSP_VoiceMailBox.hpp" // includes "peripherals/DigitalPin.hpp"
+#include "BSP_VoiceMailBox.hpp" // includes "peripherals/i2c.hpp"
 #include "main.h" // Is needed to access the handle get function
 
 // using a namespace globaly is not recommended for production

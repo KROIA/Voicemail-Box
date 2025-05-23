@@ -27,7 +27,7 @@ namespace VoiceMailBox
 	}
 
 
-	uint32_t MP3_encoder::encode(int8_t*& outputBuffer, int16_t* inputBuffer)
+	uint32_t MP3_encoder::encode(int8_t*& outputBuffer, const int16_t* inputBuffer)
 	{
 		/* Encode PCM data and get the MP3_encoder frame */
 		m_encodedFrameData[m_encodedFrameIndexSwitch].frameData =

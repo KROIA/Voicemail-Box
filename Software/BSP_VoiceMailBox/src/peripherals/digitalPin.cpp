@@ -3,26 +3,28 @@
 namespace VoiceMailBox
 {
 	DigitalPin::DigitalPin(VMB_GPIO* gpio, uint16_t pin)
-		: m_gpio(gpio)
+		: Updatable()
+		, m_gpio(gpio)
 		, m_pin(pin)
-		, m_onFallingEdge(nullptr)
-		, m_onRisingEdge(nullptr)
-		, m_onDown(nullptr)
 		, m_logicLevel(1)
 		, m_lastState(0)
-	{
-		
-	}
-	DigitalPin::DigitalPin(VMB_GPIO* gpio, uint16_t pin, bool isInverted)
-		: m_gpio(gpio)
-		, m_pin(pin)
 		, m_onFallingEdge(nullptr)
 		, m_onRisingEdge(nullptr)
 		, m_onDown(nullptr)
+	{
+		set(0);
+	}
+	DigitalPin::DigitalPin(VMB_GPIO* gpio, uint16_t pin, bool isInverted)
+		: Updatable()
+		, m_gpio(gpio)
+		, m_pin(pin)
 		, m_logicLevel(!isInverted)
 		, m_lastState(0)
+		, m_onFallingEdge(nullptr)
+		, m_onRisingEdge(nullptr)
+		, m_onDown(nullptr)
 	{
-
+		set(0);
 	}
 	void DigitalPin::set(bool on)
 	{

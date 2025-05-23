@@ -1,20 +1,27 @@
 #include "utilities/AudioRecorder.hpp"
-#include "BSP_VoiceMailBox.hpp"
 
 
 namespace VoiceMailBox
 {
 	AudioRecorder::AudioRecorder(AudioCodec& codec)
+#ifdef VMB_USE_LOGGER_OBJECTS
 		: Logger("AudioRecorder")
 		, m_codec(codec)
+#else
+		: m_codec(codec)
+#endif
 		, m_isRecording(false)
 		, m_file(codec.getSampleRate(), 48, codec.getNumChannels())
 		, m_recordingLed(nullptr)
 	{
 	}
 	AudioRecorder::AudioRecorder(AudioCodec& codec, DigitalPin& recordingLed)
+#ifdef VMB_USE_LOGGER_OBJECTS
 		: Logger("AudioRecorder")
 		, m_codec(codec)
+#else
+		: m_codec(codec)
+#endif
 		, m_isRecording(false)
 		, m_file(codec.getSampleRate(), 48, codec.getNumChannels())
 		, m_recordingLed(&recordingLed)
@@ -26,46 +33,83 @@ namespace VoiceMailBox
 	{
 		if (isRecording())
 		{
-			stopRecording();
+			stop();
 		}
 	}
 
-	bool AudioRecorder::startRecording(const std::string& filePath)
+	bool AudioRecorder::start(const std::string& filePath)
 	{
 		if (m_isRecording)
 		{
-			logln("Already recording");
+			VMB_LOGLN("Already recording");
 			return false;
 		}
 
 		if (m_file.open(filePath, File::AccessMode::write))
 		{
-			logln("Recording started");
+			VMB_LOGLN("Recording started");
 			m_isRecording = true;
+			m_isPaused = false;
 			m_codec.clearDataReadyFlag();
 			return true;
 		}
-		logln("Failed to open file for recording");
+		VMB_LOGLN("Failed to open file for recording");
 		return false;
 	}
-	bool AudioRecorder::stopRecording()
+	bool AudioRecorder::stop()
 	{
 		if (!m_isRecording)
 		{
-			logln("Not recording");
+			VMB_LOGLN("Not recording");
 			return false;
 		}
 		m_isRecording = false;
+		m_isPaused = false;
 		m_file.close();
-		logln("Recording stopped");
+		VMB_LOGLN("Recording stopped");
 		return true;
+	}
+
+	bool AudioRecorder::pause()
+	{
+		if (m_isRecording && !m_isPaused)
+		{
+			m_isPaused = true;
+			m_codec.clearTxBuf();
+			VMB_LOGLN("Recording paused");
+			return true;
+		}
+		if (!m_isRecording)
+		{
+			VMB_LOGLN("Not Recording");
+			return false;
+		}
+		VMB_LOGLN("Already Paused");
+		return false;
+	}
+
+	bool AudioRecorder::resume()
+	{
+		if (m_isRecording && m_isPaused)
+		{
+			m_isPaused = false;
+			VMB_LOGLN("Recording resumed");
+			return true;
+		}
+		if (!m_isRecording)
+		{
+			VMB_LOGLN("Not Recording");
+			return false;
+		}
+		VMB_LOGLN("Already Playing");
+		return false;
 	}
 
 	void AudioRecorder::update()
 	{
-		if (!m_isRecording)
+		if (!m_isRecording || m_isPaused)
 			return;
-		if (m_codec.isDataReadyAndClear())
+		if (m_codec.isDataReadyAndClearFlag())
 			processAudioSamples(m_codec.getRxBufPtr(), m_codec.getBufferSize());
 	}
 
@@ -77,7 +121,7 @@ namespace VoiceMailBox
 		// readAudioSamples requires the amount of samples, each sample consists of 2 * 16 bit samples (left and right channel)
 		uint32_t bytesWritten = m_file.writeAudioSamples((int16_t*)dmaRxBuff, size / 2);
 
-		logln("Saved " + std::to_string(bytesWritten) + " bytes to mp3");
+		VMB_LOGLN("Saved " + std::to_string(bytesWritten) + " bytes to mp3");
 		if (m_recordingLed)
 			m_recordingLed->set(0);
 	}

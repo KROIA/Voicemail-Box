@@ -1,7 +1,6 @@
 #include "peripherals/uart.hpp"
 #include <string>
 #include <cstring>
-#include "BSP_VoiceMailBox.hpp"
 
 
 namespace VoiceMailBox
@@ -79,23 +78,16 @@ namespace VoiceMailBox
 		{
 			return;
 		}
-		//memcpy(tx_buffer, data, size);
-		//VMB_HAL_UART_Transmit(static_cast<VMB_UART_Handle*>(m_uart), tx_buffer, size, 100);
-		//VMB_HAL_UART_Transmit_IT(static_cast<VMB_UART_Handle*>(m_uart), tx_buffer, size);
 		for (uint32_t i = 0; i < size; i++)
 		{
 			tx_buffer[tx_write_index] = data[i];
 			tx_write_index = (tx_write_index + 1) % m_bufferSize;
-			//if(tx_read_index == tx_write_index)
-			//	tx_read_index = (tx_read_index + 1) % m_bufferSize;
 		}
 		m_bytesToSend += size;
 		if (size > 0 && !m_sending) // Buffer overflow
 		{
 			m_sending = true;
 			m_bytesToSend--;
-			//uint16_t index = tx_read_index;
-			//tx_read_index = (tx_read_index + 1) % m_bufferSize; // Overwrite the oldest data
 			VMB_HAL_UART_Transmit_IT(m_uart, &tx_buffer[tx_read_index], 1);
 		}		
 	}
@@ -103,8 +95,6 @@ namespace VoiceMailBox
 
 	uint32_t UART::hasBytesReceived() const
 	{
-		//if(rx_write_index < rx_read_index)
-		//	return rx_write_index + m_bufferSize - rx_read_index;
 		return (m_bufferSize + rx_write_index - rx_read_index) % m_bufferSize;
 	}
 	uint32_t UART::receive(uint8_t* data, uint32_t size)
@@ -127,10 +117,6 @@ namespace VoiceMailBox
 			data[i] = rx_buffer[(rx_read_index + i) % m_bufferSize];
 		}
 		rx_read_index = (rx_read_index + size) % m_bufferSize; // Update read index
-		if (rx_write_index == rx_read_index) // Buffer overflow
-		{
-			int a=0;
-		}
 		return size;
 	}
 	uint32_t UART::receiveUntil(uint8_t* data, uint32_t size, uint8_t* target, uint32_t targetSize, uint32_t timeoutMS)
@@ -147,7 +133,6 @@ namespace VoiceMailBox
 			uint32_t rb = hasBytesReceived();
 			if (rb >= targetSize)
 			{
-				//setDbgPin(DBG_PIN::DBG2, 1);
 				bool found = false;
 				uint32_t matchCount = 0;
 				uint32_t foundIndex = 0;
@@ -185,7 +170,6 @@ namespace VoiceMailBox
 						{
 							if (rx_read_index == foundIndex)
 							{
-								//setDbgPin(DBG_PIN::DBG2, 0);
 								return currentWriteIndex;
 							}
 							data[currentWriteIndex] = rx_buffer[rx_read_index];
@@ -194,7 +178,6 @@ namespace VoiceMailBox
 						}
 						else
 						{
-							//setDbgPin(DBG_PIN::DBG2, 0);
 							return currentWriteIndex;
 						}
 					}
@@ -211,14 +194,12 @@ namespace VoiceMailBox
 						}
 						else
 						{
-							//setDbgPin(DBG_PIN::DBG2, 0);
 							return currentWriteIndex;
 						}
 					}
 				}
 			}
 		}
-		//setDbgPin(DBG_PIN::DBG2, 0);
 		return currentWriteIndex;
 	}
 	bool UART::waitUntil(char character, uint32_t timeoutMS)
@@ -301,15 +282,12 @@ namespace VoiceMailBox
 			}
 		}
 		// If not found, wait for the string to be received
-		//delay(2);
 		while (VMB_HAL_GetTickCountInMs() - startTime < timeoutMS)
 		{
 			uint16_t rb = hasBytesReceived();
 			if (rb - currentReceivedBytes >= strLength)
 			{
-				setDbgPin(DBG_PIN::DBG2, 1);
 				currentReceivedBytes = rb - strLength;
-				//for (uint16_t i = (rx_read_index + startOffset) % m_bufferSize; i != rx_write_index; i = (i + 1) % m_bufferSize)
 				for (uint32_t i = startOffset; i <= currentReceivedBytes; ++i)
 				{
 					bool found = true;
@@ -324,12 +302,10 @@ namespace VoiceMailBox
 					}
 					if (found)
 					{
-						setDbgPin(DBG_PIN::DBG2, 0);
 						startIndex = i;
 						return true;
 					}
 				}
-				setDbgPin(DBG_PIN::DBG2, 0);
 			}
 		}
 		// Timeout reached
@@ -354,7 +330,6 @@ namespace VoiceMailBox
 
 	uint32_t UART::flushNBytes(uint32_t nBytes)
 	{
-		uint32_t startTime = VMB_HAL_GetTickCountInMs();
 		uint32_t currentReceivedBytes = hasBytesReceived();
 		if (currentReceivedBytes == 0)
 		{

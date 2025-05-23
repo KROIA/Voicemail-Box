@@ -7,6 +7,9 @@
  * @author Alex Krieg
  */
 
+// ------------------------------------------------------------------------------------------------
+// ===================================== D E B U G G I N G ========================================
+// ------------------------------------------------------------------------------------------------
 /**
  * @details	When defined, 3 Debug Pins are available to use in the application for debugging purposes.
  */
@@ -16,12 +19,21 @@
 	#define VMB_DEVELOPMENT_ENABLE_DBG_PINS_IN_ATCOMMAND_CLIENT
 #endif
 
+// Logger
+// If this macro is defined, the Logger class gets compilated into the project.
+// If this macro is not defined, all logging calls will be removed completly from the project. 
+#define VMB_USE_LOGGER_OBJECTS
+
+// If this macro is defined, all objects derived by the logger class will be enabled by default.
+// Otherwise the logger functionality of these objects must be enabled explicitly by calling the function Logger::enableLogging().
+#define VMB_LOGGER_OBJECTS_ENABLED_BY_DEFAULT
+
 
 /**
  * @details
- *	When defined, automatic performance measurement is enabled to track the Codecs 
+ *	When defined, automatic performance measurement is enabled to track the Codecs
  *  DMA processing time vs. signal processing time.
- *	This measurement is used to check if the Processing of the audio signal takes longer than the time, 
+ *	This measurement is used to check if the Processing of the audio signal takes longer than the time,
  *  the DMA takes to get new audio samples.
  *	Audio signal processing must be faster than the DMA time.
  *
@@ -30,7 +42,18 @@
  */
 #define VMB_ENABLE_CODEC_PERFORMANCE_MEASUREMENTS 
 
+// ------------------------------------------------------------------------------------------------
+// ================================================================================================
+// ------------------------------------------------------------------------------------------------
 
+
+
+
+
+
+// ------------------------------------------------------------------------------------------------
+// ========================================== U A R T =============================================
+// ------------------------------------------------------------------------------------------------
 /**
  * @details
  *	When VMB_UART_USE_STATIC_BUFFER_SIZE is defined, all UART instances will use a
@@ -42,12 +65,25 @@
 #define VMB_UART_STATIC_BUFFER_SIZE 1024*5
 
 /**
+ * @brief Specifies the static buffer size for the UART instances.
  * @details
  *	Maximum number of UART instances.
  *	Adjust as needed.
  */
 #define VMB_UART_MAX_INSTANCES 2
 
+// ------------------------------------------------------------------------------------------------
+// ================================================================================================
+// ------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+// ------------------------------------------------------------------------------------------------
+// =========================================== I 2 S ==============================================
+// ------------------------------------------------------------------------------------------------
 /**
  * @details
  *	When VMB_I2S_USE_STATIC_BUFFER_SIZE is defined, all I2S instances will use a 
@@ -56,19 +92,42 @@
  *  dynamic buffer size defined by the constructor parameter.
  */
 #define VMB_I2S_USE_STATIC_BUFFER_SIZE
-//#define VMB_I2S_STATIC_BUFFER_SIZE 1024*50
 
-// Since the MP3 encoder needs 576 sanmples per processing, the buffer size should be multiple of 576.
-// Multiplication by 4 because of 2 channels (left and right) and PING and PONG buffers which are 2 halfs of the whole buffer size
-// Multiplication by 10 to process 10 frames at once
+/**
+ * @brief Defines the static buffer size for the I2S instances.
+ * @details
+ * Since the MP3 encoder needs 576 sanmples per processing, the buffer size should be multiple of 576.
+ * Multiplication by 4 because of 2 channels (left and right) and PING and PONG buffers which are 2 halfs of the whole buffer size
+ * Multiplication by 10 to process 10 frames at once
+ */
 #define VMB_I2S_STATIC_BUFFER_SIZE 576 * 4 * 10
 
 /**
+ * @brief Defines the static buffer size for the I2S instances.
  * @details
  *	Maximum number of I2S instances.
  *	Adjust as needed.
  */
 #define VMB_I2S_MAX_INSTANCES 1
 
+// ------------------------------------------------------------------------------------------------
+// ================================================================================================
+// ------------------------------------------------------------------------------------------------
 
+
+// ------------------------------------------------------------------------------------------------
+// ========================== I N T E R N A L   L E D   U S A G E =================================
+// ------------------------------------------------------------------------------------------------
+
+/**
+ * @details
+ *	When VMB_USE_INTERNAL_LEDS is defined, the internal LEDs are used.
+ *	When VMB_USE_INTERNAL_LEDS is not defined, the internal LEDs are not used.
+ */
+// #define VMB_USE_INTERNAL_LEDS
+
+
+// ------------------------------------------------------------------------------------------------
+// ================================================================================================
+// ------------------------------------------------------------------------------------------------
 #endif

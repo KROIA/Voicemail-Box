@@ -13,14 +13,25 @@
 
 namespace VoiceMailBox
 {
+	/**
+	 * @brief This interface class defines generic functionality for the usage of a audio codec.
+	 *        Derive from this class in case a new type of codec is used.
+	 */
 	class AudioCodec
 	{
 	public:
 		virtual ~AudioCodec() = default;
 
-
+		/**
+		 * @brief Start the DMA for i2s
+		 * @return true if start was successful, otherwise false
+		 */
 		virtual bool startDMA() = 0;
 
+		/**
+		 * @brief Stop the DMA for i2s
+		 * @return true if stop was successful, otherwise false
+		 */
 		virtual bool stopDMA() = 0;
 
 		/**
@@ -32,7 +43,7 @@ namespace VoiceMailBox
 		 * @brief Checks the data ready flag and clears it if it was set.
 		 * @return true if a new batch of audio samples is ready to be processed.
 		 */
-		virtual bool isDataReadyAndClear() = 0;
+		virtual bool isDataReadyAndClearFlag() = 0;
 
 		/**
 		 * @brief Clears the data ready flag.
@@ -58,12 +69,27 @@ namespace VoiceMailBox
 		 */
 		virtual uint32_t getBufferSize() const = 0;
 
+		/**
+		 * @brief Gets the sample rate of the audio codec
+		 * @return samplerate [Hz]
+		 */
 		virtual uint32_t getSampleRate() const = 0;
 
+		/**
+		 * @brief Gets the sample resolution
+		 * @return amount of bits per sample
+		 */
 		virtual uint16_t getBitsPerSample() const = 0;
 
+		/**
+		 * @brief Gets the amount of channels
+		 * @return 1 for mono and 2 for stereo
+		 */
 		virtual uint16_t getNumChannels() const = 0;
 
+		/**
+		 * @brief Sets the DMA's TX (audio output) buffer to 0
+		 */
 		virtual void clearTxBuf() = 0;
 		
 
