@@ -40,7 +40,7 @@
 	<variableList>
 		<variable>
 			<name>BSP_VoiceMailBox</name>
-			<value>$%7BPARENT-2-PROJECT_LOC%7D/Software/BSP_VoiceMailBox/src</value>
+			<value>$%7BPARENT-2-PROJECT_LOC%7D/BSP_VoiceMailBox/src</value>
 		</variable>
 	</variableList>
 </projectDescription>

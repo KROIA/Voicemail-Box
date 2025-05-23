@@ -101,7 +101,7 @@
 		C/C++ General->Paths and Symbols:
 			Includes:
 				Add:
-					Directory: ${ProjDirPath}/../../Software/BSP_VoiceMailBox/inc
+					Directory: ${ProjDirPath}/../BSP_VoiceMailBox/inc
 					[x] Add to all configurations
 					[x] Add to all languages
 			Source Location:
@@ -110,7 +110,7 @@
 					Variables...
 						New...
 							Name: BSP_VoiceMailBox
-							Location: ${PROJECT_LOC}/../../Software/BSP_VoiceMailBox/src
+							Location: ${PROJECT_LOC}/../BSP_VoiceMailBox/src
 							OK
 						Select the new created variable: BSP_VoiceMailBox
 						OK
