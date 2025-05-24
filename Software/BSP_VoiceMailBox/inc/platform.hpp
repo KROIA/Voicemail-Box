@@ -97,6 +97,12 @@ namespace VoiceMailBox
 		 */
 		static ATCommandClient& getPmodESP();
 
+		/**
+		 * @brief Gets the I2C bus instance used for communication with the codec and other I2C devices.
+		 * @return I2C instance reference
+		 */
+		static I2C& getI2C();
+
 #ifdef VMB_DEVELOPMENT_CONFIGURATION
 		/**
 		 * @brief Debug pins available on the Voice Mail Box board.

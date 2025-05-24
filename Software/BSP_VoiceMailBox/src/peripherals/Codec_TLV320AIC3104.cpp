@@ -4,10 +4,10 @@
 namespace VoiceMailBox
 {
 	Codec_TLV320AIC3104::Codec_TLV320AIC3104(VMB_I2S_Handle* i2sHandle, uint16_t i2sBufferSize,
-											 VMB_I2C_Handle* i2cHandle, uint8_t i2cDeviceAddress,
+											 I2C& i2c, uint8_t i2cDeviceAddress,
 											 VMB_GPIO* nResetPort, uint16_t nResetPin)
 		: AudioCodec()
-		, m_i2c(i2cHandle)
+		, m_i2c(i2c)
 		, m_i2cDeviceAddress(i2cDeviceAddress)
 		, m_nResetPin{ nResetPort, nResetPin }
 		, m_i2s(i2sHandle, i2sBufferSize)
