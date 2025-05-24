@@ -124,7 +124,7 @@
  *	When VMB_USE_INTERNAL_LEDS is defined, the internal LEDs are used.
  *	When VMB_USE_INTERNAL_LEDS is not defined, the internal LEDs are not used.
  */
-// #define VMB_USE_INTERNAL_LEDS
+#define VMB_USE_INTERNAL_LEDS
 
 
 // ------------------------------------------------------------------------------------------------

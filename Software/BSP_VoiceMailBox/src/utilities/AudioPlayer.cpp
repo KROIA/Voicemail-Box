@@ -62,7 +62,7 @@ namespace VoiceMailBox
 			m_codec.clearTxBuf();
 			m_codec.clearDataReadyFlag();
 			m_firstPlayingUpdate = true;
-			m_loopCount = repetitions;
+			m_loopCount = repetitions-1;
 			return true;
 		}
 		VMB_LOGLN("Failed to open file for playing");
@@ -133,6 +133,24 @@ namespace VoiceMailBox
 		if (m_playingLed)
 			m_playingLed->set(1);
 
+		if (m_file.eof())
+		{
+			VMB_LOGLN("End of file reached");
+			if (m_loopCount > 0)
+			{
+				--m_loopCount;
+				m_firstPlayingUpdate = true;
+				m_file.seek(0);
+			}
+			else
+			{
+				stop();
+				if (m_playingLed)
+					m_playingLed->set(0);
+				return;
+			}
+		}
+
 		// size/2 because, size is in the DMA size namespace which means size of int16_t elements.
 		// readAudioSamples requires the amount of samples, each sample consists of 2 * 16 bit samples (left and right channel)
 		uint32_t decodedSamples = m_file.readAudioSamples((int16_t*)dmaTxBuff, size / 2);
@@ -151,14 +169,12 @@ namespace VoiceMailBox
 		if(decodedSamples < size/2)
 		{
 			VMB_LOGLN("End of file reached");
-			if (m_loopCount > 1)
+			if (m_loopCount > 0)
 			{
 				--m_loopCount;
 				m_firstPlayingUpdate = true;
 				m_file.seek(0);
 			}
-			else
-				stop();
 		}
 		
 		if (m_playingLed)
