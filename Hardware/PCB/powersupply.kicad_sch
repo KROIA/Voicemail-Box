@@ -2717,6 +2717,15 @@
 				(hide yes)
 			)
 		)
+		(property "Part Number" "10164359-00011LF"
+			(at 69.85 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "A12"
 			(uuid "439519b9-7271-441d-878b-8202833c990a")
 		)

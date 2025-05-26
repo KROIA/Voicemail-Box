@@ -5726,7 +5726,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" "Kingbright"
+		(property "Manufacturer" ""
 			(at 165.608 31.75 0)
 			(effects
 				(font
@@ -5736,7 +5736,7 @@
 				(hide yes)
 			)
 		)
-		(property "Part Number" "AP1608SRCPRV"
+		(property "Part Number" "LTST-C190KFKT"
 			(at 167.132 31.75 0)
 			(effects
 				(font
@@ -7842,7 +7842,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" "Inolux"
+		(property "Manufacturer" ""
 			(at 151.638 31.75 0)
 			(effects
 				(font
@@ -7852,7 +7852,7 @@
 				(hide yes)
 			)
 		)
-		(property "Part Number" "IN-S63AT5G"
+		(property "Part Number" "LTST-C190GKT"
 			(at 153.162 31.75 0)
 			(effects
 				(font

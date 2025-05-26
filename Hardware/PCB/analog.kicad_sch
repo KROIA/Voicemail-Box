@@ -5932,6 +5932,15 @@
 				(hide yes)
 			)
 		)
+		(property "Part Number" "CL21A107MQYNNWE"
+			(at 142.24 29.21 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "86393796-ee19-4d3b-9b7d-ac1a5b0cf4df")
 		)
@@ -6948,7 +6957,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "3d4b359a-95dd-44d9-8c70-0be186ac0d7b")
 		(property "Reference" "R608"
 			(at 217.17 144.78 0)
@@ -7220,7 +7229,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "5dc63124-ddb7-43c4-b57b-fde2bc806f3d")
 		(property "Reference" "R609"
 			(at 226.06 144.78 0)
@@ -7627,6 +7636,24 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 101.6 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Kemet"
+			(at 101.6 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "C0603C105K4RACTU"
 			(at 101.6 133.35 0)
 			(effects
 				(font
@@ -8346,7 +8373,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "7f144947-dd23-4009-952d-d3334a94decd")
 		(property "Reference" "C620"
 			(at 180.848 144.78 0)
@@ -8455,6 +8482,24 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 231.14 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Kemet"
+			(at 231.14 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "C0603C105K4RACTU"
 			(at 231.14 50.8 0)
 			(effects
 				(font
@@ -8959,6 +9004,15 @@
 		)
 		(property "Description" "Unpolarized capacitor"
 			(at 142.24 24.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "CL21A107MQYNNWE"
+			(at 142.24 24.13 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9520,6 +9574,15 @@
 				(hide yes)
 			)
 		)
+		(property "Part Number" "SJ2-3593D-SMT-TR"
+			(at 242.57 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "TN"
 			(uuid "022778fd-eee8-4f5e-9e51-6e41d02ee125")
 		)
@@ -9834,7 +9897,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "d49c6ef9-4a17-4b86-a5a3-968988606c45")
 		(property "Reference" "C614"
 			(at 203.454 144.78 0)
@@ -9970,7 +10033,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "d688257b-f014-4597-bfe4-4d1cbcc44875")
 		(property "Reference" "C615"
 			(at 192.024 144.78 0)
@@ -10149,6 +10212,15 @@
 			)
 		)
 		(property "Description" "Audio Jack, 3 Poles (Stereo / TRS), Switched TR Poles (Normalling)"
+			(at 173.99 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "SJ2-3593D-SMT-TR"
 			(at 173.99 43.18 0)
 			(effects
 				(font

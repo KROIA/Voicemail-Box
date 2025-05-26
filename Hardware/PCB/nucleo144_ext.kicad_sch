@@ -2701,6 +2701,15 @@
 				(hide yes)
 			)
 		)
+		(property "Part Number" "DM3AT-SF-PEJM5"
+			(at 123.19 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "10"
 			(uuid "25210001-9ec6-47fe-91cf-6e76147b332a")
 		)
