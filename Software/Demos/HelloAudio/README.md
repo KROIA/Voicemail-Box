@@ -116,8 +116,7 @@ Select the Pins and assign them the given function.
 Since The SD-Card slot is on our custom board, we need to setup it manually.
 Enable **SDMMC1** in the **Connectivity** section.
 - **Runtime contexts**: Cortex-M7
-- **Mode**: Full-Duplex Master
-- **Master Clock Output**: Enabled
+- **Mode**: SD 4 bits Wide bus
 
 Select the Pin and assign them the given function.
 
