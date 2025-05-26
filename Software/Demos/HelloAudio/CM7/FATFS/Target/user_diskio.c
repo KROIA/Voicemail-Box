@@ -35,7 +35,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include <string.h>
 #include "ff_gen_drv.h"
-#include "user_diskio_spi.h"
+#include "peripherals/sdmmc.h"
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
@@ -82,7 +82,9 @@ DSTATUS USER_initialize (
 )
 {
   /* USER CODE BEGIN INIT */
-	return USER_SPI_initialize(pdrv);
+	if (pdrv == 0)
+		return MMC_disk_initialize();
+	return STA_NOINIT;
   /* USER CODE END INIT */
 }
 
@@ -96,7 +98,9 @@ DSTATUS USER_status (
 )
 {
   /* USER CODE BEGIN STATUS */
-	return USER_SPI_status(pdrv);
+	if (pdrv == 0)
+		return MMC_disk_status();
+	return STA_NOINIT;
   /* USER CODE END STATUS */
 }
 
@@ -116,7 +120,9 @@ DRESULT USER_read (
 )
 {
   /* USER CODE BEGIN READ */
-	return USER_SPI_read(pdrv, buff, sector, count);
+	if (pdrv == 0)
+		return MMC_disk_read(buff, sector, count);
+	return RES_PARERR;
   /* USER CODE END READ */
 }
 
@@ -138,7 +144,9 @@ DRESULT USER_write (
 {
   /* USER CODE BEGIN WRITE */
   /* USER CODE HERE */
-	return USER_SPI_write(pdrv, buff, sector, count);
+	if (pdrv == 0)
+		return MMC_disk_write(buff, sector, count);
+	return RES_PARERR;
   /* USER CODE END WRITE */
 }
 #endif /* _USE_WRITE == 1 */
@@ -158,7 +166,9 @@ DRESULT USER_ioctl (
 )
 {
   /* USER CODE BEGIN IOCTL */
-	return USER_SPI_ioctl(pdrv, cmd, buff);
+	if (pdrv == 0)
+		return MMC_disk_ioctl(cmd, buff);
+	return RES_PARERR;
   /* USER CODE END IOCTL */
 }
 #endif /* _USE_IOCTL == 1 */
