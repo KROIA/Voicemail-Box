@@ -483,4 +483,4 @@ VP_SYS_VS_Systick.Mode=SysTick
 VP_SYS_VS_Systick.Signal=SYS_VS_Systick
 board=NUCLEO-H755ZI-Q
 boardIOC=true
-isbadioc=true
+isbadioc=false
