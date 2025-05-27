@@ -66,7 +66,7 @@ ADC_HandleTypeDef* getADC_POT1();
 UART_HandleTypeDef* getUART_DEBUG();
 UART_HandleTypeDef* getUART_WIFI();
 
-I2C_HandleTypeDef* getI2C_CODEC();
+I2C_HandleTypeDef* getI2C_Handle();
 I2S_HandleTypeDef* getI2S_CODEC();
 
 /* USER CODE END EFP */
@@ -234,8 +234,6 @@ I2S_HandleTypeDef* getI2S_CODEC();
 #define MIC_CK_GPIO_Port GPIOD
 #define uSD_Detect_Pin GPIO_PIN_2
 #define uSD_Detect_GPIO_Port GPIOG
-#define LCD_INT_Pin GPIO_PIN_5
-#define LCD_INT_GPIO_Port GPIOJ
 #define D20_Pin GPIO_PIN_12
 #define D20_GPIO_Port GPIOH
 #define BTN3_Pin GPIO_PIN_1
@@ -260,6 +258,8 @@ I2S_HandleTypeDef* getI2S_CODEC();
 #define BTN1_GPIO_Port GPIOA
 #define LED0_Pin GPIO_PIN_6
 #define LED0_GPIO_Port GPIOA
+#define ESP_INT_Pin GPIO_PIN_5
+#define ESP_INT_GPIO_Port GPIOC
 #define A8_Pin GPIO_PIN_14
 #define A8_GPIO_Port GPIOF
 #define DSI_TE_Pin GPIO_PIN_2

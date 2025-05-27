@@ -2,7 +2,7 @@
 #define ATCOMMAND_CLIENT_H
 
 #include "HAL_abstraction.hpp"
-#include "peripherals/DigitalPin.hpp"
+#include "peripherals/digitalPin.hpp"
 #include "uart.hpp"
 #include "utilities/File.hpp"
 #include "utilities/Logger.hpp"

@@ -13,7 +13,7 @@
 #include "HAL_abstraction.hpp"
 
 #include "AudioCodec.hpp"
-#include "DigitalPin.hpp"
+#include "digitalPin.hpp"
 #include "i2c.hpp"
 #include "i2s.hpp"
 
@@ -147,13 +147,13 @@ namespace VoiceMailBox
 		 * @brief Constructor
 		 * @param i2sHandle used to receive and transmit audio samples
 		 * @param i2sBufferSize size for the i2s DMA buffer
-		 * @param i2cHandle used to configure the codec
+		 * @param i2c used to configure the codec
 		 * @param i2cDeviceAddress  of the codec on the I2C bus. Default address is 0x18
 		 * @param nResetPort port on which the nReset pin is connected 
 		 * @param nResetPin  pin the nReset port
 		 */
 		Codec_TLV320AIC3104(VMB_I2S_Handle* i2sHandle, uint16_t i2sBufferSize,
-							VMB_I2C_Handle* i2cHandle, uint8_t i2cDeviceAddress,
+							I2C& i2c, uint8_t i2cDeviceAddress,
 							VMB_GPIO* nResetPort, uint16_t nResetPin);
 		~Codec_TLV320AIC3104();
 
@@ -349,7 +349,7 @@ namespace VoiceMailBox
 		void onI2S_DMA_TxRx_HalfCpltCallback();
 		void onI2S_DMA_TxRx_CpltCallback();
 
-		I2C m_i2c;
+		I2C& m_i2c;
 		uint8_t m_i2cDeviceAddress;
 		DigitalPin m_nResetPin;
 		I2S m_i2s; 

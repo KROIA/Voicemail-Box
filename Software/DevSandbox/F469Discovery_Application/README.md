@@ -43,7 +43,7 @@
 		// 	Mode: Normal
 		NVIC Settings:
 			[x] USART6 global interrupt
-	? PIN(PC5):			INT
+	PIN(PC5): INT GPIO_ExtI5 with name: "ESP_INT"
 	
 ### Debug Console:
 	USART3:
@@ -101,7 +101,7 @@
 		C/C++ General->Paths and Symbols:
 			Includes:
 				Add:
-					Directory: ${ProjDirPath}/../BSP_VoiceMailBox/inc
+					Directory: "${ProjDirPath}/../../BSP_VoiceMailBox/inc"
 					[x] Add to all configurations
 					[x] Add to all languages
 			Source Location:
@@ -110,7 +110,7 @@
 					Variables...
 						New...
 							Name: BSP_VoiceMailBox
-							Location: ${PROJECT_LOC}/../BSP_VoiceMailBox/src
+							Location: "${PROJECT_LOC}/../../BSP_VoiceMailBox/src"
 							OK
 						Select the new created variable: BSP_VoiceMailBox
 						OK

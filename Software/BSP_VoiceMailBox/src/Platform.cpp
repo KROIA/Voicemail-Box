@@ -100,7 +100,7 @@ namespace VoiceMailBox
 		// The I2S buffer size will not be used if the macro VMB_I2S_USE_STATIC_BUFFER_SIZE in the settings.h file is defined
 		// 0x18 is the default address for the TLV320AIC3104
 		static Codec_TLV320AIC3104 codec(getI2S_CODEC(), 512,
-				getI2C_CODEC(), 0x18,  // maybe problematic because of static initialisation order
+				getI2C(), 0x18,  // maybe problematic because of static initialisation order
 				CODEC_NRESET_GPIO_Port, CODEC_NRESET_Pin);
 		return codec;
 	}
@@ -116,6 +116,14 @@ namespace VoiceMailBox
 #endif
 		);
 		return pmodESP;
+	}
+
+	I2C& Platform::getI2C()
+	{
+		// Creating static instances of the I2C class for the I2C bus
+		// The constructor of the I2C class takes the <I2C_HandleTypeDef*>
+		static I2C i2c(getI2C_Handle());
+		return i2c;
 	}
 
 #ifdef VMB_DEVELOPMENT_CONFIGURATION

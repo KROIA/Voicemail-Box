@@ -10,7 +10,7 @@
 
 #include "settings.h"
 
-#include "peripherals/DigitalPin.hpp"
+#include "peripherals/digitalPin.hpp"
 #include "peripherals/AnalogPin.hpp"
 #include "peripherals/uart.hpp"
 #include "peripherals/i2c.hpp"
@@ -96,6 +96,12 @@ namespace VoiceMailBox
 		 * @brief Encapsulation of a UART/SPI connection for the ESP32 module.
 		 */
 		static ATCommandClient& getPmodESP();
+
+		/**
+		 * @brief Gets the I2C bus instance used for communication with the codec and other I2C devices.
+		 * @return I2C instance reference
+		 */
+		static I2C& getI2C();
 
 #ifdef VMB_DEVELOPMENT_CONFIGURATION
 		/**

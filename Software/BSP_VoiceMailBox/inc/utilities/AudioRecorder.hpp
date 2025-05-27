@@ -10,7 +10,7 @@
 #include "Logger.hpp"
 #include "HAL_abstraction.hpp"
 #include "peripherals/AudioCodec.hpp"
-#include "peripherals/DigitalPin.hpp"
+#include "peripherals/digitalPin.hpp"
 
 #include "Updatable.hpp"
 #include "WAVFile.hpp"
