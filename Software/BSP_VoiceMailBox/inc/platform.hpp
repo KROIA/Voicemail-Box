@@ -8,10 +8,10 @@
  *  @author Alex Krieg
  */
 
-#include "settings.h"
+
 
 #include "peripherals/digitalPin.hpp"
-#include "peripherals/AnalogPin.hpp"
+#include "peripherals/analogPin.hpp"
 #include "peripherals/uart.hpp"
 #include "peripherals/i2c.hpp"
 #include "peripherals/Codec_TLV320AIC3104.hpp"

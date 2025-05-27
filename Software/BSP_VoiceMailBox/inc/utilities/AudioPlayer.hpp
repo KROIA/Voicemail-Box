@@ -6,7 +6,6 @@
 
 
 #include <string>
-#include "settings.h"
 #include "Logger.hpp"
 #include "HAL_abstraction.hpp"
 #include "peripherals/AudioCodec.hpp"
@@ -118,8 +117,11 @@ namespace VoiceMailBox
 		uint32_t m_loopCount;
 		bool m_firstPlayingUpdate = false; 
 
-		//WAVFile m_wavFile;	// WAV file object
-		MP3File m_file;
+#if VMB_USED_AUDIO_FORMAT == VMB_AUDIO_FORMAT_WAV
+		WAVFile m_file;	// WAV file object
+#elif VMB_USED_AUDIO_FORMAT == VMB_AUDIO_FORMAT_MP3
+		MP3File m_file;	// MP3 file object
+#endif
 
 		DigitalPin* m_playingLed;	// Recording LED pin
 	};

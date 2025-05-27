@@ -9,7 +9,6 @@
 
 
 
-#include "settings.h"
 #include "HAL_abstraction.hpp"
 
 #include "AudioCodec.hpp"

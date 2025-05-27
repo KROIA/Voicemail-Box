@@ -16,7 +16,7 @@ namespace VoiceMailBox
 	{
 		if (!s_isMounted)
 		{
-			m_lastError = f_mount(&s_SDFatFS, (TCHAR const*)SDPath, 0);
+			m_lastError = f_mount(&s_SDFatFS, (TCHAR const*)VMB_VAR_NAME_SDPATH, 0);
 			if (m_lastError == FRESULT::FR_OK)
 				s_isMounted = true;
 			else

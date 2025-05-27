@@ -1,5 +1,7 @@
 #include "utilities/MP3File.hpp"
+#if defined(VMB_AUDIO_FORMAT_MP3)
 #include <cstring>
+
 
 namespace VoiceMailBox
 {
@@ -85,3 +87,4 @@ namespace VoiceMailBox
 		return 0;
 	}
 }
+#endif

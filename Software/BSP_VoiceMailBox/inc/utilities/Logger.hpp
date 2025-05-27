@@ -8,7 +8,7 @@
  */
 
 #include <string>
-#include "settings.h"
+#include "HAL_abstraction.hpp"
 
 // Use these log macros inside a Logger derived class
 // By using these macros, the logger can be disabled completly from the build

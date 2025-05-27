@@ -115,4 +115,6 @@
 						Select the new created variable: BSP_VoiceMailBox
 						OK
 				OK
-				
+		
+		Library Includes
+		FPU setting

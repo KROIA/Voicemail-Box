@@ -11,10 +11,26 @@ namespace VoiceMailBox
 		: m_codec(codec)
 #endif
 		, m_isRecording(false)
+#if VMB_USED_AUDIO_FORMAT == VMB_AUDIO_FORMAT_WAV
+		, m_file()
+#elif VMB_USED_AUDIO_FORMAT == VMB_AUDIO_FORMAT_MP3
 		, m_file(codec.getSampleRate(), 48, codec.getNumChannels())
+#endif
 		, m_recordingLed(nullptr)
 	{
+#if VMB_USED_AUDIO_FORMAT == VMB_AUDIO_FORMAT_WAV
+		m_file.setSampleRate(codec.getSampleRate());
+		m_file.setNumChannels(codec.getNumChannels());
+		m_file.setBitsPerSample(codec.getBitsPerSample());
+#elif VMB_USED_AUDIO_FORMAT == VMB_AUDIO_FORMAT_MP3
+		// Do nothing, the file is initialized in the constructor
+#endif
 	}
+
+
+
+
+
 	AudioRecorder::AudioRecorder(AudioCodec& codec, DigitalPin& recordingLed)
 #ifdef VMB_USE_LOGGER_OBJECTS
 		: Logger("AudioRecorder")
@@ -23,11 +39,22 @@ namespace VoiceMailBox
 		: m_codec(codec)
 #endif
 		, m_isRecording(false)
+#if VMB_USED_AUDIO_FORMAT == VMB_AUDIO_FORMAT_WAV
+		, m_file()
+#elif VMB_USED_AUDIO_FORMAT == VMB_AUDIO_FORMAT_MP3
 		, m_file(codec.getSampleRate(), 48, codec.getNumChannels())
+#endif
 		, m_recordingLed(&recordingLed)
 	{
 		if (m_recordingLed)
 			m_recordingLed->set(false);
+#if VMB_USED_AUDIO_FORMAT == VMB_AUDIO_FORMAT_WAV
+		m_file.setSampleRate(codec.getSampleRate());
+		m_file.setNumChannels(codec.getNumChannels());
+		m_file.setBitsPerSample(codec.getBitsPerSample());
+#elif VMB_USED_AUDIO_FORMAT == VMB_AUDIO_FORMAT_MP3
+		// Do nothing, the file is initialized in the constructor
+#endif
 	}
 	AudioRecorder::~AudioRecorder()
 	{

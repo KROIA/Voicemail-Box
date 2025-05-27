@@ -4,7 +4,6 @@
  * @brief This file provides an high level interface to the hardware components of the VoiceMailBox platform.
  */
 
-#include "settings.h"
 
 #include "platform.hpp"
 

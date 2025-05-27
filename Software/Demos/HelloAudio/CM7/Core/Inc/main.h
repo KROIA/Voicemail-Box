@@ -72,6 +72,53 @@ I2S_HandleTypeDef* getI2S_CODEC();
 /* Private defines -----------------------------------------------------------*/
 
 /* USER CODE BEGIN Private defines */
+#define VMB_MICROCONTROLLER_BOARD__STM32NUCLEO_H755ZI_Q
+
+// For some reason, the CUBE IDE does not generate the macros for the custom user labled pins, 
+// so we need to do this manually.    ¯\(°_o)/¯
+// 
+// 
+// Buttons
+// BTN0 is on PD15
+#define BTN0_GPIO_Port GPIOD
+#define BTN0_Pin GPIO_PIN_15
+// BTN1 is on PE11
+#define BTN1_GPIO_Port GPIOE
+#define BTN1_Pin GPIO_PIN_11
+// BTN2 is on PE14
+#define BTN2_GPIO_Port GPIOE
+#define BTN2_Pin GPIO_PIN_14
+// BTN3 is on PE13
+#define BTN3_GPIO_Port GPIOE
+#define BTN3_Pin GPIO_PIN_13
+
+// LEDs
+// LED0 is on PA8
+#define LED0_GPIO_Port GPIOA
+#define LED0_Pin GPIO_PIN_8
+// LED1 is on PG12
+#define LED1_GPIO_Port GPIOG
+#define LED1_Pin GPIO_PIN_12
+
+// Debug pins
+// DBG0 is on PD3
+#define DBG0_GPIO_Port GPIOD
+#define DBG0_Pin GPIO_PIN_3
+// DBG1 is on PD4
+#define DBG1_GPIO_Port GPIOD
+#define DBG1_Pin GPIO_PIN_4
+// DBG2 is on PD5
+#define DBG2_GPIO_Port GPIOD
+#define DBG2_Pin GPIO_PIN_5
+
+
+// Audio codec
+// CODEC_NRESET is on PG14
+#define CODEC_NRESET_GPIO_Port GPIOG
+#define CODEC_NRESET_Pin GPIO_PIN_14
+
+
+
 
 /* USER CODE END Private defines */
 

@@ -1,6 +1,5 @@
 #include "utilities/Logger.hpp"
 #include "platform.hpp"
-#include "settings.h"
 #include <cstdarg>   // <-- required for va_list and related macros
 #include <cstdio>    // <-- required for vsnprintf
 #include <cstring>

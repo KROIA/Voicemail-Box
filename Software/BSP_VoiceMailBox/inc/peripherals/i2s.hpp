@@ -9,7 +9,6 @@
 
 #include <functional>
 #include <cstring>
-#include "settings.h"
 #include "HAL_abstraction.hpp"
 
 

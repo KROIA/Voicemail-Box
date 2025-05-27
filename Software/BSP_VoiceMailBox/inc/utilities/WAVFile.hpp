@@ -7,13 +7,13 @@
  * @author Alex Krieg
  */
 
-#include "settings.h"
-#include "Logger.hpp"
 #include "HAL_abstraction.hpp"
+#include "Logger.hpp"
 #include "File.hpp"
 #include <stdint.h>
 #include <string>
 
+#if defined(VMB_AUDIO_FORMAT_WAV)
 namespace VoiceMailBox
 {
 	class WAVFile  
@@ -97,4 +97,5 @@ namespace VoiceMailBox
 		uint16_t m_bitsPerSample = 16; // Default bits per sample
 	};
 }
-#endif
+#endif // defined(VMB_AUDIO_FORMAT_WAV)
+#endif // WAV_FILE_HPP

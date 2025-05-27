@@ -6,6 +6,19 @@
 
 
 #include "HAL_abstraction.hpp"
+#if defined(VMB_AUDIO_FORMAT_MP3)
+
+/**
+ * @details
+ * Sadly the used spiritMP3Enc library is not supported on the Cortex-M7 platform or at least I can't find the lib file for it.
+ * Therefore, the MP3 encoder is not available on the Cortex-M7 platform.
+ * A alternative MP3 encoder library must be used, which is compatible with the Cortex-M7 platform.
+ */
+#if defined(CORE_CM7)
+	#error "The MP3 encoder library used, is not supported on the Cortex-M7 platform. Please use a different audio format. Change it in the settings.h"
+#endif
+
+
 #include "utilities/File.hpp"
 #include "peripherals/digitalPin.hpp"
 #include <string>
@@ -86,4 +99,5 @@ namespace VoiceMailBox
 		uint8_t m_encodedFrameIndexSwitch = 0;	// Switch between the two encoded frame data buffers
 	};
 }
-#endif
+#endif // defined(VMB_AUDIO_FORMAT_MP3)
+#endif // MP3_DECODER_HPP

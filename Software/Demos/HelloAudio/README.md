@@ -24,6 +24,18 @@ Select the Pins and assign them the given function and user label.
 | PG12     | GPIO_Output | LED1       |
 
 ---
+### Debug Pins
+The debug pins are optional and only used when the macro **VMB_DEVELOPMENT_CONFIGURATION** is defined in the `settings.h`.
+Select the Pins and assign them the given function and user label.
+
+| Pin      | Function    | User Label |
+| -------- | ----------- | ---------- |
+| PD3      | GPIO_Output | DBG0       |
+| PD4      | GPIO_Output | DBG1       |
+| PD5      | GPIO_Output | DBG2       |
+
+
+---
 ### Potentiometer
 Enable the ADC's used in the **Analog** section
 #### ADC1
@@ -108,15 +120,15 @@ Select the Pins and assign them the given function.
 
 | Pin      | Function    |
 | -------- | ----------- | 
-| PD8      | I2C1_SCL    | 
-| PD9      | I2C1_SDA    |
+| PB8      | I2C1_SCL    | 
+| PB9      | I2C1_SDA    |
   
 --- 
 ### SD Card
 Since The SD-Card slot is on our custom board, we need to setup it manually.
 Enable **SDMMC1** in the **Connectivity** section.
 - **Runtime contexts**: Cortex-M7
-- **Mode**: SD 4 bits Wide bus
+- **Mode**: SD 1 bit
 
 Select the Pin and assign them the given function.
 
@@ -161,9 +173,9 @@ Select the Pin and assign them the given function.
 ---
 ### Project Properties
 Open the **Properties** window for the CM7 sub project.
-Navigate to **C/C++ General->Paths and Symbols**.
 
 #### Includes
+Navigate to **C/C++ General->Paths and Symbols**.
 Click **Add** and paste the following path: `${ProjDirPath}/../../../BSP_VoiceMailBox/inc`.
 This Path only works if the project was created in the same location as this project.
 In the case, you create a project on a different location, you have to change the path accordingly.
@@ -184,3 +196,22 @@ Now click **Add Folder**, select **BSP_VoiceMailBox** from the list and click **
 
 Add the **Application** source code folder by clicking **Add Folder** and selecting `Application`.
 Do that for both configurations (Debug and Release).
+
+#### Libraries
+Navigate to **C/C++ Build->Settings**.
+
+
+##### SpiritDSP MP3 
+The spiritDSP MP3 library was used in the [X-CUBE-AUDIO](https://www.st.com/en/embedded-software/x-cube-audio.html) example and therefore also used in this Project.
+###### MCU/MPU G++ Linker
+Make sure to select both configurations: **All configurations**, on the top of the settings window. 
+In the **Libraries** section, add the library: `_mp3decoder_cortex_m7_v2.2.0`.
+Sadly there is no encoder library available for the M7. I don't know why and did't find it someware else.
+A other MP3 encoder must be used and implemented which is not very straight forward.
+An other way would be to use the M4 core. In that case it is the same way as it is for the F469 Discovery board.
+
+Add the library search path: `${ProjDirPath}/../../../BSP_VoiceMailBox/Middlewares/ST/STM32_Audio/Codecs/SpiritDSP_MP3_Dec/lib`
+
+###### MCU/MPU Settings
+The floating point ABI must be set to **Mix HW/SW implementation**, otherwise the project will fail on build.
+

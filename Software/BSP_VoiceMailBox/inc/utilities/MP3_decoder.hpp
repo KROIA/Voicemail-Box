@@ -6,6 +6,7 @@
 
 
 #include "HAL_abstraction.hpp"
+#if defined(VMB_AUDIO_FORMAT_MP3)
 #include "utilities/File.hpp"
 #include "peripherals/digitalPin.hpp"
 #include <string>
@@ -49,4 +50,5 @@ namespace VoiceMailBox
 		TSpiritMP3Decoder m_decoder;
 	};
 }
-#endif
+#endif // defined(VMB_AUDIO_FORMAT_MP3)
+#endif // MP3_DECODER_HPP

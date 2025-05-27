@@ -12,6 +12,7 @@
 #include <string>
 #include <vector>
 #include "fatfs.h"
+#include "HAL_abstraction.hpp"
 
 
 namespace VoiceMailBox
