@@ -5,7 +5,7 @@ namespace VoiceMailBox
 	DigitalPin::DigitalPin(VMB_GPIO* gpio, uint16_t pin)
 		: Updatable()
 		, m_gpio(gpio)
-		, m_pin(pin)
+		, m_pin(pin) 
 		, m_logicLevel(1)
 		, m_lastState(0)
 		, m_onFallingEdge(nullptr)

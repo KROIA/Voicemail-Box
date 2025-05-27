@@ -13,7 +13,7 @@
 #include "HAL_abstraction.hpp"
 
 #include "AudioCodec.hpp"
-#include "DigitalPin.hpp"
+#include "digitalPin.hpp"
 #include "i2c.hpp"
 #include "i2s.hpp"
 

@@ -50,7 +50,7 @@ To use the DigitalPin class, a c++ function is needed, therefore the following c
 You can find instructions on how to setup a c++ function that can be called in the main.c [here](CppFromC.md).
 ``` C++ 
 // Application.cpp
-#include "BSP_VoiceMailBox.hpp" // includes "peripherals/DigitalPin.hpp"
+#include "BSP_VoiceMailBox.hpp" // includes "peripherals/digitalPin.hpp"
 
 // using a namespace globaly is not recommended for production
 // but it simplyfies the example here
@@ -84,7 +84,7 @@ Calling the **button1.setOnFallingEdgeCallback(...);** twice will overwrite the 
 
 ```C++
 // Application.cpp
-#include "BSP_VoiceMailBox.hpp" // includes "peripherals/DigitalPin.hpp"
+#include "BSP_VoiceMailBox.hpp" // includes "peripherals/digitalPin.hpp"
 #include <stdio.h>
 
 // using a namespace globaly is not recommended for production

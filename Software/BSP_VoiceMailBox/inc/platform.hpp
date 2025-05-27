@@ -10,7 +10,7 @@
 
 #include "settings.h"
 
-#include "peripherals/DigitalPin.hpp"
+#include "peripherals/digitalPin.hpp"
 #include "peripherals/AnalogPin.hpp"
 #include "peripherals/uart.hpp"
 #include "peripherals/i2c.hpp"

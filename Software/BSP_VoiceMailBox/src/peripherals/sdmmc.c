@@ -1,6 +1,6 @@
 #include "peripherals/sdmmc.h"
 #include "main.h"     // for SPI handle and GPIO
-#include "spi.h"      // for hspi1 or your SPI handle
+//#include "spi.h"      // for hspi1 or your SPI handle
 
 #define SD_CS_GPIO_Port GPIOA
 #define SD_CS_Pin GPIO_PIN_4
@@ -16,7 +16,7 @@ static DSTATUS Stat = STA_NOINIT;
 static uint8_t spi_send(uint8_t b) 
 {
     uint8_t r;
-    HAL_SPI_TransmitReceive(&hspi1, &b, &r, 1, HAL_MAX_DELAY);
+  //  HAL_SPI_TransmitReceive(&hspi1, &b, &r, 1, HAL_MAX_DELAY);
     return r;
 }
 
