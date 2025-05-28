@@ -3192,7 +3192,7 @@
 	)
 	(text "Microphone on Board"
 		(exclude_from_sim no)
-		(at 262.636 98.552 0)
+		(at 270.256 98.552 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3301,6 +3301,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "54c2a42a-38e5-443a-a3b8-1ff110d99dc3")
+	)
+	(junction
+		(at 255.27 109.22)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "55698e06-5889-4007-93d2-b79e712d4a2d")
 	)
 	(junction
 		(at 189.23 152.4)
@@ -4574,7 +4580,7 @@
 	)
 	(wire
 		(pts
-			(xy 271.78 109.22) (xy 271.78 111.76)
+			(xy 279.4 109.22) (xy 279.4 111.76)
 		)
 		(stroke
 			(width 0)
@@ -4631,6 +4637,16 @@
 			(type default)
 		)
 		(uuid "86d8aa75-7bc5-4417-b6a6-1a88968fbcf7")
+	)
+	(wire
+		(pts
+			(xy 255.27 99.06) (xy 255.27 100.33)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8793c8ab-c27f-4798-a663-8159dc8232cf")
 	)
 	(wire
 		(pts
@@ -4774,16 +4790,6 @@
 	)
 	(wire
 		(pts
-			(xy 251.46 109.22) (xy 259.08 109.22)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "9a03dc13-b48e-4ef3-80b6-427bca89cc92")
-	)
-	(wire
-		(pts
 			(xy 234.95 111.76) (xy 234.95 125.73)
 		)
 		(stroke
@@ -4864,7 +4870,7 @@
 	)
 	(wire
 		(pts
-			(xy 269.24 109.22) (xy 271.78 109.22)
+			(xy 276.86 109.22) (xy 279.4 109.22)
 		)
 		(stroke
 			(width 0)
@@ -5594,6 +5600,16 @@
 	)
 	(wire
 		(pts
+			(xy 255.27 107.95) (xy 255.27 109.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f103412c-417a-481e-9576-370643e5ce3a")
+	)
+	(wire
+		(pts
 			(xy 173.99 129.54) (xy 182.88 129.54)
 		)
 		(stroke
@@ -5674,6 +5690,16 @@
 	)
 	(wire
 		(pts
+			(xy 255.27 109.22) (xy 266.7 109.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f8117427-b5c2-4315-9937-3161543529d8")
+	)
+	(wire
+		(pts
 			(xy 209.55 45.72) (xy 209.55 57.15)
 		)
 		(stroke
@@ -5681,6 +5707,16 @@
 			(type default)
 		)
 		(uuid "f829dc52-d6e5-445e-bac1-6f94e78dbd47")
+	)
+	(wire
+		(pts
+			(xy 251.46 109.22) (xy 255.27 109.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f88534ea-f4c4-48a5-83e1-7cba19fe694a")
 	)
 	(wire
 		(pts
@@ -5941,6 +5977,15 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Samsung Electro-Mechanics"
+			(at 142.24 29.21 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "86393796-ee19-4d3b-9b7d-ac1a5b0cf4df")
 		)
@@ -6003,6 +6048,24 @@
 			)
 		)
 		(property "Description" "Stereo 3.7 W Class D Amplifier, TDFN-14"
+			(at 209.55 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Analog Devices Inc./Maxim Integrated"
+			(at 209.55 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "MAX98306ETD+T"
 			(at 209.55 69.85 0)
 			(effects
 				(font
@@ -6179,6 +6242,24 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 78.74 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Kemet"
+			(at 78.74 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "C0603C106M9PAC7411"
 			(at 78.74 133.35 0)
 			(effects
 				(font
@@ -6410,6 +6491,24 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Texas Instruments"
+			(at 107.95 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "TLV320AIC3104IRHBR"
+			(at 107.95 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "9ee957da-5cb9-4e8a-ba05-a076559bd88c")
 		)
@@ -6520,7 +6619,7 @@
 	)
 	(symbol
 		(lib_id "Device:Microphone")
-		(at 264.16 109.22 90)
+		(at 271.78 109.22 90)
 		(mirror x)
 		(unit 1)
 		(exclude_from_sim no)
@@ -6529,7 +6628,7 @@
 		(dnp no)
 		(uuid "28fdda31-c1b6-4be6-8683-0b2e31875fca")
 		(property "Reference" "MK601"
-			(at 263.4615 101.6 90)
+			(at 271.0815 101.6 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6537,7 +6636,7 @@
 			)
 		)
 		(property "Value" "CMA-4544PF-W"
-			(at 263.4615 104.14 90)
+			(at 271.0815 104.14 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6545,7 +6644,7 @@
 			)
 		)
 		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
-			(at 261.62 109.22 90)
+			(at 269.24 109.22 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6554,7 +6653,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 261.62 109.22 90)
+			(at 269.24 109.22 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6563,7 +6662,25 @@
 			)
 		)
 		(property "Description" "Microphone"
-			(at 264.16 109.22 0)
+			(at 271.78 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Same Sky (Formerly CUI Devices)"
+			(at 271.78 109.22 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "CMA-4544PF-W"
+			(at 271.78 109.22 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6630,6 +6747,24 @@
 			)
 		)
 		(property "Description" ""
+			(at 21.59 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Texas Instruments"
+			(at 21.59 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "TLV320AIC3104IRHBR"
 			(at 21.59 111.76 0)
 			(effects
 				(font
@@ -6801,6 +6936,24 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Kemet"
+			(at 170.18 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "C0603C473K5RACTUCT"
+			(at 170.18 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "2e925612-a2ea-412a-947f-41a1cc5325b6")
 		)
@@ -6935,6 +7088,24 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Yageo"
+			(at 129.54 57.15 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "RC0603FR-07100RL"
+			(at 129.54 57.15 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "49f10d98-6bd6-4e46-bdb3-7d7cec23d9b9")
 		)
@@ -6996,6 +7167,24 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 215.9 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "-"
+			(at 215.9 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "-"
 			(at 215.9 146.05 0)
 			(effects
 				(font
@@ -7080,6 +7269,93 @@
 			(project "voicemail-box"
 				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/5ef8c830-26cd-4ad8-92fa-e8802dfbcbc3"
 					(reference "#PWR0713")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 255.27 104.14 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "52baf78b-3362-4942-8845-e92256ac02f2")
+		(property "Reference" "R612"
+			(at 256.794 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "2k7"
+			(at 256.794 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+			(at 253.492 104.14 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 255.27 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 255.27 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 255.27 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "RC0603FR-072K7L"
+			(at 255.27 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "39d08116-b48f-4b9e-b819-acd785682727")
+		)
+		(pin "1"
+			(uuid "c76a497e-859c-43b5-b6dc-26bd911ce60b")
+		)
+		(instances
+			(project "voicemail-box"
+				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/5ef8c830-26cd-4ad8-92fa-e8802dfbcbc3"
+					(reference "R612")
 					(unit 1)
 				)
 			)
@@ -7207,6 +7483,24 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Yageo"
+			(at 45.72 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "RC0603FR-07100KL"
+			(at 45.72 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "42c0d88b-3665-4130-9122-cbea76e9342f")
 		)
@@ -7276,6 +7570,24 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "-"
+			(at 224.79 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "-"
+			(at 224.79 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "20086732-fc87-45bd-b363-0beae411c213")
 		)
@@ -7337,6 +7649,24 @@
 			)
 		)
 		(property "Description" ""
+			(at 50.8 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Texas Instruments"
+			(at 50.8 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "TLV320AIC3104IRHBR"
 			(at 50.8 39.37 0)
 			(effects
 				(font
@@ -7574,6 +7904,24 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Kemet"
+			(at 158.75 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "C0603C473K5RACTUCT"
+			(at 158.75 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "ea7a99b0-85e4-4267-831a-464cd5859e4c")
 		)
@@ -7729,6 +8077,24 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Bourns Inc."
+			(at 116.84 44.45 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "CR0603AJ/-000EAS"
+			(at 116.84 44.45 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "e155e2ab-bf3c-4be3-b2d7-b468f429a6d5")
 		)
@@ -7790,6 +8156,24 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 215.9 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 215.9 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "RC0603FR-072K2L"
 			(at 215.9 121.92 0)
 			(effects
 				(font
@@ -8070,6 +8454,24 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Kemet"
+			(at 90.17 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "C0603C104K5RACTUCT"
+			(at 90.17 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "a3e10112-0fd9-4391-aaa0-884112ad3ad5")
 		)
@@ -8130,6 +8532,24 @@
 		)
 		(property "Description" "Resistor"
 			(at 116.84 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Bourns Inc."
+			(at 116.84 52.07 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "CR0603AJ/-000EAS"
+			(at 116.84 52.07 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8207,6 +8627,24 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Kemet"
+			(at 55.88 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "C0603C106M9PAC7411"
+			(at 55.88 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "2c0c8171-4bae-4b0f-accd-927aebcf50a0")
 		)
@@ -8267,6 +8705,24 @@
 			)
 		)
 		(property "Description" "Generic connector, double row, 02x02, odd/even pin numbering scheme (row 1 odd numbers, row 2 even numbers), script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 241.3 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Würth Elektronik"
+			(at 241.3 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "61300421121"
 			(at 241.3 109.22 0)
 			(effects
 				(font
@@ -8351,6 +8807,24 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Kemet"
+			(at 113.03 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "C0603C106M9PAC7411"
+			(at 113.03 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "e10df7a4-3225-4a89-b3cf-3b2a03c1c0b9")
 		)
@@ -8412,6 +8886,24 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 177.8 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "-"
+			(at 177.8 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "-"
 			(at 177.8 146.05 0)
 			(effects
 				(font
@@ -8646,6 +9138,24 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Kemet"
+			(at 135.89 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "C0603C106M9PAC7411"
+			(at 135.89 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "96db4c8c-47b0-47b6-9f47-3a5a579c0d3c")
 		)
@@ -8664,7 +9174,7 @@
 	(symbol
 		(lib_name "GND_1")
 		(lib_id "power:GND")
-		(at 271.78 111.76 0)
+		(at 279.4 111.76 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -8673,7 +9183,7 @@
 		(fields_autoplaced yes)
 		(uuid "8cc609df-651c-4d3d-b5e9-5dbf63955c95")
 		(property "Reference" "#PWR0611"
-			(at 271.78 118.11 0)
+			(at 279.4 118.11 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8682,7 +9192,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 271.7799 115.57 90)
+			(at 279.3999 115.57 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8691,7 +9201,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 271.78 111.76 0)
+			(at 279.4 111.76 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8700,7 +9210,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 271.78 111.76 0)
+			(at 279.4 111.76 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8709,7 +9219,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 271.78 111.76 0)
+			(at 279.4 111.76 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8781,6 +9291,24 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Kemet"
+			(at 204.47 133.35 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "C0603C104K5RACTUCT"
+			(at 204.47 133.35 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "25e9ad16-c0d5-4d12-aafc-a07959afee97")
 		)
@@ -8843,6 +9371,24 @@
 			)
 		)
 		(property "Description" ""
+			(at 171.45 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Texas Instruments"
+			(at 171.45 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "TLV320AIC3104IRHBR"
 			(at 171.45 111.76 0)
 			(effects
 				(font
@@ -9020,6 +9566,15 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Samsung Electro-Mechanics"
+			(at 142.24 24.13 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "dc281caa-a165-4128-92a8-a8e61557559e")
 		)
@@ -9157,6 +9712,24 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Yageo"
+			(at 224.79 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "RC0603FR-072K2L"
+			(at 224.79 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "47cd1f39-0eab-4ed3-b667-37d299e55db2")
 		)
@@ -9219,6 +9792,24 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 219.71 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Kemet"
+			(at 219.71 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "C0603C104K5RACTUCT"
 			(at 219.71 50.8 0)
 			(effects
 				(font
@@ -9297,6 +9888,24 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Kemet"
+			(at 67.31 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "C0603C104K5RACTUCT"
+			(at 67.31 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "c97d6392-69b3-4101-9689-3d00debc1ccc")
 		)
@@ -9359,6 +9968,24 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 135.89 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Kemet"
+			(at 135.89 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "C0603C473K5RACTUCT"
 			(at 135.89 82.55 0)
 			(effects
 				(font
@@ -9434,6 +10061,24 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Yageo"
+			(at 129.54 63.5 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "RC0603FR-07100RL"
+			(at 129.54 63.5 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "4bbde194-9e1f-466f-8baa-a410408a12fd")
 		)
@@ -9496,6 +10141,24 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 44.45 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Kemet"
+			(at 44.45 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "C0603C104K5RACTUCT"
 			(at 44.45 133.35 0)
 			(effects
 				(font
@@ -9583,6 +10246,15 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Same Sky (Formerly CUI Devices)"
+			(at 242.57 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "TN"
 			(uuid "022778fd-eee8-4f5e-9e51-6e41d02ee125")
 		)
@@ -9654,6 +10326,24 @@
 			)
 		)
 		(property "Description" "Generic connector, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 234.95 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Amphenol Anytek"
+			(at 234.95 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "OQ041G01B000G,  TJ0411030000G"
 			(at 234.95 68.58 0)
 			(effects
 				(font
@@ -9944,6 +10634,24 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "-"
+			(at 200.66 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "-"
+			(at 200.66 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "f2b51587-92de-4dca-ba88-d30c8f3e7451")
 		)
@@ -10004,6 +10712,24 @@
 		)
 		(property "Description" "Resistor"
 			(at 129.54 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 129.54 69.85 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "RC0603FR-07100RL"
+			(at 129.54 69.85 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10080,6 +10806,24 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "-"
+			(at 189.23 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "-"
+			(at 189.23 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "e46a4474-188f-4375-a2ae-54744415ea29")
 		)
@@ -10090,6 +10834,73 @@
 			(project "voicemail-box"
 				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/5ef8c830-26cd-4ad8-92fa-e8802dfbcbc3"
 					(reference "C615")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_name "+3V3_1")
+		(lib_id "power:+3V3")
+		(at 255.27 99.06 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "e18ee234-f75f-40ae-90d2-d32e6353939e")
+		(property "Reference" "#PWR0614"
+			(at 255.27 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 255.27 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 255.27 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 255.27 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3V3\""
+			(at 255.27 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "7975b429-11bc-4150-908e-0a1c3610f314")
+		)
+		(instances
+			(project "voicemail-box"
+				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/5ef8c830-26cd-4ad8-92fa-e8802dfbcbc3"
+					(reference "#PWR0614")
 					(unit 1)
 				)
 			)
@@ -10142,6 +10953,24 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 124.46 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Kemet"
+			(at 124.46 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "C0603C104K5RACTUCT"
 			(at 124.46 133.35 0)
 			(effects
 				(font
@@ -10229,6 +11058,15 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Same Sky (Formerly CUI Devices)"
+			(at 173.99 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "TN"
 			(uuid "7fae2b66-cc9e-4151-b56f-0eae4d41b490")
 		)
@@ -10308,6 +11146,24 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Kemet"
+			(at 147.32 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "C0603C473K5RACTUCT"
+			(at 147.32 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "bdd01990-b93f-4614-a29f-72cb47beb066")
 		)
@@ -10375,6 +11231,24 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Yageo"
+			(at 129.54 76.2 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "RC0603FR-07100RL"
+			(at 129.54 76.2 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "3a997d5c-8305-476b-ae67-ba54f750ccdd")
 		)
@@ -10435,6 +11309,24 @@
 		)
 		(property "Description" "Unpolarized capacitor"
 			(at 204.47 127 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Kemet"
+			(at 204.47 127 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "C0603C104K5RACTUCT"
+			(at 204.47 127 90)
 			(effects
 				(font
 					(size 1.27 1.27)

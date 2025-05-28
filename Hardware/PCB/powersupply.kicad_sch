@@ -2362,6 +2362,24 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Microchip Technology"
+			(at 195.58 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "MIC5259-1.8YD5-TR"
+			(at 195.58 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "5"
 			(uuid "f31effce-a4f7-4b3c-8c97-a485cd7251bc")
 		)
@@ -2509,6 +2527,24 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Kemet"
+			(at 176.53 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "C0603C106M9PAC7411"
+			(at 176.53 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "0aae9c4c-c19f-4d84-a855-4b366ebc7ff4")
 		)
@@ -2571,6 +2607,24 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 125.73 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Kemet"
+			(at 125.73 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "C0603C104K5RACTUCT"
 			(at 125.73 90.17 0)
 			(effects
 				(font
@@ -2649,6 +2703,24 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Yageo"
+			(at 88.9 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "RC0603FR-075K1L"
+			(at 88.9 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "0b74cb06-e0ce-46b9-aca5-676d06a952d6")
 		)
@@ -2718,6 +2790,15 @@
 			)
 		)
 		(property "Part Number" "10164359-00011LF"
+			(at 69.85 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Amphenol ICC (FCI)"
 			(at 69.85 85.09 0)
 			(effects
 				(font
@@ -2918,6 +2999,24 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Kemet"
+			(at 163.83 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "C0603C104K5RACTUCT"
+			(at 163.83 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "ef543157-dd1d-4d44-bd8c-bc6488687f86")
 		)
@@ -2988,6 +3087,24 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Kemet"
+			(at 138.43 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "C0603C106M9PAC7411"
+			(at 138.43 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "a01e9572-3228-4cd2-8351-e5f47cc3990e")
 		)
@@ -3050,6 +3167,24 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 99.06 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 99.06 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "RC0603FR-075K1L"
 			(at 99.06 100.33 0)
 			(effects
 				(font
@@ -3187,6 +3322,24 @@
 			)
 		)
 		(property "Description" "2A Step-Down DC/DC-Regulator, 4.75-32V input, 3.3V fixed Output Voltage, LM78xx replacement, -40°C to +85°C, SIP3"
+			(at 149.86 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Recom Power"
+			(at 149.86 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "R-78K3.3-2.0"
 			(at 149.86 77.47 0)
 			(effects
 				(font
@@ -3334,6 +3487,24 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Kemet"
+			(at 209.55 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "C0603C104K5RACTUCT"
+			(at 209.55 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "3bcae470-be0c-43aa-9c92-321efa0db92e")
 		)
@@ -3462,6 +3633,24 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 107.95 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Kemet"
+			(at 107.95 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "C0603C102K5RACTUCT"
 			(at 107.95 90.17 0)
 			(effects
 				(font

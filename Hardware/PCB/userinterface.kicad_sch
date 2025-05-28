@@ -4381,6 +4381,24 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Yageo"
+			(at 156.21 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "RC0603FR-071K2L"
+			(at 156.21 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "f23084df-653a-49a0-8d33-4a89c156834a")
 		)
@@ -4517,6 +4535,24 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Texas Instruments"
+			(at 212.09 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "SN74LS07DR"
+			(at 212.09 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "5"
 			(uuid "c9e1be4b-c4a9-4691-9b89-5a1ec1352821")
 		)
@@ -4623,6 +4659,24 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Yageo"
+			(at 223.52 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "RC0603FR-074K7L"
+			(at 223.52 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "ee58ad48-f6cc-441f-b43b-a9c6e2f2e2c1")
 		)
@@ -4693,6 +4747,24 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Yageo"
+			(at 223.52 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "RC0603FR-074K7L"
+			(at 223.52 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "9c97acc8-3867-45ca-9854-5ee321e92956")
 		)
@@ -4710,14 +4782,12 @@
 	)
 	(symbol
 		(lib_id "Connector_Generic:Conn_02x03_Odd_Even")
-		(at 73.66 33.02 0)
-		(mirror y)
+		(at 71.12 33.02 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "0767992e-958f-4f24-9e64-2821f1cf13c9")
 		(property "Reference" "J802"
 			(at 72.39 24.13 0)
@@ -4735,8 +4805,8 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_PinSocket_2.54mm:PinSocket_2x03_P2.54mm_Vertical"
-			(at 73.66 33.02 0)
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_2x03_P2.54mm_Vertical"
+			(at 71.12 33.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4745,7 +4815,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 73.66 33.02 0)
+			(at 71.12 33.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4754,7 +4824,25 @@
 			)
 		)
 		(property "Description" "Generic connector, double row, 02x03, odd/even pin numbering scheme (row 1 odd numbers, row 2 even numbers), script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 73.66 33.02 0)
+			(at 71.12 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Würth Elektronik"
+			(at 71.12 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "61300621121"
+			(at 71.12 33.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4781,7 +4869,7 @@
 			(uuid "71314489-f00e-4c56-b1d3-14259727a033")
 		)
 		(instances
-			(project ""
+			(project "voicemail-box"
 				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/4f0e5244-4af7-4ccb-833f-1cabf77c28ec"
 					(reference "J802")
 					(unit 1)
@@ -4836,6 +4924,24 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 142.24 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 142.24 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "RC0603FR-071K2L"
 			(at 142.24 38.1 0)
 			(effects
 				(font
@@ -4914,6 +5020,24 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Yageo"
+			(at 110.49 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "RC0603FR-074K7L"
+			(at 110.49 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "bba34ad4-0eea-4d08-8439-48e946177c83")
 		)
@@ -4984,6 +5108,24 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Kemet"
+			(at 223.52 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "C0603C104K5RACTUCT"
+			(at 223.52 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "3b834cdc-0ab2-4360-913d-93614787b459")
 		)
@@ -5046,6 +5188,24 @@
 			)
 		)
 		(property "Description" "Hex Buffers and Drivers With Open Collector High Voltage Outputs"
+			(at 63.5 168.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Texas Instruments"
+			(at 63.5 168.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "SN74LS07DR"
 			(at 63.5 168.91 0)
 			(effects
 				(font
@@ -5152,6 +5312,24 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 223.52 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Kemet"
+			(at 223.52 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "C0603C104K5RACTUCT"
 			(at 223.52 129.54 0)
 			(effects
 				(font
@@ -5496,6 +5674,24 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Same Sky (Formerly CUI Devices)"
+			(at 247.65 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "TS02-66-70-BK-100-SCR-D"
+			(at 247.65 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "75131469-86f8-4b0c-baed-9fef354a23a0")
 		)
@@ -5566,6 +5762,24 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Yageo"
+			(at 199.39 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "RC0603FR-074K7L"
+			(at 199.39 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "c78933f5-b7b8-4469-9b2e-da0eca9a8d2f")
 		)
@@ -5628,6 +5842,24 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 223.52 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Kemet"
+			(at 223.52 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "C0603C104K5RACTUCT"
 			(at 223.52 102.87 0)
 			(effects
 				(font
@@ -5726,7 +5958,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" ""
+		(property "Manufacturer" "Lite-On Inc."
 			(at 165.608 31.75 0)
 			(effects
 				(font
@@ -5946,6 +6178,24 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Alps Alpine"
+			(at 48.26 33.02 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "RK1631110U2A"
+			(at 48.26 33.02 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "fcc1546e-aaab-4ef6-8dc8-12dcc66f26a3")
 		)
@@ -6017,6 +6267,24 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Same Sky (Formerly CUI Devices)"
+			(at 246.38 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "TS02-66-70-BK-100-SCR-D"
+			(at 246.38 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "62640297-b0c9-43ef-b836-75bc0f1b03b6")
 		)
@@ -6079,6 +6347,24 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 223.52 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 223.52 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "RC0603FR-074K7L"
 			(at 223.52 92.71 0)
 			(effects
 				(font
@@ -6291,6 +6577,24 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Yageo"
+			(at 223.52 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "RC0603FR-074K7L"
+			(at 223.52 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "1be58e2b-3342-4a2a-ac45-7ca11eaa1736")
 		)
@@ -6354,6 +6658,24 @@
 		)
 		(property "Description" "potentiometer_RK163"
 			(at 48.26 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Alps Alpine"
+			(at 48.26 69.85 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "RK1631110U2A"
+			(at 48.26 69.85 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6556,6 +6878,24 @@
 			)
 		)
 		(property "Description" "Common 6mmx6mm Push Button"
+			(at 246.38 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Same Sky (Formerly CUI Devices)"
+			(at 246.38 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "TS02-66-70-BK-100-SCR-D"
 			(at 246.38 71.12 0)
 			(effects
 				(font
@@ -6767,6 +7107,24 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Yageo"
+			(at 198.12 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "RC0603FR-074K7L"
+			(at 198.12 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "fe051441-c6be-499f-89ca-75160fa0bbf9")
 		)
@@ -6827,6 +7185,24 @@
 			)
 		)
 		(property "Description" "Hex Buffers and Drivers With Open Collector High Voltage Outputs"
+			(at 132.08 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Texas Instruments"
+			(at 132.08 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "SN74LS07DR"
 			(at 132.08 63.5 0)
 			(effects
 				(font
@@ -6933,6 +7309,24 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 110.49 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 110.49 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "RC0603FR-074K7L"
 			(at 110.49 68.58 0)
 			(effects
 				(font
@@ -7299,6 +7693,24 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Texas Instruments"
+			(at 212.09 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "SN74LS07DR"
+			(at 212.09 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "5"
 			(uuid "c9e1be4b-c4a9-4691-9b89-5a1ec1352824")
 		)
@@ -7405,6 +7817,24 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Kemet"
+			(at 223.52 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "C0603C104K5RACTUCT"
+			(at 223.52 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "57cc1752-8991-425a-813f-bbe849f078dc")
 		)
@@ -7467,6 +7897,24 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 198.12 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 198.12 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "RC0603FR-074K7L"
 			(at 198.12 119.38 0)
 			(effects
 				(font
@@ -7543,6 +7991,24 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Same Sky (Formerly CUI Devices)"
+			(at 246.38 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "TS02-66-70-BK-100-SCR-D"
+			(at 246.38 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "96947db2-ef5a-4b88-9852-9b632320ceea")
 		)
@@ -7603,6 +8069,24 @@
 			)
 		)
 		(property "Description" "Hex Buffers and Drivers With Open Collector High Voltage Outputs"
+			(at 212.09 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Texas Instruments"
+			(at 212.09 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "SN74LS07DR"
 			(at 212.09 124.46 0)
 			(effects
 				(font
@@ -7707,6 +8191,24 @@
 			)
 		)
 		(property "Description" "Hex Buffers and Drivers With Open Collector High Voltage Outputs"
+			(at 132.08 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Texas Instruments"
+			(at 132.08 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "SN74LS07DR"
 			(at 132.08 44.45 0)
 			(effects
 				(font
@@ -7842,7 +8344,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" ""
+		(property "Manufacturer" "Lite-On Inc."
 			(at 151.638 31.75 0)
 			(effects
 				(font
@@ -8006,6 +8508,24 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Texas Instruments"
+			(at 212.09 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "SN74LS07DR"
+			(at 212.09 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "5"
 			(uuid "c9e1be4b-c4a9-4691-9b89-5a1ec1352827")
 		)
@@ -8125,14 +8645,12 @@
 	)
 	(symbol
 		(lib_id "Connector_Generic:Conn_02x03_Odd_Even")
-		(at 73.66 69.85 0)
-		(mirror y)
+		(at 71.12 69.85 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "e582be18-da70-4ffb-b88a-b8e93d360ece")
 		(property "Reference" "J803"
 			(at 72.39 60.96 0)
@@ -8150,8 +8668,8 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_PinSocket_2.54mm:PinSocket_2x03_P2.54mm_Vertical"
-			(at 73.66 69.85 0)
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_2x03_P2.54mm_Vertical"
+			(at 71.12 69.85 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8160,7 +8678,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 73.66 69.85 0)
+			(at 71.12 69.85 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8169,7 +8687,25 @@
 			)
 		)
 		(property "Description" "Generic connector, double row, 02x03, odd/even pin numbering scheme (row 1 odd numbers, row 2 even numbers), script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 73.66 69.85 0)
+			(at 71.12 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Würth Elektronik"
+			(at 71.12 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "61300621121"
+			(at 71.12 69.85 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8525,6 +9061,24 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Yageo"
+			(at 198.12 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "RC0603FR-074K7L"
+			(at 198.12 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "7fec3bb6-79ac-4c3b-a37d-e67204c36bc9")
 		)
@@ -8587,6 +9141,24 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 46.99 168.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Kemet"
+			(at 46.99 168.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "C0603C104K5RACTUCT"
 			(at 46.99 168.91 0)
 			(effects
 				(font

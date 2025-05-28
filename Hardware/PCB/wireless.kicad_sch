@@ -3269,7 +3269,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "3d86da48-ce94-4d19-84be-cc3305d47610")
 		(property "Reference" "C301"
 			(at 145.796 44.45 0)
@@ -3316,6 +3316,24 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Kemet"
+			(at 144.78 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "C0805C104K5RACTU"
+			(at 144.78 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "b7e2d8ae-7f1b-4b53-9216-055d29d9cdaa")
 		)
@@ -3338,7 +3356,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "42ca2ff4-57e6-42e3-8066-846bd82646e8")
 		(property "Reference" "C302"
 			(at 157.48 44.196 0)
@@ -3377,6 +3395,24 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 156.21 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Kemet"
+			(at 156.21 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "C0603C106M9PAC7411"
 			(at 156.21 46.99 0)
 			(effects
 				(font
@@ -3474,7 +3510,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "5e5d2f91-c935-4aac-9ac9-d37e24e1a182")
 		(property "Reference" "R303"
@@ -3513,6 +3549,24 @@
 		)
 		(property "Description" "Resistor"
 			(at 205.74 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 205.74 60.96 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "RC0603FR-071KL"
+			(at 205.74 60.96 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3610,7 +3664,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "662c11c1-2cd3-4ba8-92e4-531f2fbb0f74")
 		(property "Reference" "R302"
@@ -3658,6 +3712,24 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Yageo"
+			(at 185.42 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "RC0603FR-0720KL"
+			(at 185.42 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "13ebb0f6-e0b2-4ba1-8ac2-143685f59cd1")
 		)
@@ -3680,7 +3752,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "712db8cb-08be-4c12-b265-f20f850523da")
 		(property "Reference" "R301"
@@ -3720,6 +3792,24 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 137.16 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 137.16 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "RC0603FR-0710KL"
 			(at 137.16 52.07 0)
 			(effects
 				(font
@@ -3817,7 +3907,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "9a10410a-8097-4df0-8c71-d0ab624eeb05")
 		(property "Reference" "U301"
 			(at 165.1 54.864 0)
@@ -3856,6 +3946,24 @@
 			)
 		)
 		(property "Description" "RF Module, ESP32-D0WDQ6 SoC, Wi-Fi 802.11b/g/n, Bluetooth, BLE, 32-bit, 2.7-3.6V, onboard antenna, SMD"
+			(at 162.56 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Espressif Systems"
+			(at 162.56 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "ESP32-WROOM-32E-H4"
 			(at 162.56 91.44 0)
 			(effects
 				(font
@@ -4362,7 +4470,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "e0d97f96-5ce3-46fe-bc71-efb03afc77c3")
 		(property "Reference" "J303"

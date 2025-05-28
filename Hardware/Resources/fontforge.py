@@ -15,11 +15,11 @@ font.fullname = "Voicemailbox"
 font.appendSFNTName('English (US)', 'Preferred Family', 'Voicemailbox')
 font.appendSFNTName('English (US)', 'Preferred Styles', 'Regular')
 
-
+fontstartpointer = 65
 for filename in os.listdir(src_dir):
     if filename.endswith(".svg") and filename.startswith("uni"):
-        codepoint = int(filename[3:7], 16)  # Extract Unicode from 'uniXXXX'
-        glyph = font.createChar(codepoint)
+        glyph = font.createChar(fontstartpointer)
+        fontstartpointer += 1
         glyph.importOutlines(os.path.join(src_dir, filename))
         glyph.left_side_bearing = 50
         glyph.right_side_bearing = 50

@@ -2140,6 +2140,24 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Kemet"
+			(at 147.32 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "C0805C104K5RACTU"
+			(at 147.32 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "2e99b062-a3f3-472c-a1e4-a75895c6a46a")
 		)
@@ -2201,6 +2219,24 @@
 			)
 		)
 		(property "Description" "4 resistor network, parallel topology"
+			(at 54.61 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Panasonic Electronic Components"
+			(at 54.61 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "EXB-38V103JV"
 			(at 54.61 39.37 0)
 			(effects
 				(font
@@ -2289,6 +2325,24 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 39.37 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 39.37 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "RC0603FR-0710KL"
 			(at 39.37 39.37 0)
 			(effects
 				(font
@@ -2710,6 +2764,15 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Hirose Electric Co Ltd"
+			(at 123.19 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "10"
 			(uuid "25210001-9ec6-47fe-91cf-6e76147b332a")
 		)
@@ -2796,6 +2859,24 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 48.26 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 48.26 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "RC0603FR-0710KL"
 			(at 48.26 39.37 0)
 			(effects
 				(font
