@@ -1,4 +1,4 @@
-# I2C
+# I2S
 This class is a simplfied interface to access the i2s peripheral.
 All Basic functions used in the project are implemented here.
 The implementation does use a DMA in Full-Duplex mode.
@@ -11,6 +11,7 @@ The implementation does use a DMA in Full-Duplex mode.
 - [I2S behind the scenes](#i2s-behind-the-scenes)
     - [Data flow](#data-flow)
     - [Ping-Pong Buffering](#ping-pong-buffering)
+    - [Audio Samples](#audio-samples)
 
 ---
 ## Features
@@ -128,13 +129,17 @@ void loop()
 
 ## I2S behind the scenes
 ### Data flow
-Since we use the I2S in Full-Duplex mode, we have 2 audio DMA streams which are processed at the same time by the DMA.
+Since we use the I2S in Full-Duplex mode, we have 2 audio DMA streams which are processed at the same time by a DMA.
 
->> Bild das den Datenfluss beider DMA Streams zeigt
+<tr>
+<td>
+<div align="center">
+    <img src="images/I2S_Dataflow.gif" width="400"> 
+</div>
+</td>
 
 ### Ping-Pong Buffering
-Audio data is sampled continuously and it is not possible to store a infinite amount of samples until the recording stops. A simple solution to this problem is a ping-pong buffer.
-A ping-pong buffer is a array that is split in 2 equal sized sub array's.
+Audio data is sampled continuously and it is not possible to store a infinite amount of samples until the recording stops. A simple solution to this problem is a ping-pong buffer. A ping-pong buffer is a array that is split in 2 equal sized sub array's.
 
 At the start of a DMA transmit, the start of the array is given to the HAL's DMA start call with the half size of the whole array.
 While the DMA is processing the first half of the array, the CPU can be used to fill the second half of the DMA buffer.
@@ -149,3 +154,15 @@ While the DMA sends these samples over i2s, the CPU can now fill the first half 
 </td>
 
 Two of these Ping-Pong Buffer array's are implemented in the I2S class. One for microphone data and one for audio output samples.
+
+### Audio Samples
+
+<tr>
+<td>
+<div align="center">
+    <img src="images/I2S_SampleStructure.png" width="600"> 
+</div>
+</td>
+
+The audio data stream comming/going from/to the audio codec contains both, left and right audio channel data.
+A audio sample is defined as a package consisting of one left and one right int16 value.
