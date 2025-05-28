@@ -74,6 +74,17 @@ I2S_HandleTypeDef* getI2S_handle()
 ```
 
 #### Inside the C++ Application
+
+The I2S class uses a buffer, the size of the buffer is defined either in static or dynamic mode.
+What this means is that if a static memory allocation is prefered because it is easier to track the memory usage, 
+then make sure that the macro: `VMB_I2S_USE_STATIC_BUFFER_SIZE` is defined. 
+The size for all I2S instances is then defined by the macro: `VMB_I2S_STATIC_BUFFER_SIZE`.
+Both macros are located in the **settings.h** file.
+
+> [!WARNING]
+> When the macro **VMB_I2S_USE_STATIC_BUFFER_SIZE** is defined, 
+> Providing a size value to the constructor of a I2S object, will have no effecet to its buffer size.  
+
 ``` C++ 
 // Application.cpp
 #include "BSP_VoiceMailBox.hpp" // includes "peripherals/i2s.hpp"
@@ -130,6 +141,11 @@ While the DMA is processing the first half of the array, the CPU can be used to 
 When the DMA triggers an half complete interrupt, the DMA gets restarted but now with the second half of the array, now using the prepared data in the second half of the array.
 While the DMA sends these samples over i2s, the CPU can now fill the first half of the array with new data.
 
->> Bild das die Zeitliche Abfolge des Ping-Pong buffers und DMA ISR zeigt
+<tr>
+<td>
+<div align="center">
+    <img src="images/I2S_PingPongBuffer.gif" width="800"> 
+</div>
+</td>
 
 Two of these Ping-Pong Buffer array's are implemented in the I2S class. One for microphone data and one for audio output samples.
