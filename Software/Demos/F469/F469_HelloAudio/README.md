@@ -1,6 +1,10 @@
 # HelloAudio for the F469
-This setup guide describes step by step how to setup a completly new project for the Voice Mail Box platform. It uses the **STM32F469I-DISCOVERY** board.
-Read each instruction carfully since there are many pitfalls. 
+The HelloAudio example is just a empty application ready to expand on.
+Copy the project in case you want to develop a custom application.
+
+Below is a setup guide that describes step by step how to configure a completly new project for the Voice Mail Box platform. It uses the **STM32F469I-DISCOVERY** board.
+> [!WARNING]  
+> Read each instruction carfully since there are many pitfalls. 
 
 ## Content
 - [Project creation](#project-creation)
