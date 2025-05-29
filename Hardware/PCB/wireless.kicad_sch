@@ -3269,7 +3269,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp yes)
+		(dnp no)
 		(uuid "3d86da48-ce94-4d19-84be-cc3305d47610")
 		(property "Reference" "C301"
 			(at 145.796 44.45 0)
@@ -3356,7 +3356,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp yes)
+		(dnp no)
 		(uuid "42ca2ff4-57e6-42e3-8066-846bd82646e8")
 		(property "Reference" "C302"
 			(at 157.48 44.196 0)
@@ -3510,7 +3510,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp yes)
+		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "5e5d2f91-c935-4aac-9ac9-d37e24e1a182")
 		(property "Reference" "R303"
@@ -3664,7 +3664,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp yes)
+		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "662c11c1-2cd3-4ba8-92e4-531f2fbb0f74")
 		(property "Reference" "R302"
@@ -3752,7 +3752,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp yes)
+		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "712db8cb-08be-4c12-b265-f20f850523da")
 		(property "Reference" "R301"
@@ -3907,7 +3907,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp yes)
+		(dnp no)
 		(uuid "9a10410a-8097-4df0-8c71-d0ab624eeb05")
 		(property "Reference" "U301"
 			(at 165.1 54.864 0)
@@ -4305,7 +4305,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "c950e639-aa80-4ecd-91cb-b5b0dd1da7ea")
 		(property "Reference" "J301"
@@ -4324,7 +4324,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_2x06_P2.54mm_Horizontal"
+		(property "Footprint" "additional parts:PinSocket_2x06_P2.54mm_Horizontal"
 			(at 107.95 63.5 0)
 			(effects
 				(font
@@ -4343,6 +4343,24 @@
 			)
 		)
 		(property "Description" "Generic connector, double row, 02x06, odd/even pin numbering scheme (row 1 odd numbers, row 2 even numbers), script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 107.95 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Würth Elektronik"
+			(at 107.95 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "613012243121"
 			(at 107.95 63.5 0)
 			(effects
 				(font
@@ -4470,7 +4488,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp yes)
+		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e0d97f96-5ce3-46fe-bc71-efb03afc77c3")
 		(property "Reference" "J303"
@@ -4510,6 +4528,24 @@
 			)
 		)
 		(property "Description" "Generic connector, single row, 01x06, script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 232.41 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Würth Elektronik"
+			(at 232.41 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "61300611121"
 			(at 232.41 63.5 0)
 			(effects
 				(font

@@ -6723,6 +6723,24 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Würth Elektronik"
+			(at 49.53 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "61301621821"
+			(at 49.53 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "8"
 			(uuid "484995fa-0c4a-4ce7-a37d-e92b4feda7e7")
 		)

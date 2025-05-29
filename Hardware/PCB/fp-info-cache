@@ -1,4 +1,4 @@
-724693379852613
+738682629808197
 Arduino_MountingHole
 MountingHole_1.2mm
 Mounting Hole 2.1mm, no annular
@@ -105539,6 +105539,13 @@ CONN_10164359-00011LF_AMP
 10
 10
 additional parts
+Jack_3.5mm_CUI_SJ2-3593D-SMT_Horizontal
+3.5 mm, Stereo, Right Angle, Surface Mount (SMT), Audio Jack Connector (https://www.cuidevices.com/product/resource/sj2-359x-smt.pdf)
+3.5mm audio cui horizontal jack stereo
+0
+5
+5
+additional parts
 LXRW0_MUR
 
 LXRW0YV600-054 
@@ -105559,6 +105566,55 @@ LXRW0YV600-054
 0
 4
 4
+additional parts
+Mic, dia 10mm pitch 2.54mm
+Through hole straight pin header, 1x02, 2.54mm pitch, single row
+Through hole pin header THT 1x02 2.54mm single row
+0
+2
+2
+additional parts
+PinSocket_2x06_P2.54mm_Horizontal
+Through hole angled pin header, 2x06, 2.54mm pitch, 6mm pin length, double rows
+Through hole angled pin header THT 2x06 2.54mm double row
+0
+12
+12
+additional parts
+SSOP-8_3.9x5.05mm_P1.27mm
+SSOP, 8 Pin (https://www.fujitsu.com/uk/Images/MB85RS16.pdf), generated with kicad-footprint-generator ipc_gullwing_generator.py
+SSOP SO
+0
+8
+8
+additional parts
+TDFN-14-1EP_3x3mm_P0.4mm_EP1.78x2.35mm
+TDFN, 14 Pin (https://pdfserv.maximintegrated.com/package_dwgs/21-0137.PDF (T1433-2C)), generated with kicad-footprint-generator ipc_noLead_generator.py
+TDFN NoLead
+0
+19
+15
+additional parts
+UFQFPN-32-1EP_5x5mm_P0.5mm_EP3.5x3.5mm
+UFQFPN, 32 Pin (https://www.st.com/resource/en/datasheet/stm32g071k8.pdf), generated with kicad-footprint-generator ipc_noLead_generator.py
+UFQFPN NoLead
+0
+37
+33
+additional parts
+USB_C_Receptacle_HRO_TYPE-C-31-M-17
+USB Type-C receptacle for USB 2.0, 6 pin, https://omo-oss-file.thefastfile.com/portal-saas/new2023011311465142457/cms/file/134891b2-9b01-4104-89d3-96207243f692.pdf
+usb usb-c 2.0 pd
+0
+10
+7
+additional parts
+VQFN-32-1EP_5x5mm_P0.5mm_EP3.1x3.1mm
+VQFN, 32 Pin (http://ww1.microchip.com/downloads/en/devicedoc/atmel-9520-at42-qtouch-bsw-at42qt1110_datasheet.pdf#page=42), generated with kicad-footprint-generator ipc_noLead_generator.py
+VQFN NoLead
+0
+37
+33
 myParts
 Connector_Arduino_Double
 

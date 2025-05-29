@@ -6029,7 +6029,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Package_DFN_QFN:TDFN-14-1EP_3x3mm_P0.4mm_EP1.78x2.35mm"
+		(property "Footprint" "additional parts:TDFN-14-1EP_3x3mm_P0.4mm_EP1.78x2.35mm"
 			(at 209.55 69.85 0)
 			(effects
 				(font
@@ -6368,7 +6368,7 @@
 				)
 			)
 		)
-		(property "Value" "CTS 218-4LPSTR"
+		(property "Value" "CTS 218-4LPSTJ"
 			(at 142.24 35.56 0)
 			(effects
 				(font
@@ -6376,7 +6376,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Package_SO:SSOP-8_3.9x5.05mm_P1.27mm"
+		(property "Footprint" "additional parts:SSOP-8_3.9x5.05mm_P1.27mm"
 			(at 142.24 45.72 0)
 			(effects
 				(font
@@ -6395,6 +6395,24 @@
 			)
 		)
 		(property "Description" "4x DIP Switch, Single Pole Single Throw (SPST) switch, small symbol"
+			(at 142.24 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "CTS Electrocomponents"
+			(at 142.24 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "218-4LPSTJ"
 			(at 142.24 45.72 0)
 			(effects
 				(font
@@ -6464,7 +6482,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Package_DFN_QFN:VQFN-32-1EP_5x5mm_P0.5mm_EP3.1x3.1mm"
+		(property "Footprint" "additional parts:VQFN-32-1EP_5x5mm_P0.5mm_EP3.1x3.1mm"
 			(at 103.124 31.496 0)
 			(effects
 				(font
@@ -6643,7 +6661,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
+		(property "Footprint" "additional parts:Mic, dia 10mm pitch 2.54mm"
 			(at 269.24 109.22 90)
 			(effects
 				(font
@@ -6728,7 +6746,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Package_DFN_QFN:VQFN-32-1EP_5x5mm_P0.5mm_EP3.1x3.1mm"
+		(property "Footprint" "additional parts:VQFN-32-1EP_5x5mm_P0.5mm_EP3.1x3.1mm"
 			(at 26.416 103.886 0)
 			(effects
 				(font
@@ -7630,7 +7648,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Package_DFN_QFN:VQFN-32-1EP_5x5mm_P0.5mm_EP3.1x3.1mm"
+		(property "Footprint" "additional parts:VQFN-32-1EP_5x5mm_P0.5mm_EP3.1x3.1mm"
 			(at 55.626 31.496 0)
 			(effects
 				(font
@@ -9352,7 +9370,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Package_DFN_QFN:VQFN-32-1EP_5x5mm_P0.5mm_EP3.1x3.1mm"
+		(property "Footprint" "additional parts:VQFN-32-1EP_5x5mm_P0.5mm_EP3.1x3.1mm"
 			(at 166.624 103.886 0)
 			(effects
 				(font
@@ -10210,7 +10228,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Connector_Audio:Jack_3.5mm_CUI_SJ2-3593D-SMT_Horizontal"
+		(property "Footprint" "additional parts:Jack_3.5mm_CUI_SJ2-3593D-SMT_Horizontal"
 			(at 242.57 133.35 0)
 			(effects
 				(font
@@ -10555,6 +10573,24 @@
 		)
 		(property "Description" "Generic connector, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)"
 			(at 213.36 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Würth Elektronik"
+			(at 213.36 106.68 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "61300311121"
+			(at 213.36 106.68 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11022,7 +11058,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Connector_Audio:Jack_3.5mm_CUI_SJ2-3593D-SMT_Horizontal"
+		(property "Footprint" "additional parts:Jack_3.5mm_CUI_SJ2-3593D-SMT_Horizontal"
 			(at 173.99 43.18 0)
 			(effects
 				(font
