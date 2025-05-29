@@ -1,9 +1,15 @@
 # Configure Audio Codec / Periphery
 
-## Jumpers and DIP Switches
+## Jumper J104 (use to connect On Board Mic to Codec)
 
+Position:
+<img src=../../Documentation/Jumper/HardwareJumper-J104.png width="500">
 
-Jumper J601 (use to connect On Board Mic to Codec)
+Jumper for F469:  
+<img src=../../Documentation/Jumper/HardwareJumper-J104_F469.png width="500">
+
+Jumper for H755:  
+<img src=../../Documentation/Jumper/HardwareJumper-J104_H755.png width="500">
 
 ```mermaid
 block-beta
@@ -20,7 +26,19 @@ class d highlighter
 
 ---
 
-Jumper J604
+## Jumper J604
+
+Position:
+<img src=../../Documentation/Jumper/HardwareJumper-J604.png width="500">
+
+Jumper for dynamic feedback:  
+<img src=../../Documentation/Jumper/HardwareJumper-J604_Dyn.png width="150">
+
+Jumper for static feedback:  
+<img src=../../Documentation/Jumper/HardwareJumper-J604_Stat.png width="150">
+
+Jumper for no feedback:  
+<img src=../../Documentation/Jumper/HardwareJumper-J604_None.png width="150">
 
 ```mermaid
 block-beta
@@ -58,59 +76,6 @@ class b2 highlighter
 class a3 highlighter
 ```
 
-## Registers modified in example SW
-
-```mermaid
----
-config:
-    packet: #with default value
-        bitWidth: 64
-        bitsPerRow: 8
-        showBits: true
----
-packet-beta title PLL Register - 0x03
-    0-2: "PLL P Value"  
-    3-6: "PLL Q Value"
-    7: "PLL"
-```
-```mermaid
----
-config:
-    packet: #with default value
-        bitWidth: 64
-        bitsPerRow: 8
-        showBits: true
----
-packet-beta title LEFT ADC PGA GAIN CONTROL - 0x0F
-    0-6: "Gain 0dB - 59.5 dB"  
-    7: "Mute"
-```
-
-```mermaid
----
-config:
-    packet: #with default value
-        bitWidth: 64
-        bitsPerRow: 8
-        showBits: true
----
-packet-beta title RIGHT ADC PGA GAIN CONTROL - 0x10
-    0-6: "Gain 0dB - 59.5 dB"  
-    7: "Mute"
-```
-
-```mermaid
----
-config:
-    packet: #with default value
-        bitWidth: 64
-        bitsPerRow: 8
-        showBits: true
----
-packet-beta title MIC2 L/R TO LEFT ADC CONTROL - 0x11
-    0-3: "Left Gain 0dB - -12dB - 0xFF = Mute"  
-    4-7: "Right Gain 0dB - -12dB - 0xFF = Mute"  
-```
 
 ---
 

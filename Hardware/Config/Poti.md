@@ -2,6 +2,16 @@
 
 ## Jumpers and connections J802/J803
 
+Position:
+<img src=../../Documentation/Jumper/HardwareJumper-J80x.png width="500">
+
+Jumper use Potentiometer on Board:  
+<img src=../../Documentation/Jumper/HardwareJumper-J80x_Board.png width="150">
+
+Jumper use Potentiometer external:  
+<img src=../../Documentation/Jumper/HardwareJumper-J80x_Ext.png width="150">
+
+
 Select on-board Potentiometer
 ```mermaid
 block-beta
