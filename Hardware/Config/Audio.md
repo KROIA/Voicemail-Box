@@ -2,7 +2,7 @@
 
 ## Jumper J104 (use to connect On Board Mic to Codec)
 
-Position:
+Position:  
 <img src=../../Documentation/Jumper/HardwareJumper-J104.png width="500">
 
 Jumper for F469:  
@@ -11,24 +11,11 @@ Jumper for F469:
 Jumper for H755:  
 <img src=../../Documentation/Jumper/HardwareJumper-J104_H755.png width="500">
 
-```mermaid
-block-beta
-    block:group1:2
-        columns 1
-        b["Microphone On-Board as left Channel"]
-        d["Microphone On-Board as right Channel"]
-    end
-
-classDef highlighter fill:#8bc8e8,stroke:#6c757d,color:#000000,stroke-width:1.5px;
-class b highlighter
-class d highlighter
-```
-
 ---
 
 ## Jumper J604
 
-Position:
+Position:  
 <img src=../../Documentation/Jumper/HardwareJumper-J604.png width="500">
 
 Jumper for dynamic feedback:  
@@ -40,21 +27,17 @@ Jumper for static feedback:
 Jumper for no feedback:  
 <img src=../../Documentation/Jumper/HardwareJumper-J604_None.png width="150">
 
-```mermaid
-block-beta
-        columns 3
-        a[" Jumper for dynamic feedback "]:2
-        b["-"]
-        space:3
-        c["-"]
-        d[" Jumper for static feedback "]:2    
-classDef highlighter fill:#8bc8e8,stroke:#6c757d,color:#000000,stroke-width:1.5px;
-class a highlighter
-class d highlighter
-```
-- Top Position = dynamic feedback
-- Bottom Position = static feedback
-- none = use no feedback
+## Jumper J601
+
+Position:  
+<img src=../../Documentation/Jumper/HardwareJumper-J601.png width="500">
+
+enable Microphone for left channel:  
+<img src=../../Documentation/Jumper/HardwareJumper-J601_left.png width="150">
+
+enable Microphone for right channel:  
+<img src=../../Documentation/Jumper/HardwareJumper-J601_right.png width="150">
+
 
 DIP Switch SW601 (blue for recommended settings)
 

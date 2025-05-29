@@ -56,8 +56,12 @@ While SPI is way faster, it is more complicated to set up
 NFC can be read-out either through I2C or SPI  
 While SPI is way faster and is tested.
 I2C would help in case that there is a pin-limitation of the final project.
-- [Configure NFC using SPI](Config/SPI_NFC.md)  
-- [Configure NFC using I2C](Config/I2C_NFC.md)
+- F469
+    - [Configure NFC using SPI](Config/F469/NFC_SPI_F469.md)
+    - [Configure NFC using I2C](Config/F469/NFC_I2C_F469.md) 
+- H755
+    - [Configure NFC using SPI](Config/H755/NFC_SPI_H755.md)
+    - [Configure NFC using I2C](Config/H755/NFC_I2C_H755.md) 
 
 ## Configure HW Features
 - [Configure PSU](Config/PSU.md)
