@@ -35,7 +35,6 @@
 /* Includes ------------------------------------------------------------------*/
 #include <string.h>
 #include "ff_gen_drv.h"
-#include "peripherals/sdmmc.h"
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
@@ -82,9 +81,8 @@ DSTATUS USER_initialize (
 )
 {
   /* USER CODE BEGIN INIT */
-	if (pdrv == 0)
-		return MMC_disk_initialize();
-	return STA_NOINIT;
+    Stat = STA_NOINIT;
+    return Stat;
   /* USER CODE END INIT */
 }
 
@@ -98,9 +96,8 @@ DSTATUS USER_status (
 )
 {
   /* USER CODE BEGIN STATUS */
-	if (pdrv == 0)
-		return MMC_disk_status();
-	return STA_NOINIT;
+    Stat = STA_NOINIT;
+    return Stat;
   /* USER CODE END STATUS */
 }
 
@@ -120,9 +117,7 @@ DRESULT USER_read (
 )
 {
   /* USER CODE BEGIN READ */
-	if (pdrv == 0)
-		return MMC_disk_read(buff, sector, count);
-	return RES_PARERR;
+    return RES_OK;
   /* USER CODE END READ */
 }
 
@@ -144,9 +139,7 @@ DRESULT USER_write (
 {
   /* USER CODE BEGIN WRITE */
   /* USER CODE HERE */
-	if (pdrv == 0)
-		return MMC_disk_write(buff, sector, count);
-	return RES_PARERR;
+    return RES_OK;
   /* USER CODE END WRITE */
 }
 #endif /* _USE_WRITE == 1 */
@@ -166,9 +159,8 @@ DRESULT USER_ioctl (
 )
 {
   /* USER CODE BEGIN IOCTL */
-	if (pdrv == 0)
-		return MMC_disk_ioctl(cmd, buff);
-	return RES_PARERR;
+    DRESULT res = RES_ERROR;
+    return res;
   /* USER CODE END IOCTL */
 }
 #endif /* _USE_IOCTL == 1 */

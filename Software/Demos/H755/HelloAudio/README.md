@@ -176,7 +176,7 @@ Open the **Properties** window for the CM7 sub project.
 
 #### Includes
 Navigate to **C/C++ General->Paths and Symbols**.
-Click **Add** and paste the following path: `${ProjDirPath}/../../../BSP_VoiceMailBox/inc`.
+Click **Add** and paste the following path: `${ProjDirPath}/../../../../BSP_VoiceMailBox/inc`.
 This Path only works if the project was created in the same location as this project.
 In the case, you create a project on a different location, you have to change the path accordingly.
 Set the checkmarks: **Add to all configurations** and **Add to all languages**.
@@ -189,7 +189,7 @@ For some reason, FATFS is not added to both C and C++, check that by clicking on
 
 #### Source Locations
 Clock **Link Folder** and check the checkmark **Link to folder in the file system**.
-Click on **Variables...**, add a **New** variable and name it: `BSP_VoiceMailBox` and the location: `${PROJECT_LOC}\..\..\..\BSP_VoiceMailBox\src`.
+Click on **Variables...**, add a **New** variable and name it: `BSP_VoiceMailBox` and the location: `${PROJECT_LOC}\..\..\..\..\BSP_VoiceMailBox\src`.
 Click **OK**, select the newly created variable and click **OK** again, and then again **OK**.
 Now switch the **Configuration** to the other one (Debug -> Release or Release -> Debug).
 Now click **Add Folder**, select **BSP_VoiceMailBox** from the list and click **OK**.
@@ -210,7 +210,7 @@ Sadly there is no encoder library available for the M7. I don't know why and did
 A other MP3 encoder must be used and implemented which is not very straight forward.
 An other way would be to use the M4 core. In that case it is the same way as it is for the F469 Discovery board.
 
-Add the library search path: `${ProjDirPath}/../../../BSP_VoiceMailBox/Middlewares/ST/STM32_Audio/Codecs/SpiritDSP_MP3_Dec/lib`
+Add the library search path: `${ProjDirPath}/../../../../BSP_VoiceMailBox/Middlewares/ST/STM32_Audio/Codecs/SpiritDSP_MP3_Dec/lib`
 
 ###### MCU/MPU Settings
 The floating point ABI must be set to **Mix HW/SW implementation**, otherwise the project will fail on build.

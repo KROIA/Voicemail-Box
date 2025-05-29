@@ -148,12 +148,13 @@ namespace VoiceMailBox
 		 * @param i2sBufferSize size for the i2s DMA buffer
 		 * @param i2c used to configure the codec
 		 * @param i2cDeviceAddress  of the codec on the I2C bus. Default address is 0x18
-		 * @param nResetPort port on which the nReset pin is connected 
-		 * @param nResetPin  pin the nReset port
+		 * @param resetPort port on which the reset pin is connected 
+		 * @param resetPin  pin on the reset port
+		 * @param resetPinIsInverted if true, the reset pin is active low, otherwise active high
 		 */
 		Codec_TLV320AIC3104(VMB_I2S_Handle* i2sHandle, uint16_t i2sBufferSize,
 							I2C& i2c, uint8_t i2cDeviceAddress,
-							VMB_GPIO* nResetPort, uint16_t nResetPin);
+							VMB_GPIO* resetPort, uint16_t resetPin, bool resetPinIsInverted = true);
 		~Codec_TLV320AIC3104();
 
 		void reset();
@@ -350,7 +351,7 @@ namespace VoiceMailBox
 
 		I2C& m_i2c;
 		uint8_t m_i2cDeviceAddress;
-		DigitalPin m_nResetPin;
+		DigitalPin m_resetPin;
 		I2S m_i2s; 
 
 		uint8_t m_currentRegisterPage = 0; // Current page number selected for accessing registers

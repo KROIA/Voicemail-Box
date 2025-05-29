@@ -68,6 +68,11 @@ using namespace VoiceMailBox;
 // Specify the ring-buffer size to 1024 bytes.
 UART uart(getUART_handle(), 1024);
 
+void setup()
+{
+    uart.setup(); 
+}
+
 // Called periodically
 void loop()
 {

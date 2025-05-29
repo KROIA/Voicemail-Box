@@ -171,7 +171,7 @@ Error_Handler();
   MX_USART3_UART_Init();
   MX_I2C1_Init();
   MX_FATFS_Init();
- // MX_SDMMC1_SD_Init();
+  MX_SDMMC1_SD_Init();
   MX_I2S2_Init();
   /* USER CODE BEGIN 2 */
 

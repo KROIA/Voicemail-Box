@@ -75,7 +75,7 @@ I2S_HandleTypeDef* getI2S_CODEC();
 #define VMB_MICROCONTROLLER_BOARD__STM32NUCLEO_H755ZI_Q
 
 // For some reason, the CUBE IDE does not generate the macros for the custom user labled pins, 
-// so we need to do this manually.    ¯\(°_o)/¯
+// so we need to do this manually.    ï¿½\(ï¿½_o)/ï¿½
 // 
 // 
 // Buttons

@@ -204,7 +204,7 @@
 	<variableList>
 		<variable>
 			<name>BSP_VoiceMailBox</name>
-			<value>$%7BPARENT-3-PROJECT_LOC%7D/BSP_VoiceMailBox/src</value>
+			<value>$%7BPARENT-4-PROJECT_LOC%7D/BSP_VoiceMailBox/src</value>
 		</variable>
 	</variableList>
 </projectDescription>

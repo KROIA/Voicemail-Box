@@ -5,11 +5,11 @@ namespace VoiceMailBox
 {
 	Codec_TLV320AIC3104::Codec_TLV320AIC3104(VMB_I2S_Handle* i2sHandle, uint16_t i2sBufferSize,
 											 I2C& i2c, uint8_t i2cDeviceAddress,
-											 VMB_GPIO* nResetPort, uint16_t nResetPin)
+											 VMB_GPIO* resetPort, uint16_t resetPin, bool resetPinIsInverted)
 		: AudioCodec()
 		, m_i2c(i2c)
 		, m_i2cDeviceAddress(i2cDeviceAddress)
-		, m_nResetPin{ nResetPort, nResetPin }
+		, m_resetPin{ resetPort, resetPin, resetPinIsInverted }
 		, m_i2s(i2sHandle, i2sBufferSize)
 		, m_currentRegisterPage(0)
 	{
@@ -26,9 +26,9 @@ namespace VoiceMailBox
 
 	void Codec_TLV320AIC3104::reset()
 	{
-		m_nResetPin.set(false); // Set nReset pin low
+		m_resetPin.set(true); 
 		VMB_HAL_Delay(25); // Wait for 10ms
-		m_nResetPin.set(true); // Set nReset pin high
+		m_resetPin.set(false); 
 		VMB_HAL_Delay(25); // Wait for 10ms
 
 		// Software reset
