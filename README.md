@@ -20,4 +20,4 @@ The repository is structured the following way:
 [Go to Hardware Dokumentation](Hardware/README.md)
 
 - **Software** folder contains the main source code and api.  
-[Go to Software Dokumentation](Software/README.md)
+[Go to Software Dokumentation](Software/BSP_VoiceMailBox/README.md)
