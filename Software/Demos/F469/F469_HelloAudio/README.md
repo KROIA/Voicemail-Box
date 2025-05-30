@@ -354,6 +354,7 @@ The spiritDSP MP3 library was used in the [X-CUBE-AUDIO](https://www.st.com/en/e
   - **Add to all languages**: `checked`
    `OK`
 <br>
+
 - In the `Libraries` section click on `Add...` and fill the following in the dialog:
   - **File**: `_mp3encoder_cortex_m4_v2.2.0`
   - **Add to all configurations**: `checked`
@@ -361,12 +362,14 @@ The spiritDSP MP3 library was used in the [X-CUBE-AUDIO](https://www.st.com/en/e
    `OK`
 <br>
 <br>
+
 - In the `Library Paths` section click on `Add...` and fill the following in the dialog:
   - **Directory**: `${ProjDirPath}/../../../BSP_VoiceMailBox/Middlewares/ST/STM32_Audio/Codecs/SpiritDSP_MP3_Dec/lib`
   - **Add to all configurations**: `checked`
   - **Add to all languages**: `checked`
    `OK`
 <br>
+
 - In the `Library Paths` section click on `Add...` and fill the following in the dialog:
   - **Directory**: `${ProjDirPath}/../../../BSP_VoiceMailBox/Middlewares/ST/STM32_Audio/Codecs/SpiritDSP_MP3_Enc/lib`
   - **Add to all configurations**: `checked`
@@ -399,3 +402,7 @@ Or similar errors related to the `Platform.cpp` mean that there is no get functi
 #### No peripheral GPIO macros defined
 Error: `'BTN0_Pin' undeclared`
 Or similar errors related to the `Platform.cpp` mean that there are undefined macros which must be defined in the `main.h`. [See here](#peripheral-gpios) how to resolve the issue.
+
+#### No settings header
+Error: `No settings header included, make sure to provide a custom settings header in the main.h file when VMB_CUSTOM_SETTINGS_HEADER is defined!`
+If you use custom settings, make sure to not only define the macro `VMB_CUSTOM_SETTINGS_HEADER` but also include a custom settings header in the `main.h` that provides all settings needed for the BSP.

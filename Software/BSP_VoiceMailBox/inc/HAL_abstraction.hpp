@@ -15,6 +15,17 @@
 #include "main.h"
 #include "settings.h"
 
+#ifndef VMB_SETTINGS_HEADER
+#error "No settings header included, make sure to provide a custom settings header in the main.h file when VMB_CUSTOM_SETTINGS_HEADER is defined!"
+#endif
+
+// Define one of the following macros in the main.h
+//#define VMB_MICROCONTROLLER_BOARD__STM32F469I_DISCOVERY
+//#define VMB_MICROCONTROLLER_BOARD__STM32NUCLEO_H755ZI_Q
+#if defined(VMB_MICROCONTROLLER_BOARD__STM32F469I_DISCOVERY) + defined(VMB_MICROCONTROLLER_BOARD__STM32NUCLEO_H755ZI_Q) != 1
+#error "Exactly one platform must be defined!"
+#endif
+
 namespace VoiceMailBox
 {
 	enum class VMB_HAL_Status : uint32_t

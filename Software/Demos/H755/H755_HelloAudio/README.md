@@ -170,6 +170,18 @@ Select the Pins and assign them the given function.
 - **Data and Frame Format**: 16 Bits Data on 16 Bits Frame
 - **Selected Audio Frequency**: 48KHz
 
+##### NVIC Settings
+- **SPI2 global interrupt**: Enabled
+
+##### DMA Settings
+- **I2S2_EXT_RX** using DMA1 Stream 3 Peripheral To Memory
+  **Mode**: Circular
+  **Data Width**: Half Word
+<br>
+- **SPI2_TX** using DMA1 Stream 4 Memory To Peripheral
+  **Mode**: Circular
+  **Data Width**: Half Word
+
 #### Reset pin
 Select the Pin and assign them the given function.
 
@@ -345,6 +357,7 @@ The spiritDSP MP3 library was used in the [X-CUBE-AUDIO](https://www.st.com/en/e
    `OK`
 <br>
 <br>
+
 - In the `Library Paths` section click on `Add...` and fill the following in the dialog:
   - **Directory**: `${ProjDirPath}/../../../../BSP_VoiceMailBox/Middlewares/ST/STM32_Audio/Codecs/SpiritDSP_MP3_Dec/lib`
   - **Add to all configurations**: `checked`

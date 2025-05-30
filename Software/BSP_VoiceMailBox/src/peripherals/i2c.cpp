@@ -1,4 +1,5 @@
 #include "peripherals/i2c.hpp"
+#include "utilities/Logger.hpp"
 
 namespace VoiceMailBox
 {
@@ -18,7 +19,7 @@ namespace VoiceMailBox
 			&data,
 			1,
 			HAL_MAX_DELAY);
-
+		VMB_LOGGER_HANDLE_STATUS(status, "I2C::writeRegister()");
 		return status; 
 	}
 
@@ -31,7 +32,7 @@ namespace VoiceMailBox
 			&data,
 			1,
 			HAL_MAX_DELAY);
-
+		VMB_LOGGER_HANDLE_STATUS(status, "I2C::readRegister()");
 		return status; 
 	}
 }

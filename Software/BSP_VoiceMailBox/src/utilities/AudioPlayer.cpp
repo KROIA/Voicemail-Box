@@ -90,7 +90,7 @@ namespace VoiceMailBox
 			m_loopCount = repetitions-1;
 			return true;
 		}
-		VMB_LOGLN("Failed to open file for playing");
+		VMB_LOGLN("Failed to open file: \""+filePath+"\" for playing");
 		return false;
 	}
 	bool AudioPlayer::stop()
@@ -149,8 +149,14 @@ namespace VoiceMailBox
 		if (!m_isPlaying || m_isPaused)
 			return;
 		
+#ifdef VMB_ENABLE_SIMULTANEOUS_PLAYBACK_AND_RECORDING
+		if (m_codec.isDataReady())
+#else
 		if (m_codec.isDataReadyAndClearFlag())
+#endif
+		{
 			processAudioSamples(m_codec.getTxBufPtr(), m_codec.getBufferSize());
+		}
 	}
 
 	void AudioPlayer::processAudioSamples(volatile int16_t* dmaTxBuff, uint32_t size)

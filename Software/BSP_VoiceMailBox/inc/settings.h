@@ -8,12 +8,20 @@
  */
 
 
-// Define one of the following macros in the main.h
-//#define VMB_MICROCONTROLLER_BOARD__STM32F469I_DISCOVERY
-//#define VMB_MICROCONTROLLER_BOARD__STM32NUCLEO_H755ZI_Q
-#if defined(VMB_MICROCONTROLLER_BOARD__STM32F469I_DISCOVERY) + defined(VMB_MICROCONTROLLER_BOARD__STM32NUCLEO_H755ZI_Q) != 1
-	#error "Exactly one platform must be defined!"
+/**
+ * @details
+ * If a custom settings header is used in the specific project,
+ * define this macro in the main.h so that the settings of this file are not used.
+ * also include the custom settings header in the main.h file.
+ */
+#ifdef VMB_CUSTOM_SETTINGS_HEADER
+#define VMB_SETTINGS_HEADER
 #endif
+#ifndef VMB_CUSTOM_SETTINGS_HEADER
+#define VMB_SETTINGS_HEADER
+
+
+
 
 // ------------------------------------------------------------------------------------------------
 // ===================================== D E B U G G I N G ========================================
@@ -35,6 +43,15 @@
 // If this macro is defined, all objects derived by the logger class will be enabled by default.
 // Otherwise the logger functionality of these objects must be enabled explicitly by calling the function Logger::enableLogging().
 #define VMB_LOGGER_OBJECTS_ENABLED_BY_DEFAULT
+
+
+
+#define VMB_LOGGER_ENABLE_STATUS_PRINT_OK
+#define VMB_LOGGER_ENABLE_STATUS_PRINT_ERROR
+#define VMB_LOGGER_ENABLE_STATUS_PRINT_BUSY
+#define VMB_LOGGER_ENABLE_STATUS_PRINT_TIMEOUT
+#define VMB_LOGGER_ENABLE_STATUS_PRINT_UNKNOWN
+
 
 
 /**
@@ -173,10 +190,33 @@
 #define VMB_AUDIO_FORMAT_MP3 2
 #endif
 
-#define VMB_USED_AUDIO_FORMAT VMB_AUDIO_FORMAT_WAV
+/**
+ * @details
+ * Select the audio format to be used in the application.
+ */
+#define VMB_USED_AUDIO_FORMAT VMB_AUDIO_FORMAT_MP3
+
+
+/**
+ * @details
+ * When VMB_AUDIO_USE_STATIC_BUFFER_SIZE is defined, the I2S::isDataReady() flag can be read multiple times
+ * in one processing cycle without resetting it. Do not use I2S::isDataReadyAndClearFlag() in this case because 
+ * it will reset the flag after reading it, leading in a resetted flag when a other function reads the flag in the
+ * same processing cycle.
+ * By using I2S::isDataReady() the flag will not be reset and can be read multiple times.
+ * This is useful when using the AudioPlayer and AudioRecorder at the same time.
+ * After the processing cycle, the flag will be reset automatically by the platform.
+ * 
+ * To save a little bit of performance, this feature can be disabled.
+ * When disabled, use the I2S::isDataReadyAndClearFlag() function to read the flag.
+ * But it is then not possible to use a AudioPlayer and AudioRecorder at the same time,
+ * since both objects read the flag and the first who reads it will also reset it.
+ */
+#define VMB_ENABLE_SIMULTANEOUS_PLAYBACK_AND_RECORDING
 
 // ------------------------------------------------------------------------------------------------
 // ================================================================================================
 // ------------------------------------------------------------------------------------------------
 
-#endif
+#endif // VMB_CUSTOM_SETTINGS_HEADER	
+#endif // SETTINGS_H

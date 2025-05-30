@@ -80,7 +80,7 @@ namespace VoiceMailBox
 			m_codec.clearDataReadyFlag();
 			return true;
 		}
-		VMB_LOGLN("Failed to open file for recording");
+		VMB_LOGLN("Failed to open file: \"" + filePath + "\" for recording");
 		return false;
 	}
 	bool AudioRecorder::stop()
@@ -136,8 +136,14 @@ namespace VoiceMailBox
 	{
 		if (!m_isRecording || m_isPaused)
 			return;
+#ifdef VMB_ENABLE_SIMULTANEOUS_PLAYBACK_AND_RECORDING
+		if (m_codec.isDataReady())
+#else
 		if (m_codec.isDataReadyAndClearFlag())
+#endif
+		{
 			processAudioSamples(m_codec.getRxBufPtr(), m_codec.getBufferSize());
+		}
 	}
 
 	void AudioRecorder::processAudioSamples(volatile int16_t* dmaRxBuff, uint32_t size)

@@ -11,6 +11,7 @@
 #include "platform.hpp"
 #include "HAL_abstraction.hpp"
 #include "utilities/Updatable.hpp"
+#include "utilities/Logger.hpp"
 #include <stdint.h>
 
 #include <cstdarg>   // <-- required for va_list and related macros
@@ -144,6 +145,8 @@ namespace VoiceMailBox
 
 	void Platform::setup()
 	{
+		VMB_LOGGER_PRINTLN("Platform::setup() start");
+		bool success = true;
 		VMB_HAL_InitTickCounter();
 		
 		// It is not very important that these functions are called here.
@@ -154,14 +157,26 @@ namespace VoiceMailBox
 		getPotentiometer(Potentiometer::POT0);	// Make sure the static ADC instances are created
 		
 		// Call the setup function of objects that need to be set up explicitly
-		getCodec().setup();
-		getDebugUART().setup();
-		getPmodESP().setup();
+		success &= getCodec().setup();
+		success &= getDebugUART().setup();
+		success &= getPmodESP().setup();
+		if (success)
+		{
+			VMB_LOGGER_PRINTLN("Platform::setup() success");
+		}
+		else
+		{
+			VMB_LOGGER_PRINTLN("Platform::setup() failed");
+		}
 	}	
 
 	void Platform::update()
 	{
 		Updatable::updateInstances();
+
+#ifdef VMB_ENABLE_SIMULTANEOUS_PLAYBACK_AND_RECORDING
+		I2S::clearDataReadyFlagAllInstances();
+#endif
 
 		// Update systick counters
 		static uint32_t lastTick = 0;
@@ -170,7 +185,6 @@ namespace VoiceMailBox
 		{
 			VMB_HAL_UpdateTick();
 		}
-		
 	}
 }
 

@@ -46,4 +46,4 @@ The Application must include only the **BSP_VoiceMailBox.h** header file, it alr
 
 ## Demos
 ### STM32F469I-DISCOVERY
-- [HelloAudio](../Demos/F469/F469_HelloAudio/README.md) empty application
+- [HelloAudio](../Demos/F469/F469_HelloAudio/README.md) empty application + setup guide

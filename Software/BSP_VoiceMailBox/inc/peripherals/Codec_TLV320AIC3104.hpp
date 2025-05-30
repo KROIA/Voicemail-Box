@@ -15,12 +15,13 @@
 #include "digitalPin.hpp"
 #include "i2c.hpp"
 #include "i2s.hpp"
+#include "utilities/Logger.hpp"
 
 
 
 namespace VoiceMailBox
 {
-	class Codec_TLV320AIC3104 : public AudioCodec
+	class Codec_TLV320AIC3104 : public AudioCodec, public Logger
 	{
 		/**
 		 * @brief Register map
@@ -158,7 +159,12 @@ namespace VoiceMailBox
 		~Codec_TLV320AIC3104();
 
 		void reset();
-		void setup();
+
+		/**
+		 * @brief Configures the codec and starts the I2S DMA
+		 * @return true if successfull, otherwise false
+		 */
+		bool setup();
 
 		/**
 		 * @brief Start the DMA for i2s
@@ -323,8 +329,9 @@ namespace VoiceMailBox
 		 * @brief Writes the data byte to the given register address of the codec.
 		 * @param registerAddress which can be on page 0 or page 1.
 		 * @param data byte to be set
+		 * @return true if the write was successful, false otherwise
 		 */
-		void writeRegister(uint8_t registerAddress, uint8_t data);
+		bool writeRegister(uint8_t registerAddress, uint8_t data);
 
 		/**
 		 * @brief Reads a byte from the given register address of the codec.
