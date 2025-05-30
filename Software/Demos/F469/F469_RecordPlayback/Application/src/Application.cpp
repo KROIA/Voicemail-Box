@@ -2,9 +2,10 @@
 #include "Application.h"
 #include "BSP_VoiceMailBox.hpp"
 
-VoiceMailBox::AudioRecorder *recorder = nullptr;
-VoiceMailBox::AudioPlayer* player = nullptr;
-const std::string fileName = "record.mp3";
+
+VoiceMailBox::AudioRecorder* recorder = nullptr;
+VoiceMailBox::AudioPlayer*   player   = nullptr;
+const std::string            fileName = "record.mp3";
 
 
 void setup()
