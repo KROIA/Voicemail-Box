@@ -33,7 +33,10 @@ namespace VoiceMailBox
 		bool close();
 		std::string getPath() const { return m_file.getPath(); }
 
+		// size is the amount of samples, not the length of the array
 		uint32_t writeAudioSamples(const volatile int16_t* data, uint32_t size);
+
+		// size is the amount of samples, not the length of the array
 		uint32_t readAudioSamples(volatile int16_t* data, uint32_t size);
 
 

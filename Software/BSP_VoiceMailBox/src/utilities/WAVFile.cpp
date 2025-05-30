@@ -77,8 +77,8 @@ namespace VoiceMailBox
 			VMB_LOGLN("Failed to write audio samples, file is not opened in write mode: " + m_file.getPath());
 			return 0;
 		}
-		uint32_t written = m_file.write((uint8_t*)data, size * sizeof(int16_t));
-		m_sampleCounter += size / 2; // Left and right channel are 2x 16 bit samples which counts as one audio sample
+		uint32_t written = m_file.write((uint8_t*)data, size * sizeof(int16_t) * m_numChannels);
+		m_sampleCounter += size; // Left and right channel are 2x 16 bit samples which counts as one audio sample
 		return written;
 	}
 	uint32_t WAVFile::readAudioSamples(volatile int16_t* data, uint32_t size)
@@ -98,10 +98,10 @@ namespace VoiceMailBox
 			VMB_LOGLN("No more audio samples to read");
 			return 0;
 		}
-		uint32_t read = m_file.read((uint8_t*)data, size * sizeof(int16_t));
-		if (m_sampleCounter - size / 2 > m_sampleCounter) // Overflow check
+		uint32_t read = m_file.read((uint8_t*)data, size * sizeof(int16_t) * m_numChannels);
+		if (m_sampleCounter - size > m_sampleCounter) // Overflow check
 		{
-			memset((int16_t*)data + size - m_sampleCounter * 2, 0, 2 * m_sampleCounter * sizeof(int16_t)); // Clear the remaining samples
+			memset((int16_t*)data + size * m_numChannels - m_sampleCounter * 2, 0, 2 * m_sampleCounter * sizeof(int16_t)); // Clear the remaining samples
 			m_sampleCounter = 0;
 		}
 		else
