@@ -1,0 +1,3 @@
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/BSP_VoiceMailBox/src/utilities/MP3_encoder.cpp:7:2:VoiceMailBox::MP3_encoder::MP3_encoder(uint32_t, uint32_t, uint16_t)	1
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/BSP_VoiceMailBox/src/utilities/MP3_encoder.cpp:23:2:VoiceMailBox::MP3_encoder::~MP3_encoder()	3
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/BSP_VoiceMailBox/src/utilities/MP3_encoder.cpp:30:11:uint32_t VoiceMailBox::MP3_encoder::encode(int8_t*&, const int16_t*)	2

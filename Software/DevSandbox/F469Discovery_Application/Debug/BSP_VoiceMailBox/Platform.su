@@ -1,0 +1,23 @@
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/DevSandbox/F469Discovery_Application/../../BSP_VoiceMailBox/inc/HAL_abstraction.hpp:160:18:uint64_t VoiceMailBox::VMB_HAL_UpdateTick(uint64_t)	64	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/DevSandbox/F469Discovery_Application/../../BSP_VoiceMailBox/inc/HAL_abstraction.hpp:176:14:void VoiceMailBox::VMB_HAL_InitTickCounter()	8	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/DevSandbox/F469Discovery_Application/../../BSP_VoiceMailBox/inc/HAL_abstraction.hpp:187:18:uint32_t VoiceMailBox::VMB_HAL_GetTickCount()	4	static
+/home/dominik/st/stm32cubeide_1.15.1/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.linux64_1.1.0.202410170702/tools/arm-none-eabi/include/c++/12.3.1/arm-none-eabi/thumb/v7e-m+fp/softfp/bits/gthr-default.h:229:1:int __gthread_key_delete(__gthread_key_t)	16	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/BSP_VoiceMailBox/src/Platform.cpp:35:3:void __tcf_0()	16	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/BSP_VoiceMailBox/src/Platform.cpp:26:14:static VoiceMailBox::DigitalPin& VoiceMailBox::Platform::getLed(VoiceMailBox::LED)	24	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/BSP_VoiceMailBox/src/Platform.cpp:53:3:void __tcf_1()	16	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/BSP_VoiceMailBox/src/Platform.cpp:42:14:static VoiceMailBox::DigitalPin& VoiceMailBox::Platform::getButton(VoiceMailBox::Button)	24	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/BSP_VoiceMailBox/src/Platform.cpp:60:13:static VoiceMailBox::AnalogPin& VoiceMailBox::Platform::getPotentiometer(VoiceMailBox::Potentiometer)	24	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/BSP_VoiceMailBox/src/Platform.cpp:83:43:void __tcf_2()	8	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/BSP_VoiceMailBox/src/Platform.cpp:76:8:static VoiceMailBox::UART& VoiceMailBox::Platform::getDebugUART()	8	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/BSP_VoiceMailBox/src/Platform.cpp:104:45:void __tcf_3()	8	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/BSP_VoiceMailBox/src/Platform.cpp:90:23:static VoiceMailBox::Codec_TLV320AIC3104& VoiceMailBox::Platform::getCodec()	32	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/BSP_VoiceMailBox/src/Platform.cpp:117:3:void __tcf_4()	8	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/BSP_VoiceMailBox/src/Platform.cpp:109:19:static VoiceMailBox::ATCommandClient& VoiceMailBox::Platform::getPmodESP()	16	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/BSP_VoiceMailBox/src/Platform.cpp:121:7:static VoiceMailBox::I2C& VoiceMailBox::Platform::getI2C()	8	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/BSP_VoiceMailBox/src/Platform.cpp:139:3:void __tcf_5()	16	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/BSP_VoiceMailBox/src/Platform.cpp:130:14:static VoiceMailBox::DigitalPin& VoiceMailBox::Platform::getDebugPin(VoiceMailBox::DBG_PIN)	24	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/BSP_VoiceMailBox/src/Platform.cpp:145:7:static void VoiceMailBox::Platform::setup()	8	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/BSP_VoiceMailBox/src/Platform.cpp:162:7:static void VoiceMailBox::Platform::update()	16	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/BSP_VoiceMailBox/src/Platform.cpp:175:1:void __static_initialization_and_destruction_0(int, int)	16	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/BSP_VoiceMailBox/src/Platform.cpp:175:1:cpp)	8	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/BSP_VoiceMailBox/src/Platform.cpp:175:1:cpp)	8	static
