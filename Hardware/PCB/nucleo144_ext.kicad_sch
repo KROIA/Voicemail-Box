@@ -2351,6 +2351,15 @@
 				(hide yes)
 			)
 		)
+		(property "Var" "Assembly Full(+!) Partial(+!)"
+			(at 39.37 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "a2e0a4ba-a020-4482-b43c-4f5d6decb9ce")
 		)
@@ -2877,6 +2886,15 @@
 			)
 		)
 		(property "Part Number" "RC0603FR-0710KL"
+			(at 48.26 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Var" "Assembly Full(+!) Partial(+!)"
 			(at 48.26 39.37 0)
 			(effects
 				(font
