@@ -38,7 +38,7 @@ to use one or the other, select the correct BOM to solder and only solder the me
 - [Go to partial BOM](PCB/BOM/voicemail-box_partial.csv)
 - [Go to full BOM](PCB/BOM/voicemail-box_full.csv)
 
-> [!INFO]  
+> [!NOTE]  
 > If you want to edit the PCB files I recommend using KICAD with the KiVar Plugin
 
 ## Select Microcontroller Board in use (get the correct Jumper settings)
