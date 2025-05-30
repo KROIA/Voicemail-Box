@@ -126,7 +126,7 @@ namespace VoiceMailBox
 	 *
 	 * @note This function is variadic and uses the same format as printf.
 	 */
-	void print(const char* str, ...) 
+	static void print(const char* str, ...)
 	{
 		va_list args;
 		va_start(args, str);
@@ -155,7 +155,7 @@ namespace VoiceMailBox
 	 *
 	 * @note This function is variadic and uses the same format as printf.
 	 */
-	void println(const char* str, ...)
+	static void println(const char* str, ...)
 	{
 		va_list args;
 		va_start(args, str);

@@ -44,7 +44,7 @@ namespace VoiceMailBox
 		bool currentState = get();
 		if (currentState != m_lastState)
 		{
-			if (currentState == 0)
+			if (currentState == 1)
 			{
 				if (m_onFallingEdge)
 					m_onFallingEdge(*this);
@@ -56,7 +56,7 @@ namespace VoiceMailBox
 			}
 			m_lastState = currentState;
 		}
-		if (currentState == 0)
+		if (currentState == 1)
 		{
 			if (m_onDown)
 				m_onDown(*this);

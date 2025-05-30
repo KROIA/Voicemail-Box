@@ -80,8 +80,3 @@ void loop()
     i2c.readRegister(deviceAddress, registerAddress, readData);
 }
 ```
-
-
-``` C++ 
-
-```

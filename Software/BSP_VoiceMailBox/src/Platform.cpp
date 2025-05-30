@@ -47,10 +47,10 @@ namespace VoiceMailBox
 		// On this board the buttons are active high, so the isInverted parameter is set to false or can be omitted
 		static DigitalPin button[] = 
 		{
-			{ BTN0_GPIO_Port, BTN0_Pin },
-			{ BTN1_GPIO_Port, BTN1_Pin },
-			{ BTN2_GPIO_Port, BTN2_Pin },
-			{ BTN3_GPIO_Port, BTN3_Pin }
+			{ BTN0_GPIO_Port, BTN0_Pin, true},
+			{ BTN1_GPIO_Port, BTN1_Pin, true},
+			{ BTN2_GPIO_Port, BTN2_Pin, true},
+			{ BTN3_GPIO_Port, BTN3_Pin, true}
 		};
 		return button[index];
 	}
@@ -145,6 +145,13 @@ namespace VoiceMailBox
 
 	void Platform::setup()
 	{
+		static bool isSetup = false;
+		if (isSetup)
+		{
+			VMB_LOGGER_PRINTLN("Platform::setup() already done, skipping");
+			return;
+		}
+		isSetup = true; // Set the flag to true to avoid multiple setups
 		VMB_LOGGER_PRINTLN("Platform::setup() start");
 		bool success = true;
 		VMB_HAL_InitTickCounter();

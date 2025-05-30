@@ -384,6 +384,25 @@ Navigate to `C/C++ Build->Settings` and in the `MCU/MPU Settings` set the **floa
 Do that for both configurations: **Debug** and **Release**
 
 
+---
+## How to copy this project
+When you want to use this project as template to create your custom application, you have to repair some ST related copy proplems...
+1) If you opened this project in the CubeIDE, close it and delete it from the worspace. **(not from the disc!)**
+2) Navigate to the folder of this project and copy it to your desired project directory.
+3) Change the name of the copied folder to your new projects name.
+4) In the Cube IDE: `File->import->Existing Project into Workspace` and hit **Next >**.
+5) Browse to your new project location and use that folder. In the Projects list, the HelloAudio project should be visible.
+6) Click on **Finish**
+7) Now right click on to the project to rename it using the new project name.
+8) In the `Project Explorer` delete the folder called `BSP_VoiceMailBox`. (It is only a link) 
+9) Open the `Project Properties`.
+10) Navigate to `Resource->Linked Resources`.
+11) In the list you may find `BSP_VoiceMailBox_1` with a long path, delete that. Only the `BSP_VoiceMailBox` is needed.
+12) Navigate to `C/C++ General->Paths and Symbols`.
+13) Now link the `BSP_VoiceMailBox` again using the variable. You find the instructions for that in the [Source Locations](#source-locations) chapter of this document. But you don't have to create a new variable since the variable aready exists.
+
+Thats it, the copied project should now compile and is ready to be filled with some nice C++ code. :sunglasses:
+Navigate to the folder `Application/src`, here you find the `Application.cpp` which is your main application file.
 
 
 ---
