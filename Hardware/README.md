@@ -35,8 +35,11 @@ to use one or the other, select the correct BOM to solder and only solder the me
 - tbd: add pictures
 
 ### Soldering
-- [Go to partial BOM](BOM/BOM_partial.csv)
-- [Go to full BOM](BOM/BOM_full.csv)
+- [Go to partial BOM](PCB/BOM/voicemail-box_partial.csv)
+- [Go to full BOM](PCB/BOM/voicemail-box_full.csv)
+
+> [!INFO]  
+> If you want to edit the PCB files I recommend using KICAD with the KiVar Plugin
 
 ## Select Microcontroller Board in use (get the correct Jumper settings)
 - [Configure Board for H755](Config/H755/H755.md)
