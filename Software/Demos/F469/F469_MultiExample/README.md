@@ -23,7 +23,7 @@ Here a quick file overview:
 - [AnalogPin](#analogpin-example)
 - [DigitalPin](#digitalpin-example)
 - [AudioPlayer](#audioplayer-example)
-
+- [AudioRecorder](#audiorecorder-example)
 
 
 
@@ -48,3 +48,10 @@ Here a quick file overview:
 2) Plays a mp3 file called `record.mp3` from the SD-Card when the BTN0 gets pressed.
   By clicking the same button again, the playback will be stopped.
   When playing, the BTN1 can be used to pause/resume the playback.
+
+
+
+### AudioRecorder example
+1) Records a mp3 file called `record.mp3` to the SD-Card when the BTN0 gets pressed.
+  By clicking the same button again, the recording will be stopped.
+  When playing, the BTN1 can be used to pause/resume the recording.

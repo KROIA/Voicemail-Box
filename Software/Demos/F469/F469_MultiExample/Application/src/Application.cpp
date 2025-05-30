@@ -6,6 +6,7 @@
 #include "Example_AnalogPin.hpp"
 #include "Example_DigitalPin.hpp"
 #include "Example_AudioPlayer.hpp"
+#include "Example_AudioRecorder.hpp"
 
 
 // List of all examples
@@ -14,6 +15,7 @@ enum Example
 	example_AnalogPin,
 	example_DigitalPin,
 	example_AudioPlayer,
+	example_AudioRecorder,
 
 	__count // used to count the examples. let it be the last element!
 };
@@ -28,7 +30,8 @@ ExampleCallerFunctions exampleFunctions[Example::__count]
 {
 	{ Example_AnalogPin::setup, Example_AnalogPin::loop },
 	{ Example_DigitalPin::setup, Example_DigitalPin::loop },
-	{ Example_AudioPlayer::setup, Example_AudioPlayer::loop }
+	{ Example_AudioPlayer::setup, Example_AudioPlayer::loop },
+	{ Example_AudioRecorder::setup, Example_AudioRecorder::loop }
 };
 
 
@@ -36,7 +39,7 @@ ExampleCallerFunctions exampleFunctions[Example::__count]
  * @brief Select the example you want to run.
  * @details You can find the source code of each example in the Application/src folder
  */
-const Example selectedExample = Example::example_AudioPlayer;
+const Example selectedExample = Example::example_AudioRecorder;
 
 
 void setup()
