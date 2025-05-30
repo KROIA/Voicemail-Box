@@ -12,6 +12,7 @@ A very brief visualisation about the software hirarchy is displayed below.
 </div>
 </td>
 
+---
 ## Detailed Software structure overview 
 This view displays the relation between the key software components delivered by the BSP.
 The Application must include only the **BSP_VoiceMailBox.h** header file, it already includes all relevant hardware components and software tools related to the VMB.
@@ -44,6 +45,8 @@ The Application must include only the **BSP_VoiceMailBox.h** header file, it alr
 - [Audio Recorder](documentation/AudioRecorder.md)
 - [Audio Player](documentation/AudioPlayer.md)
 
+---
 ## Demos
 ### STM32F469I-DISCOVERY
-- [HelloAudio](../Demos/F469/F469_HelloAudio/README.md) empty application + setup guide
+- [HelloAudio](../Demos/F469/F469_HelloAudio/README.md) empty application + setup guide.
+- [Multi Example](../Demos/F469/F469_MultiExample/README.md) project, containing multiple small examples for different classes of this project.

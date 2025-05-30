@@ -29,6 +29,7 @@ Below is a setup guide that describes step by step how to configure a completly 
   - [Source Locations](#source-locations)
   - [Libraries](#libraries)
     - [SpiritDSP MP3](#spiritdsp-mp3)
+- [How to copy this project as tamplate](#how-to-copy-this-project)
 - [Compiler errors](#compiler-errors)
 
 ---

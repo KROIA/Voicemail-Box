@@ -5,7 +5,7 @@
 One example can be selected in the `Application.cpp`.
 Set the variable `selectedExample` to a desired enum value.
 The rest is handled automatically. You can now navigate to the examples specific code.
-For example the AnalogPin example is programmed in the `Example_AnalogPin.cpp`.
+Lets take the AnalogPin example. Its code is programmed in the `Example_AnalogPin.cpp`.
 In that file there may be multiple usecases programmed.
 Each usecase can be enabled individually.
 Each such `Example_XX.cpp` is structured the same way.
@@ -24,7 +24,8 @@ Here a quick file overview:
 - [DigitalPin](#digitalpin-example)
 - [AudioPlayer](#audioplayer-example)
 - [AudioRecorder](#audiorecorder-example)
-
+- [File](#file-example)
+  - [WAV File](#wav-file-example)
 
 
 
@@ -55,3 +56,13 @@ Here a quick file overview:
 1) Records a mp3 file called `record.mp3` to the SD-Card when the BTN0 gets pressed.
   By clicking the same button again, the recording will be stopped.
   When playing, the BTN1 can be used to pause/resume the recording.
+
+
+### File example
+1) Example on how to write to a file.
+2) Example on how to append to a file.
+3) Example on how to read from a file.
+
+#### WAV File example
+1) Example on how to write to a .wav file using live audio data from the codec.
+2) Example on how to read from a .wav file and outputting it to the codec.

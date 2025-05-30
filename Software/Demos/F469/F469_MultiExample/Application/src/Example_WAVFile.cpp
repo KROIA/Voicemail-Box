@@ -157,9 +157,4 @@ namespace Example_WAVFile
 			}
 		}
 	}
-
-
-
-
-
 } 
