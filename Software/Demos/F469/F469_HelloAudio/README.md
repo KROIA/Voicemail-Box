@@ -17,6 +17,7 @@ Below is a setup guide that describes step by step how to configure a completly 
   - [WIFI ESP32](#wifi-esp32)
   - [Debug Console](#debug-console)
   - [I2C](#i2c)
+  - [SD-Card](#sd-card)
   - [Audio Codec](#audio-codec)
 - [Create Application body](#create-application-body)
 - [Setup de BSP_VoiceMailBox](#setup-de-bsp_voicemailbox)

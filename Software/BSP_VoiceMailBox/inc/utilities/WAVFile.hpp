@@ -33,11 +33,24 @@ namespace VoiceMailBox
 		bool close();
 		std::string getPath() const { return m_file.getPath(); }
 
-		// size is the amount of samples, not the length of the array
-		uint32_t writeAudioSamples(const int16_t* data, uint32_t size);
+		/**
+		 * @brief Writes the given samples in to the file
+		 * @param data pointer to the audio samples to write
+		 * @param sampleCount amount of samples to write. If the data is stereo, one sample consists of two int16_t values (left and right channel).
+		 *                    therefore, the <sampleCount> parameter is half of the actual number of int16_t values in the data array.
+		 * @return the number of bytes written to the file, or 0 if an error occurred
+		 */
+		uint32_t writeAudioSamples(const int16_t* data, uint32_t sampleCount);
 
-		// size is the amount of samples, not the length of the array
-		uint32_t readAudioSamples(int16_t* data, uint32_t size);
+
+		/**
+		 * @brief Reads the given amount of samples from the file.
+		 * @param data pointer to the buffer where the audio samples will be stored
+		 * @param sampleCount amount of samples to read. If the data is stereo, one sample consists of two int16_t values (left and right channel).
+		 *                    therefore, the <sampleCount> parameter is half of the actual number of int16_t values in the data array.
+		 * @return the number of bytes read from the file, or 0 if an error occurred
+		 */
+		uint32_t readAudioSamples(int16_t* data, uint32_t sampleCount);
 
 
 

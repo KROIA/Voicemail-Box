@@ -42,7 +42,8 @@ namespace VoiceMailBox
 		 *              Using a Ping-Pong Buffer for the DMA. When the DMA uses The Ping buffer, the decoder writes to the Pong buffer and vice versa.
 		 * @param requestedSampleCount Amount of samples requested to decode. Make sure to calculate the value correctly. It is not the size of the buffer!
 		 *                             It is the numer of samples that should be decoded. One sample may contains multiple array elements!
-		 * @return 
+		 *                             Make sure that the size used is divisible by 576, which is the number of samples per frame in MP3.
+		 * @return the number of samples decoded and written to the dmaTx buffer.
 		 */
 		uint32_t decode(int16_t* dmaTx, uint32_t requestedSampleCount);
 	private:

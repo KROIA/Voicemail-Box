@@ -2,6 +2,7 @@
 This class can be used to write or read a digital pin state, depending on the configuration from within CubeMX.
 You can find a ready to run project [here](../../Demos/F469/F469_MultiExample/README.md).
 
+---
 ## Content
 - [Features](#features)
 - [Setup](#setup)

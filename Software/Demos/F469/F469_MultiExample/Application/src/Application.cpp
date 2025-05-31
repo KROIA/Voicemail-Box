@@ -12,6 +12,8 @@
 #include "Example_MP3File.hpp"
 #include "Example_I2C.hpp"
 #include "Example_I2S.hpp"
+#include "Example_MP3Decoder.hpp"
+#include "Example_MP3Encoder.hpp"
 
 
 // List of all examples
@@ -26,6 +28,8 @@ enum Example
 	example_MP3File,
 	example_I2C,
 	example_I2S,
+	example_MP3Decoder,
+	example_MP3Encoder,
 
 	__count // used to count the examples. let it be the last element!
 };
@@ -46,7 +50,9 @@ ExampleCallerFunctions exampleFunctions[Example::__count]
 	{ Example_WAVFile::setup, Example_WAVFile::loop },
 	{ Example_MP3File::setup, Example_MP3File::loop },
 	{ Example_I2C::setup, Example_I2C::loop },
-	{ Example_I2S::setup, Example_I2S::loop }
+	{ Example_I2S::setup, Example_I2S::loop },
+	{ Example_MP3Decoder::setup, Example_MP3Decoder::loop },
+	{ Example_MP3Encoder::setup, Example_MP3Encoder::loop }
 };
 
 
@@ -54,7 +60,7 @@ ExampleCallerFunctions exampleFunctions[Example::__count]
  * @brief Select the example you want to run.
  * @details You can find the source code of each example in the Application/src folder
  */
-const Example selectedExample = Example::example_I2S;
+const Example selectedExample = Example::example_MP3Encoder;
 
 
 void setup()

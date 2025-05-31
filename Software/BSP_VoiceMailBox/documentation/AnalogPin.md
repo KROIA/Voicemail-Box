@@ -2,6 +2,7 @@
 This class can be used for easy access of analog input values provided by a ADC.
 You can find a ready to run project [here](../../Demos/F469/F469_MultiExample/README.md).
 
+---
 ## Content
 - [Features](#features)
 - [Setup](#setup)

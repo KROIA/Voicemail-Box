@@ -4,6 +4,7 @@ All Basic functions used in the project are implemented here.
 The implementation does use a DMA in Full-Duplex mode.
 You can find a ready to run project [here](../../Demos/F469/F469_MultiExample/README.md).
 
+---
 ## Content
 - [Features](#features)
 - [Setup](#setup)

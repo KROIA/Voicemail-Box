@@ -4,6 +4,14 @@ STM provides a `C` application by default. When a `C++` Application is created, 
 This tutorial creates a `Application` body for `C++` and offers two functions: `setup()` and `loop()`. The `setup()` function gets called on startup after the HAL has been initialized and the `loop()` function gets called in the `while(1) {}` section of the `main()`.
 
 ---
+## Content
+- [Setup](#setup)
+  - [Project setup](#project-setup)
+  - [Create the Application code files](#create-the-application-code-files)
+  - [Add Application to the include path](#add-application-to-the-include-path)
+  - [Add Application to the source path](#add-application-to-the-source-path)
+  - [Call the Application functions from the main](#call-the-application-functions-from-the-main)
+---
 ## Setup
 ### Project setup
 * Make sure you enable C/C++ when creating a STM Project.
