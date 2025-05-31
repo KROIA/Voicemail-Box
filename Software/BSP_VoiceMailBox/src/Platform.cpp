@@ -164,6 +164,7 @@ namespace VoiceMailBox
 		getPotentiometer(Potentiometer::POT0);	// Make sure the static ADC instances are created
 		
 		// Call the setup function of objects that need to be set up explicitly
+		success &= File::mount();
 		success &= getCodec().setup();
 		success &= getDebugUART().setup();
 		success &= getPmodESP().setup();

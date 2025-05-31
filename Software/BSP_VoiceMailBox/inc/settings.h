@@ -87,7 +87,7 @@
  *  dynamic buffer size defined by the constructor parameter.
  */
 #define VMB_UART_USE_STATIC_BUFFER_SIZE
-#define VMB_UART_STATIC_BUFFER_SIZE 1024*5
+#define VMB_UART_STATIC_BUFFER_SIZE 1024*3
 
 /**
  * @brief Specifies the static buffer size for the UART instances.

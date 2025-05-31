@@ -63,7 +63,7 @@ ExampleCallerFunctions exampleFunctions[Example::__count]
  * @brief Select the example you want to run.
  * @details You can find the source code of each example in the Application/src folder
  */
-const Example selectedExample = Example::example_UART;
+const Example selectedExample = Example::example_File;
 
 
 void setup()

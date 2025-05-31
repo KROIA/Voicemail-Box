@@ -8,6 +8,7 @@
  */
 
 #include "HAL_abstraction.hpp"
+#include "utilities/Updatable.hpp"
 #include <stdint.h>
 
 namespace VoiceMailBox
@@ -16,7 +17,7 @@ namespace VoiceMailBox
 	 * @brief This interface class defines generic functionality for the usage of a audio codec.
 	 *        Derive from this class in case a new type of codec is used.
 	 */
-	class AudioCodec
+	class AudioCodec : public Updatable
 	{
 	public:
 		virtual ~AudioCodec() = default;
@@ -153,8 +154,33 @@ namespace VoiceMailBox
 		 */
 		virtual float getProcessingTimeRatio() const = 0;
 
-	protected:
 
+
+		/**
+		 * @brief Starts / stops the measurement of the RX DC offset.
+		 * @param enable if set to true, the measurement is done in the update function, otherwise it is not done.
+		 */
+		void enableMeasurementRXDCOffset(bool enable) 
+		{ 
+			m_enableMeasurementRXDCOffset = enable;
+			m_RXDCOffset_FIR_filter = 0.0f;
+		}
+
+		/**
+		 * @brief Gets the calculated RX DC offset value.
+		 * @return FIR filtered DC offset value
+		 */
+		float getRXDCOffset() const { return m_RXDCOffset_FIR_filter; }
+
+
+
+		/**
+		 * @brief Gets called automatically by the BSP update function
+		 */
+		void update() override;
+	protected:
+		bool m_enableMeasurementRXDCOffset = false;
+		float m_RXDCOffset_FIR_filter = 0.0f; // DC offset value for the audio codec, used to remove DC offset from the audio signal
 	};
 }
 #endif

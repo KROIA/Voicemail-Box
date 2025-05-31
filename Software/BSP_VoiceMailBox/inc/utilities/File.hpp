@@ -28,6 +28,8 @@ namespace VoiceMailBox
 			append,
 		};
 
+		static bool mount();
+
 		/**
 		 * @brief Constructor
 		 */

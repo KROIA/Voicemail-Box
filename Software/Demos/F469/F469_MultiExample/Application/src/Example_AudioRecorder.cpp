@@ -1,6 +1,7 @@
-#include "Example_AudioPlayer.hpp"
+#include "Example_AudioRecorder.hpp"
 #include "BSP_VoiceMailBox.hpp"
 #include "main.h"
+#include <string>
 
 namespace Example_AudioRecorder
 {
@@ -50,6 +51,8 @@ namespace Example_AudioRecorder
 		// Assign the codec from the Voice Mail Box platform to the audio player
 		recorder_1 = new VoiceMailBox::AudioRecorder(VoiceMailBox::getCodec());
 
+		//VoiceMailBox::getCodec().enableMeasurementRXDCOffset(true);
+
 		// Start/Stop recording with BTN0 (SW801)
 		getButton(Button::BTN0).setOnFallingEdgeCallback([](DigitalPin&) {
 				if (recorder_1->isRecording() && !recorder_1->isPaused())
@@ -81,5 +84,12 @@ namespace Example_AudioRecorder
 	void loop_StartStopAndPause()
 	{
 		VoiceMailBox::update();
+		
+		static uint64_t lastTime = VoiceMailBox::VMB_HAL_GetTickCountInMs();
+		if (VoiceMailBox::VMB_HAL_GetTickCountInMs() - lastTime > 1000)
+		{
+			lastTime = VoiceMailBox::VMB_HAL_GetTickCountInMs();
+			VoiceMailBox::println(("DC Offset RX: "+ std::to_string(VoiceMailBox::getCodec().getRXDCOffset())).c_str());
+		}
 	}
 } 

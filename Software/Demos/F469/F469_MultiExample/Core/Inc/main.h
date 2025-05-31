@@ -32,7 +32,6 @@ extern "C" {
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
-#include "customSettings.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -299,7 +298,7 @@ I2S_HandleTypeDef* getI2S_CODEC();
 #define STLK_TX_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
-
+#define VMB_MICROCONTROLLER_BOARD__STM32F469I_DISCOVERY
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus
