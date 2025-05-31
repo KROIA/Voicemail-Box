@@ -10,6 +10,7 @@
 #include "Example_File.hpp"
 #include "Example_WAVFile.hpp"
 #include "Example_MP3File.hpp"
+#include "Example_I2C.hpp"
 
 
 // List of all examples
@@ -22,6 +23,7 @@ enum Example
 	example_File,
 	example_WAVFile,
 	example_MP3File,
+	example_I2C,
 
 	__count // used to count the examples. let it be the last element!
 };
@@ -40,7 +42,8 @@ ExampleCallerFunctions exampleFunctions[Example::__count]
 	{ Example_AudioRecorder::setup, Example_AudioRecorder::loop },
 	{ Example_File::setup, Example_File::loop },
 	{ Example_WAVFile::setup, Example_WAVFile::loop },
-	{ Example_MP3File::setup, Example_MP3File::loop }
+	{ Example_MP3File::setup, Example_MP3File::loop },
+	{ Example_I2C::setup, Example_I2C::loop }
 };
 
 
@@ -48,7 +51,7 @@ ExampleCallerFunctions exampleFunctions[Example::__count]
  * @brief Select the example you want to run.
  * @details You can find the source code of each example in the Application/src folder
  */
-const Example selectedExample = Example::example_MP3File;
+const Example selectedExample = Example::example_I2C;
 
 
 void setup()
