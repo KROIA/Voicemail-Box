@@ -1,4 +1,4 @@
-#include "Example_WAVFile.hpp"
+#include "Example_MP3File.hpp"
 #include "BSP_VoiceMailBox.hpp"
 #include "main.h"
 #include <memory>
@@ -6,7 +6,7 @@
 namespace Example_MP3File
 {
 	/**
-	 * @brief Example on how to write to a .mp3 file.
+	 * @brief Example on how to write to a .mp3 file using live audio data from the codec.
 	 * @details
 	 * Since a .mp3 file is a specific format for audio, real audio data is used in this example.
 	 * The example reads the audio data directly from the codec and writes it to a .mp3 file.
@@ -17,7 +17,7 @@ namespace Example_MP3File
 
 
 	/**
-	 * @brief Example on how to read from a .mp3 file.
+	 * @brief Example on how to read from a .mp3 file and outputting it to the codec.
 	 * @details
 	 * Since a .mp3 file is a specific format for audio, real audio data is used in this example.
 	 * The example reads the audio data from a .mp3 file and plays it back using the codec.

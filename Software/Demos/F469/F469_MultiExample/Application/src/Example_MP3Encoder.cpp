@@ -1,10 +1,17 @@
-#include "Example_MP3Decoder.hpp"
+#include "Example_MP3Encoder.hpp"
 #include "BSP_VoiceMailBox.hpp"
 #include "main.h"
 #include <memory>
 
 namespace Example_MP3Encoder
 {
+	/**
+	 * @brief Example on how to convert a .wav file to .mp3 format.
+	 * @details
+	 * This example reads audio samples from a .wav file and encodes them to .mp3 format using the MP3_encoder class.
+	 * The encoded data is then written to a new .mp3 file.
+	 */
+
 	VoiceMailBox::WAVFile wavFile;
 	VoiceMailBox::File mp3File;
 	VoiceMailBox::MP3_encoder* encoder = nullptr;

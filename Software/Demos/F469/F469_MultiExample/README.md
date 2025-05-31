@@ -26,6 +26,12 @@ Here a quick file overview:
 - [AudioRecorder](#audiorecorder-example)
 - [File](#file-example)
   - [WAV File](#wav-file-example)
+  - [MP3 File](#mp3-file-example)
+- [I2C](#i2c-example)
+- [I2S](#i2s-example)
+- [MP3 Encoder](#mp3-encoder-example)
+- [MP3 Decoder](#mp3-decoder-example)
+- [UART](#uart-example)
 
 
 
@@ -66,3 +72,34 @@ Here a quick file overview:
 #### WAV File example
 1) Example on how to write to a .wav file using live audio data from the codec.
 2) Example on how to read from a .wav file and outputting it to the codec.
+
+#### MP3 File example
+1) Example on how to write to a .mp3 file using live audio data from the codec.
+2) Example on how to read from a .mp3 file and outputting it to the codec.
+
+#### I2C example
+The example writes to the first register on the audio codec and reads the value back.
+
+#### I2S example
+The example uses a i2s object to read and write the audio data from the audio codec.
+The codec sends microphone data and the application copies that microphone data to the
+speaker output buffer. 
+Since the audio codec needs to be configured before data arrives on the i2s, the following code is called first to ensure setup and then stop the DMA in order to start it manually afterwards again. Just for you to know that the DMA needs to be started on a i2s object.
+Using the platforms audio codec object directly will take that step from you.
+``` C++
+VoiceMailBox::setup();
+i2s.stopDMA();
+```
+
+#### MP3 Encoder example
+This example reads audio samples from a .wav file and encodes them to .mp3 format using the `MP3_encoder` class. The encoded data is then written to a new .mp3 file.
+
+
+#### MP3 Decoder example
+This example uses the MP3_decoder class to decode an MP3 file and write the decoded audio data to a WAV file.
+The MP3_decoder class is used to read compressed MP3 data and decode it into PCM audio samples.
+The WAVFile class is used to write the decoded audio samples to a WAV file.
+
+#### UART example
+This example sends some simple text or byte arrays over the UART interface
+The UART can also wait for a specific string to be received or read until a target string is found.

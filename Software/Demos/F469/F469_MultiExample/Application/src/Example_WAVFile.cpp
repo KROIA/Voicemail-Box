@@ -6,7 +6,7 @@
 namespace Example_WAVFile
 {
 	/**
-	 * @brief Example on how to write to a .wav file.
+	 * @brief Example on how to write to a .wav file using live audio data from the codec.
 	 * @details
 	 * Since a .wav file is a specific format for audio, real audio data is used in this example.
 	 * The example reads the audio data directly from the codec and writes it to a .wav file.
@@ -17,7 +17,7 @@ namespace Example_WAVFile
 
 
 	/**
-	 * @brief Example on how to read from a .wav file.
+	 * @brief Example on how to read from a .wav file and outputting it to the codec.
 	 * @details
 	 * Since a .wav file is a specific format for audio, real audio data is used in this example.
 	 * The example reads the audio data from a .wav file and plays it back using the codec.

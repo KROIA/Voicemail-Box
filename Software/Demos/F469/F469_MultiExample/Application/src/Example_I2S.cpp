@@ -5,6 +5,14 @@
 
 namespace Example_I2S
 {
+	/**
+	 * @brief Example on how to use the I2S class to stream audio data from the codec.
+	 * @details
+	 * This example shows how to use the I2S class to stream audio data from the codec.
+	 * The example uses the same I2S handle as the codec, so it can be used in parallel with the codec.
+	 */
+
+
 	// Create a I2S object and providing the handle from the main.c. Using the same I2S handle as the codec uses.
     // Use a int16_t[1024] array for data in and out. (only used if the macro VMB_I2S_USE_STATIC_BUFFER_SIZE is not defined)
     VoiceMailBox::I2S i2s(getI2S_CODEC(), 1024);

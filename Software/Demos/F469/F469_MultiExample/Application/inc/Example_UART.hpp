@@ -1,7 +1,7 @@
 #pragma once
 
 
-namespace Example_WAVFile
+namespace Example_UART
 {
 	void setup();
 	void loop();

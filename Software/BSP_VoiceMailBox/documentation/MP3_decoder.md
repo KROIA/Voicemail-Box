@@ -1,7 +1,8 @@
-# MP3Decoder
+# MP3_decoder
 The MP3 decoder library used in this project is from the [X-CUBE-AUDIO](https://www.st.com/en/embedded-software/x-cube-audio.html) example project.
-The MP3Decoder class is just a C++ wrapper to make it easy to use the library.
+The MP3_decoder class is just a C++ wrapper to make it easy to use the library.
 The decoder is used to read mp3 encoded data from a source like a file and decode it back to audio samples that can then passed to the I2S TX DMA buffer, providing the speaker with sound.
+You can find a ready to run project [here](../../Demos/F469/F469_MultiExample/README.md).
 
 ---
 ## Content

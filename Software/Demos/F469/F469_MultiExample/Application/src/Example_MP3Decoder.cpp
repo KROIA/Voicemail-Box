@@ -5,6 +5,14 @@
 
 namespace Example_MP3Decoder
 {
+	/**
+	 * @brief Example on how to convert an MP3 file and write the decoded audio data to a WAV file.
+	 * @details
+	 * This example uses the MP3_decoder class to decode an MP3 file and write the decoded audio data to a WAV file.
+	 * The MP3_decoder class is used to read compressed MP3 data and decode it into PCM audio samples.
+	 * The WAVFile class is used to write the decoded audio samples to a WAV file.
+	 */
+
 	unsigned int decoderReadCallback(
 		void* pMP3_decoderCompressedData,
 		unsigned int nMP3_decoderDataSizeInChars,

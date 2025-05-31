@@ -139,9 +139,8 @@ namespace VoiceMailBox
 				bool found = false;
 				uint32_t matchCount = 0;
 				uint32_t foundIndex = 0;
-				for (uint32_t i = rx_read_index; i != (rx_write_index-targetSize) % m_bufferSize; i = (i + 1) % m_bufferSize)
+				for (uint32_t i = rx_read_index; i != (rx_write_index-targetSize+1) % m_bufferSize; i = (i + 1) % m_bufferSize)
 				{
-					
 					for (uint32_t j = 0; j < targetSize; j++)
 					{
 						if (rx_buffer[(i + j) % m_bufferSize] == target[j])
@@ -158,9 +157,10 @@ namespace VoiceMailBox
 						else
 						{
 							matchCount = 0;
-							break;
+							goto nextIndex;
 						}
 					}
+					nextIndex:;
 				}
 				extractData:
 

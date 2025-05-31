@@ -1,7 +1,8 @@
-# MP3Encoder
+# MP3_encoder
 The MP3 encoder library used in this project is from the [X-CUBE-AUDIO](https://www.st.com/en/embedded-software/x-cube-audio.html) example project.
-The MP3Encoder class is just a C++ wrapper to make it easy to use the library.
+The MP3_encoder class is just a C++ wrapper to make it easy to use the library.
 The encoder is used to write mp3 encoded data from a source like the i2s data stream.
+You can find a ready to run project [here](../../Demos/F469/F469_MultiExample/README.md).
 
 ---
 ## Content

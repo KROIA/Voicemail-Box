@@ -4,6 +4,13 @@
 
 namespace Example_I2C
 {
+	/**
+	 * @brief Example on how to use the I2C class to communicate with a device.
+	 * @details
+	 * This example shows how to write to a register of a device and read from it.
+	 * The device used in this example is a codec, but it can be any I2C device.
+	 */
+
 	VoiceMailBox::I2C i2c(getI2C_Handle());
 	void setup()
 	{

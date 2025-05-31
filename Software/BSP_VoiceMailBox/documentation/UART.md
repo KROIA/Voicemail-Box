@@ -3,6 +3,7 @@ This class implements the interface for the uart peripheral.
 All Basic functions used in the project are implemented here.
 The data aquisition is made unsing a interupt-based ring-buffer.
 No DMA is used for this implementation.
+You can find a ready to run project [here](../../Demos/F469/F469_MultiExample/README.md).
 
 ---
 ## Content
@@ -35,7 +36,7 @@ In the **main.h** create a get function that returns a pointer to the handle we 
 // main.h
 
 // Function declaration
-UART_HandleTypeDef* getUART_handle();
+UART_HandleTypeDef* getUART_DEBUG();
 ```
 
 ``` C
@@ -46,7 +47,7 @@ UART_HandleTypeDef huart1;
 
 /* USER CODE BEGIN PV */
 // Function implementation
-UART_HandleTypeDef* getUART_handle()
+UART_HandleTypeDef* getUART_DEBUG()
 {
     // Return the pointer to the handle
     return &huart1;
@@ -66,11 +67,11 @@ using namespace VoiceMailBox;
 
 // Create a UART object and providing the handle from the main.c
 // Specify the ring-buffer size to 1024 bytes.
-UART uart(getUART_handle(), 1024);
+VoiceMailBox::UART uart(getUART_DEBUG(), 1024);
 
 void setup()
 {
-    uart.setup(); 
+    uart.setup();
 }
 
 // Called periodically
@@ -82,42 +83,44 @@ void loop()
     uart.send("Hello World\r\n");
 
     // Sends non character bytes using a array and its length in bytes.
-    uint8_t data[5];
+    uint8_t data[5] = { 65, 66, 67, '\r', '\n' };
     uart.send(data, sizeof(data));
 
     // This reads the number of bytes currently received in the buffer and ready to be read
     uint32_t available = uart.hasBytesReceived();
 
-    uint8_t readBuff[1024];
+    uint8_t readBuff[1024] = { 0 };
     uart.receive(readBuff, available);
-    
+    uart.send(std::string("1: readBuff: \"" + std::string((const char*)readBuff) + "\"\r\n").c_str());
+    memset(readBuff, 0, sizeof(readBuff)); // Clear the buffer
 
     // Waits until the target string was found or the timeout was reached
-    if(uart.waitUntil("Target", 5000))
+    if (uart.waitUntil("Target1", 5000))
     {
-        // "Target" was found in the RX buffer
+        // "Target1" was found in the RX buffer
+       	uart.send("Target1 was found\r\n");
     }
     else
     {
         // "Target" was never received or the timeout of 5000ms is reached
+       	uart.send("Target1 was not found, timeout\r\n");
     }
 
     // Waits until the target string was found or timeout was reached. 
     // If the target was found, it flushes all bytes 
-    // received to the index of the found target string
-    if(uart.waitUntilAndFlush("Target", 5000))
+    // received to the end index of the found target string
+    if (uart.waitUntilAndFlush("Target1", 5000))
     {
-        // "Target" was found in the RX buffer
-        uart.receive(readBuff, 6);
-        // readBuff contains string "Target"
+        // "Target" was found in the RX buffer and flushed
     }
     else
     {
         // "Target" was never received or the timeout of 5000ms is reached
+       	uart.send("Target1 was not found, timeout\r\n");
     }
 
     // Receives all bytes that are comming until the Target string was received or the timeout was reached or the readBuff is full.
-    uint32_t received = uart.receiveUntil(readBuff, sizeof(readBuff), "Target", sizeof("Target"), 5000);
+    uint32_t received = uart.receiveUntil(readBuff, sizeof(readBuff), (uint8_t*)"Target2", 7, 5000);
     // Example:
     // RX Buffer inside the uart object:
     // |"BlaBlaBlaTest        "|
@@ -127,7 +130,6 @@ void loop()
     //
     // readBuff will contain the string: "BlaBlaBla"
     //
-
-
+    uart.send(std::string("2: readBuff: \"" + std::string((const char*)readBuff) + "\"\r\n").c_str());
 }
 ```
