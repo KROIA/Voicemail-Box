@@ -1,4 +1,4 @@
-#include "Example_DigitalPin.hpp"
+#include "Example_I2C.hpp"
 #include "BSP_VoiceMailBox.hpp"
 #include "main.h"
 

@@ -2,7 +2,9 @@
 This class is a simplfied interface to access the i2s peripheral.
 All Basic functions used in the project are implemented here.
 The implementation does use a DMA in Full-Duplex mode.
+You can find a ready to run project [here](../../Demos/F469/F469_MultiExample/README.md).
 
+## Content
 - [Features](#features)
 - [Setup](#setup)
 - [Usage](#usage)
@@ -14,7 +16,7 @@ The implementation does use a DMA in Full-Duplex mode.
     - [Audio Samples](#audio-samples)
 
 ---
-## Features
+## Featuresdsss
 - Writing audio samples using a DMA
 - Receiving audio samples using a DMA
 
@@ -34,7 +36,7 @@ I2S (Inter-IC Sound) is a serial interface specifically designed for audio data 
 **Communication Standard:** *I2S Philips*
 **Data and Frame Format:** *16Bit Data on 16 Bits Frame*
 **Selected Audio Frequency:** *48KHz*
-			
+            
 #### DMA Settings:
 - SPI2_TX:
 **Mode:** *Circular*
@@ -55,7 +57,7 @@ In the **main.h** create a get function that returns a pointer to the handle we 
 // main.h
 
 // Function declaration
-I2S_HandleTypeDef* getI2S_handle();
+I2S_HandleTypeDef* getI2S_CODEC();
 ```
 
 ``` C
@@ -66,14 +68,14 @@ I2S_HandleTypeDef hi2s1;
 
 /* USER CODE BEGIN PV */
 // Function implementation
-I2S_HandleTypeDef* getI2S_handle()
+I2S_HandleTypeDef* getI2S_CODEC()
 {
     // Return the pointer to the handle
     return &hi2s1;
 }
 /* USER CODE END PV */
 ```
-
+---
 #### Inside the C++ Application
 
 The I2S class uses a buffer, the size of the buffer is defined either in static or dynamic mode.
@@ -90,29 +92,41 @@ Both macros are located in the **settings.h** file.
 // Application.cpp
 #include "BSP_VoiceMailBox.hpp" // includes "peripherals/i2s.hpp"
 #include "main.h" // Is needed to access the handle get function
-#include <cstring> // Used for memcpy()
+#include <memory>
 
-// using a namespace globaly is not recommended for production
-// but it simplyfies the example here
-using namespace VoiceMailBox; 
-
-// Create a I2C object and providing the handle from the main.c
-// Use a int16_t[1024] array for data in and out.
-I2S i2s(getI2S_handle(), 1024);
+// Create a I2S object and providing the handle from the main.c. Using the same I2S handle as the codec uses.
+// Use a int16_t[1024] array for data in and out. (only used if the macro VMB_I2S_USE_STATIC_BUFFER_SIZE is not defined)
+VoiceMailBox::I2S i2s(getI2S_CODEC(), 1024);
 
 void setup()
-{ 
+{
+    // Because we use the same I2S, we do the setup of the platform so that the codec is initialized correctly.
+    VoiceMailBox::setup();
+    // Since we use the same I2S handle and the DMA was already started in the BSP_VoiceMailBox::setup(), we stop the dma from the platforms codec 
+    // so that we can use our own I2S instance
+    i2s.stopDMA();
+
+    // If you instantiate a I2S independently from the platforms own I2S, connected to the codec, you don't need the two function calls above.
+
+
+
     // Start the DMA for RX and TX data transfers
-    i2s.startDMA(); 
+    if(!i2s.startDMA())
+    {
+        VoiceMailBox::println("I2S DMA start failed!");
+    }
+    else
+    {
+        VoiceMailBox::println("I2S DMA started successfully.");
+    }
 }
 
-// Called periodically
 void loop()
 {
     // Check if there was a Ping-Pong swap, triggered by the DMA ISR
-    if(i2s.isDataReadyAndClearFlag())
+    if (i2s.isDataReadyAndClearFlag())
     {
-        // Process microphone input and create new audio output
+        // Get pointers to the microphone and speaker data array. 
         volatile int16_t* microphoneSamples = i2s.getRxBufPtr();
         volatile int16_t* audioOutSamples = i2s.getTxBufPtr();
 
@@ -121,7 +135,7 @@ void loop()
 
         // Example processing: 
         // Stream the microphone directly back to the output
-        memcpy(audioOutSamples, microphoneSamples, bufferSize * sizeof(int16_t));
+        memcpy((int16_t*)audioOutSamples, (int16_t*)microphoneSamples, bufferSize * sizeof(int16_t));
     }
 }
 ```

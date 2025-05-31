@@ -2,6 +2,7 @@
 This class is a simplfied interface for the i2c peripheral.
 All Basic functions used in the project are implemented here.
 The implementaion is designed to be blocking.
+You can find a ready to run project [here](../../Demos/F469/F469_MultiExample/README.md).
 
 ## Content
 - [Features](#features)
