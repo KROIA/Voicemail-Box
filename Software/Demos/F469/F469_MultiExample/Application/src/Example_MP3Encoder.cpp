@@ -12,8 +12,8 @@ namespace Example_MP3Encoder
 	 * The encoded data is then written to a new .mp3 file.
 	 */
 
-	VoiceMailBox::WAVFile wavFile;
-	VoiceMailBox::File mp3File;
+	VoiceMailBox::WAVFile* wavFile = nullptr;
+	VoiceMailBox::File* mp3File = nullptr;
 	VoiceMailBox::MP3_encoder* encoder = nullptr;
 
 	void setup()
@@ -23,15 +23,17 @@ namespace Example_MP3Encoder
 		// 2 : number of channels (1 for mono, 2 for stereo)
 		encoder = new VoiceMailBox::MP3_encoder(48000, 48, 2);
 
-		wavFile.setSampleRate(48000); // Set sample rate to 48kHz
-		wavFile.setNumChannels(2);    // Stereo recording
-		wavFile.setBitsPerSample(16); // Set bits per sample to 16
+		mp3File = new VoiceMailBox::File();
+		wavFile = new VoiceMailBox::WAVFile();
+		wavFile->setSampleRate(48000); // Set sample rate to 48kHz
+		wavFile->setNumChannels(2);    // Stereo recording
+		wavFile->setBitsPerSample(16); // Set bits per sample to 16
 
-		if (!wavFile.open("music.wav", VoiceMailBox::File::AccessMode::read))
+		if (!wavFile->open("music.wav", VoiceMailBox::File::AccessMode::read))
 		{
 			VoiceMailBox::println("Failed to open file for reading.");
 		}
-		if (!mp3File.open("conv.mp3", VoiceMailBox::File::AccessMode::write))
+		if (!mp3File->open("conv.mp3", VoiceMailBox::File::AccessMode::write))
 		{
 			VoiceMailBox::println("Failed to open file for writing.");
 		}		
@@ -42,13 +44,13 @@ namespace Example_MP3Encoder
 		static bool finished = false;
 		if (finished)
 			return;
-		if (!mp3File.isOpen())
+		if (!mp3File->isOpen())
 		{
 			VoiceMailBox::println("mp3File is not open");
 			VoiceMailBox::delay(1000);
 			return;
 		}
-		if (!wavFile.isOpen())
+		if (!wavFile->isOpen())
 		{
 			VoiceMailBox::println("wavFile is not open");
 			VoiceMailBox::delay(1000);
@@ -58,9 +60,9 @@ namespace Example_MP3Encoder
 		const size_t sampleCount = 576; // Number of samples per frame for MP3 (2 channels, 16 bits per sample)
 		int16_t data[sampleCount*2] = { 0 }; // Buffer to hold decoded audio samples
 		VoiceMailBox::println("Starting MP3 encoding...");
-		while (!wavFile.eof())
+		while (!wavFile->eof())
 		{
-			size_t bytesRead = wavFile.readAudioSamples(data, sampleCount);
+			size_t bytesRead = wavFile->readAudioSamples(data, sampleCount);
 			if (bytesRead == 0)
 			{
 				// End of file or error
@@ -73,7 +75,7 @@ namespace Example_MP3Encoder
 			if (bytesToWrite > 0)
 			{
 				// Write the encoded MP3 data to the file
-				mp3File.write((const char*)mp3Buffer, bytesToWrite);
+				mp3File->write((const char*)mp3Buffer, bytesToWrite);
 			}
 			else
 			{
@@ -82,7 +84,7 @@ namespace Example_MP3Encoder
 		}
 		VoiceMailBox::println("Encoding finished");
 		finished = true;
-		mp3File.close();
-		wavFile.close();
+		mp3File->close();
+		wavFile->close();
 	}
 } 

@@ -54,19 +54,20 @@ namespace Example_WAVFile
 // ------------------------------------------------------------------------------------------------
 // ================================================================================================
 // ------------------------------------------------------------------------------------------------
-	VoiceMailBox::WAVFile file_1;
+	VoiceMailBox::WAVFile *file_1 = nullptr;
 	void setup_SimpleWrite()
 	{
 		using namespace VoiceMailBox;
 		VoiceMailBox::setup();
 
-		file_1.setSampleRate(48000); // Set sample rate to 48kHz
-		file_1.setNumChannels(2);    // Stereo recording
-		file_1.setBitsPerSample(16); // Set bits per sample to 16
+		file_1 = new VoiceMailBox::WAVFile();
+		file_1->setSampleRate(48000); // Set sample rate to 48kHz
+		file_1->setNumChannels(2);    // Stereo recording
+		file_1->setBitsPerSample(16); // Set bits per sample to 16
 
 		// Start recording with BTN0 (SW801)
 		getButton(Button::BTN0).setOnFallingEdgeCallback([](DigitalPin&) {
-				if (file_1.open("record.wav", File::AccessMode::write))
+				if (file_1->open("record.wav", File::AccessMode::write))
 				{
 					println("Recording started");
 				}
@@ -78,7 +79,7 @@ namespace Example_WAVFile
 
 		// Stop recording with BTN1 (SW802)
 		getButton(Button::BTN1).setOnFallingEdgeCallback([](DigitalPin&) {
-				file_1.close();
+				file_1->close();
 				println("Recording stopped");
 			});
 	}
@@ -91,11 +92,11 @@ namespace Example_WAVFile
 		// Check if the codec has new audio data ready to be written
 		if (codec.isDataReadyAndClearFlag())
 		{
-			if (file_1.isOpen())
+			if (file_1->isOpen())
 			{
 				uint32_t sampeCount = codec.getBufferSize() / 2; // Assuming 16-bit stereo audio, each sample is 4 bytes
 				// Write audio data to the WAV file
-				file_1.writeAudioSamples((int16_t*)codec.getRxBufPtr(), sampeCount);
+				file_1->writeAudioSamples((int16_t*)codec.getRxBufPtr(), sampeCount);
 			}
 		}
 	}
@@ -107,19 +108,20 @@ namespace Example_WAVFile
 // ------------------------------------------------------------------------------------------------
 // ================================================================================================
 // ------------------------------------------------------------------------------------------------
-	VoiceMailBox::WAVFile file_2;
+	VoiceMailBox::WAVFile* file_2 = nullptr;
 	void setup_SimpleRead()
 	{
 		using namespace VoiceMailBox;
 		VoiceMailBox::setup();
 
-		file_2.setSampleRate(48000); // Set sample rate to 48kHz
-		file_2.setNumChannels(2);    // Stereo recording
-		file_2.setBitsPerSample(16); // Set bits per sample to 16
+		file_2 = new VoiceMailBox::WAVFile();
+		file_2->setSampleRate(48000); // Set sample rate to 48kHz
+		file_2->setNumChannels(2);    // Stereo recording
+		file_2->setBitsPerSample(16); // Set bits per sample to 16
 
 		// Start playback with BTN0 (SW801)
 		getButton(Button::BTN0).setOnFallingEdgeCallback([](DigitalPin&) {
-			if (file_2.open("record.wav", File::AccessMode::read))
+			if (file_2->open("record.wav", File::AccessMode::read))
 			{
 				println("Playback started");
 			}
@@ -131,7 +133,7 @@ namespace Example_WAVFile
 
 		// Stop playback with BTN1 (SW802)
 		getButton(Button::BTN1).setOnFallingEdgeCallback([](DigitalPin&) {
-				file_2.close();
+				file_2->close();
 				getCodec().clearTxBuf(); // Clear the buffer to avoid noise after playback finished
 				println("Playback stopped");
 			});
@@ -145,16 +147,16 @@ namespace Example_WAVFile
 		// Check if the codec has new audio data ready to be played back
 		if (codec.isDataReadyAndClearFlag())
 		{
-			if (file_2.isOpen() && !file_2.eof())
+			if (file_2->isOpen() && !file_2->eof())
 			{
 				uint32_t targetSamples = codec.getBufferSize() / 2; // Assuming 16-bit stereo audio, each sample is 4 bytes
-				uint32_t decodedSamples = file_2.readAudioSamples((int16_t*)codec.getTxBufPtr(), targetSamples);
+				uint32_t decodedSamples = file_2->readAudioSamples((int16_t*)codec.getTxBufPtr(), targetSamples);
 			}
-			if (file_2.eof())
+			if (file_2->eof())
 			{
 				println("End of file reached.");
 				codec.clearTxBuf(); // Clear the buffer to avoid noise after playback finished
-				file_2.close();
+				file_2->close();
 			}
 		}
 	}
