@@ -34,10 +34,10 @@ namespace VoiceMailBox
 		std::string getPath() const { return m_file.getPath(); }
 
 		// size is the amount of samples, not the length of the array
-		uint32_t writeAudioSamples(const volatile int16_t* data, uint32_t size);
+		uint32_t writeAudioSamples(const int16_t* data, uint32_t size);
 
 		// size is the amount of samples, not the length of the array
-		uint32_t readAudioSamples(volatile int16_t* data, uint32_t size);
+		uint32_t readAudioSamples(int16_t* data, uint32_t size);
 
 
 
@@ -95,7 +95,7 @@ namespace VoiceMailBox
 		File m_file;
 		uint32_t m_sampleCounter;
 
-		uint32_t m_sampleRate = 16000; // Default sample rate
+		uint32_t m_sampleRate = 48000; // Default sample rate
 		uint16_t m_numChannels = 1;    // Default number of channels
 		uint16_t m_bitsPerSample = 16; // Default bits per sample
 	};

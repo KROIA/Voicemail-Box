@@ -1,7 +1,7 @@
 #pragma once
 
 
-namespace Example_MP3File
+namespace Example_WAVFile
 {
 	void setup();
 	void loop();

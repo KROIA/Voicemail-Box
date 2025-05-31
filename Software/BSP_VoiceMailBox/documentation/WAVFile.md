@@ -2,10 +2,13 @@
 This class is a simplfied interface for reading and writing .wav files to the SD-Card.
 All Basic functions used in the project are implemented here.
 
+## Content
 - [Features](#features)
 - [Setup](#setup)
 - [Usage](#usage)
-    - [Inside the C++ Application](#inside-the-c-application)
+    - [Writing to a file](#writing-to-a-file)
+    - [Appending to a file](#appending-to-a-file)
+    - [Reading from a file](#reading-from-a-file)
 
 ---
 ## Features
@@ -18,9 +21,6 @@ All Basic functions used in the project are implemented here.
 ---
 ## Usage
 Make sure the C++ application is setup, you can find the instructions on how to do so [here](CppFromC.md).
-
-#### Inside the C++ Application
----
 
 #### Writing to a file
 ``` C++ 
@@ -67,7 +67,7 @@ void loop()
         {
             uint32_t sampeCount = codec.getBufferSize() / 2; // Assuming 16-bit stereo audio, each sample is 4 bytes
             // Write audio data to the WAV file
-            file.writeAudioSamples(codec.getRxBufPtr(), sampeCount);
+            file.writeAudioSamples((int16_t*)codec.getRxBufPtr(), sampeCount);
         }
     }
 }
@@ -103,6 +103,7 @@ void setup()
     // Stop playback with BTN1 (SW802)
     getButton(Button::BTN1).setOnFallingEdgeCallback([](DigitalPin&) {
             file.close();
+            getCodec().clearTxBuf(); // Clear the buffer to avoid noise after playback finished
             println("Playback stopped");
         });
 }
@@ -118,7 +119,7 @@ void loop()
         if (file.isOpen() && !file.eof())
         {
             uint32_t targetSamples = codec.getBufferSize() / 2; // Assuming 16-bit stereo audio, each sample is 4 bytes
-            uint32_t decodedSamples = file.readAudioSamples(codec.getTxBufPtr(), targetSamples);
+            uint32_t decodedSamples = file.readAudioSamples((int16_t*)codec.getTxBufPtr(), targetSamples);
         }
         if (file.eof())
         {

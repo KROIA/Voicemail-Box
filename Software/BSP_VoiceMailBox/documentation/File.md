@@ -3,10 +3,13 @@ This class is a simplfied interface for reading and writing files to the SD-Card
 All Basic functions used in the project are implemented here.
 The class uses the FATFS filesystem.
 
+## Content
 - [Features](#features)
 - [Setup](#setup)
 - [Usage](#usage)
-    - [Inside the C++ Application](#inside-the-c-application)
+    - [Writing to a file](#writing-to-a-file)
+    - [Appending to a file](#appending-to-a-file)
+    - [Reading from a file](#reading-from-a-file)
 
 ---
 ## Features
@@ -25,8 +28,6 @@ The class uses the FATFS filesystem.
 ## Usage
 Make sure the C++ application is setup, you can find the instructions on how to do so [here](CppFromC.md).
 
-#### Inside the C++ Application
----
 
 #### Writing to a file
 ``` C++ 

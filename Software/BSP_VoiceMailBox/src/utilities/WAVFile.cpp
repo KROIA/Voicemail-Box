@@ -65,7 +65,7 @@ namespace VoiceMailBox
 		return m_file.close();
 	}
 
-	uint32_t WAVFile::writeAudioSamples(const volatile int16_t* data, uint32_t size)
+	uint32_t WAVFile::writeAudioSamples(const  int16_t* data, uint32_t size)
 	{
 		if (!m_file.isOpen())
 		{
@@ -81,7 +81,7 @@ namespace VoiceMailBox
 		m_sampleCounter += size; // Left and right channel are 2x 16 bit samples which counts as one audio sample
 		return written;
 	}
-	uint32_t WAVFile::readAudioSamples(volatile int16_t* data, uint32_t size)
+	uint32_t WAVFile::readAudioSamples(int16_t* data, uint32_t size)
 	{
 		if (!m_file.isOpen())
 		{
