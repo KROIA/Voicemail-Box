@@ -383,7 +383,10 @@ The spiritDSP MP3 library was used in the [X-CUBE-AUDIO](https://www.st.com/en/e
 
 ###### Floating point unit settings
 Navigate to `C/C++ Build->Settings` and in the `MCU/MPU Settings` set the **floating point ABI** to `Mix HW/SW implementation`, otherwise the project will not compile.
+Optional you can enable the `Use float with printf from newlib-nano` and the same for `... scanf ...`.
 Do that for both configurations: **Debug** and **Release**
+
+
 
 
 ---

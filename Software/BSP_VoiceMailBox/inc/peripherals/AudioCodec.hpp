@@ -160,19 +160,38 @@ namespace VoiceMailBox
 		 * @brief Starts / stops the measurement of the RX DC offset.
 		 * @param enable if set to true, the measurement is done in the update function, otherwise it is not done.
 		 */
-		void enableMeasurementRXDCOffset(bool enable) 
+		void enableMeasurementRXDCOffset(bool enable, float filterCoeff = 0.01f) 
 		{ 
 			m_enableMeasurementRXDCOffset = enable;
-			m_RXDCOffset_FIR_filter = 0.0f;
+			m_FIR_filterCoefficient = filterCoeff;
+			if (m_enableMeasurementRXDCOffset)
+			{
+				m_RXDCOffset_FIR_filterLeft = 0.0f;
+				m_RXDCOffset_FIR_filterRight = 0.0f;
+			}
 		}
 
 		/**
-		 * @brief Gets the calculated RX DC offset value.
+		 * @brief Gets the calculated RX DC offset value for the left channel.
 		 * @return FIR filtered DC offset value
 		 */
-		float getRXDCOffset() const { return m_RXDCOffset_FIR_filter; }
+		int16_t getRXDCOffsetLeft() const { return static_cast<int16_t>(m_RXDCOffset_FIR_filterLeft); }
 
+		/**
+		 * @brief Gets the calculated RX DC offset value for the right channel.
+		 * @return FIR filtered DC offset value
+		 */
+		int16_t getRXDCOffsetRight() const { return static_cast<int16_t>(m_RXDCOffset_FIR_filterRight); }
 
+		/**
+		 * @brief Subtracts the RX DC offset from the left channel.
+		 */
+		void removeRXDCOffsetLeft();
+
+		/**
+		 * @brief Subtracts the RX DC offset from the right channel.
+		 */
+		void removeRXDCOffsetRight();
 
 		/**
 		 * @brief Gets called automatically by the BSP update function
@@ -180,7 +199,10 @@ namespace VoiceMailBox
 		void update() override;
 	protected:
 		bool m_enableMeasurementRXDCOffset = false;
-		float m_RXDCOffset_FIR_filter = 0.0f; // DC offset value for the audio codec, used to remove DC offset from the audio signal
+		float m_FIR_filterCoefficient = 0.01f; // Coefficient for the FIR filter to calculate the DC offset
+		float m_RXDCOffset_FIR_filterLeft = 0.0f; // DC offset value for the audio codec, used to remove DC offset from the audio signal
+		float m_RXDCOffset_FIR_filterRight = 0.0f; // DC offset value for the audio codec, used to remove DC offset from the audio signal
+		int16_t* m_lastRXBufPtr = nullptr;
 	};
 }
 #endif

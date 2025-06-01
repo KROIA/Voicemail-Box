@@ -15,6 +15,7 @@
 #include "Example_MP3Decoder.hpp"
 #include "Example_MP3Encoder.hpp"
 #include "Example_UART.hpp"
+#include "Example_DCOffset.hpp"
 
 
 // List of all examples
@@ -32,6 +33,7 @@ enum Example
 	example_MP3Decoder,
 	example_MP3Encoder,
 	example_UART,
+	example_DCOffset,
 
 	__count // used to count the examples. let it be the last element!
 };
@@ -55,7 +57,8 @@ ExampleCallerFunctions exampleFunctions[Example::__count]
 	{ Example_I2S::setup, Example_I2S::loop },
 	{ Example_MP3Decoder::setup, Example_MP3Decoder::loop },
 	{ Example_MP3Encoder::setup, Example_MP3Encoder::loop },
-	{ Example_UART::setup, Example_UART::loop }
+	{ Example_UART::setup, Example_UART::loop },
+	{ Example_DCOffset::setup, Example_DCOffset::loop }
 };
 
 
@@ -63,7 +66,7 @@ ExampleCallerFunctions exampleFunctions[Example::__count]
  * @brief Select the example you want to run.
  * @details You can find the source code of each example in the Application/src folder
  */
-const Example selectedExample = Example::example_File;
+const Example selectedExample = Example::example_DCOffset;
 
 
 void setup()

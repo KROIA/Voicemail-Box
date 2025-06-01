@@ -51,7 +51,7 @@ namespace Example_AudioRecorder
 		// Assign the codec from the Voice Mail Box platform to the audio player
 		recorder_1 = new VoiceMailBox::AudioRecorder(VoiceMailBox::getCodec());
 
-		//VoiceMailBox::getCodec().enableMeasurementRXDCOffset(true);
+		VoiceMailBox::getCodec().enableMeasurementRXDCOffset(true);
 
 		// Start/Stop recording with BTN0 (SW801)
 		getButton(Button::BTN0).setOnFallingEdgeCallback([](DigitalPin&) {
@@ -89,7 +89,8 @@ namespace Example_AudioRecorder
 		if (VoiceMailBox::VMB_HAL_GetTickCountInMs() - lastTime > 1000)
 		{
 			lastTime = VoiceMailBox::VMB_HAL_GetTickCountInMs();
-			VoiceMailBox::println(("DC Offset RX: "+ std::to_string(VoiceMailBox::getCodec().getRXDCOffset())).c_str());
+
+			VoiceMailBox::println("DC Offset RX Left: %.2f, Right: %.2f", VoiceMailBox::getCodec().getRXDCOffsetLeft(),VoiceMailBox::getCodec().getRXDCOffsetRight());
 		}
 	}
 } 

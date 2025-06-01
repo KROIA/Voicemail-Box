@@ -103,3 +103,6 @@ The WAVFile class is used to write the decoded audio samples to a WAV file.
 #### UART example
 This example sends some simple text or byte arrays over the UART interface
 The UART can also wait for a specific string to be received or read until a target string is found.
+
+#### DC Offset correction example
+This example shows how to remove the DC offset from the left and right audio channels.
