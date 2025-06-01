@@ -54,21 +54,24 @@ namespace VoiceMailBox
 	{
 	}
 
-	void ATCommandClient::setup()
+	bool ATCommandClient::setup()
 	{
 		// Setup the UART for AT command client
-		m_uart.setup();
+		bool success = m_uart.setup();
 
 
-		sendCommand("ATE0");
-		if(waitUntilAndFlush("OK\r\n", 5000)) // Disable echo
+		success &= sendCommand("ATE0");
+		if(waitUntilAndFlush("OK\r\n", 5000) && success) // Disable echo
 		{
 			VMB_LOGLN("Echo deactivated");
 		}
 		else
 		{
+			success = false;
 			VMB_LOGLN("Can't deactivate echo");
+			VMB_LOGLN("ATCommandClient setup failed, check UART connection and settings.");
 		}
+		return success;
 	}
 
 
@@ -126,8 +129,8 @@ namespace VoiceMailBox
 	bool ATCommandClient::doesRespond()
 	{
 		flushRX();
-		sendCommand("AT");
-		if(m_uart.waitUntil("OK\r\n", 5000))
+		bool success = sendCommand("AT");
+		if(m_uart.waitUntil("OK\r\n", 5000) && success)
 		{
 			flushRX();
 			VMB_LOGLN("responds to AT command");
@@ -144,16 +147,16 @@ namespace VoiceMailBox
 
 	bool ATCommandClient::connectToWifi(const std::string& ssid, const std::string& password)
 	{
-		sendCommand("AT+CWMODE=1");
-		if (!waitUntilAndFlush("OK\r\n", 5000)) // Set WiFi mode to station
+		bool success = sendCommand("AT+CWMODE=1");
+		if (!waitUntilAndFlush("OK\r\n", 5000) && success) // Set WiFi mode to station
 		{
 			VMB_LOGLN("Can't set ESP to station mode");
 			return false;
 		}
 
 		std::string command = "AT+CWJAP=\"" + ssid + "\",\"" + password + "\"";
-		sendCommand(command.c_str());
-		if (waitUntil("WIFI GOT IP\r\n", 10000))
+		success = sendCommand(command.c_str());
+		if (waitUntil("WIFI GOT IP\r\n", 10000) && success)
 		{
 			// Successfully connected to WiFi
 			VMB_LOGLN("Connected to WiFi");
@@ -169,7 +172,6 @@ namespace VoiceMailBox
 
 	bool ATCommandClient::sendFileToServer(const std::string& localFileName, const std::string& urlPath, const std::string& serverIP, uint16_t serverPort)
 	{
-
 		AutoLedClearer clearer(m_trafficLed);
 
 		flushRX();

@@ -1,4 +1,5 @@
 #include "peripherals/uart.hpp"
+#include "utilities/Logger.hpp"
 #include <string>
 #include <cstring>
 
@@ -59,9 +60,11 @@ namespace VoiceMailBox
 		delete[] tx_buffer;
 #endif
 	}
-	void UART::setup()
+	bool UART::setup()
 	{
-		VMB_HAL_UART_Receive_IT(m_uart, &rx_data, 1);
+		VMB_HAL_Status status = VMB_HAL_UART_Receive_IT(m_uart, &rx_data, 1);
+		VMB_LOGGER_HANDLE_STATUS(status, "UART::setup()");
+		return status == VMB_HAL_Status::OK;
 	}
 
 	void UART::send(const char* str)
@@ -84,7 +87,7 @@ namespace VoiceMailBox
 			tx_write_index = (tx_write_index + 1) % m_bufferSize;
 		}
 		m_bytesToSend += size;
-		if (size > 0 && !m_sending) // Buffer overflow
+		if (size > 0 && !m_sending) 
 		{
 			m_sending = true;
 			m_bytesToSend--;
@@ -136,9 +139,8 @@ namespace VoiceMailBox
 				bool found = false;
 				uint32_t matchCount = 0;
 				uint32_t foundIndex = 0;
-				for (uint32_t i = rx_read_index; i != (rx_write_index-targetSize) % m_bufferSize; i = (i + 1) % m_bufferSize)
+				for (uint32_t i = rx_read_index; i != (rx_write_index-targetSize+1) % m_bufferSize; i = (i + 1) % m_bufferSize)
 				{
-					
 					for (uint32_t j = 0; j < targetSize; j++)
 					{
 						if (rx_buffer[(i + j) % m_bufferSize] == target[j])
@@ -155,9 +157,10 @@ namespace VoiceMailBox
 						else
 						{
 							matchCount = 0;
-							break;
+							goto nextIndex;
 						}
 					}
+					nextIndex:;
 				}
 				extractData:
 
@@ -200,6 +203,8 @@ namespace VoiceMailBox
 				}
 			}
 		}
+		// Timeout reached, return the data received so far
+		VMB_LOGGER_PRINTLN("UART::receiveUntil() timeout reached, returning data received so far.");
 		return currentWriteIndex;
 	}
 	bool UART::waitUntil(char character, uint32_t timeoutMS)
@@ -233,12 +238,18 @@ namespace VoiceMailBox
 			}
 		}
 		// Timeout reached
+		VMB_LOGGER_PRINTLN(std::string("UART::waitUntil() timeout reached, character: '")+character+"' not found.");
 		return false;
 	}
 	bool UART::waitUntil(const char* str, uint32_t timeoutMS)
 	{
 		uint32_t startIndex = 0;
-		return waitUntil_internal(str, timeoutMS, startIndex);
+		bool result = waitUntil_internal(str, timeoutMS, startIndex);
+		if (!result)
+		{
+			VMB_LOGGER_PRINTLN("UART::waitUntil() timeout reached, string: \""+std::string(str)+"\" not found.");
+		}
+		return result;
 	}
 	bool UART::waitUntilAndFlush(const char* str, uint32_t timeoutMS)
 	{
@@ -247,6 +258,10 @@ namespace VoiceMailBox
 		if (result)
 		{
 			rx_read_index = (startIndex + strlen(str)) % m_bufferSize; // Update read index
+		}
+		else
+		{
+			VMB_LOGGER_PRINTLN("UART::waitUntilAndFlush() timeout reached, string: \"" + std::string(str) + "\" not found.");
 		}
 		return result;
 	}

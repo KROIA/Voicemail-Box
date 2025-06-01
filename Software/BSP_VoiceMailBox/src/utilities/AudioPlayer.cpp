@@ -12,11 +12,25 @@ namespace VoiceMailBox
 		, m_isPlaying(false)
 		, m_isPaused(false)
 		, m_loopCount(0)
-	    , m_file(codec.getSampleRate(), 48, codec.getNumChannels())
+#if VMB_USED_AUDIO_FORMAT == VMB_AUDIO_FORMAT_WAV
+		, m_file()
+#elif VMB_USED_AUDIO_FORMAT == VMB_AUDIO_FORMAT_MP3
+		, m_file(codec.getSampleRate(), 48, codec.getNumChannels())
+#endif
 		, m_playingLed(nullptr)
 	{
-
+#if VMB_USED_AUDIO_FORMAT == VMB_AUDIO_FORMAT_WAV
+		m_file.setSampleRate(codec.getSampleRate());
+		m_file.setNumChannels(codec.getNumChannels());
+		m_file.setBitsPerSample(codec.getBitsPerSample());
+#elif VMB_USED_AUDIO_FORMAT == VMB_AUDIO_FORMAT_MP3
+		// Do nothing, the file is initialized in the constructor
+#endif
 	}
+
+
+
+
 	AudioPlayer::AudioPlayer(AudioCodec& codec, DigitalPin& playingLed)
 #ifdef VMB_USE_LOGGER_OBJECTS
 		: Logger("AudioPlayer")
@@ -27,11 +41,22 @@ namespace VoiceMailBox
 		, m_isPlaying(false)
 		, m_isPaused(false)
 		, m_loopCount(0)
+#if VMB_USED_AUDIO_FORMAT == VMB_AUDIO_FORMAT_WAV
+		, m_file()
+#elif VMB_USED_AUDIO_FORMAT == VMB_AUDIO_FORMAT_MP3
 		, m_file(codec.getSampleRate(), 48, codec.getNumChannels())
+#endif
 		, m_playingLed(&playingLed)
 	{
 		if (m_playingLed)
 			m_playingLed->set(false);
+#if VMB_USED_AUDIO_FORMAT == VMB_AUDIO_FORMAT_WAV
+		m_file.setSampleRate(codec.getSampleRate());
+		m_file.setNumChannels(codec.getNumChannels());
+		m_file.setBitsPerSample(codec.getBitsPerSample());
+#elif VMB_USED_AUDIO_FORMAT == VMB_AUDIO_FORMAT_MP3
+		// Do nothing, the file is initialized in the constructor
+#endif
 	}
 	AudioPlayer::~AudioPlayer()
 	{
@@ -62,10 +87,10 @@ namespace VoiceMailBox
 			m_codec.clearTxBuf();
 			m_codec.clearDataReadyFlag();
 			m_firstPlayingUpdate = true;
-			m_loopCount = repetitions;
+			m_loopCount = repetitions-1;
 			return true;
 		}
-		VMB_LOGLN("Failed to open file for playing");
+		VMB_LOGLN("Failed to open file: \""+filePath+"\" for playing");
 		return false;
 	}
 	bool AudioPlayer::stop()
@@ -124,14 +149,38 @@ namespace VoiceMailBox
 		if (!m_isPlaying || m_isPaused)
 			return;
 		
+#ifdef VMB_ENABLE_SIMULTANEOUS_PLAYBACK_AND_RECORDING
+		if (m_codec.isDataReady())
+#else
 		if (m_codec.isDataReadyAndClearFlag())
+#endif
+		{
 			processAudioSamples(m_codec.getTxBufPtr(), m_codec.getBufferSize());
+		}
 	}
 
 	void AudioPlayer::processAudioSamples(volatile int16_t* dmaTxBuff, uint32_t size)
 	{
 		if (m_playingLed)
 			m_playingLed->set(1);
+
+		if (m_file.eof())
+		{
+			VMB_LOGLN("End of file reached");
+			if (m_loopCount > 0)
+			{
+				--m_loopCount;
+				m_firstPlayingUpdate = true;
+				m_file.seek(0);
+			}
+			else
+			{
+				stop();
+				if (m_playingLed)
+					m_playingLed->set(0);
+				return;
+			}
+		}
 
 		// size/2 because, size is in the DMA size namespace which means size of int16_t elements.
 		// readAudioSamples requires the amount of samples, each sample consists of 2 * 16 bit samples (left and right channel)
@@ -151,14 +200,12 @@ namespace VoiceMailBox
 		if(decodedSamples < size/2)
 		{
 			VMB_LOGLN("End of file reached");
-			if (m_loopCount > 1)
+			if (m_loopCount > 0)
 			{
 				--m_loopCount;
 				m_firstPlayingUpdate = true;
 				m_file.seek(0);
 			}
-			else
-				stop();
 		}
 		
 		if (m_playingLed)

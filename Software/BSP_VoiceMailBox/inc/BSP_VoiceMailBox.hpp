@@ -4,7 +4,6 @@
  * @brief This file provides an high level interface to the hardware components of the VoiceMailBox platform.
  */
 
-#include "settings.h"
 
 #include "platform.hpp"
 
@@ -66,10 +65,10 @@ namespace VoiceMailBox
 
 	/**
 	 * @brief Gets the ADC object for the given Poti.
-	 * @param poti 
+	 * @param poti index
 	 * @return ADC object for the given Poti.
 	 */
-	inline AnalogPin& getPoti(Potentiometer poti) { return Platform::getPotentiometer(poti); }
+	inline AnalogPin& getPotentiometer(Potentiometer poti) { return Platform::getPotentiometer(poti); }
 
 	/**
 	 * @brief Gets the current value of the given Poti.
@@ -127,7 +126,7 @@ namespace VoiceMailBox
 	 *
 	 * @note This function is variadic and uses the same format as printf.
 	 */
-	void print(const char* str, ...) 
+	static void print(const char* str, ...)
 	{
 		va_list args;
 		va_start(args, str);
@@ -156,7 +155,7 @@ namespace VoiceMailBox
 	 *
 	 * @note This function is variadic and uses the same format as printf.
 	 */
-	void println(const char* str, ...)
+	static void println(const char* str, ...)
 	{
 		va_list args;
 		va_start(args, str);
@@ -197,11 +196,17 @@ namespace VoiceMailBox
 		return VMB_HAL_GetTickCount();
 	}
 
+
+	inline uint64_t getTickCountInUs()
+	{
+		return VMB_HAL_GetTickCountInUs();
+	}
+
 	/**
 	 * @brief Gets the current milli seconds since the tick counter was reset
 	 * @return current milliseconds since the tick counter was reset.
 	 */
-	inline uint32_t getTickCountInMs()
+	inline uint64_t getTickCountInMs()
 	{
 		return VMB_HAL_GetTickCountInMs();
 	}

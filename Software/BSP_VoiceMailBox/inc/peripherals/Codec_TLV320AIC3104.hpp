@@ -9,19 +9,19 @@
 
 
 
-#include "settings.h"
 #include "HAL_abstraction.hpp"
 
 #include "AudioCodec.hpp"
-#include "DigitalPin.hpp"
+#include "digitalPin.hpp"
 #include "i2c.hpp"
 #include "i2s.hpp"
+#include "utilities/Logger.hpp"
 
 
 
 namespace VoiceMailBox
 {
-	class Codec_TLV320AIC3104 : public AudioCodec
+	class Codec_TLV320AIC3104 : public AudioCodec, public Logger
 	{
 		/**
 		 * @brief Register map
@@ -147,18 +147,24 @@ namespace VoiceMailBox
 		 * @brief Constructor
 		 * @param i2sHandle used to receive and transmit audio samples
 		 * @param i2sBufferSize size for the i2s DMA buffer
-		 * @param i2cHandle used to configure the codec
+		 * @param i2c used to configure the codec
 		 * @param i2cDeviceAddress  of the codec on the I2C bus. Default address is 0x18
-		 * @param nResetPort port on which the nReset pin is connected 
-		 * @param nResetPin  pin the nReset port
+		 * @param resetPort port on which the reset pin is connected 
+		 * @param resetPin  pin on the reset port
+		 * @param resetPinIsInverted if true, the reset pin is active low, otherwise active high
 		 */
 		Codec_TLV320AIC3104(VMB_I2S_Handle* i2sHandle, uint16_t i2sBufferSize,
-							VMB_I2C_Handle* i2cHandle, uint8_t i2cDeviceAddress,
-							VMB_GPIO* nResetPort, uint16_t nResetPin);
+							I2C& i2c, uint8_t i2cDeviceAddress,
+							VMB_GPIO* resetPort, uint16_t resetPin, bool resetPinIsInverted = true);
 		~Codec_TLV320AIC3104();
 
 		void reset();
-		void setup();
+
+		/**
+		 * @brief Configures the codec and starts the I2S DMA
+		 * @return true if successfull, otherwise false
+		 */
+		bool setup();
 
 		/**
 		 * @brief Start the DMA for i2s
@@ -311,14 +317,21 @@ namespace VoiceMailBox
 #endif
 		}
 
+		/**
+		 * @brief Sets the input gain of the microphone for Left and Right
+		 * @param db in a range from 0dB to 59.5dB in 0.5dB steps
+		 */
+		void setMicrophoneGainDB(float db);
+
 	private:
 
 		/**
 		 * @brief Writes the data byte to the given register address of the codec.
 		 * @param registerAddress which can be on page 0 or page 1.
 		 * @param data byte to be set
+		 * @return true if the write was successful, false otherwise
 		 */
-		void writeRegister(uint8_t registerAddress, uint8_t data);
+		bool writeRegister(uint8_t registerAddress, uint8_t data);
 
 		/**
 		 * @brief Reads a byte from the given register address of the codec.
@@ -343,9 +356,9 @@ namespace VoiceMailBox
 		void onI2S_DMA_TxRx_HalfCpltCallback();
 		void onI2S_DMA_TxRx_CpltCallback();
 
-		I2C m_i2c;
+		I2C& m_i2c;
 		uint8_t m_i2cDeviceAddress;
-		DigitalPin m_nResetPin;
+		DigitalPin m_resetPin;
 		I2S m_i2s; 
 
 		uint8_t m_currentRegisterPage = 0; // Current page number selected for accessing registers

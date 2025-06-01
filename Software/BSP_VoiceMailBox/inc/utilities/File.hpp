@@ -12,6 +12,7 @@
 #include <string>
 #include <vector>
 #include "fatfs.h"
+#include "HAL_abstraction.hpp"
 
 
 namespace VoiceMailBox
@@ -26,6 +27,8 @@ namespace VoiceMailBox
 			write,
 			append,
 		};
+
+		static bool mount();
 
 		/**
 		 * @brief Constructor

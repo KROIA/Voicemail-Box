@@ -9,7 +9,6 @@
 
 
 
-#include "settings.h"
 #include "HAL_abstraction.hpp"
 #include <atomic>
 
@@ -27,8 +26,11 @@ namespace VoiceMailBox
 		UART(VMB_UART_Handle* uartHandle, uint16_t bufferSize);
 		~UART();
 
-
-		void setup();
+		/**
+		 * @brief Starts the UART peripherals revceiver interrupt.
+		 * @return true if VMB_HAL_UART_Receive_IT was successful, false otherwise.
+		 */
+		bool setup();
 
 		/**
 		 * @brief Sends the given string over UART.

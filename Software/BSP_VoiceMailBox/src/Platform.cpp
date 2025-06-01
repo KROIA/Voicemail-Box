@@ -11,6 +11,7 @@
 #include "platform.hpp"
 #include "HAL_abstraction.hpp"
 #include "utilities/Updatable.hpp"
+#include "utilities/Logger.hpp"
 #include <stdint.h>
 
 #include <cstdarg>   // <-- required for va_list and related macros
@@ -46,10 +47,10 @@ namespace VoiceMailBox
 		// On this board the buttons are active high, so the isInverted parameter is set to false or can be omitted
 		static DigitalPin button[] = 
 		{
-			{ BTN0_GPIO_Port, BTN0_Pin },
-			{ BTN1_GPIO_Port, BTN1_Pin },
-			{ BTN2_GPIO_Port, BTN2_Pin },
-			{ BTN3_GPIO_Port, BTN3_Pin }
+			{ BTN0_GPIO_Port, BTN0_Pin, true},
+			{ BTN1_GPIO_Port, BTN1_Pin, true},
+			{ BTN2_GPIO_Port, BTN2_Pin, true},
+			{ BTN3_GPIO_Port, BTN3_Pin, true}
 		};
 		return button[index];
 	}
@@ -100,7 +101,7 @@ namespace VoiceMailBox
 		// The I2S buffer size will not be used if the macro VMB_I2S_USE_STATIC_BUFFER_SIZE in the settings.h file is defined
 		// 0x18 is the default address for the TLV320AIC3104
 		static Codec_TLV320AIC3104 codec(getI2S_CODEC(), 512,
-				getI2C_CODEC(), 0x18,  // maybe problematic because of static initialisation order
+				getI2C(), 0x18,  // maybe problematic because of static initialisation order
 				CODEC_NRESET_GPIO_Port, CODEC_NRESET_Pin);
 		return codec;
 	}
@@ -116,6 +117,14 @@ namespace VoiceMailBox
 #endif
 		);
 		return pmodESP;
+	}
+
+	I2C& Platform::getI2C()
+	{
+		// Creating static instances of the I2C class for the I2C bus
+		// The constructor of the I2C class takes the <I2C_HandleTypeDef*>
+		static I2C i2c(getI2C_Handle());
+		return i2c;
 	}
 
 #ifdef VMB_DEVELOPMENT_CONFIGURATION
@@ -136,6 +145,15 @@ namespace VoiceMailBox
 
 	void Platform::setup()
 	{
+		static bool isSetup = false;
+		if (isSetup)
+		{
+			VMB_LOGGER_PRINTLN("Platform::setup() already done, skipping");
+			return;
+		}
+		isSetup = true; // Set the flag to true to avoid multiple setups
+		VMB_LOGGER_PRINTLN("Platform::setup() start");
+		bool success = true;
 		VMB_HAL_InitTickCounter();
 		
 		// It is not very important that these functions are called here.
@@ -146,14 +164,35 @@ namespace VoiceMailBox
 		getPotentiometer(Potentiometer::POT0);	// Make sure the static ADC instances are created
 		
 		// Call the setup function of objects that need to be set up explicitly
-		getCodec().setup();
-		getDebugUART().setup();
-		getPmodESP().setup();
+		success &= File::mount();
+		success &= getCodec().setup();
+		success &= getDebugUART().setup();
+		success &= getPmodESP().setup();
+		if (success)
+		{
+			VMB_LOGGER_PRINTLN("Platform::setup() success");
+		}
+		else
+		{
+			VMB_LOGGER_PRINTLN("Platform::setup() failed");
+		}
 	}	
 
 	void Platform::update()
 	{
 		Updatable::updateInstances();
+
+#ifdef VMB_ENABLE_SIMULTANEOUS_PLAYBACK_AND_RECORDING
+		I2S::clearDataReadyFlagAllInstances();
+#endif
+
+		// Update systick counters
+		static uint32_t lastTick = 0;
+		uint32_t currentTick = VMB_HAL_GetTickCount();
+		if (lastTick > currentTick) // Overflown
+		{
+			VMB_HAL_UpdateTick();
+		}
 	}
 }
 

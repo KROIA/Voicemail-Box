@@ -1,15 +1,58 @@
 # Call C++ code from C
-STM provides a c application by default. When a C++ Application is created, little work must be made in order to switch to a C++ code enviroment.
+STM provides a `C` application by default. When a `C++` Application is created, little work must be made in order to switch to a `C++` code enviroment.
 
+This tutorial creates a `Application` body for `C++` and offers two functions: `setup()` and `loop()`. The `setup()` function gets called on startup after the HAL has been initialized and the `loop()` function gets called in the `while(1) {}` section of the `main()`.
+
+---
+## Content
+- [Setup](#setup)
+  - [Project setup](#project-setup)
+  - [Create the Application code files](#create-the-application-code-files)
+  - [Add Application to the include path](#add-application-to-the-include-path)
+  - [Add Application to the source path](#add-application-to-the-source-path)
+  - [Call the Application functions from the main](#call-the-application-functions-from-the-main)
+---
 ## Setup
 ### Project setup
 * Make sure you enable C/C++ when creating a STM Project.
 
 ### Create the Application code files
+1) Create a folder called `Application` with the subfolders `inc` and `src`.
+2) Inside the `Application/inc` folder, create a file called `Application.h`.
+3) Inside the `Application/src` folder, create a file called `Application.cpp`.
 
-> Application.h
-> Application.cpp
+The projects folder stucture should now look like:
+```
+PrjName
+  +- Core              // Default code containing the main.h and main.c
+  |    +- Inc
+  |    +- Src
+  +- ...               // Some other folders
+  +- Application       // Just created
+       +- inc          // Containing Application.h
+       +- src          // Containing Application.cpp
+```
+---
+#### Add Application to the include path
+Open the project `Properties` window and navigate to `C/C++ General->Paths and Symbols`.
+In the `Includes` section, add a new include path by clicking on to `Add...`.
+- **Directory**: `Application/inc`
+- **Add to all configurations**: `checked`
+- **Add to all languages**: `checked`
+ 
+Click `OK`.
 
+#### Add Application to the source path
+Open the project `Properties` window and navigate to `C/C++ General->Paths and Symbols`.
+In the `Source Location` section, add a new source path by clicking on to `Add Folder...`.
+Select the folder `Application/src` and click `OK`.
+
+Change the `Configuration` on the top of the properties window to the other configuration available and add the same folder again for that configuration.
+Do that for all configurations.
+
+---
+
+Copy paste the following code in to the corresponding application files.
 ```C++
 // Application.h
 #ifndef APPLICATION_H
@@ -44,8 +87,11 @@ void loop()
 }
 ```
 
+---
 ### Call the Application functions from the main
-
+Edit the main.c file and insert the `setup()` and `loop()` functions in the correct location. 
+Make sure the `loop()` function is called continuously.
+If you want to use an operating system, create a task that calls the `loop()`.
 ```C
 // ...
 /* USER CODE BEGIN Includes */

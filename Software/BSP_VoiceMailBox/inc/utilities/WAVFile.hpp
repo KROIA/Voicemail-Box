@@ -7,13 +7,13 @@
  * @author Alex Krieg
  */
 
-#include "settings.h"
-#include "Logger.hpp"
 #include "HAL_abstraction.hpp"
+#include "Logger.hpp"
 #include "File.hpp"
 #include <stdint.h>
 #include <string>
 
+#if defined(VMB_AUDIO_FORMAT_WAV)
 namespace VoiceMailBox
 {
 	class WAVFile  
@@ -33,8 +33,24 @@ namespace VoiceMailBox
 		bool close();
 		std::string getPath() const { return m_file.getPath(); }
 
-		uint32_t writeAudioSamples(const volatile int16_t* data, uint32_t size);
-		uint32_t readAudioSamples(volatile int16_t* data, uint32_t size);
+		/**
+		 * @brief Writes the given samples in to the file
+		 * @param data pointer to the audio samples to write
+		 * @param sampleCount amount of samples to write. If the data is stereo, one sample consists of two int16_t values (left and right channel).
+		 *                    therefore, the <sampleCount> parameter is half of the actual number of int16_t values in the data array.
+		 * @return the number of bytes written to the file, or 0 if an error occurred
+		 */
+		uint32_t writeAudioSamples(const int16_t* data, uint32_t sampleCount);
+
+
+		/**
+		 * @brief Reads the given amount of samples from the file.
+		 * @param data pointer to the buffer where the audio samples will be stored
+		 * @param sampleCount amount of samples to read. If the data is stereo, one sample consists of two int16_t values (left and right channel).
+		 *                    therefore, the <sampleCount> parameter is half of the actual number of int16_t values in the data array.
+		 * @return the number of bytes read from the file, or 0 if an error occurred
+		 */
+		uint32_t readAudioSamples(int16_t* data, uint32_t sampleCount);
 
 
 
@@ -92,9 +108,10 @@ namespace VoiceMailBox
 		File m_file;
 		uint32_t m_sampleCounter;
 
-		uint32_t m_sampleRate = 16000; // Default sample rate
+		uint32_t m_sampleRate = 48000; // Default sample rate
 		uint16_t m_numChannels = 1;    // Default number of channels
 		uint16_t m_bitsPerSample = 16; // Default bits per sample
 	};
 }
-#endif
+#endif // defined(VMB_AUDIO_FORMAT_WAV)
+#endif // WAV_FILE_HPP

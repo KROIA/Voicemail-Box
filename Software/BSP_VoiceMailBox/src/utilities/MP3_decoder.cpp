@@ -1,6 +1,8 @@
 #include "utilities/MP3_decoder.hpp"
+#if defined(VMB_AUDIO_FORMAT_MP3)
 #include <stdint.h>
 #include <cstring>
+
 
 namespace VoiceMailBox
 {
@@ -33,3 +35,4 @@ namespace VoiceMailBox
 		return samplesDecoded;
 	}
 }
+#endif

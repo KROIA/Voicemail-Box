@@ -1,4 +1,5 @@
 #include "utilities/File.hpp"
+#include "utilities/Logger.hpp"
 #include <cstring>
 
 namespace VoiceMailBox
@@ -7,6 +8,24 @@ namespace VoiceMailBox
 	FATFS File::s_SDFatFS;
 	uint8_t File::s_rtext[_MAX_SS];
 
+	bool File::mount()
+	{
+		if (!s_isMounted)
+		{
+			FRESULT err = f_mount(&s_SDFatFS, (TCHAR const*)VMB_VAR_NAME_SDPATH, 0);
+			if (err == FRESULT::FR_OK)
+			{
+				s_isMounted = true;
+			}
+			else
+			{
+				VMB_LOGGER_PRINT("Can't mount SD card, is the SD card not inserted?");
+				// Can't mount device
+			}
+		}
+		return s_isMounted;
+	}
+
 	File::File()
 		: m_fileHandle{ 0 }
 		, m_isOpen(false)
@@ -14,16 +33,7 @@ namespace VoiceMailBox
 		, m_path("")
 		, m_lastError(FRESULT::FR_OK)
 	{
-		if (!s_isMounted)
-		{
-			m_lastError = f_mount(&s_SDFatFS, (TCHAR const*)SDPath, 0);
-			if (m_lastError == FRESULT::FR_OK)
-				s_isMounted = true;
-			else
-			{
-				// Can't mount device
-			}
-		}
+
 	}
 	File::~File()
 	{

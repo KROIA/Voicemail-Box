@@ -1,24 +1,27 @@
 # AudioPlayer
 This class manages the dataflow from the SD-card to the microphone.
+You can find a ready to run project [here](../../Demos/F469/F469_MultiExample/README.md).
 
+---
+## Content
 - [Features](#features)
 - [Setup](#setup)
 - [Usage](#usage)
     - [Basic usage](#basic-usage)
     - [Using the debug Pin](#using-the-debug-pin)
 
-# Features
+## Features
 - Start playback
 - Stop playback
 - Pause/Resume playback
 - Display optional debug information on a digital pin for performance measurement and timing constraint check.
 
-# Setup
+## Setup
 Make sure the C++ application is setup in order to use this class
 You can find the instructions on how to do so [here](CppFromC.md).
 
-# Usage
-## Basic usage
+## Usage
+### Basic usage
 A AudioPlayer object can be instantiated in the Application.cpp.
 The codec on which the sound gets played on, must be provided to the constructor.
 Make sure that the codec is not a temporary object, since the AudioPlayer class only holds a reference to it.
@@ -61,7 +64,7 @@ void loop()
 ```
 
 
-## Using the debug Pin
+### Using the debug Pin
 ``` C++
 // Application.cpp
 #include "BSP_VoiceMailBox.hpp"

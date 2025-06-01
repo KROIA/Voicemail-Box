@@ -1,5 +1,5 @@
 #include "peripherals/i2s.hpp"
-
+#include "utilities/Logger.hpp"
 
 namespace VoiceMailBox
 {
@@ -51,11 +51,13 @@ namespace VoiceMailBox
 	bool I2S::startDMA()
 	{
 		VMB_HAL_Status status = VMB_HAL_I2SEx_TransmitReceive_DMA(m_i2s, (uint16_t*)(m_dacDataBuffer), (uint16_t*)(m_adcDataBuffer), m_dmaBufferSize);
+		VMB_LOGGER_HANDLE_STATUS(status, "I2S::startDMA()");
 		return status == VMB_HAL_Status::OK;
 	}
 	bool I2S::stopDMA()
 	{
 		VMB_HAL_Status status = VMB_HAL_I2S_DMAStop(m_i2s);
+		VMB_LOGGER_HANDLE_STATUS(status, "I2S::stopDMA()");
 		return status == VMB_HAL_Status::OK;
 	}
 
@@ -104,7 +106,7 @@ namespace VoiceMailBox
 		m_inBufPtr = &m_adcDataBuffer[0];
 		m_outBufPtr = &m_dacDataBuffer[0];
 
-		m_dataReadyFlag = 1;
+		m_dataReadyFlag = !m_dataReadyFlag;
 		if (m_halfCpltCallback)
 		{
 			m_halfCpltCallback(*this);
@@ -116,12 +118,32 @@ namespace VoiceMailBox
 		m_inBufPtr = &m_adcDataBuffer[m_dmaBufferSize / 2];
 		m_outBufPtr = &m_dacDataBuffer[m_dmaBufferSize / 2];
 
-		m_dataReadyFlag = 1;
+		m_dataReadyFlag = !m_dataReadyFlag;
 		if (m_cpltCallback)
 		{
 			m_cpltCallback(*this);
 		}
 	}
+
+
+#ifdef VMB_ENABLE_SIMULTANEOUS_PLAYBACK_AND_RECORDING
+	void I2S::clearDataReadyFlagAllInstances()
+	{
+		for (std::size_t i = 0; i < sizeof(s_instances); ++i)
+		{
+			I2S*& instance = s_instances[i];
+			if (instance != nullptr)
+			{
+				// Only clear the flag if it was already read
+				instance->m_dataReadyFlagAvailable = instance->m_dataReadyFlag;
+				if(instance->m_dataReadyFlagUsed)
+				{
+					instance->clearDataReadyFlag();
+				}
+			}
+		}
+	}
+#endif
 }
 
 

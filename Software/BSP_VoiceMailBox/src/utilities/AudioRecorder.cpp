@@ -11,10 +11,26 @@ namespace VoiceMailBox
 		: m_codec(codec)
 #endif
 		, m_isRecording(false)
+#if VMB_USED_AUDIO_FORMAT == VMB_AUDIO_FORMAT_WAV
+		, m_file()
+#elif VMB_USED_AUDIO_FORMAT == VMB_AUDIO_FORMAT_MP3
 		, m_file(codec.getSampleRate(), 48, codec.getNumChannels())
+#endif
 		, m_recordingLed(nullptr)
 	{
+#if VMB_USED_AUDIO_FORMAT == VMB_AUDIO_FORMAT_WAV
+		m_file.setSampleRate(codec.getSampleRate());
+		m_file.setNumChannels(codec.getNumChannels());
+		m_file.setBitsPerSample(codec.getBitsPerSample());
+#elif VMB_USED_AUDIO_FORMAT == VMB_AUDIO_FORMAT_MP3
+		// Do nothing, the file is initialized in the constructor
+#endif
 	}
+
+
+
+
+
 	AudioRecorder::AudioRecorder(AudioCodec& codec, DigitalPin& recordingLed)
 #ifdef VMB_USE_LOGGER_OBJECTS
 		: Logger("AudioRecorder")
@@ -23,11 +39,22 @@ namespace VoiceMailBox
 		: m_codec(codec)
 #endif
 		, m_isRecording(false)
+#if VMB_USED_AUDIO_FORMAT == VMB_AUDIO_FORMAT_WAV
+		, m_file()
+#elif VMB_USED_AUDIO_FORMAT == VMB_AUDIO_FORMAT_MP3
 		, m_file(codec.getSampleRate(), 48, codec.getNumChannels())
+#endif
 		, m_recordingLed(&recordingLed)
 	{
 		if (m_recordingLed)
 			m_recordingLed->set(false);
+#if VMB_USED_AUDIO_FORMAT == VMB_AUDIO_FORMAT_WAV
+		m_file.setSampleRate(codec.getSampleRate());
+		m_file.setNumChannels(codec.getNumChannels());
+		m_file.setBitsPerSample(codec.getBitsPerSample());
+#elif VMB_USED_AUDIO_FORMAT == VMB_AUDIO_FORMAT_MP3
+		// Do nothing, the file is initialized in the constructor
+#endif
 	}
 	AudioRecorder::~AudioRecorder()
 	{
@@ -53,7 +80,7 @@ namespace VoiceMailBox
 			m_codec.clearDataReadyFlag();
 			return true;
 		}
-		VMB_LOGLN("Failed to open file for recording");
+		VMB_LOGLN("Failed to open file: \"" + filePath + "\" for recording");
 		return false;
 	}
 	bool AudioRecorder::stop()
@@ -109,8 +136,14 @@ namespace VoiceMailBox
 	{
 		if (!m_isRecording || m_isPaused)
 			return;
+#ifdef VMB_ENABLE_SIMULTANEOUS_PLAYBACK_AND_RECORDING
+		if (m_codec.isDataReady())
+#else
 		if (m_codec.isDataReadyAndClearFlag())
+#endif
+		{
 			processAudioSamples(m_codec.getRxBufPtr(), m_codec.getBufferSize());
+		}
 	}
 
 	void AudioRecorder::processAudioSamples(volatile int16_t* dmaRxBuff, uint32_t size)

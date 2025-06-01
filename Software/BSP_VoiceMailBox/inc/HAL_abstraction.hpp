@@ -13,7 +13,18 @@
  *       This is because in a STM-Project, the STM-HAL library gets included by the codegenerator in the main.h file.
  */
 #include "main.h"
+#include "settings.h"
 
+#ifndef VMB_SETTINGS_HEADER
+#error "No settings header included, make sure to provide a custom settings header in the main.h file when VMB_CUSTOM_SETTINGS_HEADER is defined!"
+#endif
+
+// Define one of the following macros in the main.h
+//#define VMB_MICROCONTROLLER_BOARD__STM32F469I_DISCOVERY
+//#define VMB_MICROCONTROLLER_BOARD__STM32NUCLEO_H755ZI_Q
+#if defined(VMB_MICROCONTROLLER_BOARD__STM32F469I_DISCOVERY) + defined(VMB_MICROCONTROLLER_BOARD__STM32NUCLEO_H755ZI_Q) != 1
+#error "Exactly one platform must be defined!"
+#endif
 
 namespace VoiceMailBox
 {
@@ -37,10 +48,19 @@ namespace VoiceMailBox
 	/*
 		ADC HAL Abstraction
 	*/
+#if defined(VMB_MICROCONTROLLER_BOARD__STM32F469I_DISCOVERY)
 	static constexpr uint32_t VMB_ADC_RESOLUTION_12B = ADC_RESOLUTION_12B;
 	static constexpr uint32_t VMB_ADC_RESOLUTION_10B = ADC_RESOLUTION_10B;
 	static constexpr uint32_t VMB_ADC_RESOLUTION_8B = ADC_RESOLUTION_8B;
 	static constexpr uint32_t VMB_ADC_RESOLUTION_6B = ADC_RESOLUTION_6B;
+#elif defined(VMB_MICROCONTROLLER_BOARD__STM32NUCLEO_H755ZI_Q)
+	static constexpr uint32_t VMB_ADC_RESOLUTION_16B = ADC_RESOLUTION_16B;
+	static constexpr uint32_t VMB_ADC_RESOLUTION_14B = ADC_RESOLUTION_14B;
+	static constexpr uint32_t VMB_ADC_RESOLUTION_12B = ADC_RESOLUTION_12B;
+	static constexpr uint32_t VMB_ADC_RESOLUTION_10B = ADC_RESOLUTION_10B;
+	static constexpr uint32_t VMB_ADC_RESOLUTION_8B = ADC_RESOLUTION_8B;
+#endif
+
 	inline VMB_HAL_Status VMB_HAL_ADC_Start(VMB_ADC_Handle* adc)
 	{
 		return (VMB_HAL_Status)HAL_ADC_Start(adc);
@@ -59,6 +79,7 @@ namespace VoiceMailBox
 	}
 	inline uint32_t VMB_HAL_ADC_GetMaxValue(VMB_ADC_Handle* adc)
 	{
+#if defined(VMB_MICROCONTROLLER_BOARD__STM32F469I_DISCOVERY)
 		switch (adc->Init.Resolution) {
 			case VMB_ADC_RESOLUTION_12B:
 				return 4095;
@@ -69,6 +90,20 @@ namespace VoiceMailBox
 			case VMB_ADC_RESOLUTION_6B:
 				return 63;
 		}
+#elif defined(VMB_MICROCONTROLLER_BOARD__STM32NUCLEO_H755ZI_Q)
+		switch (adc->Init.Resolution) {
+		case VMB_ADC_RESOLUTION_16B:
+			return 35535;
+		case VMB_ADC_RESOLUTION_14B:
+			return 16383;
+		case VMB_ADC_RESOLUTION_12B:
+			return 4095;
+		case VMB_ADC_RESOLUTION_10B:
+			return 1023;
+		case VMB_ADC_RESOLUTION_8B:
+			return 255;
+		}
+#endif
 		return 0;
 	}
 
@@ -156,6 +191,23 @@ namespace VoiceMailBox
 	{
 		HAL_Delay(Delay);
 	}
+
+	inline uint64_t VMB_HAL_UpdateTick(uint64_t setTickMask = -1)
+	{
+		static uint32_t DWT_LastCYCCNT = 0;
+		static uint64_t DWT_Tick = 0;
+	    uint32_t curr = DWT->CYCCNT;
+	    uint32_t last = DWT_LastCYCCNT;
+
+	    // Handle wraparound
+	    uint32_t delta = (curr - last);
+
+	    DWT_Tick += ((uint64_t)delta) ;
+	    DWT_Tick &= setTickMask;
+
+	    DWT_LastCYCCNT = curr;
+	    return DWT_Tick / ((uint64_t)SystemCoreClock / 1000000L);
+	}
 	inline void VMB_HAL_InitTickCounter()
 	{
 		// Setup Tick counter
@@ -165,18 +217,25 @@ namespace VoiceMailBox
 		DWT->CTRL |= DWT_CTRL_CYCCNTENA_Msk;
 		// Optional: Reset the counter to 0
 		DWT->CYCCNT = 0;
+		VMB_HAL_UpdateTick(0);
 	}
 	inline uint32_t VMB_HAL_GetTickCount()
 	{
 		return DWT->CYCCNT;
 	}
-	inline uint32_t VMB_HAL_GetTickCountInMs()
+	inline uint64_t VMB_HAL_GetTickCountInUs()
 	{
-		return DWT->CYCCNT / (SystemCoreClock / 1000);
+		return VMB_HAL_UpdateTick();
+	}
+	inline uint64_t VMB_HAL_GetTickCountInMs()
+	{
+		return VMB_HAL_UpdateTick() / 1000;
 	}
 	inline void VMB_HAL_ResetTickCounter()
 	{
 		DWT->CYCCNT = 0;
+		VMB_HAL_UpdateTick(0);
 	}
+
 }
 #endif

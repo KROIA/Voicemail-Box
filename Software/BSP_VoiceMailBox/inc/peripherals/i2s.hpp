@@ -9,7 +9,6 @@
 
 #include <functional>
 #include <cstring>
-#include "settings.h"
 #include "HAL_abstraction.hpp"
 
 
@@ -56,7 +55,22 @@ namespace VoiceMailBox
 		 * @note The flag is not reset automatically after reading it.
 		 * @return true if new data is ready, false otherwise
 		 */
-		bool isDataReady() const { return m_dataReadyFlag; }
+		bool isDataReady() const 
+		{ 
+#ifdef VMB_ENABLE_SIMULTANEOUS_PLAYBACK_AND_RECORDING
+			if (m_dataReadyFlagAvailable)
+			{
+				m_dataReadyFlagUsed = true;
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+#else
+			return m_dataReadyFlag; 
+#endif
+		}
 
 		/**
 		 * @brief Checks if a new batch of data is ready to be processed
@@ -64,19 +78,29 @@ namespace VoiceMailBox
 		 * @return true if new data is ready, false otherwise
 		 */
 		bool isDataReadyAndClearFlag() {
+
 			bool dataReady = m_dataReadyFlag;
 
 			// To prevent race condition between reading the ready flag and resetting it, 
 			// the reset is only done if the flag was set
 			if (dataReady)
-				m_dataReadyFlag = 0;
+			{
+				clearDataReadyFlag();
+			}
 			return dataReady;
 		}
 
 		/**
 		 * @brief Clears the data ready flag.
 		 */
-		void clearDataReadyFlag() { m_dataReadyFlag = 0; }
+		void clearDataReadyFlag() 
+		{ 
+			m_dataReadyFlag = false; 
+#ifdef VMB_ENABLE_SIMULTANEOUS_PLAYBACK_AND_RECORDING
+			m_dataReadyFlagAvailable = false;
+			m_dataReadyFlagUsed = false; // Reset the flag used state
+#endif
+		}
 
 		/**
 		 * @brief Gets the current ADC buffer pointer.
@@ -126,9 +150,16 @@ namespace VoiceMailBox
 		 * @param hi2s 
 		 */
 		static void onI2S_TXRX_CpltCallback(VMB_I2S_Handle* hi2s);
+
+
+#ifdef VMB_ENABLE_SIMULTANEOUS_PLAYBACK_AND_RECORDING
+		static void clearDataReadyFlagAllInstances();
+#endif
 	private:
 		void onI2S_TXRX_HalfCpltCallback();
 		void onI2S_TXRX_CpltCallback();
+
+
 
 
 		VMB_I2S_Handle * const m_i2s;	// I2S_HandleTypeDef*
@@ -147,7 +178,11 @@ namespace VoiceMailBox
 		volatile int16_t *m_adcDataBuffer; // Buffer for ADC data
 		volatile int16_t *m_dacDataBuffer; // Buffer for DAC data
 #endif
-		volatile uint8_t m_dataReadyFlag = 0; // Flag to indicate if data is ready for processing
+		volatile bool m_dataReadyFlag = false; // Flag to indicate if data is ready for processing
+#ifdef VMB_ENABLE_SIMULTANEOUS_PLAYBACK_AND_RECORDING
+		mutable bool m_dataReadyFlagUsed = false; // Flag to indicate if the data ready flag is used by this instance
+		bool m_dataReadyFlagAvailable = false;
+#endif
 		volatile int16_t* m_inBufPtr; // Pointer to the current ADC buffer (Depending on the pingpong state)
 		volatile int16_t* m_outBufPtr; // Pointer to the current DAC buffer (Depending on the pingpong state)
 

@@ -1,4 +1,5 @@
 #include "utilities/MP3_encoder.hpp"
+#if defined(VMB_AUDIO_FORMAT_MP3)
 #include <stdint.h>
 #include <cstring>
 
@@ -50,3 +51,4 @@ namespace VoiceMailBox
 		return 0;
 	}
 }
+#endif

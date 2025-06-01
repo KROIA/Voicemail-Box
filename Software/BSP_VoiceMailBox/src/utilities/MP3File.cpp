@@ -1,5 +1,7 @@
 #include "utilities/MP3File.hpp"
+#if defined(VMB_AUDIO_FORMAT_MP3)
 #include <cstring>
+
 
 namespace VoiceMailBox
 {
@@ -36,6 +38,7 @@ namespace VoiceMailBox
 		}
 
 		uint32_t savedBytes = 0;
+		// Ensure that sampleCount is a multiple of 576 (the number of samples per frame in MP3)
 		for (uint32_t i = 0; i < sampleCount / 576; ++i)
 		{
 			int8_t* mp3Buffer = nullptr;
@@ -85,3 +88,4 @@ namespace VoiceMailBox
 		return 0;
 	}
 }
+#endif

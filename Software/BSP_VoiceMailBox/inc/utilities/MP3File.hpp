@@ -4,14 +4,15 @@
  * @author Alex Krieg
  */
 
-#include "settings.h"
-#include "Logger.hpp"
 #include "HAL_abstraction.hpp"
+#if defined(VMB_AUDIO_FORMAT_MP3)
+#include "Logger.hpp"
 #include "File.hpp"
 #include "MP3_encoder.hpp"
 #include "MP3_decoder.hpp"
 #include <stdint.h>
 #include <string>
+
 
 namespace VoiceMailBox
 {
@@ -161,4 +162,5 @@ namespace VoiceMailBox
 		MP3_decoder m_decoder;
 	};
 }
-#endif
+#endif // defined(VMB_AUDIO_FORMAT_MP3)
+#endif // MP3_FILE_HPP

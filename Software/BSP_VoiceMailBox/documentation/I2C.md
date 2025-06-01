@@ -1,8 +1,11 @@
 # I2C
-This class is a simplfied interface to access the i2c peripheral.
-Only basic functions, which are used in the project, are implemented.
-The implementation does not use DMA, it is designed to be blocking.
+This class is a simplfied interface for the i2c peripheral.
+All Basic functions used in the project are implemented here.
+The implementaion is designed to be blocking.
+You can find a ready to run project [here](../../Demos/F469/F469_MultiExample/README.md).
 
+---
+## Content
 - [Features](#features)
 - [Setup](#setup)
 - [Usage](#usage)
@@ -31,7 +34,7 @@ In the **main.h** create a get function that returns a pointer to the handle we 
 // main.h
 
 // Function declaration
-I2C_HandleTypeDef* getI2C_handle();
+I2C_HandleTypeDef* getI2C_Handle();
 ```
 
 ``` C
@@ -42,7 +45,7 @@ I2C_HandleTypeDef hi2c1;
 
 /* USER CODE BEGIN PV */
 // Function implementation
-I2C_HandleTypeDef* getI2C_handle()
+I2C_HandleTypeDef* getI2C_Handle()
 {
     // Return the pointer to the handle
     return &hi2c1;
@@ -61,27 +64,24 @@ I2C_HandleTypeDef* getI2C_handle()
 using namespace VoiceMailBox; 
 
 // Create a I2C object and providing the handle from the main.c
-I2C i2c(getI2C_handle());
-
-// Called periodically
-void loop()
+VoiceMailBox::I2C* i2c = nullptr;
+void setup()
 {
-    uint8_t deviceAddress = 0x05; // Use the address of your I2C target
-    uint8_t registerAddress = 0x00; // Use the register address you want to read/write to, 
-                                    // inside the target.
-    uint8_t dataToWrite = 0x01;
+	i2c = new VoiceMailBox::I2C(getI2C_Handle());
 
-    // Writes the value 0x01 to the register 0x00 on the device 0x05.
-    i2c.writeRegister(deviceAddress, registerAddress, dataToWrite);
+	VoiceMailBox::setup();
+	uint8_t deviceAddress = 0x18;   // Use the address of the Codec
+	uint8_t registerAddress = 0x00; // Use the "Page Select" register to write to the first page
+	// inside the target.
+	uint8_t dataToWrite = 0x01;
 
-    // Reads the register 0x00 from the device 0x05 and
-    // stores the value in the <readData> variable
-    uint8_t readData;
-    i2c.readRegister(deviceAddress, registerAddress, readData);
+	// Writes the value 0x01 to the register 0x00 on the device 0x05.
+	i2c->writeRegister(deviceAddress, registerAddress, dataToWrite);
+
+	// Reads the register 0x00 from the device 0x18 and
+	// stores the value in the <readData> variable
+	uint8_t readData = 0;
+	i2c->readRegister(deviceAddress, registerAddress, readData);
+	VoiceMailBox::println("Read data: 0x%02X", readData);
 }
-```
-
-
-``` C++ 
-
 ```

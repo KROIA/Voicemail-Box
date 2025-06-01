@@ -2,7 +2,7 @@
 #define ATCOMMAND_CLIENT_H
 
 #include "HAL_abstraction.hpp"
-#include "peripherals/DigitalPin.hpp"
+#include "peripherals/digitalPin.hpp"
 #include "uart.hpp"
 #include "utilities/File.hpp"
 #include "utilities/Logger.hpp"
@@ -26,7 +26,11 @@ namespace VoiceMailBox
 		ATCommandClient(VMB_UART_Handle* uartHandle, uint16_t uartBufferSize, DigitalPin &trafficLed);
 		~ATCommandClient();
 
-		void setup();
+		/**
+		 * @brief Setups the UART and try's to get a response from the AT command client.
+		 * @return true if the setup was successful, false otherwise.
+		 */
+		bool setup();
 
 
 		/**

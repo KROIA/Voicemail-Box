@@ -6,11 +6,10 @@
 
 
 #include <string>
-#include "settings.h"
 #include "Logger.hpp"
 #include "HAL_abstraction.hpp"
 #include "peripherals/AudioCodec.hpp"
-#include "peripherals/DigitalPin.hpp"
+#include "peripherals/digitalPin.hpp"
 
 #include "Updatable.hpp"
 #include "WAVFile.hpp"
@@ -107,8 +106,11 @@ namespace VoiceMailBox
 		bool m_isRecording;
 		bool m_isPaused;
 
-		//WAVFile m_wavFile;	// WAV file object
+#if VMB_USED_AUDIO_FORMAT == VMB_AUDIO_FORMAT_WAV
+		WAVFile m_file;	// WAV file object
+#elif VMB_USED_AUDIO_FORMAT == VMB_AUDIO_FORMAT_MP3
 		MP3File m_file;	// MP3 file object
+#endif
 
 		DigitalPin* m_recordingLed;	// Recording LED pin
 	};

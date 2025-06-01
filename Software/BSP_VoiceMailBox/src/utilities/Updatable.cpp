@@ -19,8 +19,10 @@ namespace VoiceMailBox
 
 	void Updatable::updateInstances()
 	{
-		for (auto& instance : getInstances())
-			instance->update();
+		const std::vector<Updatable*> &objs = getInstances();
+		size_t size = objs.size();
+		for (size_t i=0; i<size; ++i)
+			objs[i]->update();
 	}
 
 	std::vector<Updatable*> &Updatable::getInstances()
