@@ -19,7 +19,7 @@ namespace VoiceMailBox
 			&data,
 			1,
 			HAL_MAX_DELAY);
-		VMB_LOGGER_HANDLE_STATUS(status, "I2C::writeRegister()");
+		VMB_LOGGER_PRINT_STATUS(status, "I2C::writeRegister()");
 		return status; 
 	}
 
@@ -32,7 +32,7 @@ namespace VoiceMailBox
 			&data,
 			1,
 			HAL_MAX_DELAY);
-		VMB_LOGGER_HANDLE_STATUS(status, "I2C::readRegister()");
+		VMB_LOGGER_PRINT_STATUS(status, "I2C::readRegister()");
 		return status; 
 	}
 }

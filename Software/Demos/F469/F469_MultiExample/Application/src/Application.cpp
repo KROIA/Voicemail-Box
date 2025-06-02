@@ -16,6 +16,10 @@
 #include "Example_MP3Encoder.hpp"
 #include "Example_UART.hpp"
 #include "Example_DCOffset.hpp"
+#include "Example_ATCommandClient.hpp"
+#include "Example_Codec_TLV320AIC3104.hpp"
+#include "Example_Logger.hpp"
+#include "Example_Updatable.hpp"
 
 
 // List of all examples
@@ -34,6 +38,10 @@ enum Example
 	example_MP3Encoder,
 	example_UART,
 	example_DCOffset,
+	example_ATCommandClient,
+	example_Codec_TLV320AIC3104,
+	example_Example_Logger,
+	example_Updatable,
 
 	__count // used to count the examples. let it be the last element!
 };
@@ -58,7 +66,11 @@ ExampleCallerFunctions exampleFunctions[Example::__count]
 	{ Example_MP3Decoder::setup, Example_MP3Decoder::loop },
 	{ Example_MP3Encoder::setup, Example_MP3Encoder::loop },
 	{ Example_UART::setup, Example_UART::loop },
-	{ Example_DCOffset::setup, Example_DCOffset::loop }
+	{ Example_DCOffset::setup, Example_DCOffset::loop },
+	{ Example_ATCommandClient::setup, Example_ATCommandClient::loop },
+	{ Example_Codec_TLV320AIC3104::setup, Example_Codec_TLV320AIC3104::loop },
+	{ Example_Logger::setup, Example_Logger::loop },
+	{ Example_Updatable::setup, Example_Updatable::loop }
 };
 
 
@@ -66,7 +78,7 @@ ExampleCallerFunctions exampleFunctions[Example::__count]
  * @brief Select the example you want to run.
  * @details You can find the source code of each example in the Application/src folder
  */
-const Example selectedExample = Example::example_DCOffset;
+const Example selectedExample = Example::example_Updatable;
 
 
 void setup()

@@ -51,13 +51,13 @@ namespace VoiceMailBox
 	bool I2S::startDMA()
 	{
 		VMB_HAL_Status status = VMB_HAL_I2SEx_TransmitReceive_DMA(m_i2s, (uint16_t*)(m_dacDataBuffer), (uint16_t*)(m_adcDataBuffer), m_dmaBufferSize);
-		VMB_LOGGER_HANDLE_STATUS(status, "I2S::startDMA()");
+		VMB_LOGGER_PRINT_STATUS(status, "I2S::startDMA()");
 		return status == VMB_HAL_Status::OK;
 	}
 	bool I2S::stopDMA()
 	{
 		VMB_HAL_Status status = VMB_HAL_I2S_DMAStop(m_i2s);
-		VMB_LOGGER_HANDLE_STATUS(status, "I2S::stopDMA()");
+		VMB_LOGGER_PRINT_STATUS(status, "I2S::stopDMA()");
 		return status == VMB_HAL_Status::OK;
 	}
 

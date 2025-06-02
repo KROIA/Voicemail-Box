@@ -111,6 +111,12 @@ namespace VoiceMailBox
 		uint32_t read(std::string& output, uint32_t length);
 
 		/**
+		 * @brief Reads a string from the file until a newline character is encountered
+		 * @return the read line as a string, ignoring the newline character
+		 */
+		std::string readLine();
+
+		/**
 		 * @brief Sets the cursor to the given location
 		 * @param position to set the cursor to
 		 * @return true if the cursor was set successfully, otherwise false
@@ -182,6 +188,9 @@ namespace VoiceMailBox
 		 * @return true if the file was removed successfully, otherwise false
 		 */
 		static bool remove(const char* path);
+		static bool remove(const std::string& path) {
+			return remove(path.c_str());
+		}
 
 		/**
 		 * @brief Renames the file at the given path
@@ -190,6 +199,9 @@ namespace VoiceMailBox
 		 * @return true if the file was renamed successfully, otherwise false
 		 */
 		static bool rename(const char* oldPath, const char* newPath);
+		static bool rename(const std::string& oldPath, const std::string& newPath) {
+			return rename(oldPath.c_str(), newPath.c_str());
+		}
 
 		/**
 		 * @brief Checks if the file at the given path exists
@@ -197,6 +209,9 @@ namespace VoiceMailBox
 		 * @return true if the file exists, otherwise false
 		 */
 		static bool exists(const char* path);
+		static bool exists(const std::string& path) {
+			return exists(path.c_str());
+		}
 
 		/**
 		 * @brief Gets a list of file names in the given directory
@@ -204,6 +219,9 @@ namespace VoiceMailBox
 		 * @return A vector of file names in the given directory
 		 */
 		static std::vector<std::string> listDirectory(const char* path);
+		static std::vector<std::string> listDirectory(const std::string& path) {
+			return listDirectory(path.c_str());
+		}
 
 	private:
 
