@@ -30,12 +30,9 @@ You can find the instructions on how to do so [here](CppFromC.md).
 
 ---
 ## Usage
-Make sure the C++ application is setup, you can find the instructions on how to do so [here](CppFromC.md).
-
-
 #### Writing to a file
 ``` C++ 
-#include "BSP_VoiceMailBox.hpp" // includes "peripherals/i2c.hpp"
+#include "BSP_VoiceMailBox.hpp" 
 // ...
 void simpleWrite()
 {
@@ -58,7 +55,7 @@ void simpleWrite()
 
 #### Appending to a file
 ``` C++ 
-#include "BSP_VoiceMailBox.hpp" // includes "peripherals/i2c.hpp"
+#include "BSP_VoiceMailBox.hpp" 
 // ...
 void simpleAppend()
 {
@@ -81,7 +78,7 @@ void simpleAppend()
 
 #### Reading from a file
 ``` C++ 
-#include "BSP_VoiceMailBox.hpp" // includes "peripherals/i2c.hpp"
+#include "BSP_VoiceMailBox.hpp" 
 // ...
 void simpleRead()
 {

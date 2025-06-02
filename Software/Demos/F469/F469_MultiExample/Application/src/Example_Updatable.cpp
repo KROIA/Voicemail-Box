@@ -35,6 +35,6 @@ namespace Example_Updatable
 
 	void loop()
 	{
-		VoiceMailBox::update();
+		VoiceMailBox::update(); // Calls update() on all Updatable objects
 	}
 } 

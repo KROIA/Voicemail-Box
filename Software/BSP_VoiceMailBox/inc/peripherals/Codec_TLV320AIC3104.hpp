@@ -5,6 +5,8 @@
  * @details This codec is used to record and play audio data
  * 
  * @note Only the core features are implemented and tested.
+ * 
+ *  @author Alex Krieg
 */
 
 

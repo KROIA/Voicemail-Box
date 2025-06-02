@@ -120,3 +120,13 @@ To run this example, follow the [instructions](../../../BSP_VoiceMailBox/documen
    The example captures audio data from the codec and plays it back directly.
 2) This example shows a basic usage of the TLV320AIC3104 codec with volume control.
    The POT1 potentiometer is used to control the volume of the audio data captured from the codec.
+
+#### Logger example
+Shows some simple console output methodes that can be used.
+
+#### Updatable example
+Shows how to use the Updatable class to automatically call a update function in a derived class object.
+
+#### Timer example
+All examples in the timer example do the same thing but are implemented in different ways, 
+to show the different ways the Timer can be used.
