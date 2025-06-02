@@ -28,6 +28,8 @@ You can find a ready to run project [here](../../Demos/F469/F469_MultiExample/RE
 ## Setup
 * In the IOC, setup the [UART](../../Demos/F469/F469_HelloAudio/README.md/#wifi-esp32) on which, in this case the ESP32, is connected to.
 * Setup the [test server](TestServer.md) in order to be able to upload/download files.
+* Make sure the C++ application is setup in order to use this class
+You can find the instructions on how to do so [here](CppFromC.md).
   
 ---
 ## Usage

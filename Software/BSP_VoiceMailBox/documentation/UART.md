@@ -23,6 +23,8 @@ You can find a ready to run project [here](../../Demos/F469/F469_MultiExample/RE
 ## Setup    
 - Inside CubeMX, configure your uart interface. (NO DMA's)
 - Start the code generation and open the code editor.
+- Make sure the C++ application is setup in order to use this class
+You can find the instructions on how to do so [here](CppFromC.md).
 
 ---
 ## Usage

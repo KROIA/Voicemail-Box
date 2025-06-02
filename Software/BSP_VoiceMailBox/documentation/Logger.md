@@ -1,4 +1,6 @@
 # Logger
+The Logger class provides two ways on how debug messages can be printed to the console.
+The Logger can be used with its static methodes or as a baseclass for derived objects. 
 
 ## Content
 - [Features](#features)
@@ -17,6 +19,8 @@
 ---
 ## Setup    
 Follow the setup for the [UART](UART.md). For the F469 it is UART3.
+Make sure the C++ application is setup in order to use this class
+You can find the instructions on how to do so [here](CppFromC.md).
 
 ---
 ## Usage

@@ -17,7 +17,7 @@ You can find a ready to run project [here](../../Demos/F469/F469_MultiExample/RE
     - [Audio Samples](#audio-samples)
 
 ---
-## Featuresdsss
+## Features
 - Writing audio samples using a DMA
 - Receiving audio samples using a DMA
 
@@ -45,6 +45,8 @@ I2S (Inter-IC Sound) is a serial interface specifically designed for audio data 
 
 
 Now start the code generation and open the code editor.
+Make sure the C++ application is setup in order to use this class
+You can find the instructions on how to do so [here](CppFromC.md).
 
 ---
 ## Usage

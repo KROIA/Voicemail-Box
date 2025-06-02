@@ -30,6 +30,8 @@ For a pin, configured as output:
 - Inside CubeMX, select a pin and configure it as **GPIO_Output** or **GPIO_Input**.
 - Define a **User Label** for that pin in order to find it faster after code generation.
 - Start the code generation and open the code editor.
+- Make sure the C++ application is setup in order to use this class
+You can find the instructions on how to do so [here](CppFromC.md).
 
 ---
 ## Usage
