@@ -5,7 +5,7 @@ Modern-day communication is more and more reliant on smartphones. This can cause
 
 Since the development of new electronic systems is often too complicated for non-affine people, the goal is to develop a platform that makes it easier to get started with such a project. The highest priority was given to audio input and output, user differentiation/management, file saving, and transferring those wirelessly.
 
-<img src=Picture/20250507_130035.jpg width="500">
+<img src=Hardware/Picture/20250507_130035.jpg width="500">
 
 
 
