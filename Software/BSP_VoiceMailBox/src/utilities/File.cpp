@@ -155,6 +155,19 @@ namespace VoiceMailBox
 		output.resize(length);
 		return read((uint8_t*)&output[0], length);
 	}
+
+	std::string File::readLine()
+	{
+		std::string line;
+		char c;
+		while (read(&c, 1) > 0)
+		{
+			if (c == '\n') break; // End of line
+			if (c != '\r') line += c; // Ignore carriage return
+		}
+		return line;
+	}
+
 	bool File::seek(uint32_t position) {
 		if (!m_isOpen) return false;
 		m_lastError = f_lseek(&m_fileHandle, position);

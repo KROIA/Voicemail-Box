@@ -136,7 +136,7 @@ namespace VoiceMailBox
 				// RESERVED 0x6E - 0x7F
 			};
 			struct PAGE_1 {
-
+				// Not used in this implementation
 			};
 		};
 

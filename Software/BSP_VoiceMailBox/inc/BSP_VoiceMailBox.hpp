@@ -121,7 +121,7 @@ namespace VoiceMailBox
 
 	/**
 	 * @brief Print a string to the debug UART, which is connected to the ST-Link.
-	 * @param str
+	 * @param str pointer to the string to print.
 	 * @param [in] ... args
 	 *
 	 * @note This function is variadic and uses the same format as printf.
@@ -148,9 +148,37 @@ namespace VoiceMailBox
 	}
 
 	/**
+	 * @brief Print a string to the debug UART, which is connected to the ST-Link.
+	 * @param str string object to print.
+	 * @param [in] ... args
+	 *
+	 * @note This function is variadic and uses the same format as printf.
+	 */
+	static void print(const std::string& str, ...)
+	{
+		va_list args;
+		va_start(args, str);
+		std::string buffer;
+		buffer.resize(Platform::getDebugUART().getBufferSize()); // Allocate a buffer of 256 bytes
+		int len = vsnprintf(&buffer[0], buffer.size(), str.c_str(), args);
+		if (len < 0)
+		{
+			// Handle error
+			return;
+		}
+		if ((long)len >= (long)buffer.size())
+		{
+			// Handle buffer overflow
+			return;
+		}
+		Platform::getDebugUART().send((uint8_t*)buffer.data(), len); // Send the formatted string
+		va_end(args);
+	}
+
+	/**
 	 * @brief Print a string, with a newline at the end, to the debug UART,
 	 *		  which is connected to the ST-Link.
-	 * @param str
+	 * @param str pointer to the string to print.
 	 * @param [in] ... args
 	 *
 	 * @note This function is variadic and uses the same format as printf.
@@ -162,6 +190,37 @@ namespace VoiceMailBox
 		std::string buffer;
 		buffer.resize(Platform::getDebugUART().getBufferSize()); // Allocate a buffer of 256 bytes
 		int len = vsnprintf(&buffer[0], buffer.size(), str, args);
+		if (len < 0)
+		{
+			// Handle error
+			return;
+		}
+		if ((long)len >= (long)buffer.size() - 2)
+		{
+			// Handle buffer overflow
+			return;
+		}
+		buffer[len++] = '\r'; // Add a newline character
+		buffer[len++] = '\n'; // Add a newline character
+		Platform::getDebugUART().send((uint8_t*)buffer.data(), len); // Send the formatted string
+		va_end(args);
+	}
+
+	/**
+	 * @brief Print a string, with a newline at the end, to the debug UART,
+	 *		  which is connected to the ST-Link.
+	 * @param str string object to print.
+	 * @param [in] ... args
+	 *
+	 * @note This function is variadic and uses the same format as printf.
+	 */
+	static void println(const std::string& str, ...)
+	{
+		va_list args;
+		va_start(args, str);
+		std::string buffer;
+		buffer.resize(Platform::getDebugUART().getBufferSize()); // Allocate a buffer of 256 bytes
+		int len = vsnprintf(&buffer[0], buffer.size(), str.c_str(), args);
 		if (len < 0)
 		{
 			// Handle error
