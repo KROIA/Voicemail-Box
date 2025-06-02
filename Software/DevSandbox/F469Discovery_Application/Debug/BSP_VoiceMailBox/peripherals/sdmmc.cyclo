@@ -1,8 +1,0 @@
-/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/BSP_VoiceMailBox/src/peripherals/sdmmc.c:16:16:spi_send	1
-/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/BSP_VoiceMailBox/src/peripherals/sdmmc.c:24:12:wait_ready	3
-/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/BSP_VoiceMailBox/src/peripherals/sdmmc.c:34:16:send_cmd	4
-/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/BSP_VoiceMailBox/src/peripherals/sdmmc.c:59:9:MMC_disk_initialize	6
-/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/BSP_VoiceMailBox/src/peripherals/sdmmc.c:94:9:MMC_disk_status	1
-/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/BSP_VoiceMailBox/src/peripherals/sdmmc.c:99:9:MMC_disk_read	7
-/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/BSP_VoiceMailBox/src/peripherals/sdmmc.c:130:9:MMC_disk_write	7
-/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/BSP_VoiceMailBox/src/peripherals/sdmmc.c:164:9:MMC_disk_ioctl	5
