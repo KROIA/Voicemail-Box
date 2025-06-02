@@ -1,0 +1,67 @@
+################################################################################
+# Automatically-generated file. Do not edit!
+# Toolchain: GNU Tools for STM32 (12.3.rel1)
+################################################################################
+
+# Add inputs and outputs from these tool invocations to the build variables 
+CPP_SRCS += \
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/BSP_VoiceMailBox/src/utilities/AudioPlayer.cpp \
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/BSP_VoiceMailBox/src/utilities/AudioRecorder.cpp \
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/BSP_VoiceMailBox/src/utilities/File.cpp \
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/BSP_VoiceMailBox/src/utilities/Logger.cpp \
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/BSP_VoiceMailBox/src/utilities/MP3File.cpp \
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/BSP_VoiceMailBox/src/utilities/MP3_decoder.cpp \
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/BSP_VoiceMailBox/src/utilities/MP3_encoder.cpp \
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/BSP_VoiceMailBox/src/utilities/Updatable.cpp \
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/BSP_VoiceMailBox/src/utilities/WAVFile.cpp 
+
+OBJS += \
+./BSP_VoiceMailBox/utilities/AudioPlayer.o \
+./BSP_VoiceMailBox/utilities/AudioRecorder.o \
+./BSP_VoiceMailBox/utilities/File.o \
+./BSP_VoiceMailBox/utilities/Logger.o \
+./BSP_VoiceMailBox/utilities/MP3File.o \
+./BSP_VoiceMailBox/utilities/MP3_decoder.o \
+./BSP_VoiceMailBox/utilities/MP3_encoder.o \
+./BSP_VoiceMailBox/utilities/Updatable.o \
+./BSP_VoiceMailBox/utilities/WAVFile.o 
+
+CPP_DEPS += \
+./BSP_VoiceMailBox/utilities/AudioPlayer.d \
+./BSP_VoiceMailBox/utilities/AudioRecorder.d \
+./BSP_VoiceMailBox/utilities/File.d \
+./BSP_VoiceMailBox/utilities/Logger.d \
+./BSP_VoiceMailBox/utilities/MP3File.d \
+./BSP_VoiceMailBox/utilities/MP3_decoder.d \
+./BSP_VoiceMailBox/utilities/MP3_encoder.d \
+./BSP_VoiceMailBox/utilities/Updatable.d \
+./BSP_VoiceMailBox/utilities/WAVFile.d 
+
+
+# Each subdirectory must supply rules for building sources it contributes
+BSP_VoiceMailBox/utilities/AudioPlayer.o: /home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/BSP_VoiceMailBox/src/utilities/AudioPlayer.cpp BSP_VoiceMailBox/utilities/subdir.mk
+	arm-none-eabi-g++ "$<" -mcpu=cortex-m4 -std=gnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F469xx -c -I../Core/Inc -I../FATFS/Target -I../FATFS/App -I../USB_HOST/App -I../USB_HOST/Target -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FatFs/src -I../Middlewares/ST/STM32_USB_Host_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Host_Library/Class/CDC/Inc -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"../Application/inc" -I"/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/DevSandbox/F469Discovery_Application/../../BSP_VoiceMailBox/inc" -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=softfp -mthumb -o "$@"
+BSP_VoiceMailBox/utilities/AudioRecorder.o: /home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/BSP_VoiceMailBox/src/utilities/AudioRecorder.cpp BSP_VoiceMailBox/utilities/subdir.mk
+	arm-none-eabi-g++ "$<" -mcpu=cortex-m4 -std=gnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F469xx -c -I../Core/Inc -I../FATFS/Target -I../FATFS/App -I../USB_HOST/App -I../USB_HOST/Target -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FatFs/src -I../Middlewares/ST/STM32_USB_Host_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Host_Library/Class/CDC/Inc -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"../Application/inc" -I"/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/DevSandbox/F469Discovery_Application/../../BSP_VoiceMailBox/inc" -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=softfp -mthumb -o "$@"
+BSP_VoiceMailBox/utilities/File.o: /home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/BSP_VoiceMailBox/src/utilities/File.cpp BSP_VoiceMailBox/utilities/subdir.mk
+	arm-none-eabi-g++ "$<" -mcpu=cortex-m4 -std=gnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F469xx -c -I../Core/Inc -I../FATFS/Target -I../FATFS/App -I../USB_HOST/App -I../USB_HOST/Target -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FatFs/src -I../Middlewares/ST/STM32_USB_Host_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Host_Library/Class/CDC/Inc -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"../Application/inc" -I"/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/DevSandbox/F469Discovery_Application/../../BSP_VoiceMailBox/inc" -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=softfp -mthumb -o "$@"
+BSP_VoiceMailBox/utilities/Logger.o: /home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/BSP_VoiceMailBox/src/utilities/Logger.cpp BSP_VoiceMailBox/utilities/subdir.mk
+	arm-none-eabi-g++ "$<" -mcpu=cortex-m4 -std=gnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F469xx -c -I../Core/Inc -I../FATFS/Target -I../FATFS/App -I../USB_HOST/App -I../USB_HOST/Target -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FatFs/src -I../Middlewares/ST/STM32_USB_Host_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Host_Library/Class/CDC/Inc -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"../Application/inc" -I"/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/DevSandbox/F469Discovery_Application/../../BSP_VoiceMailBox/inc" -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=softfp -mthumb -o "$@"
+BSP_VoiceMailBox/utilities/MP3File.o: /home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/BSP_VoiceMailBox/src/utilities/MP3File.cpp BSP_VoiceMailBox/utilities/subdir.mk
+	arm-none-eabi-g++ "$<" -mcpu=cortex-m4 -std=gnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F469xx -c -I../Core/Inc -I../FATFS/Target -I../FATFS/App -I../USB_HOST/App -I../USB_HOST/Target -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FatFs/src -I../Middlewares/ST/STM32_USB_Host_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Host_Library/Class/CDC/Inc -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"../Application/inc" -I"/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/DevSandbox/F469Discovery_Application/../../BSP_VoiceMailBox/inc" -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=softfp -mthumb -o "$@"
+BSP_VoiceMailBox/utilities/MP3_decoder.o: /home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/BSP_VoiceMailBox/src/utilities/MP3_decoder.cpp BSP_VoiceMailBox/utilities/subdir.mk
+	arm-none-eabi-g++ "$<" -mcpu=cortex-m4 -std=gnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F469xx -c -I../Core/Inc -I../FATFS/Target -I../FATFS/App -I../USB_HOST/App -I../USB_HOST/Target -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FatFs/src -I../Middlewares/ST/STM32_USB_Host_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Host_Library/Class/CDC/Inc -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"../Application/inc" -I"/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/DevSandbox/F469Discovery_Application/../../BSP_VoiceMailBox/inc" -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=softfp -mthumb -o "$@"
+BSP_VoiceMailBox/utilities/MP3_encoder.o: /home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/BSP_VoiceMailBox/src/utilities/MP3_encoder.cpp BSP_VoiceMailBox/utilities/subdir.mk
+	arm-none-eabi-g++ "$<" -mcpu=cortex-m4 -std=gnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F469xx -c -I../Core/Inc -I../FATFS/Target -I../FATFS/App -I../USB_HOST/App -I../USB_HOST/Target -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FatFs/src -I../Middlewares/ST/STM32_USB_Host_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Host_Library/Class/CDC/Inc -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"../Application/inc" -I"/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/DevSandbox/F469Discovery_Application/../../BSP_VoiceMailBox/inc" -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=softfp -mthumb -o "$@"
+BSP_VoiceMailBox/utilities/Updatable.o: /home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/BSP_VoiceMailBox/src/utilities/Updatable.cpp BSP_VoiceMailBox/utilities/subdir.mk
+	arm-none-eabi-g++ "$<" -mcpu=cortex-m4 -std=gnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F469xx -c -I../Core/Inc -I../FATFS/Target -I../FATFS/App -I../USB_HOST/App -I../USB_HOST/Target -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FatFs/src -I../Middlewares/ST/STM32_USB_Host_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Host_Library/Class/CDC/Inc -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"../Application/inc" -I"/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/DevSandbox/F469Discovery_Application/../../BSP_VoiceMailBox/inc" -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=softfp -mthumb -o "$@"
+BSP_VoiceMailBox/utilities/WAVFile.o: /home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/BSP_VoiceMailBox/src/utilities/WAVFile.cpp BSP_VoiceMailBox/utilities/subdir.mk
+	arm-none-eabi-g++ "$<" -mcpu=cortex-m4 -std=gnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F469xx -c -I../Core/Inc -I../FATFS/Target -I../FATFS/App -I../USB_HOST/App -I../USB_HOST/Target -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FatFs/src -I../Middlewares/ST/STM32_USB_Host_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Host_Library/Class/CDC/Inc -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"../Application/inc" -I"/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/DevSandbox/F469Discovery_Application/../../BSP_VoiceMailBox/inc" -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=softfp -mthumb -o "$@"
+
+clean: clean-BSP_VoiceMailBox-2f-utilities
+
+clean-BSP_VoiceMailBox-2f-utilities:
+	-$(RM) ./BSP_VoiceMailBox/utilities/AudioPlayer.cyclo ./BSP_VoiceMailBox/utilities/AudioPlayer.d ./BSP_VoiceMailBox/utilities/AudioPlayer.o ./BSP_VoiceMailBox/utilities/AudioPlayer.su ./BSP_VoiceMailBox/utilities/AudioRecorder.cyclo ./BSP_VoiceMailBox/utilities/AudioRecorder.d ./BSP_VoiceMailBox/utilities/AudioRecorder.o ./BSP_VoiceMailBox/utilities/AudioRecorder.su ./BSP_VoiceMailBox/utilities/File.cyclo ./BSP_VoiceMailBox/utilities/File.d ./BSP_VoiceMailBox/utilities/File.o ./BSP_VoiceMailBox/utilities/File.su ./BSP_VoiceMailBox/utilities/Logger.cyclo ./BSP_VoiceMailBox/utilities/Logger.d ./BSP_VoiceMailBox/utilities/Logger.o ./BSP_VoiceMailBox/utilities/Logger.su ./BSP_VoiceMailBox/utilities/MP3File.cyclo ./BSP_VoiceMailBox/utilities/MP3File.d ./BSP_VoiceMailBox/utilities/MP3File.o ./BSP_VoiceMailBox/utilities/MP3File.su ./BSP_VoiceMailBox/utilities/MP3_decoder.cyclo ./BSP_VoiceMailBox/utilities/MP3_decoder.d ./BSP_VoiceMailBox/utilities/MP3_decoder.o ./BSP_VoiceMailBox/utilities/MP3_decoder.su ./BSP_VoiceMailBox/utilities/MP3_encoder.cyclo ./BSP_VoiceMailBox/utilities/MP3_encoder.d ./BSP_VoiceMailBox/utilities/MP3_encoder.o ./BSP_VoiceMailBox/utilities/MP3_encoder.su ./BSP_VoiceMailBox/utilities/Updatable.cyclo ./BSP_VoiceMailBox/utilities/Updatable.d ./BSP_VoiceMailBox/utilities/Updatable.o ./BSP_VoiceMailBox/utilities/Updatable.su ./BSP_VoiceMailBox/utilities/WAVFile.cyclo ./BSP_VoiceMailBox/utilities/WAVFile.d ./BSP_VoiceMailBox/utilities/WAVFile.o ./BSP_VoiceMailBox/utilities/WAVFile.su
+
+.PHONY: clean-BSP_VoiceMailBox-2f-utilities
+

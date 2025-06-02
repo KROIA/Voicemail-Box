@@ -1,0 +1,8 @@
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/DevSandbox/F469Discovery_Application/../../BSP_VoiceMailBox/inc/HAL_abstraction.hpp:44:24:VoiceMailBox::VMB_HAL_Status VoiceMailBox::VMB_HAL_ADC_Start(VMB_ADC_Handle*)	16	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/DevSandbox/F469Discovery_Application/../../BSP_VoiceMailBox/inc/HAL_abstraction.hpp:48:24:VoiceMailBox::VMB_HAL_Status VoiceMailBox::VMB_HAL_ADC_Stop(VMB_ADC_Handle*)	16	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/DevSandbox/F469Discovery_Application/../../BSP_VoiceMailBox/inc/HAL_abstraction.hpp:52:24:VoiceMailBox::VMB_HAL_Status VoiceMailBox::VMB_HAL_ADC_PollForConversion(VMB_ADC_Handle*, uint32_t)	16	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/DevSandbox/F469Discovery_Application/../../BSP_VoiceMailBox/inc/HAL_abstraction.hpp:56:18:uint32_t VoiceMailBox::VMB_HAL_ADC_GetValue(VMB_ADC_Handle*)	16	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/DevSandbox/F469Discovery_Application/../../BSP_VoiceMailBox/inc/HAL_abstraction.hpp:60:18:uint32_t VoiceMailBox::VMB_HAL_ADC_GetMaxValue(VMB_ADC_Handle*)	16	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/BSP_VoiceMailBox/src/peripherals/analogPin.cpp:5:2:VoiceMailBox::AnalogPin::AnalogPin(VoiceMailBox::VMB_ADC_Handle*)	16	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/BSP_VoiceMailBox/src/peripherals/analogPin.cpp:11:11:uint32_t VoiceMailBox::AnalogPin::getValue() const	24	static
+/home/dominik/Documents/studium/sem08/SA/Voicemail-Box/Software/BSP_VoiceMailBox/src/peripherals/analogPin.cpp:22:11:uint32_t VoiceMailBox::AnalogPin::getMaxValue() const	16	static

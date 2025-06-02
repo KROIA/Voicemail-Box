@@ -1,6 +1,12 @@
 # Configure WLAN/BLE to communicate by UART
 
-### Jumpers
+## J103
+
+Position:  
+<img src=../../Hardware/Diagramms/HardwareJumper-J103.png width="500">
+
+Jumper:  
+<img src=../../Hardware/Diagramms/HardwareJumper-J103_UART.png width="500">
 
 Jumper J103 set WLAN/BLE using UART
 ```mermaid

@@ -59,7 +59,64 @@
           "width": 0.0
         }
       ],
-      "drc_exclusions": [],
+      "drc_exclusions": [
+        [
+          "clearance|211760800|55539300|d38d4bf2-4a57-4a1a-afaf-7d65ee304e9b|9e7863c6-fa40-42c2-b7e8-a055bef4890f",
+          ""
+        ],
+        [
+          "clearance|211760800|55939300|1eebf323-641b-4948-8443-d89f0973f07f|2373e3b3-47d3-42cb-9f7c-3074c792e67a",
+          ""
+        ],
+        [
+          "clearance|214595700|58133700|50a74a29-09a0-486d-b4f2-1f39c37fba35|68efe9b7-ce4a-4494-817b-b5967d8e5f2a",
+          ""
+        ],
+        [
+          "clearance|214595700|58133700|68efe9b7-ce4a-4494-817b-b5967d8e5f2a|275290a4-c15b-4c44-bae2-0f344e912a16",
+          ""
+        ],
+        [
+          "clearance|214595700|58133700|68efe9b7-ce4a-4494-817b-b5967d8e5f2a|c06de29c-817b-4a66-a7f1-c35d20186633",
+          ""
+        ],
+        [
+          "clearance|214995700|58133700|7970e5ff-65c5-4fba-bf34-c25972970b92|523aff8e-64dc-48a9-8ef3-18b6d7538a8e",
+          ""
+        ],
+        [
+          "clearance|217185700|60116300|a5c74fde-dccd-4a38-8a89-07c6b28ad4b7|08595823-39bb-4511-844d-3340fd97c945",
+          ""
+        ],
+        [
+          "clearance|217585700|60116300|7b4f44e9-67e3-4db4-8dd6-a482bc4a16b3|a06021c2-65ef-481e-a6d7-5bec33586242",
+          ""
+        ],
+        [
+          "clearance|219845700|58114700|b48d466c-94d4-4ff6-968b-24160145f426|df650c9d-471e-4569-b826-65f5c9e00623",
+          ""
+        ],
+        [
+          "clearance|220245700|58114700|f4e044a5-5bef-4822-b47d-403e9ea078e6|49bba6c0-20e8-4250-9c56-63270d6dab87",
+          ""
+        ],
+        [
+          "clearance|220474300|58114700|a0105fe0-4ac3-4a50-9a05-20ca2a37d03a|f4e044a5-5bef-4822-b47d-403e9ea078e6",
+          ""
+        ],
+        [
+          "clearance|220474300|58114700|c7a4b555-ee9b-4180-a737-51c05ec494bd|f4e044a5-5bef-4822-b47d-403e9ea078e6",
+          ""
+        ],
+        [
+          "clearance|223445300|55539300|5959bd46-eea4-4850-8b59-7cf9e6d6de68|c9024c0c-c23f-4a1b-bebe-ccb758f4032f",
+          ""
+        ],
+        [
+          "clearance|223445300|55939300|f8036bbb-415f-4c15-a464-05a980a40267|b6bc853c-aab9-4627-ac67-70f9bd712e3a",
+          ""
+        ]
+      ],
       "meta": {
         "filename": "board_design_settings.json",
         "version": 2
@@ -129,7 +186,7 @@
         "allow_blind_buried_vias": false,
         "allow_microvias": false,
         "max_error": 0.005,
-        "min_clearance": 0.0,
+        "min_clearance": 0.125,
         "min_connection": 0.0,
         "min_copper_edge_clearance": 0.4,
         "min_groove_width": 0.0,
@@ -533,10 +590,10 @@
       "gencad": "",
       "idf": "",
       "netlist": "",
-      "plot": "fab",
+      "plot": "Fab",
       "pos_files": "",
       "specctra_dsn": "",
-      "step": "",
+      "step": "voicemail-box.step",
       "svg": "",
       "vrml": ""
     },
@@ -544,7 +601,7 @@
   },
   "schematic": {
     "annotate_start_num": 0,
-    "bom_export_filename": "${PROJECTNAME}.csv",
+    "bom_export_filename": "BOM/${PROJECTNAME}_partial.csv",
     "bom_fmt_presets": [],
     "bom_fmt_settings": {
       "field_delimiter": ",",
@@ -555,7 +612,175 @@
       "ref_range_delimiter": "",
       "string_delimiter": "\""
     },
-    "bom_presets": [],
+    "bom_presets": [
+      {
+        "exclude_dnp": false,
+        "fields_ordered": [
+          {
+            "group_by": false,
+            "label": "Reference",
+            "name": "Reference",
+            "show": true
+          },
+          {
+            "group_by": true,
+            "label": "Value",
+            "name": "Value",
+            "show": true
+          },
+          {
+            "group_by": true,
+            "label": "Footprint",
+            "name": "Footprint",
+            "show": true
+          },
+          {
+            "group_by": false,
+            "label": "Datasheet",
+            "name": "Datasheet",
+            "show": true
+          },
+          {
+            "group_by": false,
+            "label": "Description",
+            "name": "Description",
+            "show": false
+          },
+          {
+            "group_by": false,
+            "label": "Qty",
+            "name": "${QUANTITY}",
+            "show": true
+          },
+          {
+            "group_by": false,
+            "label": "#",
+            "name": "${ITEM_NUMBER}",
+            "show": false
+          },
+          {
+            "group_by": false,
+            "label": "Display",
+            "name": "Display",
+            "show": false
+          },
+          {
+            "group_by": false,
+            "label": "ID",
+            "name": "ID",
+            "show": false
+          },
+          {
+            "group_by": false,
+            "label": "Manufacturer",
+            "name": "Manufacturer",
+            "show": true
+          },
+          {
+            "group_by": false,
+            "label": "Manufacturer 2",
+            "name": "Manufacturer 2",
+            "show": false
+          },
+          {
+            "group_by": false,
+            "label": "Manufacturer 3",
+            "name": "Manufacturer 3",
+            "show": false
+          },
+          {
+            "group_by": false,
+            "label": "Manufacturer 4",
+            "name": "Manufacturer 4",
+            "show": false
+          },
+          {
+            "group_by": false,
+            "label": "Part Number",
+            "name": "Part Number",
+            "show": true
+          },
+          {
+            "group_by": false,
+            "label": "Part Number 2",
+            "name": "Part Number 2",
+            "show": false
+          },
+          {
+            "group_by": false,
+            "label": "Part Number 3",
+            "name": "Part Number 3",
+            "show": false
+          },
+          {
+            "group_by": false,
+            "label": "Part Number 4",
+            "name": "Part Number 4",
+            "show": false
+          },
+          {
+            "group_by": false,
+            "label": "Sim.Device",
+            "name": "Sim.Device",
+            "show": false
+          },
+          {
+            "group_by": false,
+            "label": "Sim.Pins",
+            "name": "Sim.Pins",
+            "show": false
+          },
+          {
+            "group_by": false,
+            "label": "Sim.Type",
+            "name": "Sim.Type",
+            "show": false
+          },
+          {
+            "group_by": false,
+            "label": "Specifications",
+            "name": "Specifications",
+            "show": false
+          },
+          {
+            "group_by": true,
+            "label": "DNP",
+            "name": "${DNP}",
+            "show": true
+          },
+          {
+            "group_by": false,
+            "label": "Digikey",
+            "name": "Digikey",
+            "show": false
+          },
+          {
+            "group_by": false,
+            "label": "Exclude from BOM",
+            "name": "${EXCLUDE_FROM_BOM}",
+            "show": false
+          },
+          {
+            "group_by": false,
+            "label": "Exclude from Board",
+            "name": "${EXCLUDE_FROM_BOARD}",
+            "show": false
+          },
+          {
+            "group_by": false,
+            "label": "Exclude from Simulation",
+            "name": "${EXCLUDE_FROM_SIM}",
+            "show": false
+          }
+        ],
+        "filter_string": "",
+        "group_symbols": true,
+        "include_excluded_from_bom": false,
+        "name": "Full Solder",
+        "sort_asc": true,
+        "sort_field": "Reference"
+      }
+    ],
     "bom_settings": {
       "exclude_dnp": false,
       "fields_ordered": [
@@ -572,7 +797,7 @@
           "show": true
         },
         {
-          "group_by": false,
+          "group_by": true,
           "label": "Footprint",
           "name": "Footprint",
           "show": true
@@ -690,6 +915,36 @@
           "label": "DNP",
           "name": "${DNP}",
           "show": true
+        },
+        {
+          "group_by": false,
+          "label": "Digikey",
+          "name": "Digikey",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Exclude from BOM",
+          "name": "${EXCLUDE_FROM_BOM}",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Exclude from Board",
+          "name": "${EXCLUDE_FROM_BOARD}",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Exclude from Simulation",
+          "name": "${EXCLUDE_FROM_SIM}",
+          "show": false
+        },
+        {
+          "group_by": true,
+          "label": "Var",
+          "name": "Var",
+          "show": true
         }
       ],
       "filter_string": "",
@@ -729,7 +984,7 @@
     "meta": {
       "version": 1
     },
-    "net_format_name": "",
+    "net_format_name": "SPICE Model",
     "ngspice": {
       "fix_include_paths": true,
       "fix_passive_vals": false,
@@ -740,7 +995,7 @@
       "workbook_filename": ""
     },
     "page_layout_descr_file": "",
-    "plot_directory": "output/",
+    "plot_directory": "Schematic/",
     "space_save_all_events": true,
     "spice_adjust_passive_values": false,
     "spice_current_sheet_as_root": false,
