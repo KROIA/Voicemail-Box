@@ -25,6 +25,9 @@ To use the class, a derived class must be created that overwrites the `update()`
 
 
 ``` C++ 
+// Application.cpp
+#include "BSP_VoiceMailBox.hpp"
+
 class ObjA : public VoiceMailBox::Updatable
 {
 public:
@@ -57,7 +60,7 @@ void setup()
 
 void loop()
 {
-    VoiceMailBox::update(); // calls the update function on all the Updatabel objects
+    VoiceMailBox::update(); // Calls update() on all Updatable objects
 }
 ```
 

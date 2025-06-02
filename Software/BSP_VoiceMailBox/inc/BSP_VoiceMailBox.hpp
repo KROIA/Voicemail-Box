@@ -10,6 +10,7 @@
 #include "utilities/File.hpp"
 #include "utilities/AudioRecorder.hpp"
 #include "utilities/AudioPlayer.hpp"
+#include "utilities/Timer.hpp"
 
 #include <cstdarg>   // <-- required for va_list and related macros
 #include <cstdio>    // <-- required for vsnprintf

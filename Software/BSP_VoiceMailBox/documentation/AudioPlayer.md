@@ -17,8 +17,8 @@ You can find a ready to run project [here](../../Demos/F469/F469_MultiExample/RE
 - Display optional debug information on a digital pin for performance measurement and timing constraint check.
 
 ## Setup
-Make sure the C++ application is setup in order to use this class
-You can find the instructions on how to do so [here](CppFromC.md).
+- Make sure the C++ application is setup in order to use this class
+  You can find the instructions on how to do so [here](CppFromC.md).
 
 ## Usage
 ### Basic usage

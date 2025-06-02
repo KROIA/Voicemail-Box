@@ -192,20 +192,33 @@ namespace VoiceMailBox
 		HAL_Delay(Delay);
 	}
 
+	/**
+	 * @brief This function updates the DWT tick counter and returns the current tick count in microseconds.
+	 * @param setTickMask if set to 0, the time gets reset
+	 * @note Make sure to call this function within one cycle of the DWT->CYCCNT to handle wraparounds correctly. (for clock of 160MHz, this is ~26seconds)
+	 * @return current tick count in microseconds.
+	 */
 	inline uint64_t VMB_HAL_UpdateTick(uint64_t setTickMask = -1)
 	{
 		static uint32_t DWT_LastCYCCNT = 0;
 		static uint64_t DWT_Tick = 0;
+		__disable_irq();
 	    uint32_t curr = DWT->CYCCNT;
 	    uint32_t last = DWT_LastCYCCNT;
 
-	    // Handle wraparound
-	    uint32_t delta = (curr - last);
+	    uint64_t delta = ((uint64_t)curr - (uint64_t)last);
 
-	    DWT_Tick += ((uint64_t)delta) ;
+		if (curr < last)
+		{
+			// Handle overflow
+			uint32_t delta32 = uint32_t(-1) - last + curr;
+			delta = uint64_t(delta32);
+		}
+
+	    DWT_Tick += delta;
 	    DWT_Tick &= setTickMask;
-
-	    DWT_LastCYCCNT = curr;
+	    DWT_LastCYCCNT = curr & setTickMask;
+	    __enable_irq();
 	    return DWT_Tick / ((uint64_t)SystemCoreClock / 1000000L);
 	}
 	inline void VMB_HAL_InitTickCounter()
@@ -223,14 +236,28 @@ namespace VoiceMailBox
 	{
 		return DWT->CYCCNT;
 	}
+
+	/**
+	 * @brief Gets the current microsecond tick count.
+	 * @note Will overflow after ~584'942 Jears.
+	 * @return current time since starrtup in us
+	 */
 	inline uint64_t VMB_HAL_GetTickCountInUs()
 	{
 		return VMB_HAL_UpdateTick();
 	}
+
+	/**
+	 * @brief Gets the current millisecond tick count.
+	 * @note Will overflow after ~584'942 Jears.
+	 * @return current time since starrtup in ms
+	 */
 	inline uint64_t VMB_HAL_GetTickCountInMs()
 	{
 		return VMB_HAL_UpdateTick() / 1000;
 	}
+
+
 	inline void VMB_HAL_ResetTickCounter()
 	{
 		DWT->CYCCNT = 0;

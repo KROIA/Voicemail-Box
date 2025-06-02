@@ -25,8 +25,6 @@ You can find the instructions on how to do so [here](CppFromC.md).
 
 ---
 ## Usage
-Make sure the C++ application is setup, you can find the instructions on how to do so [here](CppFromC.md).
-
 #### Writing to a file
 ``` C++ 
 #include "BSP_VoiceMailBox.hpp"
