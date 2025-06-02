@@ -35,6 +35,7 @@ to use one or the other, select the correct BOM to solder and only solder the me
 - tbd: add pictures
 
 ### Soldering
+There is no need to solder all possible parts on the pcb. Select the configuration you prefer and only solder the parts in the corresponding BOM.The [Assembly Plan](PCB/Fab/voicemail-box-F_Fab.pdf) shows the position and most of the part Values.
 - [Go to partial BOM](PCB/BOM/voicemail-box_partial.csv)
 - [Go to full BOM](PCB/BOM/voicemail-box_full.csv)
 
