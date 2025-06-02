@@ -2,7 +2,9 @@
 This is the Testserver for the Voicemail Box SA in the spring semester 2025.
 It offers only basic proof of concept functionalities.
 
-
+> [!WARNING] 
+> Do not use this server for production since the most security fearutes are disabled
+ 
 ---
 ## Content
 - [Features](#features)

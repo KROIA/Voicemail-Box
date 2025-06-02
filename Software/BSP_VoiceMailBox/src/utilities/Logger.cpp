@@ -68,6 +68,39 @@ namespace VoiceMailBox
 		}
 		va_end(args);
 	}
+
+	void Logger::logStatus(VMB_HAL_Status status, const std::string& context)
+	{
+		switch (status)
+		{
+		case VMB_HAL_Status::OK:
+#ifdef VMB_LOGGER_ENABLE_STATUS_PRINT_OK
+			logln("Status OK " + (context.empty() ? "" : " in " + context));
+#endif
+			break;
+		case VMB_HAL_Status::ERROR:
+#ifdef VMB_LOGGER_ENABLE_STATUS_PRINT_ERROR
+			logln("Error occurred" + (context.empty() ? "" : " in " + context));
+#endif
+			break;
+		case VMB_HAL_Status::BUSY:
+#ifdef VMB_LOGGER_ENABLE_STATUS_PRINT_BUSY
+			logln("Device is busy" + (context.empty() ? "" : " in " + context));
+#endif
+			break;
+		case VMB_HAL_Status::TIMEOUT:
+#ifdef VMB_LOGGER_ENABLE_STATUS_PRINT_TIMEOUT
+			logln("Operation timed out" + (context.empty() ? "" : " in " + context));
+#endif
+			break;
+		default:
+#ifdef VMB_LOGGER_ENABLE_STATUS_PRINT_UNKNOWN
+			logln("Unknown status: " + std::to_string(static_cast<int>(status)) + (context.empty() ? "" : " in " + context));
+#endif
+			break;
+		}
+	}
+
 #endif
 
 	void Logger::print(const std::string& msg)
@@ -109,7 +142,7 @@ namespace VoiceMailBox
 		va_end(args);
 	}
 
-	void Logger::handleStatus(VMB_HAL_Status status, const std::string& context)
+	void Logger::printStatus(VMB_HAL_Status status, const std::string& context)
 	{
 		switch (status)
 		{

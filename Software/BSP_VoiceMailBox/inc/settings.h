@@ -45,8 +45,11 @@
 #define VMB_LOGGER_OBJECTS_ENABLED_BY_DEFAULT
 
 
-
-#define VMB_LOGGER_ENABLE_STATUS_PRINT_OK
+/**
+ * @details
+ * These macros are used to enable/disable log massages for the function: Logger::handleStatus(...)
+ */
+//#define VMB_LOGGER_ENABLE_STATUS_PRINT_OK
 #define VMB_LOGGER_ENABLE_STATUS_PRINT_ERROR
 #define VMB_LOGGER_ENABLE_STATUS_PRINT_BUSY
 #define VMB_LOGGER_ENABLE_STATUS_PRINT_TIMEOUT

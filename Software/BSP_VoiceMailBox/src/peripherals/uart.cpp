@@ -63,7 +63,7 @@ namespace VoiceMailBox
 	bool UART::setup()
 	{
 		VMB_HAL_Status status = VMB_HAL_UART_Receive_IT(m_uart, &rx_data, 1);
-		VMB_LOGGER_HANDLE_STATUS(status, "UART::setup()");
+		VMB_LOGGER_PRINT_STATUS(status, "UART::setup()");
 		return status == VMB_HAL_Status::OK;
 	}
 

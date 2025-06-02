@@ -21,7 +21,11 @@
 
 namespace VoiceMailBox
 {
-	class Codec_TLV320AIC3104 : public AudioCodec, public Logger
+	class Codec_TLV320AIC3104 :
+			public AudioCodec
+#ifdef VMB_USE_LOGGER_OBJECTS
+			, public Logger
+#endif
 	{
 		/**
 		 * @brief Register map
