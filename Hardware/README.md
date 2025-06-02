@@ -11,11 +11,11 @@ The name for the Microcontroller/Evaluation Boards will be abreviated in the ins
 - ...
 
 ## Orientation
-All jumper/switch settings asume that the board is orientet like this image unless otherwise specified. 
-<img src=../Picture/20250507_130009.jpg width="500">
+All jumper/switch settings asume that the board is orientet like this image unless otherwise specified.   
+<img src=../Hardware/Picture/20250507_130009.jpg width="500">
 
 Here is a schematic view where jumpers are also labled:  
-<img src=../Documentation/Jumper/HardwareJumper-Overview.png width="500">
+<img src=../Hardware/Diagramms/HardwareJumper-Overview.png width="500">
 
 ## HW Setup
 The VMBB is made to be soldered in a full and a partial configuration as well as beeing compatible with

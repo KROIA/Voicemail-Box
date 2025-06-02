@@ -8,10 +8,10 @@ precompiled binaries can be found [here](https://github.com/espressif/esp-at/act
 ## Connector J303
 
 Position:  
-<img src=../../Documentation/Jumper/HardwareJumper-J303.png width="500">
+<img src=../../Hardware/Diagramms/HardwareJumper-J303.png width="500">
 
 Jumper to enter Boot-Mode:  
-<img src=../../Documentation/Jumper/HardwareJumper-J303_Boot.png width="500">
+<img src=../../Hardware/Diagramms/HardwareJumper-J303_Boot.png width="500">
 
 # Pinout J303:
 

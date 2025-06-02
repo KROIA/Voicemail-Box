@@ -1,13 +1,13 @@
 Position:  
-<img src=../../../Documentation/Jumper/HardwareJumper-J106.png width="500">
+<img src=../../../Hardware/Diagramms/HardwareJumper-J106.png width="500">
 
 ## J102
 
-<img src=../../../Documentation/Jumper/HardwareJumper-J102_SPI.png width="150">
+<img src=../../../Hardware/Diagramms/HardwareJumper-J102_SPI.png width="150">
 
 ## J106
 
-<img src=../../../Documentation/Jumper/HardwareJumper-J106_H755_SPI.png width="150">
+<img src=../../../Hardware/Diagramms/HardwareJumper-J106_H755_SPI.png width="150">
 
 ---
 

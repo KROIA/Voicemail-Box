@@ -1,15 +1,15 @@
 Position:
-<img src=../../../Documentation/Jumper/HardwareJumper-J106.png width="500">
+<img src=../../../Hardware/Diagramms/HardwareJumper-J106.png width="500">
 
 ## J102
 
 Jumper:  
-<img src=../../../Documentation/Jumper/HardwareJumper-J102_I2C.png width="150">
+<img src=../../../Hardware/Diagramms/HardwareJumper-J102_I2C.png width="150">
 
 ## J106
 
 Jumper:  
-<img src=../../../Documentation/Jumper/HardwareJumper-J106_I2C.png width="150">
+<img src=../../../Hardware/Diagramms/HardwareJumper-J106_I2C.png width="150">
 
 
 ## J106

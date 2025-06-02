@@ -2,11 +2,11 @@
 
 ## J103
 
-Position:
-<img src=../../Documentation/Jumper/HardwareJumper-J103.png width="500">
+Position:  
+<img src=../../Hardware/Diagramms/HardwareJumper-J103.png width="500">
 
 Jumper:  
-<img src=../../Documentation/Jumper/HardwareJumper-J103_UART.png width="500">
+<img src=../../Hardware/Diagramms/HardwareJumper-J103_UART.png width="500">
 
 Jumper J103 set WLAN/BLE using UART
 ```mermaid
