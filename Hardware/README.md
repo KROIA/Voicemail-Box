@@ -11,8 +11,11 @@ The name for the Microcontroller/Evaluation Boards will be abreviated in the ins
 - ...
 
 ## Orientation
-All jumper/switch settings asume that the board is orientet like this image unless otherwise specified. 
-<img src=../Picture/20250507_130009.jpg width="500">
+All jumper/switch settings asume that the board is orientet like this image unless otherwise specified.   
+<img src=../Hardware/Picture/20250507_130009.jpg width="500">
+
+Here is a schematic view where jumpers are also labled:  
+<img src=../Hardware/Diagramms/HardwareJumper-Overview.png width="500">
 
 ## HW Setup
 The VMBB is made to be soldered in a full and a partial configuration as well as beeing compatible with
@@ -32,8 +35,11 @@ to use one or the other, select the correct BOM to solder and only solder the me
 - tbd: add pictures
 
 ### Soldering
-- [Go to partial BOM](BOM/BOM_partial.csv)
-- [Go to full BOM](BOM/BOM_full.csv)
+- [Go to partial BOM](PCB/BOM/voicemail-box_partial.csv)
+- [Go to full BOM](PCB/BOM/voicemail-box_full.csv)
+
+> [!NOTE]  
+> If you want to edit the PCB files I recommend using KICAD with the KiVar Plugin
 
 ## Select Microcontroller Board in use (get the correct Jumper settings)
 - [Configure Board for H755](Config/H755/H755.md)
@@ -53,8 +59,12 @@ While SPI is way faster, it is more complicated to set up
 NFC can be read-out either through I2C or SPI  
 While SPI is way faster and is tested.
 I2C would help in case that there is a pin-limitation of the final project.
-- [Configure NFC using SPI](Config/SPI_NFC.md)  
-- [Configure NFC using I2C](Config/I2C_NFC.md)
+- F469
+    - [Configure NFC using SPI](Config/F469/NFC_SPI_F469.md)
+    - [Configure NFC using I2C](Config/F469/NFC_I2C_F469.md) 
+- H755
+    - [Configure NFC using SPI](Config/H755/NFC_SPI_H755.md)
+    - [Configure NFC using I2C](Config/H755/NFC_I2C_H755.md) 
 
 ## Configure HW Features
 - [Configure PSU](Config/PSU.md)

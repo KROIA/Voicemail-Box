@@ -1,6 +1,13 @@
 # Configure WLAN/BLE to communicate by SPI
 
-### Jumpers
+
+## J103
+
+Position:  
+<img src=../../Hardware/Diagramms/HardwareJumper-J103.png width="500">
+
+Jumper:  
+<img src=../../Hardware/Diagramms/HardwareJumper-J103_SPI.png width="500">
 
 Jumper J103 set WLAN/BLE using SPI
 ```mermaid

@@ -3697,7 +3697,7 @@
 		(uuid "107c6d47-a1f9-4e71-9919-4736cc4a57b3")
 	)
 	(no_connect
-		(at 30.48 142.24)
+		(at 29.21 142.24)
 		(uuid "2162ca87-f2b0-44dd-8991-51c83c16badd")
 	)
 	(no_connect
@@ -6756,9 +6756,9 @@
 		(at 137.16 166.37 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "05144dfc-defb-4fec-8022-cbdbbe27b4fe")
 		(property "Reference" "U501"
 			(at 135.636 165.1 0)
@@ -6778,7 +6778,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Package_DFN_QFN:UFQFPN-32-1EP_5x5mm_P0.5mm_EP3.5x3.5mm"
+		(property "Footprint" "additional parts:UFQFPN-32-1EP_5x5mm_P0.5mm_EP3.5x3.5mm"
 			(at 137.16 166.37 0)
 			(effects
 				(font
@@ -6797,6 +6797,33 @@
 			)
 		)
 		(property "Description" ""
+			(at 137.16 166.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "STMicroelectronics"
+			(at 137.16 166.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "ST25R3916B-AQET"
+			(at 137.16 166.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Var" "Assembly Full(+!) Partial(-!)"
 			(at 137.16 166.37 0)
 			(effects
 				(font
@@ -6918,9 +6945,9 @@
 		(at 228.6 96.52 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "0b4243ca-f490-4254-9db7-1050c10cdc0e")
 		(property "Reference" "R502"
@@ -6960,6 +6987,33 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 228.6 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 228.6 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "RC0603FR-0747KL"
+			(at 228.6 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Var" "Assembly Full(+!) Partial(-!)"
 			(at 228.6 96.52 0)
 			(effects
 				(font
@@ -7055,9 +7109,9 @@
 		(at 124.46 69.85 180)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "19b5ed0d-dd3f-446e-9675-dd7f383f1e21")
 		(property "Reference" "C525"
@@ -7105,6 +7159,33 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Kemet"
+			(at 124.46 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "C0603C470K5GACTU"
+			(at 124.46 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Var" "Assembly Full(+!) Partial(-!)"
+			(at 124.46 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "656cae77-3f66-416a-bf16-b6e1a254d1f7")
 		)
@@ -7125,9 +7206,9 @@
 		(at 238.76 78.74 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "1a5c651d-6351-4fac-bec5-3d3cf08ea66f")
 		(property "Reference" "R505"
@@ -7175,6 +7256,33 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Yageo"
+			(at 238.76 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "RC0805FR-07100RL"
+			(at 238.76 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Var" "Assembly Full(+!) Partial(-!)"
+			(at 238.76 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "4970e0e2-0613-45d9-b82b-28db582b3e31")
 		)
@@ -7196,9 +7304,9 @@
 		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "1f622015-efd2-4e67-8d08-9267d9d26f6d")
 		(property "Reference" "C522"
@@ -7246,6 +7354,33 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Kemet"
+			(at 90.17 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "C0603C681K5RACTU"
+			(at 90.17 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Var" "Assembly Full(+!) Partial(-!)"
+			(at 90.17 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "d8d29293-bf84-4de8-bf27-6f6f4e5ffdbc")
 		)
@@ -7266,9 +7401,9 @@
 		(at 254 96.52 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "2405413a-e6ea-4017-a12b-adb6924a11b2")
 		(property "Reference" "C501"
 			(at 256.54 95.25 0)
@@ -7315,6 +7450,33 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Kemet"
+			(at 254 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "C0603C100K5GACTU"
+			(at 254 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Var" "Assembly Full(+!) Partial(-!)"
+			(at 254 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "5a9fa020-7c18-47df-9c4b-849bedfff87d")
 		)
@@ -7335,9 +7497,9 @@
 		(at 236.22 90.17 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "258aee66-421b-47b3-bc7c-d04e329ee6ac")
 		(property "Reference" "Q501"
 			(at 239.776 86.868 0)
@@ -7411,6 +7573,33 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Nexperia USA Inc."
+			(at 236.22 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "NX3008NBKW,115"
+			(at 236.22 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Var" "Assembly Full(+!) Partial(-!)"
+			(at 236.22 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "3"
 			(uuid "d2eaf69a-6d7b-4e18-b846-afb7622655ab")
 		)
@@ -7434,9 +7623,9 @@
 		(at 276.86 96.52 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "265b2516-4604-4da5-bacf-49c5dbea56c1")
 		(property "Reference" "C502"
 			(at 279.4 95.25 0)
@@ -7483,6 +7672,33 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Kemet"
+			(at 276.86 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "C0603C100K5GACTU"
+			(at 276.86 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Var" "Assembly Full(+!) Partial(-!)"
+			(at 276.86 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "e9c79060-e642-4f33-968c-9c92dc2df546")
 		)
@@ -7503,9 +7719,9 @@
 		(at 260.35 69.85 90)
 		(unit 3)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "2c807c47-7450-4187-9585-3c4fd3e139b4")
 		(property "Reference" "U501"
 			(at 263.906 61.976 90)
@@ -7525,7 +7741,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Package_DFN_QFN:UFQFPN-32-1EP_5x5mm_P0.5mm_EP3.5x3.5mm"
+		(property "Footprint" "additional parts:UFQFPN-32-1EP_5x5mm_P0.5mm_EP3.5x3.5mm"
 			(at 260.35 69.85 0)
 			(effects
 				(font
@@ -7545,6 +7761,33 @@
 		)
 		(property "Description" ""
 			(at 260.35 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "STMicroelectronics"
+			(at 260.35 69.85 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "ST25R3916B-AQET"
+			(at 260.35 69.85 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Var" "Assembly Full(+!) Partial(-!)"
+			(at 260.35 69.85 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7665,9 +7908,9 @@
 		(at 208.28 139.7 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "2d0d727e-0bc2-4974-9001-2ffdee063414")
 		(property "Reference" "C513"
 			(at 210.82 138.43 0)
@@ -7714,6 +7957,33 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Kemet"
+			(at 208.28 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "C0603C225K4PACTU"
+			(at 208.28 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Var" "Assembly Full(+!) Partial(-!)"
+			(at 208.28 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "98c355c8-0cd3-4676-924f-41ec6bd62553")
 		)
@@ -7734,9 +8004,9 @@
 		(at 113.03 139.7 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "30127e60-c4c9-40c7-a7bf-83ea90cb0dd9")
 		(property "Reference" "C507"
 			(at 115.57 138.43 0)
@@ -7783,6 +8053,33 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Kemet"
+			(at 113.03 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "C0603C225K4PACTU"
+			(at 113.03 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Var" "Assembly Full(+!) Partial(-!)"
+			(at 113.03 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "f6f14f85-b9e1-4440-9b45-e97535e7fdf2")
 		)
@@ -7804,9 +8101,9 @@
 		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "31509b09-3076-4bb8-bf17-c0bdfcabc594")
 		(property "Reference" "C527"
@@ -7854,6 +8151,33 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Kemet"
+			(at 210.82 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "C0603C560M3HACTU"
+			(at 210.82 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Var" "Assembly Full(+!) Partial(-!)"
+			(at 210.82 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "2fc8d950-ea60-45a6-8f1f-6392bccf582d")
 		)
@@ -7875,9 +8199,9 @@
 		(mirror x)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "38ac5535-6991-4f42-a3d4-b6d4a66ed8c7")
 		(property "Reference" "U506"
 			(at 180.34 59.69 0)
@@ -7924,6 +8248,33 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Murata Electronics"
+			(at 160.02 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "LXRW0YV600-054"
+			(at 160.02 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Var" "Assembly Full(-!) Partial(-!)"
+			(at 160.02 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "3"
 			(uuid "c83e2186-a921-48ba-a72d-09b87cf74829")
 		)
@@ -7951,9 +8302,9 @@
 		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "3a404cf5-d69c-4885-9901-1fcf2f9ed7b2")
 		(property "Reference" "C521"
@@ -8001,6 +8352,33 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Kemet"
+			(at 90.17 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "C0603C101J5GACTU"
+			(at 90.17 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Var" "Assembly Full(+!) Partial(-!)"
+			(at 90.17 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "6c9c22f4-1b11-4cf6-8b87-c5f943675f01")
 		)
@@ -8021,9 +8399,9 @@
 		(at 265.43 90.17 180)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "3d97867d-cfe7-40ea-b74d-93f29884bd87")
 		(property "Reference" "Y501"
@@ -8069,6 +8447,33 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "EPSON"
+			(at 265.43 90.17 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "FA-118T 27.1200MD50Z-K3"
+			(at 265.43 90.17 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Var" "Assembly Full(+!) Partial(-!)"
+			(at 265.43 90.17 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "16a9c762-0b2c-4b3b-8b3c-29657289c4b8")
 		)
@@ -8095,9 +8500,9 @@
 		(at 217.17 30.48 90)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "3e583000-1812-4eab-9be1-d95bfebb6262")
 		(property "Reference" "R503"
@@ -8143,6 +8548,33 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Yageo"
+			(at 217.17 30.48 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "RC0603FR-072K4L"
+			(at 217.17 30.48 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Var" "Assembly Full(+!) Partial(-!)"
+			(at 217.17 30.48 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "873ce028-509e-44e8-882a-c695316c42e7")
 		)
@@ -8163,9 +8595,9 @@
 		(at 92.71 139.7 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "40d8efd7-fb0b-423b-8395-aa302c57f470")
 		(property "Reference" "C505"
 			(at 95.25 138.43 0)
@@ -8204,6 +8636,33 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 92.71 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Kemet"
+			(at 92.71 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "C0603C225K4PACTU"
+			(at 92.71 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Var" "Assembly Full(+!) Partial(-!)"
 			(at 92.71 139.7 0)
 			(effects
 				(font
@@ -8299,9 +8758,9 @@
 		(at 95.25 20.32 270)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "476cc570-6fc2-446f-a05f-df170597bb41")
 		(property "Reference" "C532"
 			(at 95.25 14.732 90)
@@ -8346,6 +8805,33 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Kemet"
+			(at 95.25 20.32 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "C0603C181J5GACTU"
+			(at 95.25 20.32 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Var" "Assembly Full(+!) Partial(-!)"
+			(at 95.25 20.32 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "e0a11367-03b3-4058-8a2b-dc3afb692070")
 		)
@@ -8366,9 +8852,9 @@
 		(at 259.08 139.7 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "485f93a5-9244-4679-b433-a53c3fc52f43")
 		(property "Reference" "C518"
 			(at 261.62 138.43 0)
@@ -8415,6 +8901,33 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Kemet"
+			(at 259.08 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "C0603C103K5RACTU"
+			(at 259.08 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Var" "Assembly Full(+!) Partial(-!)"
+			(at 259.08 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "ab895408-6ef2-46c8-8007-2b851db68d85")
 		)
@@ -8435,9 +8948,9 @@
 		(at 96.52 43.18 90)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "4c43e641-021f-484b-8bc8-b346fb3b3345")
 		(property "Reference" "L502"
 			(at 96.52 41.402 90)
@@ -8482,6 +8995,33 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Murata"
+			(at 96.52 43.18 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "LQW18ANR27J00D"
+			(at 96.52 43.18 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Var" "Assembly Full(+!) Partial(-!)"
+			(at 96.52 43.18 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "114ef0cf-6c55-41de-aa00-089a4acd1159")
 		)
@@ -8503,9 +9043,9 @@
 		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "4e035167-c6af-4459-a24e-93aa744d1deb")
 		(property "Reference" "C528"
@@ -8545,6 +9085,33 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 210.82 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Kemet"
+			(at 210.82 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "C0603C560M3HACTU"
+			(at 210.82 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Var" "Assembly Full(+!) Partial(-!)"
 			(at 210.82 62.23 0)
 			(effects
 				(font
@@ -8640,9 +9207,9 @@
 		(at 15.24 62.23 0)
 		(unit 4)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "521d8d0e-f87c-4d12-92f1-5e3fe38a5cff")
 		(property "Reference" "U501"
 			(at 13.716 60.96 0)
@@ -8662,7 +9229,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Package_DFN_QFN:UFQFPN-32-1EP_5x5mm_P0.5mm_EP3.5x3.5mm"
+		(property "Footprint" "additional parts:UFQFPN-32-1EP_5x5mm_P0.5mm_EP3.5x3.5mm"
 			(at 15.24 62.23 0)
 			(effects
 				(font
@@ -8681,6 +9248,33 @@
 			)
 		)
 		(property "Description" ""
+			(at 15.24 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "STMicroelectronics"
+			(at 15.24 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "ST25R3916B-AQET"
+			(at 15.24 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Var" "Assembly Full(+!) Partial(-!)"
 			(at 15.24 62.23 0)
 			(effects
 				(font
@@ -8803,9 +9397,9 @@
 		(mirror x)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "52391656-48c9-491e-8fc7-ca6c8d5b21a2")
 		(property "Reference" "D502"
 			(at 232.3465 63.5 0)
@@ -8850,6 +9444,33 @@
 				(hide yes)
 			)
 		)
+		(property "Part Number" "BAV70W-7-F"
+			(at 232.41 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Diodes Incorporated"
+			(at 232.41 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Var" "Assembly Full(+!) Partial(-!)"
+			(at 232.41 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "295c3c98-0df5-4345-b095-91042d405f2a")
 		)
@@ -8873,9 +9494,9 @@
 		(at 107.95 55.88 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "5481e5eb-1296-41b3-8163-3bcb5974cf81")
 		(property "Reference" "J501"
@@ -8923,6 +9544,33 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Harwin Inc."
+			(at 107.95 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "M50-3532042"
+			(at 107.95 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Var" "Assembly Full(+!) Partial(-!)"
+			(at 107.95 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "9cece363-b724-4531-a7f3-fd1fb7866a13")
 		)
@@ -8943,9 +9591,9 @@
 		(at 153.67 139.7 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "5c6129cc-2bbd-4972-8764-199c77aeaad3")
 		(property "Reference" "C511"
 			(at 156.21 138.43 0)
@@ -8992,6 +9640,33 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Kemet"
+			(at 153.67 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "C0603C105K4RACTU"
+			(at 153.67 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Var" "Assembly Full(+!) Partial(-!)"
+			(at 153.67 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "8d1d0549-f07a-43e1-988c-ac6a04321d33")
 		)
@@ -9013,9 +9688,9 @@
 		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "5f76c637-627a-422d-ba78-2e9409dcf1dc")
 		(property "Reference" "C524"
@@ -9063,6 +9738,33 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Kemet"
+			(at 124.46 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "C0603C470K5GACTU"
+			(at 124.46 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Var" "Assembly Full(+!) Partial(-!)"
+			(at 124.46 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "a39f9f7a-f02c-43fe-99e7-6159bfb9535a")
 		)
@@ -9083,9 +9785,9 @@
 		(at 72.39 139.7 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "66367647-3d6a-4e92-b91d-7769d4937dcb")
 		(property "Reference" "C503"
 			(at 74.93 138.43 0)
@@ -9132,6 +9834,33 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Kemet"
+			(at 72.39 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "C0603C103K5RACTU"
+			(at 72.39 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Var" "Assembly Full(+!) Partial(-!)"
+			(at 72.39 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "e5f9261e-76a3-4f6a-a14d-1581367b4bbc")
 		)
@@ -9152,9 +9881,9 @@
 		(at 96.52 72.39 90)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "6b550629-3911-4d44-8a30-7c1ba0a27c33")
 		(property "Reference" "L501"
 			(at 96.52 70.612 90)
@@ -9199,6 +9928,33 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Murata"
+			(at 96.52 72.39 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "LQW18ANR27J00D"
+			(at 96.52 72.39 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Var" "Assembly Full(+!) Partial(-!)"
+			(at 96.52 72.39 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "d331de02-9cb1-4bce-aa24-28197e39aa1b")
 		)
@@ -9219,9 +9975,9 @@
 		(at 133.35 139.7 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "6c20898b-9d5b-4210-99bf-33849b426faa")
 		(property "Reference" "C509"
 			(at 135.89 138.43 0)
@@ -9268,6 +10024,33 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Kemet"
+			(at 133.35 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "C0603C225K4PACTU"
+			(at 133.35 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Var" "Assembly Full(+!) Partial(-!)"
+			(at 133.35 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "3c2eb584-295e-4268-ab0b-db10b3ea5ba9")
 		)
@@ -9288,9 +10071,9 @@
 		(at 238.76 139.7 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "71ffa3e9-4cef-4da9-b93b-44d11f797f07")
 		(property "Reference" "C516"
 			(at 241.3 138.43 0)
@@ -9329,6 +10112,33 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 238.76 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Kemet"
+			(at 238.76 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "C0603C103K5RACTU"
+			(at 238.76 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Var" "Assembly Full(+!) Partial(-!)"
 			(at 238.76 139.7 0)
 			(effects
 				(font
@@ -9400,6 +10210,15 @@
 			)
 		)
 		(property "Description" "Arduino UNO Microcontroller Module, release 3"
+			(at 41.91 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Var" "Assembly Full(-!) Partial(+!)"
 			(at 41.91 152.4 0)
 			(effects
 				(font
@@ -9654,9 +10473,9 @@
 		(at 82.55 139.7 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "7ebb7329-4dec-4864-9cd9-91e1e2936993")
 		(property "Reference" "C504"
 			(at 85.09 138.43 0)
@@ -9703,6 +10522,33 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Kemet"
+			(at 82.55 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "C0603C103K5RACTU"
+			(at 82.55 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Var" "Assembly Full(+!) Partial(-!)"
+			(at 82.55 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "17042d6c-c1c3-4545-8888-3cbd400161ce")
 		)
@@ -9723,9 +10569,9 @@
 		(at 218.44 139.7 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "7f827d8e-30a3-49be-affe-2955a052ec29")
 		(property "Reference" "C514"
 			(at 220.98 138.43 0)
@@ -9772,6 +10618,33 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Kemet"
+			(at 218.44 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "C0603C223K1RACTU"
+			(at 218.44 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Var" "Assembly Full(+!) Partial(-!)"
+			(at 218.44 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "c87b042a-a7d4-4565-8bf3-2fe9cab6c50c")
 		)
@@ -9792,9 +10665,9 @@
 		(at 90.17 25.4 180)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "80f07503-e8ed-45c9-8439-5548613876c0")
 		(property "Reference" "C531"
@@ -9842,6 +10715,33 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Kemet"
+			(at 90.17 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "C0603C100K5GACTU"
+			(at 90.17 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Var" "Assembly Full(+!) Partial(-!)"
+			(at 90.17 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "270453cc-40d6-4977-a5cd-e91589d17993")
 		)
@@ -9862,9 +10762,9 @@
 		(at 228.6 139.7 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "930584a7-c263-40e7-9060-e0532fc01c59")
 		(property "Reference" "C515"
 			(at 231.14 138.43 0)
@@ -9911,6 +10811,33 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Kemet"
+			(at 228.6 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "C0603C225K4PACTU"
+			(at 228.6 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Var" "Assembly Full(+!) Partial(-!)"
+			(at 228.6 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "89ff7db5-0999-4298-a4d6-fa542b013465")
 		)
@@ -9931,9 +10858,9 @@
 		(at 40.64 34.29 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "974c22bd-3ca7-4932-97cf-8efabc010904")
 		(property "Reference" "U502"
 			(at 60.96 46.99 0)
@@ -9980,6 +10907,33 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Murata Electronics"
+			(at 40.64 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "LXRW0YV600-054"
+			(at 40.64 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Var" "Assembly Full(+!) Partial(-!)"
+			(at 40.64 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "3"
 			(uuid "611418be-b458-4b84-a6c4-1a89a6586fa4")
 		)
@@ -10006,9 +10960,9 @@
 		(at 168.91 120.65 0)
 		(unit 2)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "a04786bb-2260-410c-bf6a-1f0707968afc")
 		(property "Reference" "U501"
 			(at 167.894 119.38 0)
@@ -10028,7 +10982,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Package_DFN_QFN:UFQFPN-32-1EP_5x5mm_P0.5mm_EP3.5x3.5mm"
+		(property "Footprint" "additional parts:UFQFPN-32-1EP_5x5mm_P0.5mm_EP3.5x3.5mm"
 			(at 168.91 120.65 0)
 			(effects
 				(font
@@ -10047,6 +11001,33 @@
 			)
 		)
 		(property "Description" ""
+			(at 168.91 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "STMicroelectronics"
+			(at 168.91 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "ST25R3916B-AQET"
+			(at 168.91 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Var" "Assembly Full(+!) Partial(-!)"
 			(at 168.91 120.65 0)
 			(effects
 				(font
@@ -10235,9 +11216,9 @@
 		(at 248.92 139.7 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "a6513120-55bc-4cfd-9244-57b4c25ba7ee")
 		(property "Reference" "C517"
 			(at 251.46 138.43 0)
@@ -10284,6 +11265,33 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Kemet"
+			(at 248.92 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "C0603C225K4PACTU"
+			(at 248.92 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Var" "Assembly Full(+!) Partial(-!)"
+			(at 248.92 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "d7f3dffb-8f3d-4a5a-8937-d9d0a71704f2")
 		)
@@ -10305,9 +11313,9 @@
 		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "a7638733-57d0-4e5c-943f-8bbd23405858")
 		(property "Reference" "C526"
@@ -10355,6 +11363,33 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Kemet"
+			(at 198.12 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "C0603C470K5GACTU"
+			(at 198.12 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Var" "Assembly Full(+!) Partial(-!)"
+			(at 198.12 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "b52bef1b-47a0-4eda-a51f-8c8b990a1b76")
 		)
@@ -10375,9 +11410,9 @@
 		(at 157.48 185.42 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "aa740029-afed-4b04-b26e-7143ccf37793")
 		(property "Reference" "R501"
@@ -10417,6 +11452,33 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 157.48 185.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 157.48 185.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "RC0603FR-0710KL"
+			(at 157.48 185.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Var" "Assembly Full(+!) Partial(-!)"
 			(at 157.48 185.42 0)
 			(effects
 				(font
@@ -10513,9 +11575,9 @@
 		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "ad1a97af-8943-4928-bfc8-766a6f6e79fa")
 		(property "Reference" "U505"
 			(at 142.24 68.58 0)
@@ -10562,6 +11624,33 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Murata Electronics"
+			(at 162.56 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "LXRW0YV600-054"
+			(at 162.56 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Var" "Assembly Full(+!) Partial(-!)"
+			(at 162.56 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "3"
 			(uuid "ef5c2a7b-9abb-4cdc-b4a0-19a209413be7")
 		)
@@ -10588,9 +11677,9 @@
 		(at 143.51 139.7 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "b5cf0bcd-6835-4596-b4eb-1b924374a9f2")
 		(property "Reference" "C510"
 			(at 146.05 138.43 0)
@@ -10637,6 +11726,33 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Kemet"
+			(at 143.51 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "C0603C103K5RACTU"
+			(at 143.51 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Var" "Assembly Full(+!) Partial(-!)"
+			(at 143.51 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "d9e46177-5fed-464b-b314-8ff7198e641b")
 		)
@@ -10657,9 +11773,9 @@
 		(at 102.87 139.7 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "bc5e09bd-0df7-4887-bbb8-646c9136cf9e")
 		(property "Reference" "C506"
 			(at 105.41 138.43 0)
@@ -10706,6 +11822,33 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Kemet"
+			(at 102.87 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "C0603C103K5RACTU"
+			(at 102.87 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Var" "Assembly Full(+!) Partial(-!)"
+			(at 102.87 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "547f9ab0-c693-4d3e-8949-5015271958ee")
 		)
@@ -10727,9 +11870,9 @@
 		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "c1784fa4-ef57-47d8-b996-68d150cdaee3")
 		(property "Reference" "C523"
@@ -10777,6 +11920,33 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Kemet"
+			(at 90.17 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "C0603C681K5RACTU"
+			(at 90.17 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Var" "Assembly Full(+!) Partial(-!)"
+			(at 90.17 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "09d65045-a47d-48c9-a156-e09a544a1782")
 		)
@@ -10798,9 +11968,9 @@
 		(mirror x)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "c4db8601-1562-4d90-93f2-71478dd8980b")
 		(property "Reference" "C534"
 			(at 95.25 106.426 90)
@@ -10845,6 +12015,33 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Kemet"
+			(at 95.25 100.33 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "C0603C181J5GACTU"
+			(at 95.25 100.33 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Var" "Assembly Full(+!) Partial(-!)"
+			(at 95.25 100.33 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "e0cfdd1d-4199-4513-955d-c967b00f689c")
 		)
@@ -10866,9 +12063,9 @@
 		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "c4ecbf72-82dc-46c2-a21a-f2a542823150")
 		(property "Reference" "C520"
@@ -10916,6 +12113,33 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Kemet"
+			(at 90.17 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "C0603C101J5GACTU"
+			(at 90.17 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Var" "Assembly Full(+!) Partial(-!)"
+			(at 90.17 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "30eeec73-5a0a-41a9-8e98-f02c61766b71")
 		)
@@ -10936,9 +12160,9 @@
 		(at 217.17 85.09 90)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "ca7b54ba-a7f8-4063-80d0-ec36d11c38bc")
 		(property "Reference" "R504"
@@ -10984,6 +12208,33 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Yageo"
+			(at 217.17 85.09 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "RC0603FR-072K4L"
+			(at 217.17 85.09 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Var" "Assembly Full(+!) Partial(-!)"
+			(at 217.17 85.09 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "a1a6fa23-eba4-4ade-a136-9f5cecc70f59")
 		)
@@ -11004,9 +12255,9 @@
 		(at 198.12 139.7 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "cc661673-b3ef-4c48-ac00-9d6aa4d3dc90")
 		(property "Reference" "C512"
 			(at 200.66 138.43 0)
@@ -11053,6 +12304,33 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Kemet"
+			(at 198.12 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "C0603C103K5RACTU"
+			(at 198.12 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Var" "Assembly Full(+!) Partial(-!)"
+			(at 198.12 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "cd9f5c58-afe1-4dbe-aac0-1d8140f1e7cf")
 		)
@@ -11074,9 +12352,9 @@
 		(mirror x)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "cd7f9c5f-9dac-4426-aed4-f29d9778705e")
 		(property "Reference" "U503"
@@ -11124,6 +12402,33 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Murata Electronics"
+			(at 40.64 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "LXRW0YV600-054"
+			(at 40.64 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Var" "Assembly Full(+!) Partial(-!)"
+			(at 40.64 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "3"
 			(uuid "52763239-aa0a-428a-94c3-398462a439fa")
 		)
@@ -11150,9 +12455,9 @@
 		(at 269.24 139.7 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "d3136dec-285a-4909-b550-c13f09778b01")
 		(property "Reference" "C519"
 			(at 271.78 138.43 0)
@@ -11199,6 +12504,33 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Kemet"
+			(at 269.24 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "C0603C225K4PACTU"
+			(at 269.24 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Var" "Assembly Full(+!) Partial(-!)"
+			(at 269.24 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "20454568-4e9c-4a1c-a252-22429b74165b")
 		)
@@ -11219,9 +12551,9 @@
 		(at 123.19 139.7 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "d596357c-a1b1-49db-9431-90ec3ef4d457")
 		(property "Reference" "C508"
 			(at 125.73 138.43 0)
@@ -11268,6 +12600,33 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" "Kemet"
+			(at 123.19 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "C0603C103K5RACTU"
+			(at 123.19 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Var" "Assembly Full(+!) Partial(-!)"
+			(at 123.19 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "e1450bfa-fc94-47ab-abb2-0b6ee38a2a2c")
 		)
@@ -11289,9 +12648,9 @@
 		(mirror x)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "dda10bc3-eee4-4a59-a061-fac62a6c3560")
 		(property "Reference" "U504"
 			(at 180.34 26.67 0)
@@ -11330,6 +12689,33 @@
 			)
 		)
 		(property "Description" ""
+			(at 160.02 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Murata Electronics"
+			(at 160.02 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "LXRW0YV600-054"
+			(at 160.02 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Var" "Assembly Full(-!) Partial(-!)"
 			(at 160.02 39.37 0)
 			(effects
 				(font
@@ -11636,9 +13022,9 @@
 		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "f9286f67-9e8e-4c57-946e-a686fc65bd25")
 		(property "Reference" "C533"
@@ -11678,6 +13064,42 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 90.17 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey" "399-C0603C100K5GACTUCT-ND"
+			(at 90.17 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Kemet"
+			(at 90.17 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Part Number" "C0603C100K5GACTU"
+			(at 90.17 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Var" "Assembly Full(+!) Partial(-!)"
 			(at 90.17 95.25 0)
 			(effects
 				(font

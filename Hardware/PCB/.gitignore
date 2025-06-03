@@ -33,6 +33,5 @@
 
 #backups
 voicemail-box-backups
-*.csv
 *.dxf
 *.step

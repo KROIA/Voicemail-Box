@@ -5,15 +5,37 @@ The Voice-Mail-Box Project (VMB in short) provides a Board Support Package (BSP)
 
 ---
 ## Content
-- [Overview](#overview)
+- [Software structure](#software-structure)
   - [Detailed Software structure overview](#detailed-software-structure-overview)
   - [Peripheral classes](#peripheral-classes)
   - [Data processing classes](#data-processing-classes)
 - [Demos](#demos)
   - [Using STM32F469I-DISCOVERY](#using-stm32f469i-discovery)
+  - [Using NUCLEO-H755ZI-Q](#using-nucleo-h755zi-q)
+- [Unfinished](#unfinished)
+- [Needs to be implemented](#needs-to-be-implemented)
 
 ---
-## Overview
+## Repository overview for the software part
+The software part of this project contains the following folders:
+- **BSP_VoiceMailBox** 
+  The folder contains the **Board Support Package** for the Voice-Mail-Box and is the hart of the software project.
+  It contains all classes which are visualized in the picture in the chapter [Detailed Software structure overview](#detailed-software-structure-overview).  
+- **Demos**
+  The folder contains some demo projects, using the **BSP** from above.
+  In that folder are two sub folders
+  - **F469** Containing the example projects for the **STM32F469I-DISCOVERY** board
+  - **F755** Containing the example projects for the **NUCLEO-H755ZI-Q** board
+- **DevSandbox** 
+  The folder contains projects, used to develop the **BSP**. 
+  They may be not working since they were created to test stuff or to test downloaded demo projects from ST.
+
+
+Each project contains only the business logic for the application, the **BSP** is a shared code base over all projects.
+The **BSP** gets included in every project. 
+
+---
+## Software structure
 A very brief visualisation about the software hirarchy is displayed below.
 <tr>
 <td>
@@ -66,6 +88,9 @@ The Application must include only the **BSP_VoiceMailBox.h** header file, it alr
 - [HelloAudio](../Demos/F469/F469_HelloAudio/README.md) empty application + setup guide.
 - [Record and Playback](../Demos/F469/F469_RecordPlayback/README.md) example that records audio and plays it back.
 - [Multi Example](../Demos/F469/F469_MultiExample/README.md) project, containing multiple small examples for different classes of this project.
+
+### Using NUCLEO-H755ZI-Q
+- [HelloAudio](../Demos/H755/H755_HelloAudio/README.md) Currently not working
 
 ---
 ## Unfinished
