@@ -128,5 +128,4 @@ Shows some simple console output methodes that can be used.
 Shows how to use the Updatable class to automatically call a update function in a derived class object.
 
 #### Timer example
-All examples in the timer example do the same thing but are implemented in different ways, 
-to show the different ways the Timer can be used.
+All examples in the timer example do the same thing but are implemented in different ways, to show the different ways the Timer can be used.

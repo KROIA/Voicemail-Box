@@ -28,7 +28,19 @@ namespace Example_Codec_TLV320AIC3104
 	void loop_CaptureAndPlaybackWithVolume();
 	
 	
-
+	/**
+	 * @brief This example shows the usage of the processing performance measurement
+	 * @details
+	 * The internal codec is used to capture audio data and pass it back to the output.
+	 * To simulate a workload that takes some processing time, the potentiometer POT1 is used to set a delay in milliseconds.
+	 * The leds are used to enable the user to use a logic analyzer to visualize the processing time.
+	 * To see the full logic analyzer output, a debug pin is also used by the codec internaly to visualize the DMA ping pong buffer activity.
+	 * Because that debug pin is not wired to any pin, visit the documentation for the codec to see a example measurement which shows also the signal of the DMA.
+	 * Documentation: TLV320AIC3104.md
+	 * 
+	 * Depending on the size of the I2S buffer, the preset max delay variable in the example may be not enough high to see a problem occuring because the 
+	 * processing takes longer than the I2S DMA.
+	 */
 	void setup_PerformanceTracking();
 	void loop_PerformanceTracking();
 
@@ -140,6 +152,10 @@ namespace Example_Codec_TLV320AIC3104
 // ------------------------------------------------------------------------------------------------
 
 	const uint32_t maxDelayMS = 100; // Maximum delay in milliseconds
+	                                 // Change this value if the DMA needs more than 100ms to deliver new data.
+	                                 // In that case the processing would be always faster than the DMA
+	                                 // That is not the goal of this example.
+	                                 // Set the maxDelayMS to a value that is larger then the DMA processing time. For example double the time.
 	void setup_PerformanceTracking()
 	{
 		VoiceMailBox::setup();
@@ -175,6 +191,7 @@ namespace Example_Codec_TLV320AIC3104
 			led1.set(0);
 			// End processing
 
+			// The optimal ratio is between 0 and 1, smaller is better.
 			float performanceRatio = codec.getProcessingTimeRatio();
 			if (performanceRatio > 1)
 			{

@@ -5,6 +5,7 @@ You can find a ready to run project [here](../../Demos/F469/F469_MultiExample/RE
 ---
 ## Content
 - [Features](#features)
+- [Benefit of this timer](#benefit-of-this-timer)
 - [Setup](#setup)
 - [Usage](#usage)
     - [Timer with if statement](#timer-with-if-statement)
@@ -21,7 +22,43 @@ You can find a ready to run project [here](../../Demos/F469/F469_MultiExample/RE
 > The Timer class does not handle time overflows.
 > Since the internal used time is 64bit this would only be a problem after 3655 Years at a clock frequency of 160MHz.
 
+---
+## Benefit of this timer
+A usecase for the Timer class is the following code where some code needs to be executed at a given interval. Using classical methodes this is a common solution to the problem:
+``` C
+uint32_t previousTick = HAL_GetTick();  // Record the start time
 
+void loop()
+{
+    VoiceMailBox::update();
+    uint32_t currentTick = HAL_GetTick();
+    if ((currentTick - previousTick) >= 1000)  // 1000 ms = 1 second
+    {
+        previousTick = currentTick;
+
+        // Your code to run every 1 second goes here
+        HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);  // For example, toggle an LED
+    }
+}
+```
+
+Using the Timer class, the same task can be done with much less and more readable code:
+``` C++
+VoiceMailBox::Timer timer;
+
+void setup()
+{
+    timer.onFinish([](){
+        HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);  // For example, toggle an LED
+    });
+    timer.enableAutoRestart(true);
+    timer.start(1000);
+}
+void loop()
+{
+    VoiceMailBox::update(); // Will update the timer objects
+}
+```
 ---
 ## Setup    
 - Make sure the C++ application is setup in order to use this class
