@@ -36,7 +36,7 @@ class a7 highlighter
 
 # Pinout F469:
 
-### SPI ?
+### SPI
 | Function | Pin | Info |
 |----------|-----|------|
 | SPI_MOSI  | PB15 | |
@@ -48,7 +48,7 @@ class a7 highlighter
 
 # Pinout H755:
 
-### SPI ?
+### SPI
 | Function | Pin | Info |
 |----------|-----|------|
 | SPI_MOSI  | PB5 | validate!!! |

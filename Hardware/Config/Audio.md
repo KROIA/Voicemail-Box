@@ -64,7 +64,7 @@ class a3 highlighter
 
 # Pinout F469:
 
-### I2S 2
+### I2S
 | Function | Pin | Info |
 |----------|-----|------|
 | I2S_SDA  | PC1 | |
@@ -88,7 +88,7 @@ class a3 highlighter
 
 # Pinout H755:
 
-### I2S ?
+### I2S
 | Function | Pin | Info |
 |----------|-----|------|
 | I2S_SDA  | PB15 | |

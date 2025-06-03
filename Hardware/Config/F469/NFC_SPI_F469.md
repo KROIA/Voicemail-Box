@@ -1,3 +1,5 @@
+# NFC for F469 using SPI
+
 Position:  
 <img src=../../../Hardware/Diagramms/HardwareJumper-J106.png width="500">
 
@@ -15,7 +17,7 @@ Jumper:
 
 # Pinout:
 
-### SPI ?
+### SPI
 | Function | Pin | Info |
 |----------|-----|------|
 | SPI_MOSI  | PA5 | |

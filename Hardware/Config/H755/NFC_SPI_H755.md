@@ -1,3 +1,5 @@
+# NFC for H755 using SPI
+
 Position:  
 <img src=../../../Hardware/Diagramms/HardwareJumper-J106.png width="500">
 
@@ -13,7 +15,7 @@ Position:
 
 # Pinout:
 
-### SPI ?
+### SPI
 | Function | Pin | Info |
 |----------|-----|------|
 | SPI_MOSI  | PB5 | |
