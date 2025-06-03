@@ -154,7 +154,9 @@ namespace VoiceMailBox
 		// readAudioSamples requires the amount of samples, each sample consists of 2 * 16 bit samples (left and right channel)
 		uint32_t bytesWritten = m_file.writeAudioSamples((int16_t*)dmaRxBuff, size / 2);
 
-		VMB_LOGLN("Saved " + std::to_string(bytesWritten) + " bytes to mp3");
+		if (bytesWritten > 0) {
+			VMB_LOGLN("Saved " + std::to_string(bytesWritten) + " bytes to mp3");
+		}
 		if (m_recordingLed)
 			m_recordingLed->set(0);
 	}

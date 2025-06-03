@@ -81,7 +81,7 @@ ExampleCallerFunctions exampleFunctions[Example::__count]
  * @brief Select the example you want to run.
  * @details You can find the source code of each example in the Application/src folder
  */
-const Example selectedExample = Example::example_Timer;
+const Example selectedExample = Example::example_Codec_TLV320AIC3104;
 
 
 void setup()
