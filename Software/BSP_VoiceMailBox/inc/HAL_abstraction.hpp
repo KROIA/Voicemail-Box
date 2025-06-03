@@ -239,7 +239,7 @@ namespace VoiceMailBox
 
 	/**
 	 * @brief Gets the current microsecond tick count.
-	 * @note Will overflow after ~584'942 Jears.
+	 * @note Will overflow after ~3655 Years.
 	 * @return current time since starrtup in us
 	 */
 	inline uint64_t VMB_HAL_GetTickCountInUs()
@@ -249,7 +249,7 @@ namespace VoiceMailBox
 
 	/**
 	 * @brief Gets the current millisecond tick count.
-	 * @note Will overflow after ~584'942 Jears.
+	 * @note Will overflow after ~3655 Years.
 	 * @return current time since starrtup in ms
 	 */
 	inline uint64_t VMB_HAL_GetTickCountInMs()

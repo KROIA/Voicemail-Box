@@ -29,6 +29,8 @@ namespace Example_Codec_TLV320AIC3104
 	
 	
 
+	void setup_PerformanceTracking();
+	void loop_PerformanceTracking();
 
 	
 
@@ -38,13 +40,15 @@ namespace Example_Codec_TLV320AIC3104
 	void setup()
 	{
 		//setup_CaptureAndPlayback();
-		setup_CaptureAndPlaybackWithVolume();
+		//setup_CaptureAndPlaybackWithVolume();
+		setup_PerformanceTracking();
 	}
 
 	void loop()
 	{
 		//loop_CaptureAndPlayback();
-		loop_CaptureAndPlaybackWithVolume();
+		//loop_CaptureAndPlaybackWithVolume();
+		loop_PerformanceTracking();
 	}
 
 
@@ -108,21 +112,78 @@ namespace Example_Codec_TLV320AIC3104
 		VoiceMailBox::update();
 		AudioCodec& codec = getCodec();
 		AnalogPin& potentiometer = getPotentiometer(Potentiometer::POT1);
-		
-		uint32_t potentiometerValue = potentiometer.getValue();
-		double volumePercent = 100 - ((double)potentiometerValue * 100.0 / (double)potentiometer.getMaxValue());
 
-		// volumeScale is a value with range [0.36 - 2.71]
-		double volumeScale = std::exp((volumePercent - 50)/50.0); // Scale the volume based on the potentiometer value
-
-		int16_t* rxBuffer = (int16_t*)codec.getRxBufPtr();
-		int16_t* txBuffer = (int16_t*)codec.getTxBufPtr();
-		uint32_t bufferSize = codec.getBufferSize();
-		
-		for (uint32_t i = 0; i < bufferSize; ++i)
+		if (codec.isDataReadyAndClearFlag())
 		{
-			// Apply volume scaling to the captured audio data
-			txBuffer[i] = static_cast<int16_t>(rxBuffer[i] * volumeScale);
+			uint32_t potentiometerValue = potentiometer.getValue();
+			double volumePercent = 100 - ((double)potentiometerValue * 100.0 / (double)potentiometer.getMaxValue());
+
+			// volumeScale is a value with range [0.36 - 2.71]
+			double volumeScale = std::exp((volumePercent - 50) / 50.0); // Scale the volume based on the potentiometer value
+
+			int16_t* rxBuffer = (int16_t*)codec.getRxBufPtr();
+			int16_t* txBuffer = (int16_t*)codec.getTxBufPtr();
+			uint32_t bufferSize = codec.getBufferSize();
+
+			for (uint32_t i = 0; i < bufferSize; ++i)
+			{
+				// Apply volume scaling to the captured audio data
+				txBuffer[i] = static_cast<int16_t>(rxBuffer[i] * volumeScale);
+			}
+		}
+	}
+
+
+
+// ------------------------------------------------------------------------------------------------
+// ================================================================================================
+// ------------------------------------------------------------------------------------------------
+
+	const uint32_t maxDelayMS = 100; // Maximum delay in milliseconds
+	void setup_PerformanceTracking()
+	{
+		VoiceMailBox::setup();
+	}
+	void loop_PerformanceTracking()
+	{
+		using namespace VoiceMailBox;
+		DigitalPin& led0 = getLed(LED::LED0);
+		DigitalPin& led1 = getLed(LED::LED1);
+
+		led0.set(1);
+
+		VoiceMailBox::update();
+		AudioCodec& codec = getCodec();
+		AnalogPin& potentiometer = getPotentiometer(Potentiometer::POT1);
+
+		led0.set(0);
+		if (codec.isDataReadyAndClearFlag())
+		{
+			// Start processing
+			led1.set(1);
+			codec.startDataProcessing();                              // Used to mesure processing performance
+			uint32_t potentiometerValue = potentiometer.getValue();
+			uint32_t delayMS = maxDelayMS - ((double)potentiometerValue * maxDelayMS / (double)potentiometer.getMaxValue()); // 0 - 100 ms
+
+			int16_t* rxBuffer = (int16_t*)codec.getRxBufPtr();
+			int16_t* txBuffer = (int16_t*)codec.getTxBufPtr();
+			uint32_t bufferSize = codec.getBufferSize();
+
+			delay(delayMS);											  // simulate processing time
+			memcpy(txBuffer, rxBuffer, bufferSize * sizeof(int16_t)); // Redirect capture to the output
+			codec.endDataProcessing();                                // Used to mesure processing performance
+			led1.set(0);
+			// End processing
+
+			float performanceRatio = codec.getProcessingTimeRatio();
+			if (performanceRatio > 1)
+			{
+				println("Processing time utilization: %.2f%% ! Processing takes longer than it should !", performanceRatio * 100.0f);
+			}
+			else
+			{
+				println("Processing time utilization: %.2f%%", performanceRatio * 100.0f);
+			}
 		}
 	}
 } 
