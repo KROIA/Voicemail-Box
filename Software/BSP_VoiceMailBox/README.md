@@ -54,13 +54,17 @@ The Application must include only the **BSP_VoiceMailBox.h** header file, it alr
   - [MP3 Decoder](documentation/MP3_decoder.md)
 - [Audio Recorder](documentation/AudioRecorder.md)
 - [Audio Player](documentation/AudioPlayer.md)
+
+### Other utilities
 - [Logger](documentation/Logger.md)
+- [Updatable](documentation/Updatable.md)
+- [Timer](documentation/Timer.md)
 
 ---
 ## Demos
 ### Using STM32F469I-DISCOVERY
 - [HelloAudio](../Demos/F469/F469_HelloAudio/README.md) empty application + setup guide.
-- [Record and Playback](../Demos/F469/F469_RecordPlayback/README.md) example that records a audio and plays it back.
+- [Record and Playback](../Demos/F469/F469_RecordPlayback/README.md) example that records audio and plays it back.
 - [Multi Example](../Demos/F469/F469_MultiExample/README.md) project, containing multiple small examples for different classes of this project.
 
 ---

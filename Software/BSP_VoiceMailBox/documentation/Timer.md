@@ -17,6 +17,11 @@ You can find a ready to run project [here](../../Demos/F469/F469_MultiExample/RE
 - Using timer in a if statement that gets executed if the timer has expired.
 - Using callback functions to execute a function when the timer has expired.
 
+> [!INFO]
+> The Timer class does not handle time overflows.
+> Since the internal used time is 64bit this would only be a problem after 3655 Years at a clock frequency of 160MHz.
+
+
 ---
 ## Setup    
 - Make sure the C++ application is setup in order to use this class
@@ -34,7 +39,7 @@ void setup()
     VoiceMailBox::setup();
 
     timer = new VoiceMailBox::Timer();
-    timer->start(1000);
+    timer->start(1000); // time in ms
 }
 void loop()
 {
