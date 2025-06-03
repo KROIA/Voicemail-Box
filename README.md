@@ -30,7 +30,7 @@ The custom PCB is designed to be flexible for different kind of configurations a
 ### The current state of development features the following:
 - Recording audio from different sources:
   - Audio jack for left and right audio channel.
-  - Builtin microphone
+  - Built-in microphone
 - Playback audio to the audio output jack
 - Filesystem using a SD-Card and easy to use file class for reading and writing files
 - Two different audio encodings for files are supported:
