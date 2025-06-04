@@ -7,7 +7,9 @@ namespace VoiceMailBox
 											 I2C& i2c, uint8_t i2cDeviceAddress,
 											 VMB_GPIO* resetPort, uint16_t resetPin, bool resetPinIsInverted)
 		: AudioCodec()
+#ifdef VMB_USE_LOGGER_OBJECTS
 		, Logger("Codec_TLV320AIC3104")
+#endif
 		, m_i2c(i2c)
 		, m_i2cDeviceAddress(i2cDeviceAddress)
 		, m_resetPin{ resetPort, resetPin, resetPinIsInverted }
@@ -166,7 +168,7 @@ namespace VoiceMailBox
 	bool Codec_TLV320AIC3104::writeRegister(uint8_t registerAddress, uint8_t data)
 	{
 		VMB_HAL_Status status = m_i2c.writeRegister(m_i2cDeviceAddress, registerAddress, data);
-		VMB_LOGGER_HANDLE_STATUS(status, "Codec_TLV320AIC3104::writeRegister("+std::to_string(registerAddress)+","+std::to_string(data)+")");
+		VMB_LOGGER_LOG_STATUS(status, "Codec_TLV320AIC3104::writeRegister("+std::to_string(registerAddress)+","+std::to_string(data)+")");
 		return status == VMB_HAL_Status::OK;
 	}
 
@@ -174,7 +176,7 @@ namespace VoiceMailBox
 	{
 		uint8_t data = 0;
 		VMB_HAL_Status status = m_i2c.readRegister(m_i2cDeviceAddress, registerAddress, data);
-		VMB_LOGGER_HANDLE_STATUS(status, "Codec_TLV320AIC3104::readRegister("+std::to_string(registerAddress)+")");
+		VMB_LOGGER_LOG_STATUS(status, "Codec_TLV320AIC3104::readRegister("+std::to_string(registerAddress)+")");
 		return data;
 	}
 

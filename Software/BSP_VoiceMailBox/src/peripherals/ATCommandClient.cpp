@@ -8,6 +8,7 @@
 
 namespace VoiceMailBox
 {
+	// Helper class to automatically clear the LED after the operation
 	class AutoLedClearer
 	{
 	public:

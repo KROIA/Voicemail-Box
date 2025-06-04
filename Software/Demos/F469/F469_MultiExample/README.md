@@ -32,6 +32,9 @@ Here a quick file overview:
 - [MP3 Encoder](#mp3-encoder-example)
 - [MP3 Decoder](#mp3-decoder-example)
 - [UART](#uart-example)
+- [DC Offset correction example](#dc-offset-correction-example)
+- [ATCommandClient example](#atcommandclient-example)
+- [Codec TLV320AIC3104 example](#codec-tlv320aic3104-example)
 
 
 
@@ -106,3 +109,24 @@ The UART can also wait for a specific string to be received or read until a targ
 
 #### DC Offset correction example
 This example shows how to remove the DC offset from the left and right audio channels.
+
+
+#### ATCommandClient example
+This example shows hot to use the ESP32 using the ATCommandClient abstraction to communicate with the server for uploading and downloading files.
+To run this example, follow the [instructions](../../../BSP_VoiceMailBox/documentation/TestServer.md) to setup the testserver.
+
+#### Codec TLV320AIC3104 example
+1) This example shows a basic usage of the TLV320AIC3104 codec.
+   The example captures audio data from the codec and plays it back directly.
+2) This example shows a basic usage of the TLV320AIC3104 codec with volume control.
+   The POT1 potentiometer is used to control the volume of the audio data captured from the codec.
+
+#### Logger example
+Shows some simple console output methodes that can be used.
+
+#### Updatable example
+Shows how to use the Updatable class to automatically call a update function in a derived class object.
+
+#### Timer example
+All examples in the timer example do the same thing but are implemented in different ways, 
+to show the different ways the Timer can be used.

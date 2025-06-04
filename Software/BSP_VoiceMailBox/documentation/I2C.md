@@ -21,12 +21,13 @@ You can find a ready to run project [here](../../Demos/F469/F469_MultiExample/RE
 ## Setup    
 - Inside CubeMX, configure your i2c interface.
 - Start the code generation and open the code editor.
+- Make sure the C++ application is setup in order to use this class
+You can find the instructions on how to do so [here](CppFromC.md).
 
 ---
 ## Usage
 CubeMX generates a **I2C_HandleTypeDef** instance in the **main.c**
 The **I2C** class needs access to that handle. Since the C++ code can't be used directly in the **main.c**, another way of getting to the handle is needed.
-Make sure the C++ application is setup, you can find the instructions on how to do so [here](CppFromC.md).
 
 #### Modify main.h and main.c
 In the **main.h** create a get function that returns a pointer to the handle we want.

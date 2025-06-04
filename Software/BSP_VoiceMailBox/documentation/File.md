@@ -25,15 +25,14 @@ You can find a ready to run project [here](../../Demos/F469/F469_MultiExample/RE
 ## Setup    
 - Inside CubeMX, enable the FATFS in the **Middleware and Software Packages** section.
 - Start the code generation and open the code editor.
+- Make sure the C++ application is setup in order to use this class
+You can find the instructions on how to do so [here](CppFromC.md).
 
 ---
 ## Usage
-Make sure the C++ application is setup, you can find the instructions on how to do so [here](CppFromC.md).
-
-
 #### Writing to a file
 ``` C++ 
-#include "BSP_VoiceMailBox.hpp" // includes "peripherals/i2c.hpp"
+#include "BSP_VoiceMailBox.hpp" 
 // ...
 void simpleWrite()
 {
@@ -56,7 +55,7 @@ void simpleWrite()
 
 #### Appending to a file
 ``` C++ 
-#include "BSP_VoiceMailBox.hpp" // includes "peripherals/i2c.hpp"
+#include "BSP_VoiceMailBox.hpp" 
 // ...
 void simpleAppend()
 {
@@ -79,7 +78,7 @@ void simpleAppend()
 
 #### Reading from a file
 ``` C++ 
-#include "BSP_VoiceMailBox.hpp" // includes "peripherals/i2c.hpp"
+#include "BSP_VoiceMailBox.hpp" 
 // ...
 void simpleRead()
 {

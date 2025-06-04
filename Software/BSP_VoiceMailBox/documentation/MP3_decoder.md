@@ -18,6 +18,8 @@ You can find a ready to run project [here](../../Demos/F469/F469_MultiExample/RE
 ## Setup
 - Uses the Spirit MP3 library for encoding and decoding. [Click here](../../Demos/F469/F469_HelloAudio/README.md/#spiritdsp-mp3) to learn how to include the library.
 - Place a mp3 file with the name `music.mp3` onto the SD-Card.
+- Make sure the C++ application is setup in order to use this class
+You can find the instructions on how to do so [here](CppFromC.md).
 
 
 ---

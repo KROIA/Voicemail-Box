@@ -18,12 +18,12 @@ Currently multiple pins from the same ADC are not supported.
 ## Setup
 - Inside CubeMX, select a pin and configure it as **ADCX_INXX**.
 - Start the code generation and open the code editor.
+- Make sure the C++ application is setup in order to use this class
+You can find the instructions on how to do so [here](CppFromC.md).
   
 ---
 ## Usage
 In the `main.c` the ADC handle gets created. That is needed to pass to the constructor of the AnalogPin class. Since the C++ code can't be used directly in the **main.c**, another way of getting to the handle is needed.
-Make sure the C++ application is setup, you can find the instructions on how to do so [here](CppFromC.md).
-
 
 #### Modify main.h and main.c
 In the **main.h** create a get function that returns a pointer to the handle we want.
