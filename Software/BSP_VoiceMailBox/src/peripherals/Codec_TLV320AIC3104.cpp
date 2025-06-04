@@ -194,6 +194,7 @@ namespace VoiceMailBox
 		if (currentPage != m_currentRegisterPage)
 		{
 			// Handle error
+			VMB_LOGLN("Failed to set register page to " + std::to_string(page) + ", current page is " + std::to_string(currentPage));
 		}
 	}
 

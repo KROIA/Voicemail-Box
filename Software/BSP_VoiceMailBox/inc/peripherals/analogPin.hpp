@@ -1,9 +1,6 @@
 #ifndef ANALOG_PIN_HPP
 #define ANALOG_PIN_HPP
 /**
- * @brief ADC abstraction class
- * @details This class provides an interface to the ADC peripheral of the STM32 microcontroller.
- *          It handles the ADC conversion and provides a method to get the converted value.
  * @author Alex Krieg
  */
 
@@ -12,6 +9,11 @@
 
 namespace VoiceMailBox
 {
+	/**
+	 * @brief ADC abstraction class
+	 * @details This class provides an interface to the ADC peripheral of the STM32 microcontroller.
+	 *          It handles the ADC conversion and provides a method to get the converted value.
+	 */
 	class AnalogPin
 	{
 	public:

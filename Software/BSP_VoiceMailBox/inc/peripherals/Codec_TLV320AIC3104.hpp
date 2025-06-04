@@ -1,13 +1,8 @@
 #ifndef CODEC_TLV320AIC3104_HPP
 #define CODEC_TLV320AIC3104_HPP
 /**
- * @brief This file contains the interface to the TLV320AIC3104 codec.
- * @details This codec is used to record and play audio data
- * 
- * @note Only the core features are implemented and tested.
- * 
  *  @author Alex Krieg
-*/
+ */
 
 
 
@@ -23,6 +18,12 @@
 
 namespace VoiceMailBox
 {
+	/**
+	 * @brief This file contains the interface to the TLV320AIC3104 codec.
+	 * @details This codec is used to record and play audio data
+	 *
+	 * @note Only the core features are implemented and tested.
+	 */
 	class Codec_TLV320AIC3104 :
 			public AudioCodec
 #ifdef VMB_USE_LOGGER_OBJECTS

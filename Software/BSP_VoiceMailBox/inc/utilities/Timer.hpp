@@ -145,13 +145,6 @@ namespace VoiceMailBox
 		{
 			return m_callback != nullptr;
 		}
-	protected:
-
-		
-		/**
-		 * @brief Called by the Updatable class and checks if the timer has expired.
-		 */
-		void update() override;
 
 		/**
 		 * @brief Wrapper function to get the current time in milliseconds.
@@ -161,6 +154,24 @@ namespace VoiceMailBox
 		{
 			return VMB_HAL_GetTickCountInMs();
 		}
+
+		/**
+		 * @brief Wrapper function to get the current time in micro seconds.
+		 * @return current time in micro seconds.
+		 */
+		static inline uint64_t getCurrentUs()
+		{
+			return VMB_HAL_UpdateTick();
+		}
+	protected:
+
+		
+		/**
+		 * @brief Called by the Updatable class and checks if the timer has expired.
+		 */
+		void update() override;
+
+		
 
 	private:
 		bool m_isRunning;

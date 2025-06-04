@@ -1,9 +1,6 @@
 #ifndef UART_HPP
 #define UART_HPP
 /**
- * @brief UART abstraction class
- * @details This class provides an interface to the UART peripheral of the STM32 microcontroller.
- *          It implements a circular buffer for RX and TX data.
  * @author Alex Krieg
  */
 
@@ -14,6 +11,11 @@
 
 namespace VoiceMailBox
 {
+	/**
+	 * @brief UART abstraction class
+	 * @details This class provides an interface to the UART peripheral of the STM32 microcontroller.
+	 *          It implements a circular buffer for RX and TX data.
+	 */
 	class UART
 	{
 	public:

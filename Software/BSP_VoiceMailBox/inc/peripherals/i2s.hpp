@@ -1,9 +1,6 @@
 #ifndef I2S_HPP
 #define I2S_HPP
 /**
- * @brief I2S abstraction class
- * @details This class provides an interface to the I2S peripheral of the STM32 microcontroller.
- *          It handles the DMA transfer and provides a callback mechanism for processing data.
  * @author Alex Krieg
  */
 
@@ -14,6 +11,11 @@
 
 namespace VoiceMailBox
 {
+	/**
+	 * @brief I2S abstraction class
+	 * @details This class provides an interface to the I2S peripheral of the STM32 microcontroller.
+	 *          It handles the DMA transfer and provides a callback mechanism for processing data.
+	 */
 	class I2S
 	{
 	public:

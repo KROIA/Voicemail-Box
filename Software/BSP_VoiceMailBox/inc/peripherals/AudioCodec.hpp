@@ -1,9 +1,6 @@
 #ifndef AUDIO_CODEC_H
 #define AUDIO_CODEC_H
 /**
- * @brief
- * @details
- *
  * @author Alex Krieg
  */
 
@@ -15,7 +12,7 @@ namespace VoiceMailBox
 {
 	/**
 	 * @brief This interface class defines generic functionality for the usage of a audio codec.
-	 *        Derive from this class in case a new type of codec is used.
+	 * @details Derive from this class in case a new type of codec is used.
 	 */
 	class AudioCodec : public Updatable
 	{

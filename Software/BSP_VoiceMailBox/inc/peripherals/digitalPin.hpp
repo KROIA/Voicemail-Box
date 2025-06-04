@@ -1,9 +1,6 @@
 #ifndef DIGITAL_PIN_HPP
 #define DIGITAL_PIN_HPP
 /**
- * @brief Digital Pin abstraction class
- * @details This class provides an interface to the GPIO peripheral of the STM32 microcontroller.
- *          It provides methods to set, toggle and get the state of a digital pin.
  * @author Alex Krieg
  */
 
@@ -15,6 +12,11 @@
 
 namespace VoiceMailBox
 {
+	/**
+	 * @brief Digital Pin abstraction class
+	 * @details This class provides an interface to the GPIO peripheral of the STM32 microcontroller.
+	 *          It provides methods to set, toggle and get the state of a digital pin.
+	 */
 	class DigitalPin : public Updatable
 	{
 	public:
