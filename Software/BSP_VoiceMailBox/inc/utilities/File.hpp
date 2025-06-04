@@ -1,10 +1,6 @@
 #ifndef FILE_HPP
 #define FILE_HPP
 /**
- * @brief File abstraction class
- * @details This class provides an interface to the FATFS file system of the STM32 microcontroller.
- *          It encapsulates the FATFS file handle inside the class and provides methods to read and write files.
- * @note On the first construction of a File object, the FATFS file system is mounted automatically.
  * @author Alex Krieg
  */
 
@@ -17,7 +13,12 @@
 
 namespace VoiceMailBox
 {
-
+	/**
+	 * @brief File abstraction class
+	 * @details This class provides an interface to the FATFS file system of the STM32 microcontroller.
+	 *          It encapsulates the FATFS file handle inside the class and provides methods to read and write files.
+	 * @note On the first construction of a File object, the FATFS file system is mounted automatically.
+	 */
 	class File
 	{
 	public:

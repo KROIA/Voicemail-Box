@@ -4,6 +4,12 @@
  * @brief This file contains macro definitions and settings to 
  *        enable/disable/configure certain features in the VMB firmware.
  * 
+ * @details This file can be overwritten by a custom settings header file
+ *          To do so, create a custom header that contains a copy of this file and change the settings as needed.
+ *          In the main.h file, define the macro VMB_CUSTOM_SETTINGS_HEADER and after that include the custom settings header file.
+ *          This will then prevent this file from being included and the custom settings header will be used instead.
+ *          This is usefull if there are multiple projects that share the same BSP path but need to have different settings for each project.
+ * 
  * @author Alex Krieg
  */
 

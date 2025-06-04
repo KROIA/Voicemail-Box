@@ -1,15 +1,6 @@
 #ifndef LOGGER_HPP
 #define LOGGER_HPP
 /**
- * @brief The Logger class privides a interface to log messages to the debug console.
- * @details
- * Using this class as a baseclass for othet objects allows logging easy
- * It does not only print the messages to the console, it also puts a "context" related string in front of each message.
- * This makes it easier to identify the source of the message when reading the console output.
- * 
- * Use the class using the macros below because the whole logger can be disabled from the build and
- * to prevent compiler error because of missing functions, the macros will be replaced with empty functions when the logger is disabled.
- *
  * @author Alex Krieg
  */
 
@@ -47,6 +38,16 @@
 namespace VoiceMailBox
 {
 #ifdef VMB_USE_LOGGER_OBJECTS
+	/**
+	 * @brief The Logger class privides a interface to log messages to the debug console.
+	 * @details
+	 * Using this class as a baseclass for othet objects allows logging easy
+	 * It does not only print the messages to the console, it also puts a "context" related string in front of each message.
+	 * This makes it easier to identify the source of the message when reading the console output.
+	 *
+	 * Use the class using the macros below because the whole logger can be disabled from the build and
+	 * to prevent compiler error because of missing functions, the macros will be replaced with empty functions when the logger is disabled.
+	 */
 	class Logger
 	{
 	public:

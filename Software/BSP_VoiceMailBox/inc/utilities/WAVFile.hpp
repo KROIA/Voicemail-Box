@@ -1,9 +1,6 @@
 #ifndef WAV_FILE_HPP
 #define WAV_FILE_HPP
 /**
- * @brief
- * @details
- *
  * @author Alex Krieg
  */
 
@@ -16,6 +13,10 @@
 #if defined(VMB_AUDIO_FORMAT_WAV)
 namespace VoiceMailBox
 {
+	/**
+	 * @brief WAV file abstraction class
+	 * @details Easy access to audio samples of a wav file for reading and writing.
+	 */
 	class WAVFile  
 #ifdef VMB_USE_LOGGER_OBJECTS
 		: public Logger

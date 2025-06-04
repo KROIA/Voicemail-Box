@@ -1,8 +1,6 @@
 #ifndef I2C_HPP
 #define I2C_HPP
 /**
- * @brief I2S abstraction class
- * @details This class provides an interface to the I2S peripheral of the STM32 microcontroller.
  * @author Alex Krieg
  */
 
@@ -12,6 +10,10 @@
 
 namespace VoiceMailBox
 {
+	/**
+	 * @brief I2S abstraction class
+	 * @details This class provides an interface to the I2S peripheral of the STM32 microcontroller.
+	 */
 	class I2C
 	{
 	public:

@@ -5,13 +5,14 @@ The Voice-Mail-Box Project (VMB in short) provides a Board Support Package (BSP)
 
 ---
 ## Content
+- [Repository overview for the software part](#repository-overview-for-the-software-part)
+- [Demos](#demos)
+  - [Using STM32F469I-DISCOVERY](#using-stm32f469i-discovery)
+  - [Using NUCLEO-H755ZI-Q](#using-nucleo-h755zi-q)
 - [Software structure](#software-structure)
   - [Detailed Software structure overview](#detailed-software-structure-overview)
   - [Peripheral classes](#peripheral-classes)
   - [Data processing classes](#data-processing-classes)
-- [Demos](#demos)
-  - [Using STM32F469I-DISCOVERY](#using-stm32f469i-discovery)
-  - [Using NUCLEO-H755ZI-Q](#using-nucleo-h755zi-q)
 - [Unfinished](#unfinished)
 - [Needs to be implemented](#needs-to-be-implemented)
 
@@ -35,6 +36,17 @@ Each project contains only the business logic for the application, the **BSP** i
 The **BSP** gets included in every project. 
 
 ---
+## Demos
+### Using STM32F469I-DISCOVERY
+- [HelloAudio](../Demos/F469/F469_HelloAudio/README.md) empty application + setup guide.
+- [Record and Playback](../Demos/F469/F469_RecordPlayback/README.md) example that records audio and plays it back.
+- [Multi Example](../Demos/F469/F469_MultiExample/README.md) project, containing multiple small examples for different classes of this project.
+
+### Using NUCLEO-H755ZI-Q
+- [HelloAudio](../Demos/H755/H755_HelloAudio/README.md) Currently not working
+
+
+---
 ## Software structure
 A very brief visualisation about the software hirarchy is displayed below.
 <tr>
@@ -45,7 +57,7 @@ A very brief visualisation about the software hirarchy is displayed below.
 </td>
 
 ---
-### Detailed Software structure overview 
+### Detailed Software structure 
 This view displays the relation between the key software components delivered by the BSP.
 The Application must include only the **BSP_VoiceMailBox.h** header file, it already includes all relevant hardware components and software tools related to the VMB.
 
@@ -64,7 +76,7 @@ The Application must include only the **BSP_VoiceMailBox.h** header file, it alr
 - [I2S](documentation/I2S.md)
 - [UART](documentation/UART.md)
 - [AudioCodec](documentation/AudioCodec.md)
-  - [TLV320AIC3104](documentation/TLV320AIC3104.md)
+  - [Codec_TLV320AIC3104](documentation/Codec_TLV320AIC3104.md)
 - [ATCommandClient](documentation/ATCommandClient.md)
 
 ### Data processing classes
@@ -77,20 +89,24 @@ The Application must include only the **BSP_VoiceMailBox.h** header file, it alr
 - [Audio Recorder](documentation/AudioRecorder.md)
 - [Audio Player](documentation/AudioPlayer.md)
 
-### Other utilities
+### Other utilitiy classes
 - [Logger](documentation/Logger.md)
 - [Updatable](documentation/Updatable.md)
 - [Timer](documentation/Timer.md)
 
----
-## Demos
-### Using STM32F469I-DISCOVERY
-- [HelloAudio](../Demos/F469/F469_HelloAudio/README.md) empty application + setup guide.
-- [Record and Playback](../Demos/F469/F469_RecordPlayback/README.md) example that records audio and plays it back.
-- [Multi Example](../Demos/F469/F469_MultiExample/README.md) project, containing multiple small examples for different classes of this project.
+### HAL abstraction
+All HAL related functions are located in two files:
+- **HAL_abstraction.hpp**: 
+  Contains inline functions, encapsulating all HAL functions used in the BSP.
+  Do not use HAL functions inside the BSP directly, that would break the software design of the HAL abstraction. If a new HAL function is needed, create a new inline function with the same name but a **VMB_** in front to signalize its the same function but specific for the BSP
+- **interrupts.cpp**: 
+  Contains all interrupt callbacks used in the BSP.
+  Each class that uses interrupt callbacks, contains a static method that gets called in the interrupt callback to simplify the logic inside the HAL callback.
 
-### Using NUCLEO-H755ZI-Q
-- [HelloAudio](../Demos/H755/H755_HelloAudio/README.md) Currently not working
+### Update loop
+The update loop is programmed in the Platform struct and handles the updating of all **Updatable** objects, clears the I2S flags if configured so and handles the updating of the systick counter for when an overflow occures.
+For a smooth operation, this function must be called cyclically without any delays if possible.
+You can see the function calls in almost all examples in the loop() function.
 
 ---
 ## Unfinished

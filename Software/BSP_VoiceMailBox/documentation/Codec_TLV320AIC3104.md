@@ -1,4 +1,4 @@
-# TLV320AIC3104 Audio codec
+# Codec_TLV320AIC3104 Audio codec
 >The TLV320AIC3104 is a low-power stereo audio codec with stereo headphone amplifier, 
 as well as multiple inputs and outputs that are programmable in single-ended or fully differential configurations. 
 The device includes extensive register-based power control is included, thus enabling stereo 48-kHz DAC
@@ -273,11 +273,14 @@ If the utilization value is **larger than 1.0**, things have to change.
 <td>
 <figure style="text-align: center;">
     <img src="images/TLV320AIC3104_CurrentSignalPath.png" width="5000">
-    <figcaption>Figure 4: Worst I2S DMA vs Processing Time Utilization</figcaption>
 </figure>
 </td>
 </tr>
 
+The constructor of the Codec_TLV320AIC3104 class configures the codec so that the signal path in the picture above is used for input (orange) and output (green).
+The custom PCB offers a second audio output path using **LEFT_LOP**, **LEFT_LOM** and **RIGHT_LOP**, **RIGHT_LOM** outputs that are used to connect speakers on the connector **J603**.
+To use these, a other configuration must be made in order to redirect the audio signal to that outputs.
+The image shows which register must be edited in order to acheave different signal paths.
 ``` C++
 // Inside the codecs constructor
 

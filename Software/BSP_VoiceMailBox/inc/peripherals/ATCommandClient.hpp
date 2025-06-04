@@ -1,5 +1,8 @@
 #ifndef ATCOMMAND_CLIENT_H
 #define ATCOMMAND_CLIENT_H
+/**
+ * @author Alex Krieg
+ */
 
 #include "HAL_abstraction.hpp"
 #include "peripherals/digitalPin.hpp"
@@ -7,15 +10,14 @@
 #include "utilities/File.hpp"
 #include "utilities/Logger.hpp"
 #include <string>
-#include <cstdlib>
-#include <memory>
-#include <cstddef>
-#include <iostream>
-#include <cassert>
-#include <new>
 
 namespace VoiceMailBox
 {
+	/**
+	 * @brief Class to communicate with an AT command client over UART.
+	 * @details This class provides an interface to send AT commands to a client (e.g., a ESP32 module) and receive responses.
+	 *          Predefined AT-commands can be encapsulated in simple function calls, such as connectToWifi() or sendFileToServer().
+	 */
 	class ATCommandClient 
 #ifdef VMB_USE_LOGGER_OBJECTS
 		: public Logger
