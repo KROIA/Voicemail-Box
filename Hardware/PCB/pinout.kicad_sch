@@ -779,7 +779,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "myParts:NUCLEO_144_Analog+"
+		(symbol "additial parts:NUCLEO_144_Analog+"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -1605,7 +1605,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "myParts:NUCLEO_144_GPIO+"
+		(symbol "additial parts:NUCLEO_144_GPIO+"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -2391,7 +2391,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "myParts:NUCLEO_144_Periphery+"
+		(symbol "additial parts:NUCLEO_144_Periphery+"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -2999,7 +2999,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "myParts:NUCLEO_144_Power"
+		(symbol "additial parts:NUCLEO_144_Power"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -5990,7 +5990,7 @@
 		(uuid "f860f1ca-9bde-4245-9534-65c5b3ad4cef")
 	)
 	(symbol
-		(lib_id "myParts:NUCLEO_144_Power")
+		(lib_id "additial parts:NUCLEO_144_Power")
 		(at 68.58 29.21 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -6185,7 +6185,7 @@
 		)
 	)
 	(symbol
-		(lib_id "myParts:NUCLEO_144_Analog+")
+		(lib_id "additial parts:NUCLEO_144_Analog+")
 		(at 68.58 64.77 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -6422,7 +6422,7 @@
 		)
 	)
 	(symbol
-		(lib_id "myParts:NUCLEO_144_GPIO+")
+		(lib_id "additial parts:NUCLEO_144_GPIO+")
 		(at 212.09 63.5 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -7136,7 +7136,7 @@
 		)
 	)
 	(symbol
-		(lib_id "myParts:NUCLEO_144_Periphery+")
+		(lib_id "additial parts:NUCLEO_144_Periphery+")
 		(at 212.09 27.94 0)
 		(unit 1)
 		(exclude_from_sim no)

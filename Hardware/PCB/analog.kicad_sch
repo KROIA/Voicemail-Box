@@ -2206,7 +2206,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "myParts:TLV320AIC3104"
+		(symbol "additial parts:TLV320AIC3104"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -6455,7 +6455,7 @@
 		)
 	)
 	(symbol
-		(lib_id "myParts:TLV320AIC3104")
+		(lib_id "additial parts:TLV320AIC3104")
 		(at 107.95 39.37 0)
 		(mirror y)
 		(unit 1)
@@ -6482,7 +6482,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "additional parts:VQFN-32-1EP_5x5mm_P0.5mm_EP3.1x3.1mm"
+		(property "Footprint" "Package_DFN_QFN:VQFN-32-1EP_5x5mm_P0.5mm_EP3.1x3.1mm"
 			(at 103.124 31.496 0)
 			(effects
 				(font
@@ -6722,7 +6722,7 @@
 		)
 	)
 	(symbol
-		(lib_id "myParts:TLV320AIC3104")
+		(lib_id "additial parts:TLV320AIC3104")
 		(at 21.59 111.76 0)
 		(unit 4)
 		(exclude_from_sim no)
@@ -6746,7 +6746,7 @@
 				)
 			)
 		)
-		(property "Footprint" "additional parts:VQFN-32-1EP_5x5mm_P0.5mm_EP3.1x3.1mm"
+		(property "Footprint" "Package_DFN_QFN:VQFN-32-1EP_5x5mm_P0.5mm_EP3.1x3.1mm"
 			(at 26.416 103.886 0)
 			(effects
 				(font
@@ -7622,7 +7622,7 @@
 		)
 	)
 	(symbol
-		(lib_id "myParts:TLV320AIC3104")
+		(lib_id "additial parts:TLV320AIC3104")
 		(at 50.8 39.37 0)
 		(unit 3)
 		(exclude_from_sim no)
@@ -7648,7 +7648,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "additional parts:VQFN-32-1EP_5x5mm_P0.5mm_EP3.1x3.1mm"
+		(property "Footprint" "Package_DFN_QFN:VQFN-32-1EP_5x5mm_P0.5mm_EP3.1x3.1mm"
 			(at 55.626 31.496 0)
 			(effects
 				(font
@@ -9343,7 +9343,7 @@
 		)
 	)
 	(symbol
-		(lib_id "myParts:TLV320AIC3104")
+		(lib_id "additial parts:TLV320AIC3104")
 		(at 171.45 111.76 0)
 		(mirror y)
 		(unit 2)
@@ -9370,7 +9370,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "additional parts:VQFN-32-1EP_5x5mm_P0.5mm_EP3.1x3.1mm"
+		(property "Footprint" "Package_DFN_QFN:VQFN-32-1EP_5x5mm_P0.5mm_EP3.1x3.1mm"
 			(at 166.624 103.886 0)
 			(effects
 				(font
