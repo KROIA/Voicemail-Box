@@ -36,10 +36,10 @@ The following features are implemented so far:
 ---
 ## Setup
 The audio codec uses a I2C for configuration, a I2S for audio sample transfer and an digital reset pin.
-Visit the following pages to setup a I2C, I2S one digital output pin.
-[I2C setup](I2C.md/#setup)
-[I2S setup](I2S.md/#setup)
-[Digital Pin setup](DigitalPin.md/#setup)
+Visit the following pages to setup a I2C, I2S one digital output pin.<br>
+[I2C setup](I2C.md/#setup)<br>
+[I2S setup](I2S.md/#setup)<br>
+[Digital Pin setup](DigitalPin.md/#setup)<br>
 Make sure the C++ application is setup in order to use this class
 You can find the instructions on how to do so [here](CppFromC.md).
 
