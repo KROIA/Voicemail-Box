@@ -113,7 +113,7 @@ You can see the function calls in almost all examples in the loop() function.
 
 ---
 ## Unfinished
-- :construction: [TLV320AIC3104 Audio Codec](documentation/TLV320AIC3104.md) has only the most basic functions implemented and can be expanded to use its full potential.
+- :construction: [TLV320AIC3104 Audio Codec](documentation/Codec_TLV320AIC3104.md) has only the most basic functions implemented and can be expanded to use its full potential.
   
 ---
 ## Needs to be implemented

@@ -18,7 +18,7 @@ You can find a ready to run project [here](../../Demos/F469/F469_MultiExample/RE
 - Using timer in a if statement that gets executed if the timer has expired.
 - Using callback functions to execute a function when the timer has expired.
 
-> [!INFO]
+> [!NOTE]
 > The Timer class does not handle time overflows.
 > Since the internal used time is 64bit this would only be a problem after 3655 Years at a clock frequency of 160MHz.
 

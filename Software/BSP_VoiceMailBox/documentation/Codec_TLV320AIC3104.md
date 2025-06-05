@@ -282,7 +282,3 @@ The constructor of the Codec_TLV320AIC3104 class configures the codec so that th
 The custom PCB offers a second audio output path using **LEFT_LOP**, **LEFT_LOM** and **RIGHT_LOP**, **RIGHT_LOM** outputs that are used to connect speakers on the connector **J603**.
 To use these, a other configuration must be made in order to redirect the audio signal to that outputs.
 The image shows which register must be edited in order to acheave different signal paths.
-``` C++
-// Inside the codecs constructor
-
-```

@@ -35,6 +35,9 @@ Here a quick file overview:
 - [DC Offset correction example](#dc-offset-correction-example)
 - [ATCommandClient example](#atcommandclient-example)
 - [Codec TLV320AIC3104 example](#codec-tlv320aic3104-example)
+- [Logger example](#logger-example)
+- [Updatable example](#updatable-example)
+- [Timer example](#timer-example)
 
 
 
