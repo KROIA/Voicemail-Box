@@ -10,7 +10,7 @@ You can find a ready to run project [here](../../Demos/F469/F469_MultiExample/RE
 - [Usage](#usage)
     - [Timer with if statement](#timer-with-if-statement)
     - [Timer with callback](#timer-with-callback)
-    - [Automatic restart](#auto)
+    - [Automatic restart](#automatic-restart)
 
 ---
 ## Features
@@ -25,7 +25,8 @@ You can find a ready to run project [here](../../Demos/F469/F469_MultiExample/RE
 ---
 ## Benefit of this timer
 A usecase for the Timer class is the following code where some code needs to be executed at a given interval. Using classical methodes this is a common solution to the problem:
-``` C
+``` C++
+#include "BSP_VoiceMailBox.hpp"
 uint32_t previousTick = HAL_GetTick();  // Record the start time
 
 void loop()
@@ -44,10 +45,12 @@ void loop()
 
 Using the Timer class, the same task can be done with much less and more readable code:
 ``` C++
+#include "BSP_VoiceMailBox.hpp"
 VoiceMailBox::Timer timer;
 
 void setup()
 {
+    VoiceMailBox::update();
     timer.onFinish([](){
         HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);  // For example, toggle an LED
     });
