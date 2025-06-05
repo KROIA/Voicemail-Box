@@ -46,3 +46,4 @@ The custom PCB is designed to be flexible for different kind of configurations a
   
 ### Untested features:
 - Playback using the speaker connection (J603) is implemented in hardware but not implemented and tested in the software.
+- NFC module

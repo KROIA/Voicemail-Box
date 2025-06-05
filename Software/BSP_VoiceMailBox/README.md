@@ -10,9 +10,12 @@ The Voice-Mail-Box Project (VMB in short) provides a Board Support Package (BSP)
   - [Using STM32F469I-DISCOVERY](#using-stm32f469i-discovery)
   - [Using NUCLEO-H755ZI-Q](#using-nucleo-h755zi-q)
 - [Software structure](#software-structure)
-  - [Detailed Software structure overview](#detailed-software-structure-overview)
+  - [Detailed Software structure](#detailed-software-structure)
   - [Peripheral classes](#peripheral-classes)
   - [Data processing classes](#data-processing-classes)
+  - [Other utilitiy classes](#other-utilitiy-classes)
+  - [HAL abstraction](#hal-abstraction)
+  - [Update loop](#-update-loop)
 - [Unfinished](#unfinished)
 - [Needs to be implemented](#needs-to-be-implemented)
 
@@ -43,7 +46,7 @@ The **BSP** gets included in every project.
 - [Multi Example](../Demos/F469/F469_MultiExample/README.md) project, containing multiple small examples for different classes of this project.
 
 ### Using NUCLEO-H755ZI-Q
-- [HelloAudio](../Demos/H755/H755_HelloAudio/README.md) Currently not working
+- :warning: [HelloAudio](../Demos/H755/H755_HelloAudio/README.md) Currently not working
 
 
 ---
@@ -77,22 +80,22 @@ The Application must include only the **BSP_VoiceMailBox.h** header file, it alr
 - [UART](documentation/UART.md)
 - [AudioCodec](documentation/AudioCodec.md)
   - [Codec_TLV320AIC3104](documentation/Codec_TLV320AIC3104.md)
-- [ATCommandClient](documentation/ATCommandClient.md)
+- :satellite: [ATCommandClient](documentation/ATCommandClient.md)
 
 ### Data processing classes
 - [File](documentation/File.md)
-  - [WAV File](documentation/WAVFile.md)
-  - [MP3 File](documentation/MP3File.md)
+  - :musical_note: [WAV File](documentation/WAVFile.md)
+  - :musical_note: [MP3 File](documentation/MP3File.md)
 - MP3
-  - [MP3 Encoder](documentation/MP3_encoder.md)
-  - [MP3 Decoder](documentation/MP3_decoder.md)
-- [Audio Recorder](documentation/AudioRecorder.md)
-- [Audio Player](documentation/AudioPlayer.md)
+  - :small_red_triangle_down: [MP3 Encoder](documentation/MP3_encoder.md)
+  - :small_red_triangle: [MP3 Decoder](documentation/MP3_decoder.md)
+- :microphone: [Audio Recorder](documentation/AudioRecorder.md)
+- :speaker: [Audio Player](documentation/AudioPlayer.md)
 
 ### Other utilitiy classes
-- [Logger](documentation/Logger.md)
-- [Updatable](documentation/Updatable.md)
-- [Timer](documentation/Timer.md)
+- :pencil: [Logger](documentation/Logger.md)
+- :repeat: [Updatable](documentation/Updatable.md)
+- :watch: [Timer](documentation/Timer.md)
 
 ### HAL abstraction
 All HAL related functions are located in two files:
@@ -103,16 +106,17 @@ All HAL related functions are located in two files:
   Contains all interrupt callbacks used in the BSP.
   Each class that uses interrupt callbacks, contains a static method that gets called in the interrupt callback to simplify the logic inside the HAL callback.
 
-### Update loop
+### :repeat: Update loop
 The update loop is programmed in the Platform struct and handles the updating of all **Updatable** objects, clears the I2S flags if configured so and handles the updating of the systick counter for when an overflow occures.
 For a smooth operation, this function must be called cyclically without any delays if possible.
 You can see the function calls in almost all examples in the loop() function.
 
 ---
 ## Unfinished
-- [TLV320AIC3104 Audio Codec](documentation/TLV320AIC3104.md) has only the most basic functions implemented and can be expanded to use its full potential.
+- :construction: [TLV320AIC3104 Audio Codec](documentation/TLV320AIC3104.md) has only the most basic functions implemented and can be expanded to use its full potential.
+  
 ---
 ## Needs to be implemented
-- SPI class to communicate with the ESP32
-- SPI compatibility with the [ATCommandClient](documentation/ATCommandClient.md) class in order to use SPI for sending and receiving AT-Commands. 
-- NFC class to read NFC tags.
+- :construction: SPI class to communicate with the ESP32
+- :construction: SPI compatibility with the [ATCommandClient](documentation/ATCommandClient.md) class in order to use SPI for sending and receiving AT-Commands. 
+- :construction: NFC class to read NFC tags.
