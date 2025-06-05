@@ -82,7 +82,7 @@ void loop()
 ---
 ### Use button callbacks
 When the DigitalPin is used as input, callback functions can be subscribed which get called when the pin state changes.
->:bulb: Pin changes are not implemented using interrupts.
+>:bulb: Pin change detection is not implemented using interrupts.
 
 >:bulb: Only one callback for each of the 3 events are allowd.
 Calling the **button1.setOnFallingEdgeCallback(...);** twice will overwrite the first callback function assigned to that specific pin event.
