@@ -4,6 +4,7 @@ If you have soldered ESP32 on Board instead of using Pmod ESP32, you will have t
 
 precompiled binaries can be found [here](https://github.com/espressif/esp-at/actions), if you want the most up-to-date version. If not, use the binaries in this [folder](../esp32-wroom-at/build/).
 
+to flash it, you can follow the istructions from [espressif](https://docs.espressif.com/projects/esptool/en/latest/esp32/esptool/flashing-firmware.html)
 
 ## Connector J303
 
