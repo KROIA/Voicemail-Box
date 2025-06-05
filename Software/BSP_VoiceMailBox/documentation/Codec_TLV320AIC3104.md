@@ -22,6 +22,7 @@ You can find a ready to run project [here](../../Demos/F469/F469_MultiExample/RE
     - [Bad processing utilization](#bad-processing-utilization)
     - [Worst processing utilization](#worst-processing-utilization)
   - [Finding a good utilization](#finding-a-good-utilization)
+- [Currently available signal path](#currently-available-signal-path)
 
 ---
 ## Features
@@ -196,14 +197,14 @@ The yellow graph shows the signal for the LED0 which is turned on at the start o
 The green graph shows the signal for the LED1 which is turned on at the start when the codec has confirmed to have new audio samples available.
 The green signal is turned off after the processing has finished.
 
-> [!INFO] 
+> [!NOTE] 
 > Both leds, LED0 and LED1 are inverted on the PCB, therefore when the signal is low, that means that the LED is actually turned on.
  
 The blue graph shows the internaly used DBG0 pin which is not wired to any pin on the PCB. It is on the **GPIOC** on **GPIO_PIN_7** for the board: **F469-DISCOVERY**.
 Everytime the DMA has new data ready to be processed, that is on the **DMA_half_complete_interrupt** and **DMA_complete_interrupt**, the signal gets toggled.
 That means that the application has as much time as the blue signal does not change.
 
-> [!INFO] 
+> [!NOTE] 
 > The original logic analyzer files can be found in the folder **images** 
 > **.sal** files can be opened using the free software: [Logic](https://www.saleae.com/de)
 
@@ -268,7 +269,7 @@ If the utilization value is **larger than 1.0**, things have to change.
 
 
 ---
-## Currently available signal flow
+## Currently available signal path
 <tr>
 <td>
 <figure style="text-align: center;">
