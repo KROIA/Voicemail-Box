@@ -15,8 +15,21 @@
 namespace VoiceMailBox
 {
 	/**
-	 * @brief The timer class can be used to create simple tasks that should be executed after a certain time period.
+	 * @brief
+	 * The Timer class can be used to create simple tasks that should be executed after a certain time period.
 	 * Or to just run some code periodically with a certain time interval.
+	 * @note
+	 * This timer class is not suted for executing functions which require strict timings.
+	 * This class uses no interrupts and is dependant on the runtime of the whole application.
+	 * The execution of a callback can be delayed by any amount of time in cases where other code uses to much time.
+	 * No interrupt will pause long and time wasting functions to execute this timers callback.
+	 * For applications where a strict timer interval is needed, use a Hardware Timer.
+	 * To hold the execution delay to a minimum, follow these rules in your application:
+	 *  - Do not use "while loops" or "for loops" that could block or last for a long time. (long time means a time that is in the scale of your timers update interval)
+	 *    For example, if you have a while loop that takes 1ms and you use a timer that updates every 100ms, the worst case that can happen is that
+	 *    the callback function gets called with a delay of 1ms after it should have. Because there was a while loop that blocked the updating of the timer instance by 1ms.
+	 *  - Do not use delays, since they block any update which would lead in an possible timer update delay of the same time used in the delay call
+	 *
 	 */
 	class Timer : public Updatable
 	{

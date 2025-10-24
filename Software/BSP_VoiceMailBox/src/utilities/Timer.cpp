@@ -47,6 +47,7 @@ namespace VoiceMailBox
 			return false; // Timer is not running
 		m_isRunning = false;
 		m_hasFinished = false;
+		return true;
 	}
 
 	void Timer::update()
